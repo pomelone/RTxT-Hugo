@@ -1,3 +1,3 @@
-# RichTxTforHugo
+# RTxT-Hugo
 
-RichTxt Theme for Hugo
+Rich Text Theme for Hugo
