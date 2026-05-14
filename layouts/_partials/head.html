@@ -22,7 +22,7 @@
     <style>{{ (. | minify).Content | safeCSS }}</style>
     {{- end -}}
 
-    {{- with resources.Get "css/header.css" }}
+    {{- with resources.Get "css/theme.css" }}
     <link rel="stylesheet" type="text/css" href="{{ (. | minify).RelPermalink }}">
     {{- end -}}
 
