@@ -1,0 +1,15 @@
+{{- with site.Menus.main -}}
+    {{- range . -}}
+        {{- with .Page }}
+        <a class="menu" href="{{ .RelPermalink }}">
+        {{- else }}
+        <a class="menu" href="{{ .URL }}" title="{{ .Name }}">
+        {{- end -}}
+            {{- with .Params.icon -}}
+            <img src="{{ . | relURL }}">
+            {{- else -}}
+            <span>{{ .Name }}</span>
+            {{- end -}}
+        </a>
+    {{- end -}}
+{{- end -}}
