@@ -3,7 +3,7 @@
         {{- with .Page }}
         <a class="menu" href="{{ .RelPermalink }}">
         {{- else }}
-        <a class="menu" href="{{ .URL }}" title="{{ .Name }}">
+        <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
         {{- end -}}
             {{- with .Params.icon -}}
             <img src="{{ . | relURL }}">
