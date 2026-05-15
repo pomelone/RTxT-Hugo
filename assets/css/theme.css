@@ -9,9 +9,8 @@
 .nav-blur {
     position: absolute;
     z-index: -1;
-    height: 100%;
     width: 100%;
-    background: var(--bg);
+    height: 100%;
     box-shadow: var(--box-shadow);
     pointer-events: none;
 }
@@ -19,11 +18,11 @@
 .nav-bar {
     margin: 0 auto ;
     max-width: 90rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
-    height: 4rem;
     padding: 0 1.5rem;
 }
 
@@ -41,9 +40,9 @@
 
 .nav-logo-img {
     margin-right: 0.5rem;
-    display: inline-block;
-    height: 3rem;
     width: auto;
+    height: 3rem;
+    display: inline-block;
 }
 
 .nav-logo-text {
@@ -62,6 +61,7 @@
     font-size: 0.9rem;
     color: var(--text-gray);
     text-decoration: none;
+    user-select: none;
     transition: color 0.2s;
 }
 
@@ -72,4 +72,24 @@
 
 .menu img {
     height: 2rem;
+}
+
+.footer-container {
+    margin: 0 auto;
+    padding: 0.5rem 0;
+    max-width: 90rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    user-select: none;
+}
+
+.footer-text {
+    font-size: 0.75rem;
+}
+
+.footer-text img {
+    height: 0.75rem;
+    display: inline-block;
 }
