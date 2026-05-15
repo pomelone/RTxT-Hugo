@@ -1,0 +1,23 @@
+<footer>
+    {{- with site.Params.footer -}}
+    {{- if .enable }}
+    <hr>
+    <div class="footer-container">
+        {{- if .copyright }}
+        <div class="footer-text">
+            {{- .copyright | safeHTML -}}
+        </div>
+        {{- end -}}
+
+        {{- if .poweredBy }}
+        <div class="footer-text">
+            {{- .poweredBy | safeHTML -}}
+        </div>
+        {{- end }}
+    </div>
+    {{- end -}}
+    {{- end -}}
+
+    {{- /* custom footer */ -}}
+    {{ partial "custom/footer.html" . }}
+</footer>
