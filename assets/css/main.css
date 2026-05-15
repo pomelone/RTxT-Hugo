@@ -44,10 +44,14 @@ header, footer {
 
 footer,
 footer:hover,
-footer a,
-footer:hover a {
+footer a {
     color: var(--text-gray);
     text-decoration: none;
+}
+
+footer:hover a {
+    color: var(--text-gray);
+    text-decoration: underline;
 }
 
 footer hr {
