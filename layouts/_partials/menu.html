@@ -1,15 +1,18 @@
-{{- with site.Menus.main -}}
-    {{- range . -}}
-        {{- with .Page }}
-        <a class="menu" href="{{ .RelPermalink }}">
+{{- $currentPage := . -}}
+{{- range site.Menus.main -}}
+    {{- if .Page -}}
+        {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) }}
+        <a class="menu-activate" href="{{ .Page.RelPermalink }}">
         {{- else }}
-        <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
+        <a class="menu" href="{{ .Page.RelPermalink }}">
         {{- end -}}
-            {{- with .Params.icon -}}
-            <img src="{{ . | relURL }}">
-            {{- else -}}
-            <span>{{ .Name }}</span>
-            {{- end -}}
-        </a>
+    {{- else }}
+    <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
     {{- end -}}
+        {{- with .Params.icon -}}
+        <img src="{{ . | relURL }}">
+        {{- else -}}
+        <span>{{ .Name }}</span>
+        {{- end -}}
+    </a>
 {{- end -}}
