@@ -1,8 +1,8 @@
-<footer>
+<footer class="footer-container">
     {{- with site.Params.footer -}}
     {{- if .enable }}
     <hr>
-    <div class="footer-container">
+    <div class="footer-bar">
         {{- if .copyright }}
         <div class="footer-text">
             {{- .copyright | safeHTML -}}
