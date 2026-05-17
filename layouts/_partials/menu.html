@@ -10,9 +10,11 @@
     <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
     {{- end -}}
         {{- with .Params.icon -}}
-        <img src="{{ . | relURL }}">
+            {{- with index hugo.Data.icons . -}}
+            {{ . | safeHTML }}
+            {{- end -}}
         {{- else -}}
-        <span>{{ .Name }}</span>
+            <span>{{ .Name }}</span>
         {{- end -}}
     </a>
 {{- end -}}
