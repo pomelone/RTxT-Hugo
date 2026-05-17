@@ -20,7 +20,7 @@
 .nav-bar {
     margin: 0 auto;
     padding: 0 1rem;
-    max-width: 90rem;
+    max-width: var(--main-max-width);
     height: var(--nav-bar-height);
     display: flex;
     align-items: center;
@@ -87,15 +87,16 @@
     color: var(--text-regular-color);
 }
 
-.menu img {
+.menu svg {
+    width: 1.8rem;
     height: 1.8rem;
+    fill: currentColor;
 }
 
 .main-container {
     margin: 0 auto;
-    max-width: 90rem;
+    max-width: var(--main-max-width);
     display: flex;
-    flex: 1;
 }
 
 .sidebar-container {
@@ -146,7 +147,7 @@
 .content-body {
     padding: 0 2rem;
     min-width: 0;
-    max-width: 90rem;
+    max-width: var(--main-max-width);
     width: 100%;
 }
 
@@ -230,7 +231,7 @@
 .footer-bar {
     margin: 0 auto;
     padding: 0.5rem 0;
-    max-width: 90rem;
+    max-width: var(--main-max-width);
     display: flex;
     align-items: center;
     justify-content: center;

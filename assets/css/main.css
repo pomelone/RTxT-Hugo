@@ -12,6 +12,7 @@
     --nav-blur-bg: rgba(255, 255, 255, 0.8);
     --nav-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 0 rgba(0,0,0,0.06);
     --nav-bar-height: 4rem;
+    --main-max-width: 90rem;
     --footer-hr: #ebe6e7;
 }
 
@@ -30,6 +31,7 @@
         --nav-blur-bg: rgba(1, 1, 1, 0.8);
         --nav-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
         --nav-bar-height: 4rem;
+        --main-max-width: 90rem;
         --footer-hr: #262626;
     }
 }
@@ -42,4 +44,9 @@ body {
     font-size: var(--text-size-base);
     background-color: var(--bg);
     color: var(--fg);
+}
+
+main {
+    display: flex;
+    flex: 1;
 }
