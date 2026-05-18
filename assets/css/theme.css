@@ -81,6 +81,7 @@
 
 .menu:hover {
     color: var(--text-bar-hover-color);
+    opacity: 0.8;
 }
 
 .menu-activate {
@@ -88,14 +89,15 @@
 }
 
 .menu svg {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.8em;
+    height: 1.8em;
 }
 
 .main-container {
     margin: 0 auto;
     max-width: var(--main-max-width);
     display: flex;
+    justify-content: center;
 }
 
 .sidebar-container {
@@ -137,6 +139,7 @@
 
 .content-container {
     padding: 1rem 0;
+    max-width: var(--content-max-width);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -146,7 +149,6 @@
 .content-body {
     padding: 0 2rem;
     min-width: 0;
-    max-width: var(--main-max-width);
     width: 100%;
 }
 
@@ -179,6 +181,12 @@
     gap: 1rem;
 }
 
+.page-title a,
+.page-meta a {
+    display: inline-flex;
+    align-items: flex-end;
+}
+
 .page-title,
 .page-title a {
     color: var(--text-regular-color);
@@ -187,22 +195,30 @@
     text-decoration: none;
 }
 
-.draft-label {
-    font-weight: 400;
-    font-size: 0.8rem;
-    color: red;
-}
-
 .page-meta,
 .page-meta a {
     color: var(--text-meta-color);
     white-space: nowrap;
     font-size: 0.8rem;
     text-decoration: none;
+    opacity: 0.8;
 }
 
 .page-meta a:hover {
     color: var(--text-meta-hover-color);
+    opacity: unset;
+}
+
+.page-meta img,
+.page-meta svg {
+    width: 1em;
+    height: 1em;
+}
+
+.draft-label {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: red;
 }
 
 .page-summary {

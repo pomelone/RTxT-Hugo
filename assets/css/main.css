@@ -13,6 +13,7 @@
     --nav-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 0 rgba(0,0,0,0.06);
     --nav-bar-height: 4rem;
     --main-max-width: 90rem;
+    --content-max-width: 60rem;
     --footer-hr: #ebe6e7;
 }
 
@@ -32,6 +33,7 @@
         --nav-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
         --nav-bar-height: 4rem;
         --main-max-width: 90rem;
+        --content-max-width: 60rem;
         --footer-hr: #262626;
     }
 }
