@@ -1,23 +1,27 @@
+{{- $footerEnable := true -}}
+{{- if and (isset site.Params "footer") (isset site.Params.footer "enable") -}}
+    {{- $footerEnable = site.Params.footer.enable -}}
+{{- end -}}
+{{- if $footerEnable -}}
 <footer class="footer-container">
-    {{- with site.Params.footer -}}
-    {{- if .enable }}
     <hr>
+    {{ with site.Params.footer -}}
     <div class="footer-bar">
-        {{- if .copyright }}
+        {{ with .copyright -}}
         <div class="footer-text">
-            {{- .copyright | safeHTML -}}
+            {{- . | safeHTML -}}
         </div>
         {{- end -}}
 
-        {{- if .poweredBy }}
+        {{- with .poweredBy }}
         <div class="footer-text">
-            {{- .poweredBy | safeHTML -}}
+            {{- . | safeHTML -}}
         </div>
         {{- end }}
     </div>
-    {{- end -}}
     {{- end -}}
 
     {{- /* custom footer */ -}}
     {{ partial "custom/footer.html" . }}
 </footer>
+{{- end -}}
