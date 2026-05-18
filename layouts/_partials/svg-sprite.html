@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
-{{- range resources.Match "ui/*.svg" -}}
+{{- range resources.Match "ui/*.svg" }}
     {{- $id := printf "ui-%s" (replace (path.Base .Name) ".svg" "") -}}
     {{- $content := .Content -}}
     {{- $symbol := replaceRE `<svg([^>]*)\swidth="[^"]*"` "<svg$1" $content -}}
@@ -7,5 +7,5 @@
     {{- $symbol = replaceRE "<svg" (printf `<symbol id="%s"` $id) $symbol -}}
     {{- $symbol = replaceRE "</svg>" "</symbol>" $symbol }}
     {{ $symbol | safeHTML }}
-{{- end -}}
+{{- end }}
 </svg>
