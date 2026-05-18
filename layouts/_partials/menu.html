@@ -9,9 +9,11 @@
     {{- else }}
     <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
     {{- end -}}
-        {{- with .Params.icon -}}
-            {{- with index hugo.Data.icons . -}}
+        {{- if .Params.icon -}}
+            {{- with index hugo.Data.icons .Params.icon -}}
             {{ . | safeHTML }}
+            {{- else -}}
+            <span>{{ .Name }}</span>
             {{- end -}}
         {{- else -}}
             <span>{{ .Name }}</span>
