@@ -1,22 +1,23 @@
 {{- $currentPage := . -}}
-{{- range site.Menus.main -}}
-    {{- if .Page -}}
-        {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) }}
-        <a class="menu-activate" href="{{ .Page.RelPermalink }}">
-        {{- else }}
-        <a class="menu" href="{{ .Page.RelPermalink }}">
+{{- range site.Menus.main }}
+    {{ if .Page -}}
+        {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
+            <a class="menu-activate" href="{{ .Page.RelPermalink }}">
+        {{- else -}}
+            <a class="menu" href="{{ .Page.RelPermalink }}">
         {{- end -}}
-    {{- else }}
-    <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
+    {{- else -}}
+        <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
     {{- end -}}
-        {{- if .Params.icon -}}
-            {{- with index hugo.Data.icons .Params.icon -}}
-            {{ . | safeHTML }}
-            {{- else -}}
-            <span>{{ .Name }}</span>
-            {{- end -}}
+
+    {{- if .Params.icon -}}
+        {{- with index hugo.Data.icons .Params.icon -}}
+            {{- . | safeHTML -}}
         {{- else -}}
             <span>{{ .Name }}</span>
         {{- end -}}
-    </a>
+    {{- else -}}
+        <span>{{ .Name }}</span>
+    {{- end -}}
+</a>
 {{- end -}}
