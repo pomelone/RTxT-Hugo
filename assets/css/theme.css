@@ -95,7 +95,7 @@
 
 .main-container {
     margin: 0 auto;
-    max-width: var(--main-max-width);
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -191,8 +191,8 @@
 .page-title svg,
 .page-meta img,
 .page-meta svg {
-    width: 1em;
-    height: 1em;
+    width: 1.2em;
+    height: 1.2em;
 }
 
 .page-title,
@@ -205,7 +205,7 @@
 
 .page-meta,
 .page-meta a {
-    padding-right: 0.5rem;
+    margin-right: 0.5rem;
     color: var(--text-meta-color);
     white-space: nowrap;
     font-size: 0.8rem;
