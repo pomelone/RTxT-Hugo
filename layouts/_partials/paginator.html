@@ -1,0 +1,24 @@
+{{- $paginator := . -}}
+{{ if gt $paginator.TotalPages 1 -}}
+<div class="paginator-container">
+    {{ if $paginator.HasPrev -}}
+        <a class="paginator-meta" href="{{ $paginator.Prev.URL }}" title="Prev">
+            {{- with index hugo.Data.icons "arrow-left-circle" -}}
+            {{- . | safeHTML -}}
+            {{- end -}}
+        </a>
+    {{- else -}}
+        <span class="paginator-meta-hiddent"></span>
+    {{- end }}
+    <span class="paginator-meta">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+    {{ if $paginator.HasNext -}}
+        <a class="paginator-meta" href="{{ $paginator.Next.URL }}" title="Next">
+            {{- with index hugo.Data.icons "arrow-right-circle" -}}
+            {{- . | safeHTML -}}
+            {{- end -}}
+        </a>
+    {{- else -}}
+        <span class="paginator-meta-hiddent"></span>
+    {{- end }}
+</div>
+{{- end -}}

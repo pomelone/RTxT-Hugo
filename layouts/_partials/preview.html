@@ -1,16 +1,11 @@
-{{- $pages := .RegularPages -}}
-{{- if .IsHome -}}
-    {{- $pages = .RegularPagesRecursive -}}
-{{- end -}}
-{{- $pages = sort (sort (sort $pages "LinkTitle" "desc") "Lastmod" "desc") "Weight" "asc" -}}
-
-{{- range (.Paginate $pages).Pages }}
+{{- $paginator := . -}}
+{{- range $paginator.Pages }}
 <div class="page">
     <div class="page-title">
         <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-        {{ if .Draft }}<img src="/ui/draft.svg" alt="Draft" title="Draft">{{- end }}
-        {{ if gt .PublishDate now }}<img src="/ui/future.svg" alg="Future" title="Future">{{- end }}
-        {{ if and (isset .Params "expirydate") (lt .ExpiryDate now) }}<img src="/ui/expired.svg" alg="Expired" title="Expired">{{ end }}
+        {{ if .Draft }}<img src="/ui/draft.svg" alt="Draft" title="Draft">{{ end -}}
+        {{- if gt .PublishDate now }}<img src="/ui/future.svg" alg="Future" title="Future">{{ end -}}
+        {{- if and (isset .Params "expirydate") (lt .ExpiryDate now) }}<img src="/ui/expired.svg" alg="Expired" title="Expired">{{ end }}
     </div>
     <div class="page-meta">
         <img src="/ui/date.svg" alt="Date">

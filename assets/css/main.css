@@ -1,6 +1,6 @@
 :root {
-    --color-theme: #008000;
-    --hover: #008f00;
+    --theme-color: #008000;
+    --theme-hover-color: #008f00;
     --bg: #ffffff;
     --fg: #0f172b;
     --text-regular-color: #0f172b;
@@ -14,13 +14,14 @@
     --nav-bar-height: 4rem;
     --main-max-width: 90rem;
     --content-max-width: 60rem;
+    --paginator-icon-size: 2.5rem;
     --footer-hr: #ebe6e7;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-theme: #008000;
-        --hover: #008f00;
+        --theme-color: #008000;
+        --theme-hover-color: #008f00;
         --bg: #111111;
         --fg: #f6f3f4;
         --text-regular-color: #f9f3f4;
@@ -34,6 +35,7 @@
         --nav-bar-height: 4rem;
         --main-max-width: 90rem;
         --content-max-width: 60rem;
+        --paginator-icon-size: 2.5rem;
         --footer-hr: #262626;
     }
 }
