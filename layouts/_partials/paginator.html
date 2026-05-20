@@ -1,24 +1,18 @@
 {{- $paginator := . -}}
 {{ if gt $paginator.TotalPages 1 -}}
 <div class="paginator-container">
-    {{ if $paginator.HasPrev -}}
-        <a class="paginator-meta" href="{{ $paginator.Prev.URL }}" title="Prev">
+    <div class="paginator-nav">
+        <a class="{{ if $paginator.HasPrev }}paginator-button{{ else }}paginator-button-hidden{{ end }}" href="{{ if $paginator.HasPrev }}{{ $paginator.Prev.URL }}{{ else }}/{{ end }}" title="Prev">
             {{- with index hugo.Data.icons "arrow-left-circle" -}}
             {{- . | safeHTML -}}
             {{- end -}}
         </a>
-    {{- else -}}
-        <span class="paginator-meta-hiddent"></span>
-    {{- end }}
-    <span class="paginator-meta">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
-    {{ if $paginator.HasNext -}}
-        <a class="paginator-meta" href="{{ $paginator.Next.URL }}" title="Next">
+        <span class="paginator-button">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+        <a class="{{ if $paginator.HasNext }}paginator-button{{ else }}paginator-button-hidden{{ end }}" href="{{ if $paginator.HasNext }}{{ $paginator.Next.URL }}{{ else }}/{{ end }}" title="Next">
             {{- with index hugo.Data.icons "arrow-right-circle" -}}
             {{- . | safeHTML -}}
             {{- end -}}
         </a>
-    {{- else -}}
-        <span class="paginator-meta-hiddent"></span>
-    {{- end }}
+    </div>
 </div>
 {{- end -}}

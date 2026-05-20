@@ -88,6 +88,7 @@
     color: var(--text-regular-color);
 }
 
+.menu img,
 .menu svg {
     width: 1.8em;
     height: 1.8em;
@@ -109,18 +110,27 @@
     flex-direction: column;
 }
 
-.sidebar-container,
+.side-container,
 .toc-container {
     position: sticky;
     top: var(--nav-bar-height);
+    z-index: 98;
     width: 15rem;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
 }
 
+.side-doc,
+.toc-doc {
+    margin: 2rem 0;
+    display: flex;
+    flex: 1;
+}
+
 @media (max-width: 60rem) {
-    .sidebar-container,
+    .side-container,
     .toc-container {
         /* transform: translate3d(0, -100%, 0); */
         display: none;
@@ -133,10 +143,12 @@
 
 .paginator-container {
     position: sticky;
-    order: 998;
+    z-index: 99;
     bottom: 0;
     width: 100%;
-    box-sizing: border-box;
+}
+
+.paginator-nav {
     padding: 0 2rem 0.5rem;
     display: flex;
     align-items: center;
@@ -147,35 +159,38 @@
 }
 
 @media (max-width: 50rem) {
-    .paginator-container {
+    .paginator-nav {
         padding: 0 1rem 0.5rem;
     }
 }
 
-.paginator-meta {
+.paginator-button,
+.paginator-button-hidden {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background-color: var(--bg);
-    width: var(--paginator-icon-size);
-    height: var(--paginator-icon-size);
+    width: var(--paginator-height);
+    height: var(--paginator-height);
     border-radius: 50%;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 1rem;
     text-decoration: none;
     user-select: none;
     color: var(--theme-color);
 }
 
-.paginator-meta-hidden {
-    pointer-events: none;
-    opacity: 0;
+.paginator-button img,
+.paginator-button svg,
+.paginator-button-hidden img,
+.paginator-button-hidden svg {
+    width: var(--paginator-height);
+    height: var(--paginator-height);
 }
 
-.paginator-meta img,
-.paginator-meta svg {
-    width: var(--paginator-icon-size);
-    height: var(--paginator-icon-size);
+.paginator-button-hidden {
+    pointer-events: none;
+    opacity: 0;
 }
 
 .content-container {
@@ -187,9 +202,11 @@
 }
 
 .content-body {
-    padding: 0 3rem;
+    padding: 1rem 3rem 0;
     min-width: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-width: 50rem) {
@@ -199,7 +216,10 @@
 }
 
 .title {
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     font-size: 2.25rem;
     letter-spacing: -0.02em;
@@ -208,60 +228,91 @@
     text-wrap: balance;
 }
 
-.page {
-    margin: 0 0 2rem;
+.title img,
+.title svg {
+    width: 1.2em;
+    height: 1.2em;
 }
 
-.page-title,
+.page {
+    margin: 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-title {
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    color: var(--text-regular-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.page-title img,
+.page-title svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.page-title-ele {
+    display: inline-flex;
+    align-items: flex-end;
+    color: var(--text-regular-color);
+    text-decoration: none;
+}
+
 .page-meta {
     margin: 0 0 0.5rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 0.5rem;
+    color: var(--text-meta-color);
+    white-space: nowrap;
+    font-size: 0.8rem;
 }
 
-.page-title a,
-.page-meta a {
-    display: inline-flex;
-    align-items: flex-end;
-}
-
-.page-title img,
-.page-title svg,
 .page-meta img,
 .page-meta svg {
     width: 1.2em;
     height: 1.2em;
 }
 
-.page-title,
-.page-title a {
-    color: var(--text-regular-color);
-    font-weight: 600;
-    font-size: 1.5rem;
-    text-decoration: none;
-}
-
-.page-meta,
-.page-meta a {
-    margin-right: 0.5rem;
-    color: var(--text-meta-color);
-    white-space: nowrap;
-    font-size: 0.8rem;
-    text-decoration: none;
+.page-meta-ele {
+    display: inline-flex;
+    align-items: flex-end;
     opacity: 0.8;
+    color: var(--text-meta-color);
+    text-decoration: none;
 }
 
-.page-meta a:hover {
+.page-meta-ele:hover {
     color: var(--text-meta-hover-color);
-    opacity: unset;
+    opacity: 1;
 }
 
 .page-summary {
     margin: 0 0 0.5rem;
-    color: var(--text-regular-color);
     opacity: 0.8;
+}
+
+.content-meta {
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-meta-color);
+    white-space: nowrap;
+}
+
+.content-meta img,
+.content-meta svg {
+    width: 1.2em;
+    height: 1.2em;
 }
 
 .footer-container,
