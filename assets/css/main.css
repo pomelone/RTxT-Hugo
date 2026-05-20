@@ -14,6 +14,7 @@
     --nav-bar-height: 4rem;
     --main-max-width: 90rem;
     --content-max-width: 60rem;
+    --backtop-height: 2.5rem;
     --paginator-height: 2.5rem;
     --footer-hr: #ebe6e7;
 }
@@ -35,6 +36,7 @@
         --nav-bar-height: 4rem;
         --main-max-width: 90rem;
         --content-max-width: 60rem;
+        --backtop-height: 2.5rem;
         --paginator-height: 2.5rem;
         --footer-hr: #262626;
     }
