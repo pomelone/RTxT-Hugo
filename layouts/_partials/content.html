@@ -1,12 +1,26 @@
 <h1 class="title">
-    {{- .Title -}}
-    {{- if .Draft }}<img src="/ui/draft.svg" alt="Draft" title="Draft">{{ end -}}
-    {{- if gt .PublishDate now }}<img src="/ui/future.svg" alg="Future" title="Future">{{ end -}}
-    {{- if and (isset .Params "expirydate") (lt .ExpiryDate now) }}<img src="/ui/expired.svg" alg="Expired" title="Expired">{{ end }}
+    {{ .Title }}
+    {{ if .Draft -}}
+        {{- with index hugo.Data.icons "draft" -}}
+        {{- . | safeHTML -}}
+        {{- end -}}
+    {{- end }}
+    {{ if gt .PublishDate now -}}
+        {{- with index hugo.Data.icons "future" -}}
+        {{- . | safeHTML -}}
+        {{- end -}}
+    {{- end }}
+    {{ if and (isset .Params "expirydate") (lt .ExpiryDate now) -}}
+        {{- with index hugo.Data.icons "expired" -}}
+        {{- . | safeHTML -}}
+        {{- end -}}
+    {{- end }}
 </h1>
 <div class="page">
     <div class="content-meta">
-        <img src="/ui/date.svg" alt="Date">
+        {{ with index hugo.Data.icons "date" -}}
+        {{- . | safeHTML -}}
+        {{- end }}
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
     </div>
     <div id="content">{{ .Content }}</div>

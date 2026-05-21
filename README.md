@@ -18,9 +18,40 @@
 - favicon：将 `favicon.[svg|ico|png]` 文件放入 `/static` 目录
 - logo：将 `logo.svg` 文件放入 `/static` 目录
 
+### Table of contents
+
+在页面中是否显示目录和标签。默认为显示。
+
+可以在 **hugo.toml** 或者页面 **Front Matter** 中配置，页面 **Front Matter** 优先级更高。
+
+- 在 **hugo.toml** 中配置
+
+    ```toml
+    [params.toc]
+    display_toc = true
+    display_tag = true
+    ```
+
+- 在页面 Front Matter 中配置
+
+    ```yaml
+    [params.toc]
+    display_toc = true
+    display_tag = true
+    ```
+
+- 在 **hugo.toml** 中配置目录显示等级以及是否排序
+
+    ```toml
+    [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+    ordered = false
+    ```
+
 ### footer
 
-- 配置 **hugo.toml**，支持 HTML
+- 在 **hugo.toml** 中配置，支持 HTML
 
     ```toml
     [params.footer]

@@ -2,7 +2,7 @@
 {{- range $paginator.Pages }}
 <div class="page">
     <div class="page-title">
-        <a class="page-title-ele" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         {{ if .Draft }}<img src="/ui/draft.svg" alt="Draft" title="Draft">{{ end -}}
         {{- if gt .PublishDate now }}<img src="/ui/future.svg" alg="Future" title="Future">{{ end -}}
         {{- if and (isset .Params "expirydate") (lt .ExpiryDate now) }}<img src="/ui/expired.svg" alg="Expired" title="Expired">{{ end }}
@@ -17,7 +17,7 @@
     {{ with .Params.tags -}}
     <div class="page-meta">
         {{- range . }}
-        <a class="page-meta-ele" href="{{ printf "tags/%s" . | relLangURL }}/"><img src="/ui/tag.svg" alt="Tag"><span>{{ . }}</span></a>
+        <a href="{{ printf "tags/%s" . | relLangURL }}/"><img src="/ui/tag.svg" alt="Tag"><span>{{ . }}</span></a>
         {{- end }}
     </div>
     {{- end }}

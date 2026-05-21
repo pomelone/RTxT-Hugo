@@ -18,6 +18,7 @@
     --backtop-height: 2.5rem;
     --paginator-height: 2.5rem;
     --hr-color: #ebe6e7;
+    --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,7 +42,12 @@
         --backtop-height: 2.5rem;
         --paginator-height: 2.5rem;
         --hr-color: #262626;
+        --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
     }
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
