@@ -1,0 +1,38 @@
+{{- $displayToc := true -}}
+{{- if isset .Params "display_toc" -}}
+    {{- $displayToc = .Params.display_toc -}}
+{{- else if and (isset site.Params "toc") (isset site.Params.toc "display_toc") -}}
+    {{- $displayToc = site.Params.toc.display_toc -}}
+{{- end -}}
+{{- $displayTag := true -}}
+{{- if isset .Params "display_tag" -}}
+    {{- $displayTag = .Params.display_tag -}}
+{{- else if and (isset site.Params "toc") (isset site.Params.toc "display_tag") -}}
+    {{- $displayTag = site.Params.toc.display_tag -}}
+{{- end -}}
+<div class="toc-container">
+{{- if .IsPage }}
+    {{ if $displayToc -}}
+    <div class="toc-doc">
+        <p class="toc-title">Table of contents</p>
+        {{ .TableOfContents }}
+    </div>
+    {{- end }}
+    {{ if $displayTag -}}
+    {{- with .Params.tags -}}
+    <div class="toc-meta">
+        <hr>
+        <div class="toc-tags">
+            {{- range . }}
+            <a href="{{ printf "tags/%s" . | relLangURL }}/">
+                {{- with index hugo.Data.icons "tag" -}}
+                {{- . | safeHTML -}}
+                {{- end -}}
+                <span>{{ . }}</span></a>
+            {{- end }}
+        </div>
+    </div>
+    {{- end -}}
+    {{- end -}}
+{{ end -}}
+</div>
