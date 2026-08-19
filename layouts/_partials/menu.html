@@ -7,7 +7,7 @@
             <a class="menu" href="{{ .Page.RelPermalink }}">
         {{- end -}}
     {{- else -}}
-        <a class="menu" href="{{ .URL }}" target="_blank" title="{{ .Name }}">
+        <a class="menu" href="{{ .URL }}" target="_blank" rel="noopener noreferrer" title="{{ .Name }}">
     {{- end -}}
 
     {{- if .Params.icon -}}

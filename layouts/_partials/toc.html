@@ -19,16 +19,16 @@
     </div>
     {{- end }}
     {{ if $displayTag -}}
-    {{- with .Params.tags -}}
+    {{- with .GetTerms "tags" -}}
     <div class="toc-meta">
         <hr>
         <div class="toc-tags">
             {{- range . }}
-            <a href="{{ printf "tags/%s" . | relLangURL }}/">
+            <a href="{{ .RelPermalink }}">
                 {{- with index hugo.Data.icons "tag" -}}
                 {{- . | safeHTML -}}
                 {{- end -}}
-                <span>{{ . }}</span></a>
+                <span>{{ .LinkTitle }}</span></a>
             {{- end }}
         </div>
     </div>
