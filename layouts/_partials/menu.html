@@ -7,17 +7,17 @@
             <a class="menu" href="{{ .Page.RelPermalink }}">
         {{- end -}}
     {{- else -}}
-        <a class="menu" href="{{ .URL }}" target="_blank" rel="noopener noreferrer" title="{{ .Name }}">
+        <a class="menu" href="{{ .URL }}" target="_blank" rel="noopener noreferrer" title="{{ i18n .Identifier .Name }}">
     {{- end -}}
 
     {{- if .Params.icon -}}
         {{- with index hugo.Data.icons .Params.icon -}}
             {{- . | safeHTML -}}
         {{- else -}}
-            <span>{{ .Name }}</span>
+            <span>{{ i18n .Identifier .Name }}</span>
         {{- end -}}
     {{- else -}}
-        <span>{{ .Name }}</span>
+        <span>{{ i18n .Identifier .Name }}</span>
     {{- end -}}
     </a>
 {{- end -}}

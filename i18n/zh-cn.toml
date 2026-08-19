@@ -2,6 +2,12 @@ logo = "Logo"
 date = "日期"
 tag = "标签"
 backtop = "返回顶部"
+blog = "博客"
+documentation = "文档"
+series = "系列"
+archives = "归档"
+search = "搜索"
+code = "代码"
 
 [toc]
 title = "目录"
