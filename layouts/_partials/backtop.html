@@ -1,5 +1,5 @@
 <div class="backtop-container">
-    <button id="backtop" class="backtop-button" type="button" title="Back to Top">
+    <button id="backtop" class="backtop-button" type="button" title="{{ i18n "backtop" }}">
         {{- with index hugo.Data.icons "arrow-up-circle" -}}
         {{- . | safeHTML -}}
         {{- end -}}
@@ -13,7 +13,7 @@
                 if (isScrolling) return;
                 isScrolling = true;
                 setTimeout(() => {
-                    if (window.pageYOffset > window.innerHeight / 4) {
+                    if (window.scrollY > window.innerHeight / 4) {
                         backTopButton.style.display = "block";
                     } else {
                         backTopButton.style.display = "none";

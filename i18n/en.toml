@@ -1,0 +1,16 @@
+logo = "Logo"
+date = "Date"
+tag = "Tag"
+backtop = "Back to top"
+
+[toc]
+title = "Table of contents"
+
+[pagination]
+prev = "Prev"
+next = "Next"
+
+[status]
+draft = "Draft"
+future = "Scheduled"
+expired = "Expired"

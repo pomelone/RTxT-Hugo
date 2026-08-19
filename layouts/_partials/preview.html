@@ -3,12 +3,12 @@
 <div class="page">
     <div class="page-title">
         <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-        {{ if .Draft }}<img src="/ui/draft.svg" alt="Draft" title="Draft">{{ end -}}
-        {{- if gt .PublishDate now }}<img src="/ui/future.svg" alt="Future" title="Future">{{ end -}}
-        {{- if and (isset .Params "expirydate") (lt .ExpiryDate now) }}<img src="/ui/expired.svg" alt="Expired" title="Expired">{{ end }}
+        {{ if .Draft }}<img src="/ui/draft.svg" alt="{{ i18n "status.draft" }}" title="{{ i18n "status.draft" }}">{{ end -}}
+        {{- if gt .PublishDate now }}<img src="/ui/future.svg" alt="{{ i18n "status.future" }}" title="{{ i18n "status.future" }}">{{ end -}}
+        {{- if and (isset .Params "expirydate") (lt .ExpiryDate now) }}<img src="/ui/expired.svg" alt="{{ i18n "status.expired" }}" title="{{ i18n "status.expired" }}">{{ end }}
     </div>
     <div class="page-meta">
-        <img src="/ui/date.svg" alt="Date">
+        <img src="/ui/date.svg" alt="{{ i18n "date" }}">
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
     </div>
     {{ with .Summary -}}
@@ -17,7 +17,7 @@
     {{ with .GetTerms "tags" -}}
     <div class="page-meta">
         {{- range . }}
-        <a href="{{ .RelPermalink }}"><img src="/ui/tag.svg" alt="Tag"><span>{{ .LinkTitle }}</span></a>
+        <a href="{{ .RelPermalink }}"><img src="/ui/tag.svg" alt="{{ i18n "tag" }}"><span>{{ .LinkTitle }}</span></a>
         {{- end }}
     </div>
     {{- end }}
