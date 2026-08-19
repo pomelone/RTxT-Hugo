@@ -14,7 +14,7 @@
 {{- if .IsPage }}
     {{ if $displayToc -}}
     <div class="toc-doc">
-        <p class="toc-title">Table of contents</p>
+        <p class="toc-title">{{ i18n "toc.title" }}</p>
         {{ .TableOfContents }}
     </div>
     {{- end }}

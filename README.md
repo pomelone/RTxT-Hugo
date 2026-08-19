@@ -61,3 +61,9 @@
     ```
 
 - 创建 `layouts/_partials/custom/footer.html`，自定义 footer 内容
+
+### i18n
+
+主题内置 `i18n/en.toml`、`i18n/zh-cn.toml` 语言文件，自动跟随站点的 `defaultContentLanguage` 显示对应语言（目录标题、分页、回顶、状态图标提示等）。
+
+如需其他语言，在站点根目录 `i18n/` 下添加同结构的语言文件即可（键名相同），会覆盖或补充主题翻译。
