@@ -20,3 +20,8 @@ next = "Next"
 draft = "Draft"
 future = "Scheduled"
 expired = "Expired"
+
+[search]
+placeholder = "Search"
+empty = "No results found"
+error = "Failed to load search index"

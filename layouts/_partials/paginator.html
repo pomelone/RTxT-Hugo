@@ -7,7 +7,7 @@
         {{- else -}}
         <span class="paginator-button-hidden" aria-hidden="true">
         {{- end -}}
-            {{- with index hugo.Data.icons "arrow-left-circle" -}}
+            {{- with index hugo.Data.icons "arrow_left_circle" -}}
             {{- . | safeHTML -}}
             {{- end -}}
         {{- if $paginator.HasPrev -}}
@@ -21,7 +21,7 @@
         {{- else -}}
         <span class="paginator-button-hidden" aria-hidden="true">
         {{- end -}}
-            {{- with index hugo.Data.icons "arrow-right-circle" -}}
+            {{- with index hugo.Data.icons "arrow_right_circle" -}}
             {{- . | safeHTML -}}
             {{- end -}}
         {{- if $paginator.HasNext -}}
