@@ -2,6 +2,12 @@ logo = "Logo"
 date = "Date"
 tag = "Tag"
 backtop = "Back to top"
+blog = "Blog"
+documentation = "Documentation"
+series = "Series"
+archives = "Archives"
+search = "Search"
+code = "Code"
 
 [toc]
 title = "Table of contents"
