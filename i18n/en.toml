@@ -8,6 +8,8 @@ series = "Series"
 archives = "Archives"
 search = "Search"
 code = "Code"
+copy = "Copy"
+copied = "Copied"
 
 [toc]
 title = "Table of contents"

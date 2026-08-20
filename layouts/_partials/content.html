@@ -24,4 +24,5 @@
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
     </div>
     <div id="content">{{ .Content }}</div>
+    {{ partial "code-block.html" . }}
 </div>

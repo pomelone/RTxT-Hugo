@@ -1,0 +1,42 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var fallbackCopy = function(text, done) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy');
+                done();
+            } catch (e) {
+                /* ignore */
+            }
+            document.body.removeChild(ta);
+        };
+        document.querySelectorAll('#content .code-block').forEach(function(block) {
+            var btn = block.querySelector('.code-copy');
+            var pres = block.querySelectorAll('pre');
+            var pre = pres.length ? pres[pres.length - 1] : null;
+            if (!btn || !pre) return;
+            btn.addEventListener('click', function() {
+                var done = function() {
+                    btn.classList.add('copied');
+                    setTimeout(function() {
+                        btn.classList.remove('copied');
+                    }, 3000);
+                };
+                // var text = pre.innerText;
+                var text = pre.textContent
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(done, function() {
+                        fallbackCopy(text, done);
+                    });
+                } else {
+                    fallbackCopy(text, done);
+                }
+            });
+        });
+    });
+</script>
