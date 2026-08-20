@@ -1,0 +1,30 @@
+{{- $lang := .Type | default "text" -}}
+{{- $opts := .Options | default (dict) -}}
+{{- $filename := "" -}}
+{{- with index .Attributes "filename" -}}
+    {{- $filename = . -}}
+{{- end -}}
+{{- with index .Attributes "hl_lines" -}}
+    {{- $opts = merge $opts (dict "hl_lines" .) -}}
+{{- end -}}
+{{- $highlighted := highlight .Inner $lang $opts -}}
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-filename">{{ $filename | default $lang }}</span>
+        <button class="code-copy" type="button">
+            <span class="code-copy-copy">
+            {{- with index hugo.Data.icons "copy" -}}
+            {{- . | safeHTML -}}
+            {{- end -}}
+            </span>
+            <span class="code-copy-copy">{{ i18n "copy" }}</span>
+            <span class="code-copy-check">
+            {{- with index hugo.Data.icons "copy_check" -}}
+            {{- . | safeHTML -}}
+            {{- end -}}
+            </span>
+            <span class="code-copy-check">{{ i18n "copied" }}</span>
+        </button>
+    </div>
+    {{- $highlighted -}}
+</div>
