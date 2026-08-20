@@ -29,4 +29,6 @@
     {{- with resources.Get "css/custom.css" }}
     <link rel="stylesheet" type="text/css" href="{{ (. | minify).RelPermalink }}">
     {{- end }}
+
+    {{ partial "math.html" . }}
 </head>
