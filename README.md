@@ -18,6 +18,30 @@
 - favicon：将 `favicon.[svg|ico|png]` 文件放入 `/static` 目录
 - logo：将 `logo.svg` 文件放入 `/static` 目录
 
+### 数学公式（KaTeX）
+
+支持的分隔符：行内 `$...$`、`\(...\)`；块级 `$$...$$`、`\[...\]`。KaTeX 资源默认从 jsDelivr CDN 加载。
+
+为避免公式中的 `_`、`\`、`&` 等字符被 Markdown 解析，需要在站点 **hugo.toml** 中启用 Goldmark passthrough 扩展：
+
+```toml
+[markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)'], ['$', '$']]
+```
+
+可在 **hugo.toml** 中自定义 KaTeX 版本或 CDN 地址：
+
+```toml
+[params.math]
+    enable = true
+    engine = 'katex'
+    katex.base = 'https://cdn.jsdelivr.net/npm/katex'
+    katex.version = '0.18.4'
+```
+
 ### Table of contents
 
 在页面中是否显示目录和标签。默认为显示。

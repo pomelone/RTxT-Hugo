@@ -1,0 +1,26 @@
+{{- if and site.Params.math.enable -}}
+{{- $engine := site.Params.math.engine -}}
+    {{- if eq $engine "katex" -}}
+    {{- $base := site.Params.math.katex.base -}}
+    {{- $version := site.Params.math.katex.version -}}
+    <link rel="stylesheet" type="text/css" href="{{ $base }}@{{ $version }}/dist/katex.min.css">
+    <script defer src="{{ $base }}@{{ $version }}/dist/katex.min.js"></script>
+    <script defer src="{{ $base }}@{{ $version }}/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var el = document.getElementById('content');
+            if (el) {
+                renderMathInElement(el, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '\\[', right: '\\]', display: true },
+                        { left: '$', right: '$', display: false },
+                        { left: '\\(', right: '\\)', display: false }
+                    ],
+                    throwOnError: false
+                });
+            }
+        });
+    </script>
+    {{- end -}}
+{{- end -}}
