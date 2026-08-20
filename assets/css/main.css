@@ -19,6 +19,8 @@
     --paginator-height: 2.5rem;
     --hr-color: #ebe6e7;
     --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
+    --block-background-color: rgba(106, 114, 130, 0.1);
+    --code-background-color: rgba(106, 114, 130, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,6 +45,8 @@
         --paginator-height: 2.5rem;
         --hr-color: #262626;
         --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
+        --block-background-color: rgba(153, 161, 175, 0.2);
+        --code-background-color: rgba(153, 161, 175, 0.2);
     }
 }
 
