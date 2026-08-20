@@ -109,6 +109,7 @@
 .content-wrap {
     padding: 0 2rem;
     max-width: var(--content-max-width);
+    min-width: 0;
     flex-direction: column;
 }
 
@@ -331,6 +332,7 @@
 
 .content-container {
     width: 100%;
+    min-width: 0;
     display: flex;
     flex: 1;
     justify-content: center;
