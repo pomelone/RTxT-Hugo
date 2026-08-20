@@ -1,11 +1,11 @@
 {{- if and site.Params.math.enable -}}
 {{- $engine := site.Params.math.engine -}}
     {{- if eq $engine "katex" -}}
-    {{- $base := site.Params.math.katex.base -}}
+    {{- $cdn := site.Params.math.katex.cdn -}}
     {{- $version := site.Params.math.katex.version -}}
-    <link rel="stylesheet" type="text/css" href="{{ $base }}@{{ $version }}/dist/katex.min.css">
-    <script defer src="{{ $base }}@{{ $version }}/dist/katex.min.js"></script>
-    <script defer src="{{ $base }}@{{ $version }}/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ $cdn }}@{{ $version }}/dist/katex.min.css">
+    <script defer src="{{ $cdn }}@{{ $version }}/dist/katex.min.js"></script>
+    <script defer src="{{ $cdn }}@{{ $version }}/dist/contrib/auto-render.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var el = document.getElementById('content');
