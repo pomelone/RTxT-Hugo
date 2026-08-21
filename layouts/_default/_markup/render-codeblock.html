@@ -24,6 +24,12 @@
             {{- end -}}
             </span>
             <span class="code-copy-check">{{ i18n "copied" }}</span>
+            <span class="code-copy-failed">
+            {{- with index hugo.Data.icons "copy_failed" -}}
+            {{- . | safeHTML -}}
+            {{- end -}}
+            </span>
+            <span class="code-copy-failed">{{ i18n "copy_failed" }}</span>
         </button>
     </div>
     {{- $highlighted -}}

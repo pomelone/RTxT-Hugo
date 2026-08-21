@@ -1,0 +1,23 @@
+{{- $fileNames := slice
+    "css/base.css"
+    "css/main.css"
+    "css/nav.css"
+    "css/side-toc.css"
+    "css/backtop.css"
+    "css/paginator.css"
+    "css/footer.css"
+    "css/page.css"
+    "css/markdown.css"
+-}}
+
+{{- $styles := slice -}}
+{{- range $fileNames -}}
+    {{- with resources.Get . -}}
+        {{- $styles = $styles | append . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if gt (len $styles) 0 -}}
+    {{- $rtxtStyles := $styles | resources.Concat "css/rtxt-styles.css" | minify | fingerprint -}}
+    <link rel="stylesheet" type="text/css" href="{{ $rtxtStyles.RelPermalink }}">
+{{- end -}}

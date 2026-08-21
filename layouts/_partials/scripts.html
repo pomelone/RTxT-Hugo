@@ -1,0 +1,17 @@
+{{- $fileNames := slice
+    "js/backtop.js"
+    "js/code-block.js"
+    "js/math.js"
+-}}
+
+{{- $scripts := slice -}}
+{{- range $fileNames -}}
+    {{- with resources.Get . -}}
+        {{- $scripts = $scripts | append . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if gt (len $scripts) 0 -}}
+    {{- $rtxtScripts := $scripts | resources.Concat "js/rtxt-scripts.js" | minify | fingerprint -}}
+    <script defer src="{{ $rtxtScripts.RelPermalink }}"></script>
+{{- end -}}
