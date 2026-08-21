@@ -10,6 +10,7 @@ search = "Search"
 code = "Code"
 copy = "Copy"
 copied = "Copied"
+copy_failed = "Copy Failed"
 
 [toc]
 title = "Table of contents"

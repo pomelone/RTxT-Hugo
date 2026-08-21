@@ -9,11 +9,11 @@
 
 ## 配置
 
-### css
+### 自定义 css
 
 创建 `/assets/css/custom.css`，自定义页面样式。
 
-### head
+### 自定义图标
 
 - favicon：将 `favicon.[svg|ico|png]` 文件放入 `/static` 目录
 - logo：将 `logo.svg` 文件放入 `/static` 目录
@@ -58,8 +58,7 @@
 
 - 在页面 Front Matter 中配置
 
-    ```yaml
-    [params.toc]
+    ```toml
     display_toc = true
     display_tag = true
     ```

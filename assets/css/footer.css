@@ -1,0 +1,28 @@
+.footer-container,
+.footer-container a {
+    color: var(--text-bar-color);
+    text-decoration: none;
+}
+
+.footer-container a:hover {
+    text-decoration: underline;
+}
+
+.footer-bar {
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    max-width: var(--main-max-width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer-text {
+    font-size: 0.75rem;
+}
+
+.footer-text img {
+    height: 0.75rem;
+    display: inline-block;
+}

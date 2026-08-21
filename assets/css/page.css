@@ -1,0 +1,85 @@
+.title {
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--text-regular-color);
+    text-align: center;
+    text-wrap: balance;
+}
+
+.title img,
+.title svg,
+.page-title img,
+.page-title svg,
+.page-meta img,
+.page-meta svg,
+.content-meta img,
+.content-meta svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.page {
+    margin: 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-title {
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    color: var(--text-regular-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.page-title a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-regular-color);
+    text-decoration: none;
+}
+
+.page-meta,
+.content-meta {
+    margin: 0 0 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    color: var(--text-meta-color);
+    white-space: nowrap;
+}
+
+.page-meta {
+    font-size: 0.8rem;
+}
+
+.content-meta {
+    justify-content: flex-end;
+}
+
+.page-meta a {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.8;
+    color: var(--text-meta-color);
+    text-decoration: none;
+}
+
+.page-meta a:hover {
+    color: var(--text-meta-hover-color);
+    opacity: 1;
+}
+
+.page-summary {
+    margin: 0 0 0.5rem;
+    opacity: 0.8;
+}
