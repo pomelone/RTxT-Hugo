@@ -38,7 +38,7 @@
 [params.math]
     enable = true
     engine = 'katex'
-    katex.base = 'https://cdn.jsdelivr.net/npm/katex'
+    katex.cdn = 'https://cdn.jsdelivr.net/npm/katex'
     katex.version = '0.18.4'
 ```
 

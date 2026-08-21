@@ -1,13 +1,21 @@
 {{- $fileNames := slice
     "js/backtop.js"
     "js/code-block.js"
-    "js/math.js"
 -}}
 
 {{- $scripts := slice -}}
 {{- range $fileNames -}}
     {{- with resources.Get . -}}
         {{- $scripts = $scripts | append . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if site.Params.math.enable -}}
+    {{- $engine := site.Params.math.engine -}}
+    {{- if eq $engine "katex" -}}
+    {{- with resources.Get "js/katex.js" -}}
+        {{- $scripts = $scripts | append . -}}
+    {{- end -}}
     {{- end -}}
 {{- end -}}
 
