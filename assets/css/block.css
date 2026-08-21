@@ -1,0 +1,9 @@
+#content blockquote {
+    margin: 0.8rem 0;
+    border: 1px solid var(--block-Note-color);
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    background-color: var(--block-Note-background-color);
+    color: var(--block-Note-color);
+    overflow-x: auto;
+}

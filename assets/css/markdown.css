@@ -14,19 +14,19 @@
 #content h4,
 #content h5,
 #content h6 {
-    margin: 0 0 0.8em;
+    margin: 0 0 0.8rem;
     font-weight: 700;
     color: var(--text-regular-color);
 }
 
 #content h1 {
-    padding-bottom: 0.2em;
+    padding-bottom: 0.2rem;
     font-size: 1.8rem;
     border-bottom: 1px solid var(--hr-color);
 }
 
 #content h2 {
-    padding-bottom: 0.2em;
+    padding-bottom: 0.2rem;
     font-size: 1.6rem;
 }
 
@@ -36,177 +36,6 @@
 
 #content h4 {
     font-size: 1.2rem;
-}
-
-#content p {
-    margin: 0.4em 0;
-}
-
-#content a {
-    color: var(--theme-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-#content a:hover {
-    color: var(--theme-hover-color);
-    text-decoration: underline;
-}
-
-#content ul,
-#content ol {
-    margin: 0.4em 0;
-    padding-left: 1.4rem;
-}
-
-#content li {
-    margin: 0.4em 0;
-}
-
-#content li > ul,
-#content li > ol {
-    margin: 0;
-}
-
-#content blockquote {
-    margin: 0.4em 0;
-    padding: 0.2em 0.4em;
-    border-left: 4px solid var(--theme-color);
-    border-radius: 0.8em 0.8em;
-    background-color: var(--block-background-color);
-    color: var(--text-bar-color);
-}
-
-#content code {
-    padding: 0.1em 0.4em;
-    border-radius: 0.4em;
-    font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.9em;
-    background-color: var(--block-background-color);
-}
-
-#content pre {
-    margin: 0;
-    padding: 0.5em;
-    overflow-x: auto;
-    background-color: transparent;
-    border-radius: 0;
-}
-
-#content pre code {
-    padding: 0;
-    background-color: transparent;
-    font-size: 0.9em;
-}
-
-#content .code-block {
-    margin: 1em;
-    border-radius: 0.8em;
-    overflow: hidden;
-    border: 1px solid var(--theme-color);
-}
-
-#content .code-block .highlight {
-    margin: 0;
-}
-
-#content .code-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.5em;
-}
-
-#content .code-filename {
-    overflow: hidden;
-    font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: 0.9em;
-    color: var(--text-regular-color);
-}
-
-#content .code-copy {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    border: none;
-    font-size: 0.9em;
-    border-radius: 0.4em;
-    background-color: transparent;
-    color: var(--text-meta-color);
-    opacity: 0.8;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-
-#content .code-copy:hover {
-    color: var(--text-meta-hover-color);
-    opacity: 1;
-    transform: scale(0.9);
-}
-
-#content .code-copy svg,
-#content .code-copy.copied svg {
-    width: 1.2em;
-    height: 1.2em;
-}
-
-#content .code-copy .code-copy-check,
-#content .code-copy .code-copy-failed,
-#content .code-copy.copied .code-copy-copy,
-#content .code-copy.copied .code-copy-failed,
-#content .code-copy.failed .code-copy-copy,
-#content .code-copy.failed .code-copy-check {
-    display: none;
-}
-
-#content .code-copy .code-copy-copy,
-#content .code-copy.copied .code-copy-check,
-#content .code-copy.failed .code-copy-failed {
-    display: inline-flex;
-    align-items: center;
-}
-
-#content img {
-    max-width: 100%;
-    border-radius: 1rem;
-}
-
-#content .katex {
-    font-size: 1.1em;
-}
-
-#content .katex-display {
-    margin: 0.8em 0;
-    padding: 0.2em 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-#content table {
-    margin: 1em 0;
-    width: 100%;
-    display: block;
-    overflow-x: auto;
-    border-collapse: collapse;
-}
-
-#content th,
-#content td {
-    padding: 0.5em;
-    border: 1px solid var(--hr-color);
-}
-
-#content th {
-    font-weight: 600;
-    background-color: var(--block-background-color);
-}
-
-#content input[type="checkbox"] {
-    margin-right: 0.5em;
 }
 
 .heading-anchor {
@@ -226,4 +55,32 @@
 #content h6:hover .heading-anchor {
     opacity: 1;
     transform: scale(1.2);
+}
+
+#content p {
+    margin: 0.4rem 0;
+}
+
+#content ul,
+#content ol {
+    margin: 0.4em 0;
+    padding-left: 1.4em;
+}
+
+#content li {
+    margin: 0.4em 0;
+}
+
+#content li > ul,
+#content li > ol {
+    margin: 0;
+}
+
+#content img {
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+#content input[type="checkbox"] {
+    margin-right: 0.5em;
 }

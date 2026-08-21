@@ -2,12 +2,12 @@
     --theme-color: #008000;
     --theme-hover-color: #008f00;
     --bg: #ffffff;
-    --fg: #0f172b;
-    --text-regular-color: #0f172b;
-    --text-meta-color: #6a7282;
-    --text-meta-hover-color: #101828;
-    --text-bar-color: #4a5565;
-    --text-bar-hover-color: #101828;
+    --fg: #141414;
+    --text-regular-color: #141414;
+    --text-meta-color: #505050;
+    --text-meta-hover-color: #141414;
+    --text-bar-color: #505050;
+    --text-bar-hover-color: #141414;
     --text-size-base: 1rem;
     --nav-blur-bg: rgba(255,255,255,0.8);
     --nav-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 0 rgba(0,0,0,0.06);
@@ -17,9 +17,13 @@
     --content-max-width: 50rem;
     --backtop-height: 2.5rem;
     --paginator-height: 2.5rem;
-    --hr-color: #ebe6e7;
+    --hr-color: #d7d7d7;
     --scrollbar-color: rgba(0,128,0,0.8) transparent;
-    --block-background-color: rgba(106,114,130,0.1);
+    --link-color: #0aa344;
+    --link-hover-color: #0aa344;
+    --inline-code-background-color: #ebebeb;
+    --block-Note-color: #00e600;
+    --block-Note-background-color: #008000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,12 +31,12 @@
         --theme-color: #008000;
         --theme-hover-color: #008f00;
         --bg: #111111;
-        --fg: #f6f3f4;
-        --text-regular-color: #f9f3f4;
-        --text-meta-color: #99a1af;
-        --text-meta-hover-color: #f6f3f4;
-        --text-bar-color: #99a1af;
-        --text-bar-hover-color: #ebe6e7;
+        --fg: #ebebeb;
+        --text-regular-color: #ebebeb;
+        --text-meta-color: #cdcdcd;
+        --text-meta-hover-color: #ebebeb;
+        --text-bar-color: #cdcdcd;
+        --text-bar-hover-color: #ebebeb;
         --text-size-base: 1rem;
         --nav-blur-bg: rgba(1,1,1,0.8);
         --nav-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
@@ -42,8 +46,13 @@
         --content-max-width: 50rem;
         --backtop-height: 2.5rem;
         --paginator-height: 2.5rem;
-        --hr-color: #262626;
+        --hr-color: #282828;
         --scrollbar-color: rgba(0,128,0,0.8) transparent;
         --block-background-color: rgba(153,161,175,0.2);
+        --link-color: #0aa344;
+        --link-hover-color: #0aa344;
+        --inline-code-background-color: #3c3c3c;
+        --block-Note-color: #b9f8cf;
+        --block-Note-background-color: #0d542b;
     }
 }

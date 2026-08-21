@@ -1,0 +1,92 @@
+#content code {
+    padding: 0.1em 0.4em;
+    border-radius: 0.4em;
+    font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background-color: var(--inline-code-background-color);
+}
+
+#content pre {
+    margin: 0;
+    padding: 0.5rem;
+    overflow-x: auto;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+#content pre code {
+    padding: 0;
+    background-color: transparent;
+    font-size: 0.9em;
+}
+
+#content .code-block {
+    margin: 1rem 0;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    border: 1px solid var(--theme-color);
+}
+
+#content .code-block .highlight {
+    margin: 0;
+}
+
+#content .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+#content .code-filename {
+    overflow: hidden;
+    font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.9em;
+    color: var(--text-regular-color);
+}
+
+#content .code-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    border: none;
+    font-size: 0.9em;
+    border-radius: 0.4em;
+    background-color: transparent;
+    color: var(--text-meta-color);
+    opacity: 0.8;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+#content .code-copy:hover {
+    color: var(--text-meta-hover-color);
+    opacity: 1;
+    transform: scale(0.9);
+}
+
+#content .code-copy svg,
+#content .code-copy.copied svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+#content .code-copy .code-copy-check,
+#content .code-copy .code-copy-failed,
+#content .code-copy.copied .code-copy-copy,
+#content .code-copy.copied .code-copy-failed,
+#content .code-copy.failed .code-copy-copy,
+#content .code-copy.failed .code-copy-check {
+    display: none;
+}
+
+#content .code-copy .code-copy-copy,
+#content .code-copy.copied .code-copy-check,
+#content .code-copy.failed .code-copy-failed {
+    display: inline-flex;
+    align-items: center;
+}

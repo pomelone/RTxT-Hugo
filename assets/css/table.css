@@ -1,0 +1,32 @@
+#content table {
+    margin: 1rem 0;
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 0.8rem;
+    border: 1px solid var(--hr-color);
+}
+
+#content th,
+#content td {
+    padding: 1em;
+    border-bottom: 1px solid var(--hr-color);
+    border-right: 1px solid var(--hr-color);
+}
+
+#content th:last-child,
+#content td:last-child {
+    border-right: none;
+}
+
+#content tr:last-child th,
+#content tr:last-child td {
+    border-bottom: none;
+}
+
+#content th {
+    font-weight: 600;
+    background-color: var(--inline-code-background-color);
+}
