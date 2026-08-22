@@ -5,7 +5,7 @@
         {{ if $paginator.HasPrev -}}
         <a class="paginator-button" href="{{ $paginator.Prev.URL }}" title="{{ i18n "pagination.prev" }}">
         {{- else -}}
-        <span class="paginator-button-hidden" aria-hidden="true">
+        <span class="paginator-button-hidden">
         {{- end -}}
             {{- with index hugo.Data.icons "arrow_left_circle" -}}
             {{- . | safeHTML -}}
@@ -19,7 +19,7 @@
         {{ if $paginator.HasNext -}}
         <a class="paginator-button" href="{{ $paginator.Next.URL }}" title="{{ i18n "pagination.next" }}">
         {{- else -}}
-        <span class="paginator-button-hidden" aria-hidden="true">
+        <span class="paginator-button-hidden">
         {{- end -}}
             {{- with index hugo.Data.icons "arrow_right_circle" -}}
             {{- . | safeHTML -}}
