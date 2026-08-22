@@ -2,8 +2,21 @@
     margin: 0.8em 0;
     padding: 0.2em 0;
     overflow: auto hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color);
+    scrollbar-gutter: stable;
 }
 
 #content .katex {
     font-size: 1.1em;
+}
+
+#content .katex .katex-tag {
+    display: inline-block;
+    position: sticky !important;
+    right: 0;
+    z-index: 2;
+    margin-left: 0.4em;
+    padding: 0.2em;
+    background-color: var(--bg);
 }
