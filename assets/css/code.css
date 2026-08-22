@@ -3,15 +3,18 @@
     border-radius: 0.4em;
     font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.9em;
-    background-color: var(--inline-code-background-color);
+    background-color: var(--code-inline-bg);
 }
 
 #content pre {
     margin: 0;
     padding: 0.5rem;
-    overflow-x: auto;
     background-color: transparent;
     border-radius: 0;
+    overflow: auto hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color);
+    scrollbar-gutter: stable;
 }
 
 #content pre code {
@@ -22,13 +25,23 @@
 
 #content .code-block {
     margin: 1rem 0;
-    border-radius: 0.8rem;
+    border-radius: 1.25rem;
+    border: var(--text-border);
+    box-shadow: var(--block-box-shadow);
     overflow: hidden;
-    border: 1px solid var(--theme-color);
 }
 
 #content .code-block .highlight {
     margin: 0;
+}
+
+#content .code-block .highlight table {
+    overflow: auto hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color);
+    scrollbar-gutter: stable;
+    border: none;
+    box-shadow: none;
 }
 
 #content .code-header {
@@ -40,12 +53,13 @@
 }
 
 #content .code-filename {
-    overflow: hidden;
     font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
+    max-width: var(--filename-max-width);
     white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
     font-size: 0.9em;
-    color: var(--text-regular-color);
+    color: var(--text-color);
 }
 
 #content .code-copy {
@@ -54,7 +68,6 @@
     gap: 0.25em;
     border: none;
     font-size: 0.9em;
-    border-radius: 0.4em;
     background-color: transparent;
     color: var(--text-meta-color);
     opacity: 0.8;

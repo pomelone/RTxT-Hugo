@@ -2,9 +2,9 @@
 .toc-container {
     position: sticky;
     z-index: 98;
-    top: calc(var(--nav-bar-height));
+    top: calc(var(--nav-height));
     width: var(--side-max-width);
-    height: calc(100vh - var(--nav-bar-height) - 4rem);
+    height: calc(100vh - var(--nav-height) - 4rem);
     display: flex;
     flex-shrink: 0;
     align-self: flex-start;
@@ -12,7 +12,7 @@
     font-size: 0.9rem;
     line-height: 1.5rem;
     overflow-wrap: break-word;
-    overflow-y: auto;
+    overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-color);
     scrollbar-gutter: stable;
@@ -21,7 +21,6 @@
 @media (max-width: 60rem) {
     .side-container,
     .toc-container {
-        /* transform: translate3d(0, -100%, 0); */
         display: none;
     }
 }
@@ -64,7 +63,7 @@
 .toc-title {
     margin: 0 0 1rem;
     font-weight: 600;
-    color: var(--text-regular-color);
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -96,7 +95,16 @@
 }
 
 .toc-meta a {
+    display: inline-flex;
+    align-items: center;
     opacity: 0.8;
+}
+
+.toc-meta a > span {
+    max-width: var(--meta-tag-max-width);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .toc-meta a:hover {
@@ -111,7 +119,6 @@
     justify-content: flex-start;
     gap: 0 1rem;
     color: var(--text-meta-color);
-    white-space: nowrap;
 }
 
 .toc-tags img,

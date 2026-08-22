@@ -9,7 +9,7 @@
 {{- end -}}
 {{- $lineAnchors := index $opts "lineAnchors" -}}
 {{- if not $lineAnchors -}}
-    {{- $lineAnchors = printf "hl-%d" .Ordinal -}}
+    {{- $lineAnchors = printf "C-%d-L" .Ordinal -}}
 {{- end -}}
 {{- $opts = merge $opts (dict "lineAnchors" $lineAnchors) -}}
 {{- $highlighted := highlight .Inner $lang $opts -}}

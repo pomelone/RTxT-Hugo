@@ -5,7 +5,7 @@
     justify-content: center;
     font-weight: 700;
     font-size: 2rem;
-    color: var(--text-regular-color);
+    color: var(--text-color);
     text-align: center;
     text-wrap: balance;
 }
@@ -34,7 +34,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 0.5rem;
-    color: var(--text-regular-color);
+    color: var(--text-color);
     font-weight: 600;
     font-size: 1.5rem;
 }
@@ -42,7 +42,7 @@
 .page-title a {
     display: inline-flex;
     align-items: center;
-    color: var(--text-regular-color);
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -55,7 +55,6 @@
     justify-content: flex-start;
     gap: 0.5rem;
     color: var(--text-meta-color);
-    white-space: nowrap;
 }
 
 .page-meta {
@@ -72,6 +71,13 @@
     opacity: 0.8;
     color: var(--text-meta-color);
     text-decoration: none;
+}
+
+.page-meta a > span {
+    max-width: var(--meta-tag-max-width);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .page-meta a:hover {

@@ -2,11 +2,12 @@
     margin: 1rem 0;
     width: 100%;
     display: block;
-    overflow-x: auto;
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 0.8rem;
-    border: 1px solid var(--hr-color);
+    border-radius: 1.25rem;
+    border: var(--block-border);
+    box-shadow: var(--block-box-shadow);
+    overflow: hidden;
 }
 
 #content th,
@@ -28,5 +29,10 @@
 
 #content th {
     font-weight: 600;
-    background-color: var(--inline-code-background-color);
+    background-color: var(--table-th-bg);
+    color: var(--table-th-fg);
+}
+
+#content tbody tr:nth-child(even) td {
+    background-color: var(--table-even);
 }
