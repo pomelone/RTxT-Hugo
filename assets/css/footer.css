@@ -25,4 +25,5 @@
 .footer-text img {
     height: 0.75rem;
     display: inline-block;
+    vertical-align: middle;
 }

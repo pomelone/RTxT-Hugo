@@ -18,6 +18,19 @@
 - favicon：将 `favicon.[svg|ico|png]` 文件放入 `/static` 目录
 - logo：将 `logo.svg` 文件放入 `/static` 目录
 
+### 短代码
+
+#### icon
+
+在正文中插入 `data/icons.toml` 中定义的图标：
+
+```md
+{{< icon "github" >}}
+{{< icon "tag" "1.5em" >}}
+```
+
+第一个参数为图标名（必填），第二个参数为尺寸（可选，默认继承正文字号）。图标不存在时构建会输出警告。
+
 ### 数学公式（KaTeX）
 
 支持的分隔符：行内 `$...$`、`\(...\)`；块级 `$$...$$`、`\[...\]`。KaTeX 资源默认从 jsDelivr CDN 加载。

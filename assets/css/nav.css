@@ -54,6 +54,7 @@
 .menu-activate svg {
     width: 2em;
     height: 2em;
+    vertical-align: middle;
 }
 
 .nav-logo {

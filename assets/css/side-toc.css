@@ -121,8 +121,8 @@
     color: var(--text-meta-color);
 }
 
-.toc-tags img,
-.toc-tags svg {
+.toc-tags img {
     width: 1.2em;
     height: 1.2em;
+    vertical-align: middle;
 }

@@ -82,12 +82,6 @@
     transform: scale(0.9);
 }
 
-#content .code-copy svg,
-#content .code-copy.copied svg {
-    width: 1.2em;
-    height: 1.2em;
-}
-
 #content .code-copy .code-copy-check,
 #content .code-copy .code-copy-failed,
 #content .code-copy.copied .code-copy-copy,

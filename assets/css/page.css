@@ -11,15 +11,12 @@
 }
 
 .title img,
-.title svg,
 .page-title img,
-.page-title svg,
 .page-meta img,
-.page-meta svg,
-.content-meta img,
-.content-meta svg {
+.content-meta img {
     width: 1.2em;
     height: 1.2em;
+    vertical-align: middle;
 }
 
 .page {

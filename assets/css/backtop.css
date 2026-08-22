@@ -38,4 +38,5 @@
 .backtop-button svg {
     width: var(--backtop-height);
     height: var(--backtop-height);
+    vertical-align: middle;
 }

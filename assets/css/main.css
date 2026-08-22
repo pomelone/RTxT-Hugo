@@ -23,6 +23,12 @@ hr {
     border-top: 1px solid var(--hr-color);
 }
 
+svg {
+    width: auto;
+    height: 1.2em;
+    vertical-align: middle;
+}
+
 .main-container,
 .content-wrap {
     margin: 0 auto;

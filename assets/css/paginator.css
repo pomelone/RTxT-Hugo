@@ -52,4 +52,5 @@
 .paginator-button-hidden svg {
     width: var(--paginator-height);
     height: var(--paginator-height);
+    vertical-align: middle;
 }
