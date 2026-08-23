@@ -23,6 +23,6 @@
     {{ partial "math.html" . }}
 
     {{- with resources.Get "css/custom.css" }}
-    <link rel="stylesheet" type="text/css" href="{{ (. | minify).RelPermalink }}">
+    <link rel="stylesheet" type="text/css" href="{{ (. | minify | fingerprint).RelPermalink }}">
     {{- end }}
 </head>
