@@ -6,21 +6,44 @@
     {{- $filename = . -}}
 {{- end -}}
 
+{{- $link := "" -}}
+{{- with index .Attributes "link" -}}
+    {{- $link = . -}}
+{{- end -}}
+
 {{- with index .Attributes "hl_lines" -}}
     {{- $opts = merge $opts (dict "hl_lines" .) -}}
 {{- end -}}
 
-{{- $lineAnchors := index $opts "lineAnchors" -}}
-{{- if not $lineAnchors -}}
-    {{- $lineAnchors = printf "C-%d-L" .Ordinal -}}
-{{- end -}}
-
+{{- $lineAnchors := printf "C-%d-L" .Ordinal -}}
 {{- $opts = merge $opts (dict "lineAnchors" $lineAnchors) -}}
+
 {{- $highlighted := highlight .Inner $lang $opts -}}
 
 <div class="code-block">
     <div class="code-header">
-        <span class="code-filename">{{ $filename | default $lang }}</span>
+        {{ if $link -}}
+            {{- $link = urls.Parse $link -}}
+            {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
+            <a class="code-filename" href="{{ $link }}" target="_blank" rel="noopener noreferrer">
+                {{- with index hugo.Data.icons "code_file" -}}
+                {{- . | safeHTML -}}
+                {{- end -}}
+                <span>{{ $filename | default $lang }}</span></a>
+            {{- else -}}
+            <a class="code-filename" href="{{ $link }}">
+                {{- with index hugo.Data.icons "code_file" -}}
+                {{- . | safeHTML -}}
+                {{- end -}}
+                <span>{{ $filename | default $lang }}</span></a>
+            {{- end -}}
+        {{- else -}}
+            <div class="code-filename">
+                {{- with index hugo.Data.icons "code_file" -}}
+                {{- . | safeHTML -}}
+                {{- end -}}
+                <span>{{ $filename | default $lang }}</span></div>
+        {{- end }}
         <button class="code-copy" type="button">
             <span class="code-copy-copy">
             {{- with index hugo.Data.icons "copy" -}}

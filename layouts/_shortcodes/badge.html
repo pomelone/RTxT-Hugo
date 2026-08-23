@@ -24,7 +24,7 @@
     <a class="badge" href="{{ $link }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
     {{- end -}}
 {{- else -}}
-<span class="badge"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+    <span class="badge"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
 {{- end }}
     {{ with $icon -}}
         {{- with index hugo.Data.icons . -}}
