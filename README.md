@@ -26,10 +26,28 @@
 
 ```md
 {{< icon "github" >}}
-{{< icon "tag" "1.5em" >}}
+{{< icon name="tag" size="1.5em" >}}
 ```
 
-第一个参数为图标名（必填），第二个参数为尺寸（可选，默认继承正文字号）。图标不存在时构建会输出警告。
+- `name`: 图标名（必填）
+- `size`: 图标尺寸（可选）
+
+#### badge
+
+在正文中插入徽章：
+
+```md
+{{< badge "RTxT" >}}
+{{< badge content="GitHub" icon="github" color="#0aa344" border=false link="https://github.com" >}}
+```
+
+参数说明：
+
+- `content`：徽章文字（必填）
+- `link`：徽章链接
+- `icon`：`data/icons.toml` 中的图标名（可选）
+- `color`：徽章颜色（可选）
+- `border`：是否显示边框，默认 `true`（可选）
 
 ### 数学公式（KaTeX）
 

@@ -1,0 +1,41 @@
+{{- $content := .Get "content" | default (.Get 0) -}}
+{{- $icon := .Get "icon" -}}
+{{- $color := .Get "color" -}}
+{{- $border := .Get "border" | default true -}}
+{{- $link := .Get "link" -}}
+
+{{- if not $content -}}
+    {{- errorf "badge shortcode: require content" -}}
+{{- end -}}
+
+{{- $style := "" -}}
+{{- with $color -}}
+    {{- $style = printf "color: %s;" . -}}
+{{- end -}}
+{{- if not $border -}}
+    {{- $style = printf "%s border: none;" $style -}}
+{{- end -}}
+
+{{- if $link -}}
+    {{- $link = urls.Parse $link -}}
+    {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
+    <a class="badge" href="{{ $link }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }} target="_blank" rel="noopener noreferrer">
+    {{- else -}}
+    <a class="badge" href="{{ $link }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+    {{- end -}}
+{{- else -}}
+<span class="badge"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+{{- end }}
+    {{ with $icon -}}
+        {{- with index hugo.Data.icons . -}}
+            {{- . | safeHTML -}}
+        {{- else -}}
+            {{- errorf "badge shortcode: icon %q not found" . -}}
+        {{- end -}}
+    {{- end }}
+    <span>{{ $content }}</span>
+{{ if $link -}}
+</a>
+{{- else -}}
+</span>
+{{- end -}}
