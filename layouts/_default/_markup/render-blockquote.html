@@ -1,0 +1,22 @@
+{{- $alertTypes := slice "note" "tip" "important" "warning" "caution" -}}
+
+{{- $type := lower (.AlertType | default "tip") -}}
+{{- if not (in $alertTypes $type) -}}
+    {{- $type = "tip" -}}
+{{- end -}}
+
+{{- $title := title (.AlertTitle | default (i18n (printf "callout.%s" $type)) | default $type) -}}
+
+{{- if eq .Type "alert" -}}
+    <blockquote class="callout-{{ $type }}">
+    <div class="callout-title">
+        {{- with index hugo.Data.icons $type -}}
+        {{- . | safeHTML -}}
+        {{- end -}}
+        <span>{{ $title }}</span>
+    </div>
+{{- else -}}
+    <blockquote class="callout-note">
+{{- end }}
+    {{ .Text -}}
+</blockquote>

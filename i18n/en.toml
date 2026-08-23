@@ -23,3 +23,10 @@ next = "Next"
 draft = "Draft"
 future = "Scheduled"
 expired = "Expired"
+
+[callout]
+note = "Note"
+tip = "Tip"
+important = "Important"
+warning = "Warning"
+caution = "Caution"
