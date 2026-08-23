@@ -1,7 +1,38 @@
+blockquote.callout-note {
+    --quote-color: #0038f3;
+}
+
+blockquote.callout-tip {
+    --quote-color: #008000;
+}
+
+blockquote.callout-important {
+    --quote-color: #9b00ec;
+}
+
+blockquote.callout-warning {
+    --quote-color: #ff6800;
+}
+
+blockquote.callout-caution {
+    --quote-color: #ff0000;
+}
+
 blockquote {
-    margin: 0.8rem 0;
-    padding: 0.8rem;
-    border: var(--text-border);
-    border-radius: 1.25em;
-    box-shadow: var(--block-box-shadow);
+    margin: 1rem 0;
+    padding: 0.8rem 1.25rem;
+    border: none;
+    border-radius: 1.25rem;
+    color: var(--quote-color);
+    background-color: color-mix(in srgb, currentColor 10%, white);
+    box-shadow: var(--block-shadow);
+}
+
+.callout-title {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 1.2em;
+    font-weight: 600;
 }

@@ -23,3 +23,10 @@ next = "下一页"
 draft = "草稿"
 future = "未发布"
 expired = "已下架"
+
+[callout]
+note = "备注"
+tip = "建议"
+important = "重要"
+warning = "警告"
+caution = "危险"
