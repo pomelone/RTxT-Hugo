@@ -1,0 +1,24 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    gap: 0.2em;
+    padding: 0.1em 0.4em;
+    border: 1px solid currentColor;
+    border-radius: 0.6em;
+    font-size: 0.8em;
+    color: var(--theme-color);
+    background-color: color-mix(in srgb, currentColor 30%, white);
+    text-decoration: none;
+    user-select: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+a.badge:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.badge:active {
+    transform: scale(0.9);
+}
