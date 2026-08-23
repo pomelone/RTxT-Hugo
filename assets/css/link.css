@@ -1,15 +1,15 @@
-#content a {
+a {
     color: var(--link-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-#content a:hover {
+a:hover {
     color: var(--link-hover-color);
     text-decoration: underline;
 }
 
-#content .footnotes {
+.footnotes {
     margin: 2rem 0 0;
     font-size: 0.8rem;
 }

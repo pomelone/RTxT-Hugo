@@ -68,6 +68,7 @@
 .nav-logo:hover {
     color: var(--text-color);
     opacity: 0.8;
+    text-decoration: none;
 }
 
 .menu,
@@ -75,6 +76,12 @@
     padding: 0.5rem;
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+.menu:hover,
+.menu-activate:hover {
+    color: var(--text-bar-hover-color);
+    text-decoration: none;
 }
 
 @media (max-width: 50rem) {
@@ -90,8 +97,4 @@
 
 .menu-activate {
     color: var(--text-color);
-}
-
-.menu:hover {
-    color: var(--text-bar-hover-color);
 }

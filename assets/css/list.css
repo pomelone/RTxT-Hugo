@@ -1,0 +1,14 @@
+ul,
+ol {
+    margin: 0.4em 0;
+    padding-left: 1.4em;
+}
+
+li {
+    margin: 0.4em 0;
+}
+
+li > ul,
+li > ol {
+    margin: 0;
+}

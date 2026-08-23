@@ -48,6 +48,7 @@
 .toc-container a:hover {
     color: var(--text-meta-hover-color);
     opacity: 1;
+    text-decoration: none;
 }
 
 .side-doc,
@@ -109,6 +110,7 @@
 
 .toc-meta a:hover {
     opacity: 1;
+    text-decoration: none;
 }
 
 .toc-tags {

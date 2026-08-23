@@ -8,7 +8,7 @@
     --text-meta-color: #505050;
     --text-meta-hover-color: #141414;
     --text-bar-color: #505050;
-    --text-bar-hover-color: #141414;
+    --text-bar-hover-color: #008000;
     --nav-bg: rgba(255, 255, 255, 0.8);
     --nav-bf: blur(12px) saturate(180%);
     --nav-shadow: 0 2px 4px rgba(0, 0 ,0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -46,7 +46,7 @@
         --text-meta-color: #cdcdcd;
         --text-meta-hover-color: #ebebeb;
         --text-bar-color: #cdcdcd;
-        --text-bar-hover-color: #ebebeb;
+        --text-bar-hover-color: #008000;
         --nav-bg: rgba(1, 1, 1, 0.8);
         --nav-bf: blur(12px) saturate(180%);
         --nav-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);

@@ -43,6 +43,10 @@
     text-decoration: none;
 }
 
+.page-title a:hover {
+    text-decoration: none;
+}
+
 .page-meta,
 .content-meta {
     margin: 0 0 0.5rem;
@@ -80,6 +84,7 @@
 .page-meta a:hover {
     color: var(--text-meta-hover-color);
     opacity: 1;
+    text-decoration: none;
 }
 
 .page-summary {

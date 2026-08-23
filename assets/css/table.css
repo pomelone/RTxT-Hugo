@@ -1,38 +1,38 @@
-#content table {
+table {
     margin: 1rem 0;
     width: 100%;
     display: block;
+    border: var(--block-border);
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 1.25rem;
-    border: var(--block-border);
     box-shadow: var(--block-box-shadow);
     overflow: hidden;
 }
 
-#content th,
-#content td {
+th,
+td {
     padding: 1em;
     /* border-bottom: 1px solid var(--hr-color); */
     /* border-right: 1px solid var(--hr-color); */
 }
 
-#content th:last-child,
-#content td:last-child {
+th:last-child,
+td:last-child {
     border-right: none;
 }
 
-#content tr:last-child th,
-#content tr:last-child td {
+tr:last-child th,
+tr:last-child td {
     border-bottom: none;
 }
 
-#content th {
+th {
     font-weight: 600;
     background-color: var(--table-th-bg);
     color: var(--table-th-fg);
 }
 
-#content tbody tr:nth-child(even) td {
+tbody tr:nth-child(even) td {
     background-color: var(--table-even);
 }

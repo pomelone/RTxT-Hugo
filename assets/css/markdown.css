@@ -53,35 +53,7 @@
 #content h4:hover .heading-anchor,
 #content h5:hover .heading-anchor,
 #content h6:hover .heading-anchor {
-    text-decoration: none;
     opacity: 1;
-}
-
-#content p {
-    margin: 0.5rem 0;
-}
-
-#content ul,
-#content ol {
-    margin: 0.4em 0;
-    padding-left: 1.4em;
-}
-
-#content li {
-    margin: 0.4em 0;
-}
-
-#content li > ul,
-#content li > ol {
-    margin: 0;
-}
-
-#content img {
-    margin: 0.4em 0;
-    max-width: 100%;
-    border-radius: 1.25rem;
-    border: var(--block-border);
-    box-shadow: var(--block-box-shadow);
 }
 
 #content input[type="checkbox"] {
