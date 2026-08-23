@@ -12,7 +12,7 @@ table {
 
 th,
 td {
-    padding: 1em;
+    padding: 1em 1.25rem;
     /* border-bottom: 1px solid var(--hr-color); */
     /* border-right: 1px solid var(--hr-color); */
 }
