@@ -25,9 +25,9 @@
 
 #content .code-block {
     margin: 1rem 0;
-    border: var(--text-border);
+    border: var(--code-border);
     border-radius: 1.25rem;
-    box-shadow: var(--block-box-shadow);
+    box-shadow: var(--block-shadow);
     overflow: hidden;
 }
 

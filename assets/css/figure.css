@@ -2,7 +2,7 @@
     margin: 0.4em 0;
     border: var(--block-border);
     border-radius: 1.25rem;
-    box-shadow: var(--block-box-shadow);
+    box-shadow: var(--block-shadow);
     overflow: hidden;
 }
 

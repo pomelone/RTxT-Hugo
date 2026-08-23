@@ -6,7 +6,7 @@ table {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 1.25rem;
-    box-shadow: var(--block-box-shadow);
+    box-shadow: var(--block-shadow);
     overflow: hidden;
 }
 
