@@ -28,6 +28,7 @@ hr {
 }
 
 svg {
+    max-width: 100%;
     width: auto;
     height: 1.2em;
     vertical-align: middle;

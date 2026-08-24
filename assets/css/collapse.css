@@ -1,0 +1,38 @@
+details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.collapse-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+    font-size: 0.9em;
+    background-color: transparent;
+    color: var(--text-meta-color);
+    opacity: 0.8;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.collapse-button:hover {
+    color: var(--text-meta-hover-color);
+    opacity: 1;
+    transform: scale(0.9);
+}
+
+details .collapse-closed,
+details[open] .collapse-open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+details .collapse-open,
+details[open] .collapse-closed {
+    display: none;
+}

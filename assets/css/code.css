@@ -27,8 +27,8 @@
     margin: 1rem 0;
     border: var(--code-border);
     border-radius: 1.25rem;
-    box-shadow: var(--block-shadow);
     overflow: hidden;
+    box-shadow: var(--block-shadow);
 }
 
 #content .code-block .highlight {
@@ -46,25 +46,20 @@
 
 #content .code-header {
     padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    font-size: 0.9em;
+    font-weight: 600;
 }
 
 #content .code-filename {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.25em;
+    gap: 0.2em;
     font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.9em;
-    font-weight: 600;
     color: var(--text-meta-color);
 }
 
 #content .code-filename > span {
-    max-width: var(--filename-max-width);
+    max-width: var(--block-title-max-width);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -88,8 +83,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.25em;
     border: none;
+    gap: 0.25em;
     font-size: 0.9em;
     font-weight: 600;
     background-color: transparent;
@@ -106,6 +101,14 @@
     transform: scale(0.9);
 }
 
+#content .code-copy .code-copy-copy,
+#content .code-copy.copied .code-copy-check,
+#content .code-copy.failed .code-copy-failed {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #content .code-copy .code-copy-check,
 #content .code-copy .code-copy-failed,
 #content .code-copy.copied .code-copy-copy,
@@ -113,11 +116,4 @@
 #content .code-copy.failed .code-copy-copy,
 #content .code-copy.failed .code-copy-check {
     display: none;
-}
-
-#content .code-copy .code-copy-copy,
-#content .code-copy.copied .code-copy-check,
-#content .code-copy.failed .code-copy-failed {
-    display: inline-flex;
-    align-items: center;
 }

@@ -1,32 +1,48 @@
-logo = "Logo"
-date = "Date"
-tag = "Tag"
-backtop = "Back to top"
-blog = "Blog"
-documentation = "Documentation"
-series = "Series"
-archives = "Archives"
-search = "Search"
-code = "Code"
-copy = "Copy"
-copied = "Copied"
-copy_failed = "Copy Failed"
+logo = 'Logo'
+date = 'Date'
+tag = 'Tag'
+backtop = 'Back to top'
+blog = 'Blog'
+documentation = 'Documentation'
+series = 'Series'
+archives = 'Archives'
+search = 'Search'
+code = 'Code'
+copy = 'Copy'
+copied = 'Copied'
+copy_failed = 'Copy Failed'
 
 [toc]
-title = "Table of contents"
+title = 'Table of contents'
 
 [pagination]
-prev = "Prev"
-next = "Next"
+prev = 'Prev'
+next = 'Next'
 
 [status]
-draft = "Draft"
-future = "Scheduled"
-expired = "Expired"
+draft = 'Draft'
+future = 'Scheduled'
+expired = 'Expired'
 
 [callout]
-note = "Note"
-tip = "Tip"
-important = "Important"
-warning = "Warning"
-caution = "Caution"
+note = 'Note'
+tip = 'Tip'
+important = 'Important'
+warning = 'Warning'
+caution = 'Caution'
+
+[collapse]
+show = 'Show'
+hide = 'Hide'
+expand = 'Expand'
+collapse = 'Collapse'
+open = 'Open'
+close = 'Close'
+show_more = 'Show More'
+show_less = 'Show Less'
+read_more = 'Read More'
+read_less = 'Read Less'
+show_details = 'Show Details'
+hide_details = 'Hide Details'
+expand_all = 'Expand All'
+collapse_all = 'Collapse All'

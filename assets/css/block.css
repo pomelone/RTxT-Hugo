@@ -1,38 +1,53 @@
-blockquote.callout-note {
-    --quote-color: #0038f3;
-}
-
-blockquote.callout-tip {
-    --quote-color: #008000;
-}
-
-blockquote.callout-important {
-    --quote-color: #9b00ec;
-}
-
-blockquote.callout-warning {
-    --quote-color: #ff6800;
-}
-
-blockquote.callout-caution {
-    --quote-color: #ff0000;
-}
-
-blockquote {
+.callout-container {
     margin: 1rem 0;
-    padding: 0.8rem 1.25rem;
     border: none;
     border-radius: 1.25rem;
+    overflow: hidden;
     color: var(--quote-color);
-    background-color: color-mix(in srgb, currentColor 10%, white);
+    background-color: color-mix(in srgb, currentColor 5%, white);
     box-shadow: var(--block-shadow);
 }
 
+.callout-note {
+    --quote-color: #0038f3;
+}
+
+.callout-tip {
+    --quote-color: #008000;
+}
+
+.callout-important {
+    --quote-color: #9b00ec;
+}
+
+.callout-warning {
+    --quote-color: #ff6800;
+}
+
+.callout-caution {
+    --quote-color: #ff0000;
+}
+
+.callout-summary,
+.callout-content {
+    padding: 0.8rem 1rem;
+}
+
+.callout-summary {
+    background-color: color-mix(in srgb, currentColor 10%, white);
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
 .callout-title {
-    margin-bottom: 0.8rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.4em;
-    font-size: 1.2em;
-    font-weight: 600;
+}
+
+.callout-title > span {
+    max-width: var(--block-title-max-width);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

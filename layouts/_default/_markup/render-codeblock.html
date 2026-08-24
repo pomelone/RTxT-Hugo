@@ -1,14 +1,11 @@
 {{- $lang := .Type | default "text" -}}
 {{- $opts := .Options | default (dict) -}}
 
-{{- $filename := "" -}}
-{{- with index .Attributes "filename" -}}
-    {{- $filename = . -}}
-{{- end -}}
-
-{{- $link := "" -}}
-{{- with index .Attributes "link" -}}
-    {{- $link = . -}}
+{{- $filename := .Attributes.filename | default $lang -}}
+{{- $link := .Attributes.link | default "" -}}
+{{- $collapse := .Attributes.collapse | default true -}}
+{{- if eq (printf "%v" $collapse) "false" -}}
+    {{- $collapse = false -}}
 {{- end -}}
 
 {{- with index .Attributes "hl_lines" -}}
@@ -21,49 +18,51 @@
 {{- $highlighted := highlight .Inner $lang $opts -}}
 
 <div class="code-block">
-    <div class="code-header">
-        {{ if $link -}}
-            {{- $link = urls.Parse $link -}}
-            {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
-            <a class="code-filename" href="{{ $link }}" target="_blank" rel="noopener noreferrer">
-                {{- with index hugo.Data.icons "code_file" -}}
-                {{- . | safeHTML -}}
+    <details{{ with not $collapse }} open{{ end }}>
+        <summary class="code-header">
+            {{ if $link -}}
+                {{- $link = urls.Parse $link -}}
+                {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
+                <a class="code-filename" href="{{ $link }}" target="_blank" rel="noopener noreferrer">
+                    {{- with index hugo.Data.icons "code_file" -}}
+                    {{- . | safeHTML -}}
+                    {{- end -}}
+                    <span>{{ $filename | default $lang }}</span></a>
+                {{- else -}}
+                <a class="code-filename" href="{{ $link }}">
+                    {{- with index hugo.Data.icons "code_file" -}}
+                    {{- . | safeHTML -}}
+                    {{- end -}}
+                    <span>{{ $filename | default $lang }}</span></a>
                 {{- end -}}
-                <span>{{ $filename | default $lang }}</span></a>
             {{- else -}}
-            <a class="code-filename" href="{{ $link }}">
-                {{- with index hugo.Data.icons "code_file" -}}
-                {{- . | safeHTML -}}
-                {{- end -}}
-                <span>{{ $filename | default $lang }}</span></a>
-            {{- end -}}
-        {{- else -}}
-            <div class="code-filename">
-                {{- with index hugo.Data.icons "code_file" -}}
-                {{- . | safeHTML -}}
-                {{- end -}}
-                <span>{{ $filename | default $lang }}</span></div>
-        {{- end }}
-        <button class="code-copy" type="button">
-            <span class="code-copy-copy">
-            {{- with index hugo.Data.icons "copy" -}}
-            {{- . | safeHTML -}}
-            {{- end -}}
+                <div class="code-filename">
+                    {{- with index hugo.Data.icons "code_file" -}}
+                    {{- . | safeHTML -}}
+                    {{- end -}}
+                    <span>{{ $filename | default $lang }}</span></div>
+            {{- end }}
+            <span>
+                <button class="code-copy" type="button">
+                    <span class="code-copy-copy">
+                        {{- with index hugo.Data.icons "copy" -}}
+                        {{- . | safeHTML -}}
+                        {{- end -}}
+                        <span>{{ i18n "copy" }}</span></span>
+                    <span class="code-copy-check">
+                        {{- with index hugo.Data.icons "copy_check" -}}
+                        {{- . | safeHTML -}}
+                        {{- end -}}
+                        <span>{{ i18n "copied" }}</span></span>
+                    <span class="code-copy-failed">
+                        {{- with index hugo.Data.icons "copy_failed" -}}
+                        {{- . | safeHTML -}}
+                        {{- end -}}
+                        <span>{{ i18n "copy_failed" }}</span></span>
+                </button>
+                {{ partial "component/collapse.html" }}
             </span>
-            <span class="code-copy-copy">{{ i18n "copy" }}</span>
-            <span class="code-copy-check">
-            {{- with index hugo.Data.icons "copy_check" -}}
-            {{- . | safeHTML -}}
-            {{- end -}}
-            </span>
-            <span class="code-copy-check">{{ i18n "copied" }}</span>
-            <span class="code-copy-failed">
-            {{- with index hugo.Data.icons "copy_failed" -}}
-            {{- . | safeHTML -}}
-            {{- end -}}
-            </span>
-            <span class="code-copy-failed">{{ i18n "copy_failed" }}</span>
-        </button>
-    </div>
-    {{- $highlighted -}}
+        </summary>
+        {{- $highlighted -}}
+    </details>
 </div>

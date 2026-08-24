@@ -1,0 +1,12 @@
+<span class="collapse-button">
+    <span class="collapse-open" title="{{ i18n "collapse.hide" }}">
+        {{- with index hugo.Data.icons "chevron-up" -}}
+        {{- . | safeHTML -}}
+        {{- end -}}
+        <span>{{ i18n "collapse.hide" }}</span></span>
+    <span class="collapse-closed" title="{{ i18n "collapse.show" }}">
+        {{- with index hugo.Data.icons "chevron-down" -}}
+        {{- . | safeHTML -}}
+        {{- end -}}
+        <span>{{ i18n "collapse.show" }}</span></span>
+</span>
