@@ -1,6 +1,6 @@
 {{- $currentPage := . -}}
 {{- range site.Menus.main }}
-    {{- $name := i18n .Identifier .Name -}}
+    {{- $name := i18n .Identifier | default .Name -}}
     {{ if .Page -}}
         {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
             <a class="menu-activate" href="{{ .Page.RelPermalink }}">

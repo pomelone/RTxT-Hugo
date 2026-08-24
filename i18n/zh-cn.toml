@@ -1,32 +1,48 @@
-logo = "Logo"
-date = "日期"
-tag = "标签"
-backtop = "返回顶部"
-blog = "博客"
-documentation = "文档"
-series = "系列"
-archives = "归档"
-search = "搜索"
-code = "代码"
-copy = "复制"
-copied = "已复制"
-copy_failed = "复制失败"
+logo = 'Logo'
+date = '日期'
+tag = '标签'
+backtop = '返回顶部'
+blog = '博客'
+documentation = '文档'
+series = '系列'
+archives = '归档'
+search = '搜索'
+code = '代码'
+copy = '复制'
+copied = '已复制'
+copy_failed = '复制失败'
 
 [toc]
-title = "目录"
+title = '目录'
 
 [pagination]
-prev = "上一页"
-next = "下一页"
+prev = '上一页'
+next = '下一页'
 
 [status]
-draft = "草稿"
-future = "未发布"
-expired = "已下架"
+draft = '草稿'
+future = '未发布'
+expired = '已下架'
 
 [callout]
-note = "备注"
-tip = "建议"
-important = "重要"
-warning = "警告"
-caution = "危险"
+note = '备注'
+tip = '建议'
+important = '重要'
+warning = '警告'
+caution = '危险'
+
+[collapse]
+show = '展开'
+hide = '收起'
+expand = '展开'
+collapse = '收起'
+open = '打开'
+close = '关闭'
+show_more = '显示更多'
+show_less = '显示更少'
+read_more = '阅读更多'
+read_less = '收起阅读'
+show_details = '显示详情'
+hide_details = '隐藏详情'
+expand_all = '全部展开'
+collapse_all = '全部收起'

@@ -5,18 +5,24 @@
     {{- $type = "tip" -}}
 {{- end -}}
 
-{{- $title := title (.AlertTitle | default (i18n (printf "callout.%s" $type)) | default $type) -}}
+{{- $title := .AlertTitle -}}
 
 {{- if eq .Type "alert" -}}
-    <blockquote class="callout-{{ $type }}">
-    <div class="callout-title">
-        {{- with index hugo.Data.icons $type -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
-        <span>{{ $title }}</span>
-    </div>
+    <div class="callout-container callout-{{ $type }}">
 {{- else -}}
-    <blockquote class="callout-note">
+    {{- $type = "note" -}}
+    <div class="callout-container callout-note">
 {{- end }}
-    {{ .Text -}}
-</blockquote>
+    <details open>
+        <summary class="callout-summary">
+            <span class="callout-title">
+                {{ with index hugo.Data.icons $type -}}
+                {{- . | safeHTML -}}
+                {{- end }}
+                <span>{{ title ($title | default (i18n (printf "callout.%s" $type)) | default $type) }}</span>
+            </span>
+            {{ partial "component/collapse.html" }}
+        </summary>
+        <div class="callout-content">{{ .Text }}</div>
+    </details>
+</div>

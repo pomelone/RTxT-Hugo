@@ -29,6 +29,8 @@
 {{< icon name="tag" size="1.5em" >}}
 ```
 
+参数说明：
+
 - `name`: 图标名（必填）
 - `size`: 图标尺寸（可选）
 
@@ -44,10 +46,44 @@
 参数说明：
 
 - `content`：徽章文字（必填）
-- `link`：徽章链接
+- `link`：徽章链接（可选）
 - `icon`：`data/icons.toml` 中的图标名（可选）
 - `color`：徽章颜色（可选）
 - `border`：是否显示边框，默认 `true`（可选）
+
+### 代码块
+
+代码块可以添加文件名、链接、指定高亮行、是否折叠
+
+```md
+
+```python {filename="test.py", link="/logo.svg", collapse=false, hl_lines=[2,8,"4-6"]}
+
+或
+
+```python {filename="test.py" link="/logo.svg" collapse=false hl_lines=[2,8,"4-6"]}
+a = "string a"
+b = "string b"
+c = "string c"
+d = "string d"
+e = "string e"
+f = "string f"
+g = "string g"
+h = "string h"
+i = "string i"
+j = "string j"
+k = "string k"
+l = "string l"
+```
+
+```
+
+参数说明：
+
+- `filename`: 文件名，默认为代码语言（可选）
+- `link`: 代码块链接（可选）
+- `collapse`：是否折叠代码，默认 true（可选）
+- `hl_lines` 指定高亮行（可选）
 
 ### 引用块
 

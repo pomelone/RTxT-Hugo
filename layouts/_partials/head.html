@@ -20,7 +20,7 @@
 
     {{ partial "head/styles.html" . }}
     {{ partial "head/scripts.html" . }}
-    {{ partial "markup/math.html" . }}
+    {{ partial "head/math.html" . }}
 
     {{- with resources.Get "css/custom.css" }}
     <link rel="stylesheet" type="text/css" href="{{ (. | minify | fingerprint).RelPermalink }}">
