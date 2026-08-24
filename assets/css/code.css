@@ -1,4 +1,4 @@
-#content code {
+code {
     padding: 0.1em 0.4em;
     border-radius: 0.4em;
     font-family: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
@@ -6,7 +6,7 @@
     background-color: var(--code-inline-bg);
 }
 
-#content pre {
+pre {
     margin: 0;
     padding: 0.5rem;
     background-color: transparent;
@@ -17,13 +17,13 @@
     scrollbar-gutter: stable;
 }
 
-#content pre code {
+pre code {
     padding: 0;
     background-color: transparent;
     font-size: 0.9em;
 }
 
-#content .code-block {
+.code-block {
     margin: 1rem 0;
     border: var(--code-border);
     border-radius: 1.25rem;
@@ -31,11 +31,11 @@
     box-shadow: var(--block-shadow);
 }
 
-#content .code-block .highlight {
+.code-block .highlight {
     margin: 0;
 }
 
-#content .code-block .highlight table {
+.code-block .highlight table {
     overflow: auto hidden;
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-color);
@@ -44,13 +44,18 @@
     box-shadow: none;
 }
 
-#content .code-header {
-    padding: 0.5rem 1rem;
+.code-block .collapse-summary,
+.code-block .copy-button,
+.code-block .collapse-button {
     font-size: 0.9em;
     font-weight: 600;
 }
 
-#content .code-filename {
+.code-block .collapse-summary {
+    padding: 0.5rem 1rem;
+}
+
+.code-block .code-filename {
     display: inline-flex;
     align-items: center;
     gap: 0.2em;
@@ -58,62 +63,23 @@
     color: var(--text-meta-color);
 }
 
-#content .code-filename > span {
+.code-block .code-filename > span {
     max-width: var(--block-title-max-width);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-#content a.code-filename {
+.code-block a.code-filename {
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-#content a.code-filename:hover {
+.code-block a.code-filename:hover {
     color: var(--theme-color);
     text-decoration: none;
 }
 
-#content a.code-filename:active {
+.code-block a.code-filename:active {
     transform: scale(0.9);
-}
-
-#content .code-copy {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    gap: 0.25em;
-    font-size: 0.9em;
-    font-weight: 600;
-    background-color: transparent;
-    color: var(--text-meta-color);
-    opacity: 0.8;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-
-#content .code-copy:hover {
-    color: var(--text-meta-hover-color);
-    opacity: 1;
-    transform: scale(0.9);
-}
-
-#content .code-copy .code-copy-copy,
-#content .code-copy.copied .code-copy-check,
-#content .code-copy.failed .code-copy-failed {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#content .code-copy .code-copy-check,
-#content .code-copy .code-copy-failed,
-#content .code-copy.copied .code-copy-copy,
-#content .code-copy.copied .code-copy-failed,
-#content .code-copy.failed .code-copy-copy,
-#content .code-copy.failed .code-copy-check {
-    display: none;
 }

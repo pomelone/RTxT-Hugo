@@ -34,6 +34,20 @@ svg {
     vertical-align: middle;
 }
 
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+}
+
 .main-container,
 .content-wrap {
     margin: 0 auto;

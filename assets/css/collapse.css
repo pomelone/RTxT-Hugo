@@ -1,21 +1,27 @@
-details > summary {
+.collapsed .collapse-content {
+    display: none;
+}
+
+.collapse-summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
 }
 
-.collapse-button {
+.collapse-actions {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
+}
+
+.collapse-button {
     gap: 0.25em;
     font-size: 0.9em;
-    background-color: transparent;
     color: var(--text-meta-color);
+    background-color: transparent;
     opacity: 0.8;
-    cursor: pointer;
-    user-select: none;
     transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -25,14 +31,15 @@ details > summary {
     transform: scale(0.9);
 }
 
-details .collapse-closed,
-details[open] .collapse-open {
+.collapse-button .collapse-open,
+.collapsed .collapse-button .collapse-closed {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.25em;
 }
 
-details .collapse-open,
-details[open] .collapse-closed {
+.collapse-button .collapse-closed,
+.collapsed .collapse-button .collapse-open {
     display: none;
 }

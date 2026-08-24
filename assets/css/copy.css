@@ -1,0 +1,32 @@
+.copy-button {
+    gap: 0.25em;
+    font-size: 0.9em;
+    color: var(--text-meta-color);
+    background-color: transparent;
+    opacity: 0.8;
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.copy-button:hover {
+    color: var(--text-meta-hover-color);
+    opacity: 1;
+    transform: scale(0.9);
+}
+
+.copy-button .copy-show,
+.copy-button.copied .copy-successful,
+.copy-button.failed .copy-failed {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+}
+
+.copy-button .copy-successful,
+.copy-button .copy-failed,
+.copy-button.copied .copy-show,
+.copy-button.copied .copy-failed,
+.copy-button.failed .copy-show,
+.copy-button.failed .copy-successful {
+    display: none;
+}

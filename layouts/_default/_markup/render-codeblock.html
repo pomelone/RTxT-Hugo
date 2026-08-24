@@ -17,52 +17,34 @@
 
 {{- $highlighted := highlight .Inner $lang $opts -}}
 
-<div class="code-block">
-    <details{{ with not $collapse }} open{{ end }}>
-        <summary class="code-header">
-            {{ if $link -}}
-                {{- $link = urls.Parse $link -}}
-                {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
-                <a class="code-filename" href="{{ $link }}" target="_blank" rel="noopener noreferrer">
-                    {{- with index hugo.Data.icons "code_file" -}}
-                    {{- . | safeHTML -}}
-                    {{- end -}}
-                    <span>{{ $filename | default $lang }}</span></a>
-                {{- else -}}
-                <a class="code-filename" href="{{ $link }}">
-                    {{- with index hugo.Data.icons "code_file" -}}
-                    {{- . | safeHTML -}}
-                    {{- end -}}
-                    <span>{{ $filename | default $lang }}</span></a>
+<div class="code-block{{ if $collapse }} collapsed{{ end }}">
+    <div class="collapse-summary">
+        {{ if $link -}}
+            {{- $link = urls.Parse $link -}}
+            {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
+            <a class="code-filename" href="{{ $link }}" target="_blank" rel="noopener noreferrer">
+                {{- with index hugo.Data.icons "code_file" -}}
+                {{- . | safeHTML -}}
                 {{- end -}}
+                <span>{{ $filename | default $lang }}</span></a>
             {{- else -}}
-                <div class="code-filename">
-                    {{- with index hugo.Data.icons "code_file" -}}
-                    {{- . | safeHTML -}}
-                    {{- end -}}
-                    <span>{{ $filename | default $lang }}</span></div>
-            {{- end }}
-            <span>
-                <button class="code-copy" type="button">
-                    <span class="code-copy-copy">
-                        {{- with index hugo.Data.icons "copy" -}}
-                        {{- . | safeHTML -}}
-                        {{- end -}}
-                        <span>{{ i18n "copy" }}</span></span>
-                    <span class="code-copy-check">
-                        {{- with index hugo.Data.icons "copy_check" -}}
-                        {{- . | safeHTML -}}
-                        {{- end -}}
-                        <span>{{ i18n "copied" }}</span></span>
-                    <span class="code-copy-failed">
-                        {{- with index hugo.Data.icons "copy_failed" -}}
-                        {{- . | safeHTML -}}
-                        {{- end -}}
-                        <span>{{ i18n "copy_failed" }}</span></span>
-                </button>
-                {{ partial "component/collapse.html" }}
-            </span>
-        </summary>
-        {{- $highlighted -}}
-    </details>
+            <a class="code-filename" href="{{ $link }}">
+                {{- with index hugo.Data.icons "code_file" -}}
+                {{- . | safeHTML -}}
+                {{- end -}}
+                <span>{{ $filename | default $lang }}</span></a>
+            {{- end -}}
+        {{- else -}}
+            <div class="code-filename">
+                {{- with index hugo.Data.icons "code_file" -}}
+                {{- . | safeHTML -}}
+                {{- end -}}
+                <span>{{ $filename | default $lang }}</span></div>
+        {{- end }}
+        <span class="collapse-actions">
+            {{ partial "component/copy.html" }}
+            {{ partial "component/collapse.html" }}
+        </span>
+    </div>
+    <div class="collapse-content">{{ $highlighted }}</div>
 </div>

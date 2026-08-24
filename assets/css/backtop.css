@@ -8,21 +8,21 @@
 }
 
 .backtop-button {
-    margin: 0;
-    border: none;
-    padding: 0;
-    display: none;
-    background-color: var(--bg);
     width: var(--backtop-height);
     height: var(--backtop-height);
     border-radius: 50%;
     font-weight: 700;
     font-size: 1rem;
-    text-decoration: none;
-    user-select: none;
-    cursor: pointer;
     color: var(--theme-color);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    background-color: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.backtop-button.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 .backtop-button:hover {

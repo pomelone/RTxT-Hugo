@@ -17,18 +17,13 @@
 
 .paginator-button,
 .paginator-button-hidden {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg);
     width: var(--paginator-height);
     height: var(--paginator-height);
     border-radius: 50%;
     font-weight: 700;
     font-size: 1rem;
-    text-decoration: none;
-    user-select: none;
     color: var(--theme-color);
+    background-color: var(--bg);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 

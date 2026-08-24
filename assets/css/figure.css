@@ -1,4 +1,4 @@
-#content figure {
+figure {
     margin: 0.4em 0;
     border: var(--block-border);
     border-radius: 1.25rem;
@@ -6,13 +6,13 @@
     overflow: hidden;
 }
 
-#content figure img {
+figure img {
     margin: 0;
     max-width: 100%;
     display: block;
 }
 
-#content figure figcaption {
+figure figcaption {
     padding: 0.5em 4em;
     display: flex;
     align-items: center;
@@ -24,7 +24,7 @@
 }
 
 @media (max-width: 50rem) {
-    #content figure figcaption {
+    figure figcaption {
         padding: 0.5em 2em;
     }
 }

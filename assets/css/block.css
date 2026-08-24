@@ -1,4 +1,4 @@
-.callout-container {
+.callout-block {
     margin: 1rem 0;
     border: none;
     border-radius: 1.25rem;
@@ -28,24 +28,28 @@
     --quote-color: #ff0000;
 }
 
-.callout-summary,
-.callout-content {
+.callout-block .collapse-summary,
+.callout-block .collapse-content {
     padding: 0.8rem 1rem;
 }
 
-.callout-summary {
-    background-color: color-mix(in srgb, currentColor 10%, white);
+.callout-block .collapse-summary,
+.callout-block .collapse-button {
     font-size: 1.1em;
     font-weight: 600;
 }
 
-.callout-title {
+.callout-block .collapse-summary {
+    background-color: color-mix(in srgb, currentColor 10%, white);
+}
+
+.callout-block .callout-title {
     display: inline-flex;
     align-items: center;
     gap: 0.4em;
 }
 
-.callout-title > span {
+.callout-block .callout-title > span {
     max-width: var(--block-title-max-width);
     white-space: nowrap;
     overflow: hidden;
