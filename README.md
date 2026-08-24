@@ -56,12 +56,10 @@
 代码块可以添加文件名、链接、指定高亮行、是否折叠
 
 ```md
-
-```python {filename="test.py", link="/logo.svg", collapse=false, hl_lines=[2,8,"4-6"]}
-
+python {filename="test.py", link="/logo.svg", collapse=false, hl_lines=[2,8,"4-6"]}
 或
+python {filename="test.py" link="/logo.svg" collapse=false hl_lines=[2,8,"4-6"]}
 
-```python {filename="test.py" link="/logo.svg" collapse=false hl_lines=[2,8,"4-6"]}
 a = "string a"
 b = "string b"
 c = "string c"
@@ -74,8 +72,6 @@ i = "string i"
 j = "string j"
 k = "string k"
 l = "string l"
-```
-
 ```
 
 参数说明：
