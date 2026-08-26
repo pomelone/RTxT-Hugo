@@ -2,13 +2,15 @@
 .toc-container {
     position: sticky;
     z-index: 98;
-    top: calc(var(--nav-height));
+    top: calc(var(--nav-height) + 1rem);
     width: var(--side-max-width);
     height: calc(100vh - var(--nav-height) - 4rem);
+    border-radius: var(--block-border-radius);
     display: flex;
     flex-shrink: 0;
     align-self: flex-start;
     flex-direction: column;
+    background-color: var(--side-bg);
     font-size: 0.9rem;
     line-height: 1.5rem;
     overflow-wrap: break-word;
@@ -32,6 +34,7 @@
 .toc-container {
     order: 9998;
     margin-right: 2rem;
+    padding-left: 0.5rem;
 }
 
 .side-container a,
@@ -92,7 +95,7 @@
     bottom: 0;
     padding: 0.5rem 0 0;
     height: 5rem;
-    background-color: var(--bg);
+    background-color: var(--side-bg);
 }
 
 .toc-meta a {

@@ -1,6 +1,7 @@
 .copy-button {
-    gap: 0.25em;
-    font-size: 0.9em;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--text-meta-color);
     background-color: transparent;
     opacity: 0.8;
@@ -19,7 +20,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.25em;
+    gap: 0.2rem;
 }
 
 .copy-button .copy-successful,

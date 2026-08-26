@@ -16,20 +16,38 @@
 }
 
 .paginator-button,
-.paginator-button-hidden {
-    width: var(--paginator-height);
+.paginator-button-hidden,
+.paginator-number-button {
     height: var(--paginator-height);
-    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    border-radius: var(--paginator-height);
+    overflow: hidden;
     font-weight: 700;
     font-size: 1rem;
     color: var(--theme-color);
-    background-color: var(--bg);
+    background-color: #ffffff;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.paginator-number-button {
+    padding: 0 0.5rem;
+    max-width: var(--paginator-number-max-width);
+    min-width: var(--paginator-height);
+    line-height: var(--paginator-height);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.paginator-button,
 .paginator-button-hidden {
-    pointer-events: none;
+    width: var(--paginator-height);
+}
+
+.paginator-button-hidden {
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .paginator-button:hover {

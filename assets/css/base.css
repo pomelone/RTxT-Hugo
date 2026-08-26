@@ -4,6 +4,16 @@
     --bg: #ffffff;
     --fg: #141414;
     --text-size-base: 1rem;
+    --nav-height: 4rem;
+    --main-max-width: 90rem;
+    --side-max-width: 16rem;
+    --content-max-width: 50rem;
+    --meta-tag-max-width: 10rem;
+    --backtop-height: 2.5rem;
+    --paginator-height: 2.5rem;
+    --paginator-number-max-width: 7.5rem;
+    --block-title-max-width: 20rem;
+    --block-border-radius: 1rem;
     --text-color: #141414;
     --text-meta-color: #505050;
     --text-meta-hover-color: #141414;
@@ -12,25 +22,21 @@
     --nav-bg: rgba(255, 255, 255, 0.8);
     --nav-bf: blur(12px) saturate(180%);
     --nav-shadow: 0 2px 4px rgba(0, 0 ,0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.06);
-    --nav-height: 4rem;
-    --main-max-width: 90rem;
-    --side-max-width: 16rem;
-    --content-max-width: 50rem;
-    --meta-tag-max-width: 15rem;
-    --block-title-max-width: 20rem;
-    --backtop-height: 2.5rem;
-    --paginator-height: 2.5rem;
+    --side-bg: color-mix(in srgb, currentColor 5%, var(--bg));
     --hr-color: #d7d7d7;
     --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
     --link-color: #2440ff;
     --link-hover-color: #008000;
-    --code-inline-bg: #ebebeb;
+    --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
     --code-border: 1px solid #008000;
     --table-th-bg: #008000;
     --table-th-fg: #ffffff;
     --table-even: #ebebeb;
-    --block-border: none;
-    --block-shadow: 0 8px 16px rgb(200, 200, 200);
+    --block-border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+    --block-bg: color-mix(in srgb, currentColor 5%, white);
+    --block-summary-bg: color-mix(in srgb, currentColor 10%, white);
+    /* --block-shadow: 0 8px 16px rgb(200, 200, 200); */
+    --block-shadow: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,17 +53,21 @@
         --nav-bg: rgba(1, 1, 1, 0.8);
         --nav-bf: blur(12px) saturate(180%);
         --nav-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+        --side-bg: color-mix(in srgb, currentColor 5%, var(--bg));
         --hr-color: #282828;
         --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
         --link-color: #2440ff;
         --link-hover-color: #008000;
-        --code-inline-bg: #3c3c3c;
+        --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
         --code-border: 1px solid #008000;
         --table-th-bg: #008000;
         --table-th-fg: #ffffff;
         --table-even: #3c3c3c;
-        --block-border: none;
-        --block-shadow: inset 0 -4px 16px rgb(52, 52, 52);
+        --block-border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+        --block-bg: color-mix(in srgb, currentColor 5%, white);
+        --block-summary-bg: color-mix(in srgb, currentColor 10%, white);
+        /* --block-shadow: inset 0 -4px 16px rgb(52, 52, 52); */
+        --block-shadow: none;
     }
 }
 

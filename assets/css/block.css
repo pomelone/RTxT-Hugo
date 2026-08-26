@@ -1,10 +1,10 @@
 .callout-block {
     margin: 1rem 0;
-    border: none;
-    border-radius: 1.25rem;
+    border: var(--block-border);
+    border-radius: var(--block-border-radius);
     overflow: hidden;
     color: var(--quote-color);
-    background-color: color-mix(in srgb, currentColor 5%, white);
+    background-color: var(--block-bg);
     box-shadow: var(--block-shadow);
 }
 
@@ -33,14 +33,13 @@
     padding: 0.8rem 1rem;
 }
 
-.callout-block .collapse-summary,
-.callout-block .collapse-button {
+.callout-block .collapse-summary {
     font-size: 1.1em;
     font-weight: 600;
 }
 
 .callout-block .collapse-summary {
-    background-color: color-mix(in srgb, currentColor 10%, white);
+    background-color: var(--block-summary-bg);
 }
 
 .callout-block .callout-title {

@@ -5,7 +5,7 @@ table {
     border: var(--block-border);
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 1.25rem;
+    border-radius: var(--block-border-radius);
     box-shadow: var(--block-shadow);
     overflow: hidden;
 }

@@ -1,7 +1,7 @@
 figure {
     margin: 0.4em 0;
     border: var(--block-border);
-    border-radius: 1.25rem;
+    border-radius: var(--block-border-radius);
     box-shadow: var(--block-shadow);
     overflow: hidden;
 }
@@ -17,7 +17,6 @@ figure figcaption {
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: center;
     text-align: center;
     color: var(--text-meta-color);
     font-size: 0.9em;
