@@ -10,15 +10,6 @@
     text-wrap: balance;
 }
 
-.title img,
-.page-title img,
-.page-meta img,
-.content-meta img {
-    width: 1.2em;
-    height: 1.2em;
-    vertical-align: middle;
-}
-
 .page {
     margin: 0 0 1rem;
     display: flex;

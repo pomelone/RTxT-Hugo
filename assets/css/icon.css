@@ -1,12 +1,12 @@
-.icon {
+.icon-sc {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
 }
 
-.icon img,
-.icon svg {
+.icon-sc img,
+.icon-sc svg {
     width: auto;
     height: 1.2em;
     vertical-align: middle;

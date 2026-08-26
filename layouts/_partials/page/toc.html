@@ -24,10 +24,8 @@
         <hr>
         <div class="toc-tags">
             {{- range . }}
-            <a href="{{ .RelPermalink }}">
-                {{- with index hugo.Data.icons "tag" -}}
-                {{- . | safeHTML -}}
-                {{- end -}}
+            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+                <svg class="icon"><use href="#tag"></use></svg>
                 <span>{{ .LinkTitle }}</span></a>
             {{- end }}
         </div>

@@ -19,12 +19,12 @@
 {{- if $link -}}
     {{- $link = urls.Parse $link -}}
     {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
-    <a class="badge" href="{{ $link }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }} target="_blank" rel="noopener noreferrer">
+    <a class="badge-sc" href="{{ $link }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }} target="_blank" rel="noopener noreferrer">
     {{- else -}}
-    <a class="badge" href="{{ $link }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+    <a class="badge-sc" href="{{ $link }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
     {{- end -}}
 {{- else -}}
-    <span class="badge"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+    <span class="badge-sc"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
 {{- end }}
     {{ with $icon -}}
         {{- with index hugo.Data.icons . -}}

@@ -4,7 +4,9 @@
     {{- errorf "icon shortcode requires an icon name, e.g. {{< icon \"github\" >}}" -}}
 {{- end -}}
 {{- with index hugo.Data.icons $name -}}
-<span class="icon"{{ with $size }} style="font-size: {{ . }}"{{ end }}>{{- . | safeHTML -}}</span>
+<span class="icon-sc"{{ with $size }} style="font-size: {{ . }}"{{ end }}>
+    {{- . | safeHTML -}}
+</span>
 {{- else -}}
     {{- errorf "icon shortcode: icon %q not found in data/icons.toml" $name -}}
 {{- end -}}

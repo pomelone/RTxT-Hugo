@@ -22,24 +22,21 @@
         {{ if $link -}}
             {{- $link = urls.Parse $link -}}
             {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
-            <a class="code-filename" href="{{ $link }}" target="_blank" rel="noopener noreferrer">
-                {{- with index hugo.Data.icons "code_file" -}}
-                {{- . | safeHTML -}}
-                {{- end -}}
-                <span>{{ $filename | default $lang }}</span></a>
+            <a class="code-filename" href="{{ $link }}" title="{{ $filename | default $lang }}" target="_blank" rel="noopener noreferrer">
+                <svg class="icon"><use href="#code_file"></use></svg>
+                <span>{{ $filename | default $lang }}</span>
+            </a>
             {{- else -}}
-            <a class="code-filename" href="{{ $link }}">
-                {{- with index hugo.Data.icons "code_file" -}}
-                {{- . | safeHTML -}}
-                {{- end -}}
-                <span>{{ $filename | default $lang }}</span></a>
+            <a class="code-filename" href="{{ $link }}" title="{{ $filename | default $lang }}">
+                <svg class="icon"><use href="#code_file"></use></svg>
+                <span>{{ $filename | default $lang }}</span>
+            </a>
             {{- end -}}
         {{- else -}}
-            <div class="code-filename">
-                {{- with index hugo.Data.icons "code_file" -}}
-                {{- . | safeHTML -}}
-                {{- end -}}
-                <span>{{ $filename | default $lang }}</span></div>
+            <span class="code-filename" title="{{ $filename | default $lang }}">
+                <svg class="icon"><use href="#code_file"></use></svg>
+                <span>{{ $filename | default $lang }}</span>
+            </span>
         {{- end }}
         <span class="collapse-actions">
             {{ partial "component/copy.html" }}

@@ -1,7 +1,5 @@
 <div class="backtop-container">
     <button id="backtop" class="backtop-button" type="button" title="{{ i18n "backtop" }}">
-        {{- with index hugo.Data.icons "arrow_up_circle" -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
+        <svg><use href="#arrow_up_circle"></use></svg>
     </button>
 </div>

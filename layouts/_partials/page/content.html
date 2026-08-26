@@ -1,26 +1,18 @@
 <h1 class="title">
     {{ .Title }}
     {{ if .Draft -}}
-        {{- with index hugo.Data.icons "draft" -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
+        <svg class="icon"><title>{{ i18n "status.draft" }}</title><use href="#draft"></use></svg>
     {{- end }}
     {{ if gt .PublishDate now -}}
-        {{- with index hugo.Data.icons "future" -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
+        <svg class="icon"><title>{{ i18n "status.future" }}</title><use href="#future"></use></svg>
     {{- end }}
     {{ if and (isset .Params "expirydate") (lt .ExpiryDate now) -}}
-        {{- with index hugo.Data.icons "expired" -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
+        <svg class="icon"><title>{{ i18n "status.expired" }}</title><use href="#expired"></use></svg>
     {{- end }}
 </h1>
 <div class="page">
     <div class="content-meta">
-        {{ with index hugo.Data.icons "date" -}}
-        {{- . | safeHTML -}}
-        {{- end }}
+        <svg class="icon"><title>{{ i18n "date_lastmod" }}</title><use href="#date"></use></svg>
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
     </div>
     <div id="content">{{ .Content }}</div>

@@ -34,6 +34,14 @@ svg {
     vertical-align: middle;
 }
 
+img.icon,
+svg.icon {
+    max-width: 100%;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+}
+
 button {
     margin: 0;
     padding: 0;

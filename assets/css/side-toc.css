@@ -126,9 +126,3 @@
     gap: 0 1rem;
     color: var(--text-meta-color);
 }
-
-.toc-tags img {
-    width: 1.2em;
-    height: 1.2em;
-    vertical-align: middle;
-}

@@ -1,4 +1,4 @@
-.badge {
+.badge-sc {
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
@@ -14,11 +14,11 @@
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-a.badge:hover {
+a.badge-sc:hover {
     transform: translateY(-3px);
     text-decoration: none;
 }
 
-.badge:active {
+.badge-sc:active {
     transform: scale(0.9);
 }

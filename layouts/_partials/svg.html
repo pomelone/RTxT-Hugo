@@ -1,0 +1,3 @@
+{{- with resources.Get "ui/ui.svg" -}}
+{{ .Content | safeHTML }}
+{{- end -}}
