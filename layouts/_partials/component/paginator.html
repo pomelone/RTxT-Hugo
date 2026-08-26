@@ -6,11 +6,9 @@
         <a href="{{ $paginator.Prev.URL }}" title="{{ i18n "pagination.prev" }}">
             <button class="paginator-button" type="button">
         {{- else -}}
-        <button class="paginator-button hidden">
+        <button class="paginator-button hidden" type="button">
         {{- end -}}
-            {{- with index hugo.Data.icons "arrow_left_circle" -}}
-            {{- . | safeHTML -}}
-            {{- end -}}
+        <svg><use href="#arrow_left_circle"></use></svg>
         {{- if $paginator.HasPrev -}}
             </button>
         </a>
@@ -18,17 +16,17 @@
         </button>
         {{- end }}
 
-        <button class="paginator-number-button"><span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span></button>
+        <button class="paginator-number-button" title="{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}" type="button">
+            <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+        </button>
         
         {{ if $paginator.HasNext -}}
         <a href="{{ $paginator.Next.URL }}" title="{{ i18n "pagination.next" }}">
             <button class="paginator-button" type="button">
         {{- else -}}
-        <button class="paginator-button hidden">
+        <button class="paginator-button hidden" type="button">
         {{- end -}}
-            {{- with index hugo.Data.icons "arrow_right_circle" -}}
-            {{- . | safeHTML -}}
-            {{- end -}}
+        <svg><use href="#arrow_right_circle"></use></svg>
         {{- if $paginator.HasNext -}}
             </button>
         </a>

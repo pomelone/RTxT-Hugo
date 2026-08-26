@@ -1,20 +1,14 @@
 <button class="copy-button" type="button">
     <span class="copy-show" title="{{ i18n "copy" }}">
-        {{- with index hugo.Data.icons "copy" -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
+        <svg class="icon"><use href="#copy"></use></svg>
         <!-- <span>{{ i18n "copy" }}</span> -->
     </span>
     <span class="copy-successful" title="{{ i18n "copied" }}">
-        {{- with index hugo.Data.icons "copy_check" -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
+        <svg class="icon"><use href="#copy_check"></use></svg>
         <!-- <span>{{ i18n "copied" }}</span> -->
     </span>
     <span class="copy-failed" title="{{ i18n "copy_failed" }}">
-        {{- with index hugo.Data.icons "copy_failed" -}}
-        {{- . | safeHTML -}}
-        {{- end -}}
+        <svg class="icon"><use href="#copy_failed"></use></svg>
         <!-- <span>{{ i18n "copy_failed" }}</span> -->
     </span>
 </button>

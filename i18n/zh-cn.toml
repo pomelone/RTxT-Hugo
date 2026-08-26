@@ -1,5 +1,7 @@
 logo = 'Logo'
 date = '日期'
+date_lastmod = '最后修改日期'
+date_pub = '发布日期'
 tag = '标签'
 backtop = '返回顶部'
 blog = '博客'

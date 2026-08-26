@@ -1,5 +1,7 @@
 logo = 'Logo'
 date = 'Date'
+date_lastmod = 'Last Modified Date'
+date_pub = 'Publish Date'
 tag = 'Tag'
 backtop = 'Back to top'
 blog = 'Blog'

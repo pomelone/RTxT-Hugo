@@ -18,9 +18,9 @@
     <meta name="description" content="{{ site.Params.description }}">
     {{- end }}
 
-    {{ partial "head/styles.html" . }}
-    {{ partial "head/scripts.html" . }}
-    {{ partial "head/math.html" . }}
+    {{ partial "head/styles.html" }}
+    {{ partial "head/scripts.html" }}
+    {{ partial "head/math.html" }}
 
     {{- with resources.Get "css/custom.css" }}
     <link rel="stylesheet" type="text/css" href="{{ (. | minify | fingerprint).RelPermalink }}">
