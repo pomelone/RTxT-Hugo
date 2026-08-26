@@ -15,7 +15,7 @@
         {{- else -}}
         </span>
         {{- end }}
-        <span class="paginator-button">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+        <span class="paginator-number-button">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
         {{ if $paginator.HasNext -}}
         <a class="paginator-button" href="{{ $paginator.Next.URL }}" title="{{ i18n "pagination.next" }}">
         {{- else -}}
