@@ -5,6 +5,7 @@
     vertical-align: middle;
 }
 
+.icon img,
 .icon svg {
     width: auto;
     height: 1.2em;

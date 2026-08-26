@@ -29,8 +29,7 @@
 }
 
 .nav-logo,
-.menu,
-.menu-activate {
+.menu {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -42,16 +41,14 @@
 
 .nav-logo:active,
 .menu:active,
-.menu-activate:active {
+.menu.activated:active {
     transform: scale(0.9);
 }
 
 .nav-logo img,
 .nav-logo svg,
 .menu img,
-.menu svg,
-.menu-activate img,
-.menu-activate svg {
+.menu svg {
     width: 2em;
     height: 2em;
     vertical-align: middle;
@@ -71,30 +68,25 @@
     text-decoration: none;
 }
 
-.menu,
-.menu-activate {
+.menu {
     padding: 0.5rem;
     font-weight: 500;
     font-size: 0.9rem;
+    color: var(--text-bar-color);
 }
 
 .menu:hover,
-.menu-activate:hover {
+.menu.activated:hover {
     color: var(--text-bar-hover-color);
     text-decoration: none;
 }
 
+.menu.activated {
+    color: var(--text-color);
+}
+
 @media (max-width: 50rem) {
-    .menu,
-    .menu-activate {
+    .menu {
         display: none;
     }
-}
-
-.menu {
-    color: var(--text-bar-color);
-}
-
-.menu-activate {
-    color: var(--text-color);
 }

@@ -3,31 +3,37 @@
 <div class="paginator-container">
     <div class="paginator-nav">
         {{ if $paginator.HasPrev -}}
-        <a class="paginator-button" href="{{ $paginator.Prev.URL }}" title="{{ i18n "pagination.prev" }}">
+        <a href="{{ $paginator.Prev.URL }}" title="{{ i18n "pagination.prev" }}">
+            <button class="paginator-button" type="button">
         {{- else -}}
-        <span class="paginator-button-hidden">
+        <button class="paginator-button hidden">
         {{- end -}}
             {{- with index hugo.Data.icons "arrow_left_circle" -}}
             {{- . | safeHTML -}}
             {{- end -}}
         {{- if $paginator.HasPrev -}}
+            </button>
         </a>
         {{- else -}}
-        </span>
+        </button>
         {{- end }}
-        <span class="paginator-number-button">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+
+        <button class="paginator-number-button"><span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span></button>
+        
         {{ if $paginator.HasNext -}}
-        <a class="paginator-button" href="{{ $paginator.Next.URL }}" title="{{ i18n "pagination.next" }}">
+        <a href="{{ $paginator.Next.URL }}" title="{{ i18n "pagination.next" }}">
+            <button class="paginator-button" type="button">
         {{- else -}}
-        <span class="paginator-button-hidden">
+        <button class="paginator-button hidden">
         {{- end -}}
             {{- with index hugo.Data.icons "arrow_right_circle" -}}
             {{- . | safeHTML -}}
             {{- end -}}
         {{- if $paginator.HasNext -}}
+            </button>
         </a>
         {{- else -}}
-        </span>
+        </button>
         {{- end }}
     </div>
 </div>

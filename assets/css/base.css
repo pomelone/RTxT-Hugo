@@ -25,6 +25,7 @@
     --side-bg: color-mix(in srgb, currentColor 5%, var(--bg));
     --hr-color: #d7d7d7;
     --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
+    --button-bg: #f3f3f3;
     --link-color: #2440ff;
     --link-hover-color: #008000;
     --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
@@ -56,6 +57,7 @@
         --side-bg: color-mix(in srgb, currentColor 5%, var(--bg));
         --hr-color: #282828;
         --scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
+        --button-bg: #f3f3f3;
         --link-color: #2440ff;
         --link-hover-color: #008000;
         --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);

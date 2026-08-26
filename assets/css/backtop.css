@@ -1,7 +1,7 @@
 .backtop-container {
     position: sticky;
     z-index: 99;
-    bottom: calc(var(--paginator-height) + 2rem);
+    bottom: calc(var(--paginator-height) * 2 + 1rem);
     display: flex;
     align-self: flex-end;
     align-items: center;
@@ -14,8 +14,6 @@
     overflow: hidden;
     font-weight: 700;
     font-size: 1rem;
-    color: var(--theme-color);
-    background-color: #ffffff;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
@@ -27,8 +25,7 @@
 }
 
 .backtop-button:hover {
-    opacity: 0.8;
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
 .backtop-button:active {

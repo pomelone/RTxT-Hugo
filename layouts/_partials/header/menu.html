@@ -3,7 +3,7 @@
     {{- $name := i18n .Identifier | default .Name -}}
     {{ if .Page -}}
         {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
-            <a class="menu-activate" href="{{ .Page.RelPermalink }}">
+            <a class="menu activated" href="{{ .Page.RelPermalink }}">
         {{- else -}}
             <a class="menu" href="{{ .Page.RelPermalink }}">
         {{- end -}}
