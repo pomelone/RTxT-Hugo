@@ -1,7 +1,7 @@
 {{- $paginator := . -}}
 {{- range $paginator.Pages }}
 <div class="page">
-    <div class="page-title">
+    <div class="title">
         <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         {{ if .Draft -}}
             {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "draft" "class" "icon" "title" (i18n "status.draft")) }}
@@ -13,7 +13,7 @@
             {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "expired" "class" "icon" "title" (i18n "status.expired")) }}
         {{- end }}
     </div>
-    <div class="page-meta">
+    <div class="meta">
         {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date_lastmod") "asset" "ui/static-ui.svg") }}
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
     </div>
@@ -21,7 +21,7 @@
     <div class="page-summary">{{ . | plainify }}</div>
     {{- end }}
     {{ with .GetTerms "tags" -}}
-    <div class="page-meta">
+    <div class="meta">
         {{- range . }}
         <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
             {{ partial "component/svg-sprite.html" (dict "name" "tag" "class" "icon" "asset" "ui/static-ui.svg") }}
