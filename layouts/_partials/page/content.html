@@ -1,18 +1,18 @@
 <h1 class="title">
     {{ .Title }}
     {{ if .Draft -}}
-        <svg class="icon"><title>{{ i18n "status.draft" }}</title><use href="#draft"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "draft" "class" "icon" "title" (i18n "status.draft")) }}
     {{- end }}
     {{ if gt .PublishDate now -}}
-        <svg class="icon"><title>{{ i18n "status.future" }}</title><use href="#future"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "future" "class" "icon" "title" (i18n "status.future")) }}
     {{- end }}
     {{ if and (isset .Params "expirydate") (lt .ExpiryDate now) -}}
-        <svg class="icon"><title>{{ i18n "status.expired" }}</title><use href="#expired"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "expired" "class" "icon" "title" (i18n "status.expired")) }}
     {{- end }}
 </h1>
 <div class="page">
     <div class="content-meta">
-        <svg class="icon"><title>{{ i18n "date_lastmod" }}</title><use href="#date"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date_lastmod") "asset" "ui/static-ui.svg") }}
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
     </div>
     <div id="content">{{ .Content }}</div>

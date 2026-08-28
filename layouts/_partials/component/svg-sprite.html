@@ -1,0 +1,62 @@
+{{- /*
+    Using the SVG from SVG sprites
+    Usage: 
+        partial "svg-sprite.html" (dict "mode" "external" "name" "tag" "class" "icon" "title" "Tags")
+    mode(default external):
+        - sprite: Only inline the SVG sprite into the file, but don't use the SVG
+        - external: Using the SVG from external SVG sprite
+        - inline: Using the SVG from inline-to-file SVG sprite
+        - inline-sprite: Use the SVG and inline SVG sprite into the file
+    path: resolved from the 'static' directory
+    asset: resolved from the 'assets' directory
+*/ -}}
+{{- $mode := .mode | default "external" -}}
+{{- $name := .name -}}
+{{- $class := .class -}}
+{{- $title := .title -}}
+{{- $path := .path -}}
+{{- $asset := .asset -}}
+
+{{- if and (ne $mode "sprite") (not $name) -}}
+    {{- errorf "svg-sprite partial: 'name' is required" -}}
+{{- end -}}
+
+{{- $spriteURL := "" -}}
+{{- $spriteContent := "" -}}
+{{- if ne $mode "inline" -}}
+{{- if $path -}}
+    {{- if fileExists (printf "static/%s" $path) -}}
+        {{- if or (eq $mode "sprite") (eq $mode "inline-sprite") -}}
+            {{- $spriteContent = readFile (printf "static/%s" $path) -}}
+        {{- end -}}
+    {{- else -}}
+        {{- errorf "svg-sprite partial: sprite not found at 'static/%s'" $path -}}
+    {{- end -}}
+    {{- $spriteURL = $path | relLangURL -}}
+{{- else if $asset -}}
+    {{- $res := resources.Get $asset -}}
+    {{- with $res -}}
+        {{- if or (eq $mode "sprite") (eq $mode "inline-sprite") -}}
+            {{- $spriteContent = .Content -}}
+        {{- end -}}
+    {{- else -}}
+        {{- errorf "svg-sprite partial: sprite not found at 'assets/%s'" $asset -}}
+    {{- end -}}
+    {{- $spriteURL = ($res | minify | fingerprint).RelPermalink -}}
+{{- else -}}
+    {{- errorf "svg-sprite partial: 'path' or 'asset' is required" -}}
+{{- end -}}
+{{- end -}}
+
+{{- if eq $mode "sprite" -}}
+    {{ $spriteContent | safeHTML }}
+{{- else if eq $mode "external" -}}
+    <svg{{ with $class }} class="{{ . }}"{{ end }}>{{ with $title }}<title>{{ . }}</title>{{ end }}<use href="{{ $spriteURL }}#{{ $name }}"></use></svg>
+{{- else if eq $mode "inline" -}}
+    <svg{{ with $class }} class="{{ . }}"{{ end }}>{{ with $title }}<title>{{ . }}</title>{{ end }}<use href="#{{ $name }}"></use></svg>
+{{- else if eq $mode "inline-sprite" -}}
+    {{ $spriteContent | safeHTML }}
+    <svg{{ with $class }} class="{{ . }}"{{ end }}>{{ with $title }}<title>{{ . }}</title>{{ end }}<use href="#{{ $name }}"></use></svg>
+{{- else -}}
+    {{- errorf "svg-sprite partial: mode '%s' not supported" $mode -}}
+{{- end -}}

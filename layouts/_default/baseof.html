@@ -2,7 +2,7 @@
 <html lang="{{ site.Language.Locale }}">
 {{ partial "head.html" . }}
 <body>
-{{ partial "svg.html" }}
+{{ partial "component/svg-sprite.html" (dict "mode" "sprite" "asset" "ui/animated-ui.svg") }}
 {{ partial "header.html" . }}
 <main>
 {{ block "main" . -}}{{- end }}

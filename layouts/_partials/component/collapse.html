@@ -1,10 +1,10 @@
 <button class="collapse-button" type="button">
     <span class="collapse-open" title="{{ i18n "collapse.hide" }}">
-        <svg class="icon"><use href="#chevron-up"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "name" "chevron-up" "class" "icon" "asset" "ui/static-ui.svg") }}
         <!-- <span>{{ i18n "collapse.hide" }}</span> -->
     </span>
     <span class="collapse-closed" title="{{ i18n "collapse.show" }}">
-        <svg class="icon"><use href="#chevron-down"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
         <!-- <span>{{ i18n "collapse.show" }}</span> -->
     </span>
 </button>

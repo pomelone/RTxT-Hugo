@@ -1,4 +1,5 @@
 {{- $url := urls.Parse .Destination -}}
+
 {{- if or (eq $url.Scheme "http") (eq $url.Scheme "https") -}}
 <a href="{{ .Destination | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .Text | safeHTML }}</a>
 {{- else -}}

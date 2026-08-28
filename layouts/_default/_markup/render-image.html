@@ -3,7 +3,7 @@
 {{- $title := .Title -}}
 <figure>
     <img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
-    {{ if $title -}}
-    <figcaption>{{ $title }}</figcaption>
+    {{ with $title -}}
+    <figcaption>{{ . }}</figcaption>
     {{- end }}
 </figure>

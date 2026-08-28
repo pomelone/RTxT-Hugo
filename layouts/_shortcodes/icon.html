@@ -1,8 +1,10 @@
 {{- $name := .Get "name" | default (.Get 0) -}}
 {{- $size := .Get "size" | default (.Get 1) -}}
+
 {{- if not $name -}}
     {{- errorf "icon shortcode requires an icon name, e.g. {{< icon \"github\" >}}" -}}
 {{- end -}}
+
 {{- with index hugo.Data.icons $name -}}
 <span class="icon-sc"{{ with $size }} style="font-size: {{ . }}"{{ end }}>
     {{- . | safeHTML -}}

@@ -23,19 +23,17 @@
             {{- $link = urls.Parse $link -}}
             {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
             <a class="code-filename" href="{{ $link }}" title="{{ $filename | default $lang }}" target="_blank" rel="noopener noreferrer">
-                <svg class="icon"><use href="#code_file"></use></svg>
-                <span>{{ $filename | default $lang }}</span>
-            </a>
             {{- else -}}
             <a class="code-filename" href="{{ $link }}" title="{{ $filename | default $lang }}">
-                <svg class="icon"><use href="#code_file"></use></svg>
-                <span>{{ $filename | default $lang }}</span>
-            </a>
             {{- end -}}
         {{- else -}}
             <span class="code-filename" title="{{ $filename | default $lang }}">
-                <svg class="icon"><use href="#code_file"></use></svg>
-                <span>{{ $filename | default $lang }}</span>
+        {{- end }}
+            {{ partial "component/svg-sprite.html" (dict "name" "code_file" "class" "icon" "asset" "ui/static-ui.svg") }}
+            <span>{{ $filename | default $lang }}</span>
+        {{ if $link -}}
+            </a>
+        {{- else -}}
             </span>
         {{- end }}
         <span class="collapse-actions">
