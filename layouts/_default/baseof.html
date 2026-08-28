@@ -2,9 +2,9 @@
 <html lang="{{ site.Language.Locale }}">
 {{ partial "head.html" . }}
 <body>
-{{ partial "component/svg-sprite.html" (dict "mode" "sprite" "asset" "ui/animated-ui.svg") }}
 {{ partial "header.html" . }}
 <main>
+{{ partial "component/svg-sprite.html" (dict "mode" "sprite" "asset" "ui/animated-ui.svg") }}
 {{ block "main" . -}}{{- end }}
 </main>
 {{ partial "footer.html" }}

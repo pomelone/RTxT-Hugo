@@ -1,0 +1,21 @@
+{{- $enable := true -}}
+{{- if isset .Params "enable_breadcrumb" -}}
+    {{- $enable = .Params.enable_breadcrumb -}}
+{{- else if and (isset site.Params "features") (isset site.Params.features "enable_breadcrumb") -}}
+    {{- $enable = site.Params.features.enable_breadcrumb -}}
+{{- end -}}
+
+{{- if and $enable (not .IsHome) -}}
+<nav class="breadcrumb">
+    <ol>
+    {{- range .Ancestors.Reverse }}
+        {{ if .IsHome -}}
+        <li><a href="{{ .RelPermalink }}">{{ i18n "home" }}</a></li>
+        {{- else -}}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{- end }}
+    {{- end }}
+        <li class="activated">{{ .LinkTitle }}</li>
+    </ol>
+</nav>
+{{- end -}}

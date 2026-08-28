@@ -1,30 +1,31 @@
-{{- $displayToc := true -}}
-{{- if isset .Params "display_toc" -}}
-    {{- $displayToc = .Params.display_toc -}}
-{{- else if and (isset site.Params "toc") (isset site.Params.toc "display_toc") -}}
-    {{- $displayToc = site.Params.toc.display_toc -}}
+{{- $enableToc := true -}}
+{{- if isset .Params "enable_toc" -}}
+    {{- $enableToc = .Params.enable_toc -}}
+{{- else if and (isset site.Params "features") (isset site.Params.features "enable_toc") -}}
+    {{- $enableToc = site.Params.features.enable_toc -}}
 {{- end -}}
 
-{{- $displayTag := true -}}
-{{- if isset .Params "display_tag" -}}
-    {{- $displayTag = .Params.display_tag -}}
-{{- else if and (isset site.Params "toc") (isset site.Params.toc "display_tag") -}}
-    {{- $displayTag = site.Params.toc.display_tag -}}
+{{- $enableTag := true -}}
+{{- if isset .Params "enable_tag" -}}
+    {{- $enableTag = .Params.enable_tag -}}
+{{- else if and (isset site.Params "features") (isset site.Params.features "enable_tag") -}}
+    {{- $enableTag = site.Params.features.enable_tag -}}
 {{- end -}}
 
-<div class="toc-container">
-{{- if .IsPage -}}
-    {{- if $displayToc }}
+<div class="toc-container{{ if and .IsPage (or $enableToc $enableTag) }} visible{{ end }}">
+    {{- if $enableToc }}
     <div class="toc-doc">
         <p class="toc-title">{{ i18n "toc.title" }}</p>
         {{ .TableOfContents }}
     </div>
     {{- end -}}
 
-    {{- if $displayTag -}}
+    {{- if $enableTag -}}
     {{- with .GetTerms "tags" }}
     <div class="toc-meta">
+        {{ if $enableToc -}}
         <hr>
+        {{- end }}
         <div class="toc-tags">
             {{- range . }}
             <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
@@ -35,5 +36,4 @@
     </div>
     {{- end -}}
     {{- end -}}
-{{ end -}}
 </div>
