@@ -1,7 +1,8 @@
 .backtop-container {
     position: sticky;
     z-index: 99;
-    bottom: calc(var(--paginator-height) * 2 + 1rem);
+    bottom: calc(var(--paginator-height) + 1rem);
+    margin-bottom: 0.5rem;
     display: flex;
     align-self: flex-end;
     align-items: center;
@@ -12,16 +13,18 @@
     height: var(--backtop-height);
     border-radius: var(--backtop-height);
     overflow: hidden;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1rem;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .backtop-button.visible {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 .backtop-button:hover {

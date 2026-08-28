@@ -1,7 +1,8 @@
 .paginator-container {
     position: sticky;
     z-index: 99;
-    bottom: 0;
+    bottom: 0.5rem;
+    margin-bottom: 0.5rem;
     width: 100%;
 }
 
@@ -13,7 +14,6 @@
 }
 
 .paginator-nav {
-    padding: 0 0 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,7 +27,7 @@
     height: var(--paginator-height);
     border-radius: var(--paginator-height);
     overflow: hidden;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1rem;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }

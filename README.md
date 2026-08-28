@@ -95,6 +95,22 @@ l = "string l"
 
 普通引用块为 Note 样式，不显示标题。
 
+### 面包屑
+
+文章页顶部显示面包屑导航（首页 / 所属目录 / 当前页），默认开启。
+
+可在 **hugo.toml** 或页面 Front Matter 中关闭：
+
+```toml
+# hugo.toml
+[params.features]
+enable_breadcrumb = false
+```
+
+```toml
+enable_breadcrumb = false
+```
+
 ### 数学公式（KaTeX）
 
 支持的分隔符：行内 `$...$`、`\(...\)`；块级 `$$...$$`、`\[...\]`。KaTeX 资源默认从 jsDelivr CDN 加载。
@@ -128,16 +144,16 @@ l = "string l"
 - 在 **hugo.toml** 中配置
 
     ```toml
-    [params.toc]
-    display_toc = true
-    display_tag = true
+    [params.features]
+    enable_toc = true
+    enable_tag = true
     ```
 
 - 在页面 Front Matter 中配置
 
     ```toml
-    display_toc = true
-    display_tag = true
+    enable_toc = true
+    enable_tag = true
     ```
 
 - 在 **hugo.toml** 中配置目录显示等级以及是否排序

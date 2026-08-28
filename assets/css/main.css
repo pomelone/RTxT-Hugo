@@ -60,8 +60,6 @@ button {
 
 .main-container,
 .content-wrap {
-    margin: 0 auto;
-    max-width: var(--main-max-width);
     min-height: 100%;
     width: 100%;
     display: flex;
@@ -69,7 +67,13 @@ button {
     justify-content: center;
 }
 
+.main-container {
+    margin: 0 auto;
+    max-width: var(--main-max-width);
+}
+
 .content-wrap {
+    margin: 0 0;
     padding: 0 2rem;
     max-width: var(--content-max-width);
     min-width: 0;

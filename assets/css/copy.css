@@ -8,7 +8,7 @@
 }
 
 .copy-button:hover {
-    color: var(--theme-color);
+    color: var(--text-meta-hover-color);
     transform: scale(0.9);
 }
 

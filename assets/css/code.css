@@ -74,8 +74,8 @@ pre code {
 }
 
 .code-block a.code-filename:hover {
-    color: var(--theme-color);
-    text-decoration: none;
+    color: var(--text-meta-hover-color);
+    text-decoration: underline;
 }
 
 .code-block a.code-filename:active {
