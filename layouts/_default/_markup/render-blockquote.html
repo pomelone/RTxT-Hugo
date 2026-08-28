@@ -15,7 +15,7 @@
 {{- end }}
     <div class="collapse-summary">
         <span class="callout-title" title="{{ i18n (printf "callout.%s" $type) }}">
-            <svg class="icon"><use href="#{{ $type }}"></use></svg>
+            {{ partial "component/svg-sprite.html" (dict "name" $type "class" "icon" "asset" "ui/static-ui.svg") }}
             <span>{{ title ($title | default (i18n (printf "callout.%s" $type)) | default $type) }}</span>
         </span>
         {{ partial "component/collapse.html" }}

@@ -4,28 +4,31 @@
 {{- else if and (isset site.Params "toc") (isset site.Params.toc "display_toc") -}}
     {{- $displayToc = site.Params.toc.display_toc -}}
 {{- end -}}
+
 {{- $displayTag := true -}}
 {{- if isset .Params "display_tag" -}}
     {{- $displayTag = .Params.display_tag -}}
 {{- else if and (isset site.Params "toc") (isset site.Params.toc "display_tag") -}}
     {{- $displayTag = site.Params.toc.display_tag -}}
 {{- end -}}
+
 <div class="toc-container">
-{{- if .IsPage }}
-    {{ if $displayToc -}}
+{{- if .IsPage -}}
+    {{- if $displayToc }}
     <div class="toc-doc">
         <p class="toc-title">{{ i18n "toc.title" }}</p>
         {{ .TableOfContents }}
     </div>
-    {{- end }}
-    {{ if $displayTag -}}
-    {{- with .GetTerms "tags" -}}
+    {{- end -}}
+
+    {{- if $displayTag -}}
+    {{- with .GetTerms "tags" }}
     <div class="toc-meta">
         <hr>
         <div class="toc-tags">
             {{- range . }}
             <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
-                <svg class="icon"><use href="#tag"></use></svg>
+                {{ partial "component/svg-sprite.html" (dict "name" "tag" "class" "icon" "asset" "ui/static-ui.svg") }}
                 <span>{{ .LinkTitle }}</span></a>
             {{- end }}
         </div>

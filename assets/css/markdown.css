@@ -17,6 +17,7 @@
     margin: 0 0 0.8rem;
     font-weight: 700;
     color: var(--text-color);
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
 }
 
 #content h1 {

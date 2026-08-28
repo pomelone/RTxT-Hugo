@@ -26,6 +26,7 @@
 {{- else -}}
     <span class="badge-sc"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
 {{- end }}
+
     {{ with $icon -}}
         {{- with index hugo.Data.icons . -}}
             {{- . | safeHTML -}}
@@ -34,6 +35,7 @@
         {{- end -}}
     {{- end }}
     <span>{{ $content }}</span>
+
 {{ if $link -}}
 </a>
 {{- else -}}

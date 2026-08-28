@@ -1,5 +1,6 @@
 {{- if site.Params.math.enable -}}
     {{- $engine := site.Params.math.engine -}}
+    
     {{- if eq $engine "katex" -}}
     {{- $cdn := site.Params.math.katex.cdn -}}
     {{- $version := site.Params.math.katex.version -}}

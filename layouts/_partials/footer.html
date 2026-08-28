@@ -1,7 +1,9 @@
 {{- $footerEnable := true -}}
+
 {{- if and (isset site.Params "footer") (isset site.Params.footer "enable") -}}
     {{- $footerEnable = site.Params.footer.enable -}}
 {{- end -}}
+
 {{- if $footerEnable -}}
 <footer class="footer-container">
     <hr>

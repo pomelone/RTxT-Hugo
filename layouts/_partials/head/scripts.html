@@ -13,6 +13,7 @@
 
 {{- if site.Params.math.enable -}}
     {{- $engine := site.Params.math.engine -}}
+
     {{- if eq $engine "katex" -}}
     {{- with resources.Get "js/katex.js" -}}
         {{- $scripts = $scripts | append . -}}

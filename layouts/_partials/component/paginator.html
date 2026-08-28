@@ -8,7 +8,7 @@
         {{- else -}}
         <button class="paginator-button hidden" type="button">
         {{- end -}}
-        <svg><use href="#arrow_left_circle"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow_left_circle") }}
         {{- if $paginator.HasPrev -}}
             </button>
         </a>
@@ -26,7 +26,7 @@
         {{- else -}}
         <button class="paginator-button hidden" type="button">
         {{- end -}}
-        <svg><use href="#arrow_right_circle"></use></svg>
+        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow_right_circle") }}
         {{- if $paginator.HasNext -}}
             </button>
         </a>
