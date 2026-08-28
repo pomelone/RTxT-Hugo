@@ -11,7 +11,7 @@
     {{- end }}
 </h1>
 <div class="page">
-    <div class="content-meta">
+    <div class="meta content">
         {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date_lastmod") "asset" "ui/static-ui.svg") }}
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
     </div>

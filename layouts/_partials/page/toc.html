@@ -12,27 +12,23 @@
     {{- $enableTag = site.Params.features.enable_tag -}}
 {{- end -}}
 
-<div class="toc-container{{ if and .IsPage (or $enableToc $enableTag) }} visible{{ end }}">
+<div class="right-side{{ if and .IsPage (or $enableToc $enableTag) }} visible{{ end }}">
     {{- if $enableToc }}
-    <div class="toc-doc">
-        <p class="toc-title">{{ i18n "toc.title" }}</p>
+    <div class="toc">
+        <div class="title">{{ i18n "toc.title" }}</div>
         {{ .TableOfContents }}
     </div>
     {{- end -}}
 
     {{- if $enableTag -}}
     {{- with .GetTerms "tags" }}
-    <div class="toc-meta">
-        {{ if $enableToc -}}
+    <div class="meta">
         <hr>
+        {{- range . }}
+        <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+            {{ partial "component/svg-sprite.html" (dict "name" "tag" "class" "icon" "asset" "ui/static-ui.svg") }}
+            <span>{{ .LinkTitle }}</span></a>
         {{- end }}
-        <div class="toc-tags">
-            {{- range . }}
-            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
-                {{ partial "component/svg-sprite.html" (dict "name" "tag" "class" "icon" "asset" "ui/static-ui.svg") }}
-                <span>{{ .LinkTitle }}</span></a>
-            {{- end }}
-        </div>
     </div>
     {{- end -}}
     {{- end -}}
