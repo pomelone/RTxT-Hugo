@@ -12,8 +12,8 @@
     align-self: flex-start;
     flex-direction: column;
     background-color: var(--side-bg);
-    font-size: 0.9rem;
-    line-height: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.3rem;
     overflow-wrap: break-word;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -82,7 +82,7 @@
     justify-content: flex-start;
     background-color: var(--side-bg);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: left;
 }
 

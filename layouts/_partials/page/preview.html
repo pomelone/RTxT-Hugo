@@ -14,8 +14,10 @@
         {{- end }}
     </div>
     <div class="meta">
-        {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date_lastmod") "asset" "ui/static-ui.svg") }}
-        <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
+        <span class="date">
+            {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date.lastmod") "asset" "ui/static-ui.svg") }}
+            <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
+        </span>
     </div>
     {{ with .Summary -}}
     <div class="page-summary">{{ . | plainify }}</div>
@@ -23,7 +25,7 @@
     {{ with .GetTerms "tags" -}}
     <div class="meta">
         {{- range . }}
-        <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+        <a class="tag" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
             {{ partial "component/svg-sprite.html" (dict "name" "tag" "class" "icon" "asset" "ui/static-ui.svg") }}
             <span>{{ .LinkTitle }}</span>
         </a>

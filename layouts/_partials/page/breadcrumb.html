@@ -5,14 +5,18 @@
     {{- $enable = site.Params.features.enable_breadcrumb -}}
 {{- end -}}
 
-{{- if and $enable (not .IsHome) -}}
+{{- $firstSection := .FirstSection -}}
+
+{{- if and $enable (not .IsHome) (ne $firstSection.RelPermalink .RelPermalink) -}}
 <nav class="breadcrumb">
     <ol>
     {{- range .Ancestors.Reverse }}
-        {{ if .IsHome -}}
-        <li><a href="{{ .RelPermalink }}">{{ i18n "home" }}</a></li>
-        {{- else -}}
-        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{ if not .IsHome -}}
+            {{- if eq $firstSection.RelPermalink .RelPermalink -}}
+            <li><a href="{{ .RelPermalink }}">{{ i18n (printf "section.%s" .Section) }}</a></li>
+            {{- else -}}
+            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            {{- end -}}
         {{- end }}
     {{- end }}
         <li class="activated">{{ .LinkTitle }}</li>

@@ -29,6 +29,7 @@
     --button-bg: #f3f3f3;
     --link-color: #2440ff;
     --link-hover-color: #008000;
+    --page-hover-bg: color-mix(in srgb, currentColor 5%, transparent);
     --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
     --code-border: 1px solid #008000;
     --table-th-bg: #008000;
@@ -62,6 +63,7 @@
         --button-bg: #f3f3f3;
         --link-color: #2440ff;
         --link-hover-color: #008000;
+        --page-hover-bg: color-mix(in srgb, currentColor 5%, transparent);
         --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
         --code-border: 1px solid #008000;
         --table-th-bg: #008000;
