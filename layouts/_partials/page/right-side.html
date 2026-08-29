@@ -25,7 +25,7 @@
     <div class="meta">
         <hr>
         {{- range . }}
-        <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+        <a class="tag" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
             {{ partial "component/svg-sprite.html" (dict "name" "tag" "class" "icon" "asset" "ui/static-ui.svg") }}
             <span>{{ .LinkTitle }}</span></a>
         {{- end }}

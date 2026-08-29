@@ -10,10 +10,10 @@
         {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "expired" "class" "icon" "title" (i18n "status.expired")) }}
     {{- end }}
 </h1>
-<div class="page">
-    <div class="meta content">
-        {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date_lastmod") "asset" "ui/static-ui.svg") }}
+<div class="meta content">
+    <span class="date">
+        {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date.lastmod") "asset" "ui/static-ui.svg") }}
         <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
-    </div>
-    <div id="content">{{ .Content }}</div>
+    </span>
 </div>
+<div id="content">{{ .Content }}</div>

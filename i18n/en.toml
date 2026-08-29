@@ -1,38 +1,26 @@
 logo = 'Logo'
-date = 'Date'
-date_lastmod = 'Last Modified Date'
-date_pub = 'Publish Date'
-tag = 'Tag'
-backtop = 'Back to top'
+home = 'Home'
+posts = 'posts'
+
+[menu]
 blog = 'Blog'
 documentation = 'Documentation'
 series = 'Series'
 archives = 'Archives'
 search = 'Search'
 code = 'Code'
+tag = 'Tag'
+tags = 'Tags'
+
+[button]
+backtop = 'Back to top'
 copy = 'Copy'
 copied = 'Copied'
 copy_failed = 'Copy Failed'
-home = 'Home'
-
-[toc]
-title = 'Table of contents'
 
 [pagination]
 prev = 'Prev'
 next = 'Next'
-
-[status]
-draft = 'Draft'
-future = 'Scheduled'
-expired = 'Expired'
-
-[callout]
-note = 'Note'
-tip = 'Tip'
-important = 'Important'
-warning = 'Warning'
-caution = 'Caution'
 
 [collapse]
 show = 'Show'
@@ -49,3 +37,31 @@ show_details = 'Show Details'
 hide_details = 'Hide Details'
 expand_all = 'Expand All'
 collapse_all = 'Collapse All'
+
+[status]
+draft = 'Draft'
+future = 'Scheduled'
+expired = 'Expired'
+
+[date]
+date = 'Date'
+lastmod = 'Last Modified Date'
+pub = 'Publish Date'
+
+[toc]
+title = 'Table of contents'
+
+[callout]
+note = 'Note'
+tip = 'Tip'
+important = 'Important'
+warning = 'Warning'
+caution = 'Caution'
+
+[section]
+blog = 'Blog'
+docs = 'Documentation'
+series = 'Series'
+archives = 'Archives'
+tag = 'Tag'
+tags = 'Tags'
