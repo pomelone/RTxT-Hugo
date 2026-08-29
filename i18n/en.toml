@@ -1,6 +1,5 @@
 logo = 'Logo'
 home = 'Home'
-posts = 'posts'
 
 [menu]
 blog = 'Blog'
@@ -65,3 +64,6 @@ series = 'Series'
 archives = 'Archives'
 tag = 'Tag'
 tags = 'Tags'
+
+[taxonomy]
+posts = 'posts'

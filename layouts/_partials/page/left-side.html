@@ -1,0 +1,24 @@
+{{- $enable := eq .Kind "term" -}}
+
+{{- if $enable -}}
+{{- $type := .Type -}}
+{{- $term := .Data.Term -}}
+
+<div class="left-side visible">
+    <div class="term">
+        <div class="title">{{ i18n (printf "section.%s" $type) }}</div>
+        <ul>
+            {{- range (index site.Taxonomies $type).Alphabetical }}
+            <li{{ if eq .Term $term }} class="activated"{{ end }}>
+                <a href="{{ .Page.RelPermalink }}">
+                    <span>{{ .Page.LinkTitle }}</span>
+                    <span>({{ .Count }} {{ i18n "taxonomy.posts" }})</span>
+                </a>
+            </li>
+            {{- end }}
+        </ul>
+    </div>
+</div>
+{{- else -}}
+<div class="left-side"></div>
+{{- end -}}
