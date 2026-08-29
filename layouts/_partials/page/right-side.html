@@ -12,7 +12,10 @@
     {{- $enableTag = site.Params.features.enable_tag -}}
 {{- end -}}
 
-<div class="right-side{{ if and .IsPage (or $enableToc $enableTag) }} visible{{ end }}">
+{{- $enable := and .IsPage (or $enableToc $enableTag) -}}
+
+{{- if $enable -}}
+<div class="right-side visible">
     {{- if $enableToc }}
     <div class="toc">
         <div class="title">{{ i18n "toc.title" }}</div>
@@ -33,3 +36,6 @@
     {{- end -}}
     {{- end -}}
 </div>
+{{- else -}}
+<div class="right-side"></div>
+{{- end -}}

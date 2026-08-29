@@ -22,22 +22,20 @@
     margin: 0;
     display: inline-flex;
     align-items: center;
-    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-.breadcrumb li.activated {
+.breadcrumb a {
+    color: var(--text-meta-color);
+    opacity: 0.8;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    text-decoration: none;
+}
+
+.breadcrumb li.activated a {
     color: var(--text-meta-hover-color);
     opacity: 1;
 }
 
-.breadcrumb li,
-.breadcrumb a {
-    color: var(--text-meta-color);
-    opacity: 0.8;
-    text-decoration: none;
-}
-
-.breadcrumb li:hover,
 .breadcrumb a:hover {
     color: var(--text-meta-hover-color);
     opacity: 1;

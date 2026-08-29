@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{- $pages := sort .Pages "LinkTitle" "asc" -}}
+
+{{- /* 
+    $taxonomyObject := site.Taxonomies.series
+    $taxonomyObject := .Data.Terms
+
+    $termPages := sort .Pages "LinkTitle" "asc"
+    $termPages := slice
+    range $taxonomyObject.Alphabetical
+        $termPages = $termPages | append .Page
+*/ -}}
+
+{{- $paginator := .Paginate $pages -}}
+<div class="main-container">
+    <div class="content-wrap">
+        {{ partial "page/breadcrumb.html" . }}
+        <article class="content-container">
+            <div class="content-body">
+                <h1 class="title">{{ .Title }}</h1>
+                {{ partial "page/preview.html" $paginator }}
+            </div>
+        </article>
+        {{ partial "component/backtop.html" }}
+        {{ partial "component/paginator.html" $paginator }}
+    </div>
+</div>
+{{ end }}

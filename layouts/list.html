@@ -1,0 +1,24 @@
+{{- define "main" -}}
+{{- $pages := .RegularPages -}}
+
+{{- if or .IsHome (eq .FirstSection.RelPermalink .RelPermalink) -}}
+    {{- $pages = .RegularPagesRecursive -}}
+{{- end -}}
+
+{{- $pages = sort (sort (sort $pages "LinkTitle" "desc") "Lastmod" "desc") "Weight" "asc" -}}
+
+{{- $paginator := .Paginate $pages }}
+<div class="main-container">
+    <div class="content-wrap">
+        {{ partial "page/breadcrumb.html" . }}
+        <article class="content-container">
+            <div class="content-body">
+                <h1 class="title">{{ .Title }}</h1>
+                {{ partial "page/preview.html" $paginator }}
+            </div>
+        </article>
+        {{ partial "component/backtop.html" }}
+        {{ partial "component/paginator.html" $paginator }}
+    </div>
+</div>
+{{- end -}}

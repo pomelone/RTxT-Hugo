@@ -15,7 +15,7 @@
     display: inline-block;
     position: sticky !important;
     right: 0;
-    z-index: 2;
+    z-index: 20;
     margin-left: 0.4em;
     padding: 0.2em;
     background-color: var(--bg);

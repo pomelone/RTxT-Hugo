@@ -1,6 +1,5 @@
 logo = 'Logo'
 home = '首页'
-posts = '篇'
 
 [menu]
 blog = '博客'
@@ -65,3 +64,6 @@ series = '系列'
 archives = '归档'
 tag = '标签'
 tags = '标签'
+
+[taxonomy]
+posts = '篇'

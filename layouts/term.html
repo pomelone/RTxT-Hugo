@@ -1,0 +1,22 @@
+{{- define "main" -}}
+{{- $pages := sort (sort (sort .Pages "LinkTitle" "desc") "Lastmod" "desc") "Weight" "asc" -}}
+
+{{- $paginator := .Paginate $pages }}
+<div class="main-container">
+    {{ partial "page/left-side.html" . }}
+    {{ partial "page/right-side.html" . }}
+    <div class="content-wrap">
+        {{ partial "page/breadcrumb.html" . }}
+        <article class="content-container">
+            <div class="content-body">
+                <h1 class="title">{{ .Title }}</h1>
+                {{ partial "page/preview.html" $paginator }}
+            </div>
+        </article>
+        {{ partial "component/backtop.html" }}
+        {{ partial "component/paginator.html" $paginator }}
+    </div>
+</div>
+{{- end -}}
+
+

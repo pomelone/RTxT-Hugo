@@ -1,0 +1,16 @@
+{{- define "main" -}}
+<div class="main-container">
+    {{ partial "page/left-side.html" . }}
+    {{ partial "page/right-side.html" . }}
+    <div class="content-wrap">
+        {{ partial "page/breadcrumb.html" . }}
+        <article class="content-container">
+            <div class="content-body">
+                {{ partial "page/content.html" . }}
+            </div>
+        </article>
+        {{ partial "component/backtop.html" }}
+    </div>
+</div>
+{{- end -}}
+
