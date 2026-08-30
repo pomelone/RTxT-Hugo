@@ -10,6 +10,8 @@ search = 'Search'
 code = 'Code'
 tag = 'Tag'
 tags = 'Tags'
+category = 'Category'
+categories = 'Categories'
 
 [button]
 backtop = 'Back to top'

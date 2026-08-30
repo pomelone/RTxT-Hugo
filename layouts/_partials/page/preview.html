@@ -29,7 +29,7 @@
     <div class="meta">
         {{- range . }}
         <a class="tag" href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
-            {{ partial "component/svg-sprite.html" (dict "name" "tag" "class" "icon" "asset" "ui/static-ui.svg") }}
+            {{ partial "component/svg-sprite.html" (dict "name" "hash-static" "class" "icon" "asset" "ui/static-ui.svg") }}
             <span>{{ .LinkTitle }}</span>
         </a>
         {{- end }}
