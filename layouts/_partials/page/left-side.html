@@ -1,6 +1,18 @@
 {{- $current := . -}}
 
-{{- if eq .Kind "term" -}}
+{{- $enableTerm := true -}}
+{{- if and (isset site.Params "features") (isset site.Params.features "enable_term") -}}
+    {{- $enableTerm = site.Params.features.enable_term -}}
+{{- end -}}
+
+{{- $enableSeries := true -}}
+{{- if isset .Params "enable_series" -}}
+    {{- $enableSeries = .Params.enable_series -}}
+{{- else if and (isset site.Params "features") (isset site.Params.features "enable_series") -}}
+    {{- $enableSeries = site.Params.features.enable_series -}}
+{{- end -}}
+
+{{- if and (eq .Kind "term") $enableTerm -}}
 {{- $type := .Type -}}
 {{- $term := .Data.Term -}}
 <div class="left-side visible">
@@ -19,7 +31,7 @@
     </div>
 </div>
 
-{{- else if and (eq .Kind "page") (isset .Params "series") -}}
+{{- else if and (eq .Kind "page") (isset .Params "series") $enableSeries -}}
 <div class="left-side visible">
     <div class="term">
         <div class="title">{{ i18n "section.series" }}</div>
@@ -40,6 +52,7 @@
         {{- end }}
     </div>
 </div>
+
 {{- else -}}
 <div class="left-side"></div>
 {{- end -}}

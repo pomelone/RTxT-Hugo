@@ -1,4 +1,4 @@
-<h1 class="title content">
+<h1 class="title">
     <span>{{ .Title }}</span>
     {{ if .Draft -}}
         {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "draft" "class" "icon" "title" (i18n "status.draft")) }}
