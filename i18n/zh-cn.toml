@@ -12,6 +12,7 @@ tag = '标签'
 tags = '标签'
 category = '分类'
 categories = '分类'
+more = '更多'
 
 [button]
 backtop = '返回顶部'

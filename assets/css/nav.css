@@ -1,7 +1,7 @@
 .nav-container {
     position: sticky;
     top: 0;
-    z-index: 99;
+    z-index: 90;
     width: 100%;
     background: transparent;
 }
@@ -33,25 +33,11 @@
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     white-space: nowrap;
     text-decoration: none;
     user-select: none;
     transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-
-.nav-logo:active,
-.menu:active,
-.menu.activated:active {
-    transform: scale(0.9);
-}
-
-.nav-logo img,
-.nav-logo svg,
-.menu img,
-.menu svg {
-    width: 2em;
-    height: 2em;
-    vertical-align: middle;
 }
 
 .nav-logo {
@@ -75,18 +61,83 @@
     color: var(--text-bar-color);
 }
 
+.menu.activated {
+    color: var(--text-color);
+}
+
+.submenu .menu {
+    padding: 0.4rem 0.5rem;
+}
+
 .menu:hover,
 .menu.activated:hover {
     color: var(--text-bar-hover-color);
     text-decoration: none;
 }
 
-.menu.activated {
-    color: var(--text-color);
+.nav-logo:active,
+.menu:active,
+.menu.activated:active {
+    transform: scale(0.9);
+}
+
+.nav-logo img,
+.nav-logo svg,
+.menu img,
+.menu svg {
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+}
+
+.menu-group {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.menu-group > summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.menu-caret {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.menu-caret svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.menu-group[open] > summary .menu-caret {
+    transform-origin: center center;
+    transform: rotate(-180deg);
+}
+
+.submenu {
+    position: absolute;
+    z-index: 91;
+    top: 100%;
+    right: 0;
+    margin-top: 0.1rem;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    border: var(--block-border);
+    border-radius: var(--block-border-radius);
+    background-color: var(--nav-bg);
+    backdrop-filter: var(--nav-bf);
+    box-shadow: var(--nav-shadow);
 }
 
 @media (max-width: 50rem) {
-    .menu {
+    .menu,
+    .menu-group {
         display: none;
     }
 }

@@ -69,7 +69,7 @@
 
 .left-side .term .title {
     position: sticky;
-    z-index: 99;
+    z-index: 81;
     top: 0;
     margin: 0;
     padding: 1rem 0.5rem 0.5rem 0;
