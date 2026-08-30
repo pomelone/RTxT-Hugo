@@ -9,19 +9,28 @@
         $termPages = $termPages | append .Page
 */ -}}
 
+{{- $pagerSize := site.Params.taxonomy.pagerSize | default 50 -}}
+
 {{- $pages := slice -}}
 {{- range .Data.Terms.Alphabetical -}}
     {{- $pages = $pages | append .Page -}}
 {{- end -}}
 
-{{- $paginator := .Paginate $pages -}}
+{{- $paginator := .Paginate $pages $pagerSize -}}
 <div class="main-container">
     <div class="content-wrap">
         {{ partial "component/breadcrumb.html" . }}
         <article class="content-container">
             <div class="content-body">
                 <h1 class="title">{{ .Title }}</h1>
-                {{ partial "page/preview.html" $paginator }}
+                <div class="taxonomy-grid">
+                    {{- range $paginator.Pages }}
+                    <div class="taxonomy">
+                        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "hash" "class" "icon") }}
+                        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                    </div>
+                    {{- end -}}
+                </div>
             </div>
         </article>
         {{ partial "component/backtop.html" }}
