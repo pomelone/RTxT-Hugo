@@ -1,6 +1,4 @@
 {{ define "main" }}
-{{- $pages := sort .Pages "LinkTitle" "asc" -}}
-
 {{- /* 
     $taxonomyObject := site.Taxonomies.series
     $taxonomyObject := .Data.Terms
@@ -10,6 +8,11 @@
     range $taxonomyObject.Alphabetical
         $termPages = $termPages | append .Page
 */ -}}
+
+{{- $pages := slice -}}
+{{- range .Data.Terms.Alphabetical -}}
+    {{- $pages = $pages | append .Page -}}
+{{- end -}}
 
 {{- $paginator := .Paginate $pages -}}
 <div class="main-container">

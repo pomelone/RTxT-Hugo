@@ -9,7 +9,7 @@
         <div class="title">{{ i18n (printf "section.%s" $type) }}</div>
         <ul>
             {{- range (index site.Taxonomies $type).Alphabetical }}
-            <li{{ if eq .Term $term }} class="activated"{{ end }}>
+            <li{{ if eq .Page.Data.Term $term }} class="activated"{{ end }}>
                 <a href="{{ .Page.RelPermalink }}" title="{{ .Page.LinkTitle }}">
                     <span>{{ .Page.LinkTitle }} ({{ .Count }} {{ i18n "taxonomy.posts" }})</span>
                 </a>
