@@ -29,7 +29,7 @@
         {{- else -}}
             <span class="code-filename" title="{{ $filename | default $lang }}">
         {{- end }}
-            {{ partial "component/svg-sprite.html" (dict "name" "code_file" "class" "icon" "asset" "ui/static-ui.svg") }}
+            {{ partial "component/svg-sprite.html" (dict "name" "code-file" "class" "icon" "asset" "ui/static-ui.svg") }}
             <span>{{ $filename | default $lang }}</span>
         {{ if $link -}}
             </a>

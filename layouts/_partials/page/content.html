@@ -10,7 +10,7 @@
         {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "expired" "class" "icon" "title" (i18n "status.expired")) }}
     {{- end }}
     {{- if lt .Weight 0 -}}
-        {{ partial "component/svg-sprite.html" (dict "name" "pinned_filled" "class" "icon" "title" (i18n "status.pinned") "asset" "ui/static-ui.svg") }}
+        {{ partial "component/svg-sprite.html" (dict "name" "pinned-filled" "class" "icon" "title" (i18n "status.pinned") "asset" "ui/static-ui.svg") }}
     {{- end -}}
 </h1>
 <div class="meta content">
