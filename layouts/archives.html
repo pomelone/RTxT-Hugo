@@ -3,7 +3,7 @@
 {{- $pages := where site.RegularPages "Section" "in" $sections -}}
 <div class="main-container">
     <div class="content-wrap">
-        {{ partial "page/breadcrumb.html" . }}
+        {{ partial "component/breadcrumb.html" . }}
         <article class="content-container">
             <div class="content-body">
                 <h1 class="title">{{ .Title }}</h1>
