@@ -16,6 +16,7 @@
     display: list-item;
     font-weight: 600;
     text-align: start;
+    cursor: pointer;
 }
 
 .archive-title.year {

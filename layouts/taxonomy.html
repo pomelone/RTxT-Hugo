@@ -25,10 +25,10 @@
                 <h1 class="title">{{ .Title }}</h1>
                 <div class="taxonomy-grid">
                     {{- range $paginator.Pages }}
-                    <div class="taxonomy">
+                    <a class="taxonomy" href="{{ .RelPermalink }}">
                         {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "hash" "class" "icon") }}
-                        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                    </div>
+                        <span>{{ .Data.Term }}</span>
+                    </a>
                     {{- end -}}
                 </div>
             </div>

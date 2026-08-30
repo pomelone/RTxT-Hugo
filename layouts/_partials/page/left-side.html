@@ -1,21 +1,43 @@
-{{- $enable := eq .Kind "term" -}}
+{{- $current := . -}}
 
-{{- if $enable -}}
+{{- if eq .Kind "term" -}}
 {{- $type := .Type -}}
 {{- $term := .Data.Term -}}
-
 <div class="left-side visible">
     <div class="term">
         <div class="title">{{ i18n (printf "section.%s" $type) }}</div>
         <ul>
             {{- range (index site.Taxonomies $type).Alphabetical }}
             <li{{ if eq .Page.Data.Term $term }} class="activated"{{ end }}>
-                <a href="{{ .Page.RelPermalink }}" title="{{ .Page.LinkTitle }}">
-                    <span>{{ .Page.LinkTitle }} ({{ .Count }} {{ i18n "taxonomy.posts" }})</span>
+                <a href="{{ .Page.RelPermalink }}" title="{{ .Page.Data.Term }}">
+                    {{ partial "component/svg-sprite.html" (dict "name" "hash-static" "class" "icon" "asset" "ui/static-ui.svg") }}
+                    <span>{{ .Page.Data.Term }} ({{ .Count }} {{ i18n "taxonomy.posts" }})</span>
                 </a>
             </li>
             {{- end }}
         </ul>
+    </div>
+</div>
+
+{{- else if and (eq .Kind "page") (isset .Params "series") -}}
+<div class="left-side visible">
+    <div class="term">
+        <div class="title">{{ i18n "section.series" }}</div>
+        {{- range sort (.GetTerms "series") "Title" "asc" }}
+        <details class="series-group">
+            <summary class="series-name">{{ .Data.Term }}</summary>
+            <ul>
+                {{- range sort (sort .Pages "LinkTitle" "asc") "Weight" "asc" }}
+                <li{{ if eq $current.RelPermalink .RelPermalink }} class="activated"{{ end }}>
+                    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+                        {{ partial "component/svg-sprite.html" (dict "name" "file-filled" "class" "icon" "asset" "ui/static-ui.svg") }}
+                        <span>{{ .LinkTitle }}</span>
+                    </a>
+                </li>
+                {{- end }}
+            </ul>
+        </details>
+        {{- end }}
     </div>
 </div>
 {{- else -}}

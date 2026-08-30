@@ -1,5 +1,5 @@
 {{- define "main" -}}
-{{- $pages := sort (sort (sort .Pages "LinkTitle" "desc") "Lastmod" "desc") "Weight" "asc" -}}
+{{- $pages := sort (sort .Pages "LinkTitle" "asc") "Weight" "asc" -}}
 
 {{- $paginator := .Paginate $pages }}
 <div class="main-container">

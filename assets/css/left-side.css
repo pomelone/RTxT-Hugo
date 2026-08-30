@@ -39,7 +39,7 @@
 .left-side a {
     display: inline-flex;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.1rem;
     color: var(--text-meta-color);
     opacity: 0.8;
     transition: color 0.3s ease, opacity 0.3s ease;
@@ -95,4 +95,17 @@
 .left-side .term li.activated a {
     color: var(--text-meta-hover-color);
     opacity: 1;
+}
+
+.left-side .term .series-group {
+    margin: 0 0 0.5rem;
+    padding: 0 0 0 0.5rem;
+    width: 100%;
+}
+
+.left-side .term .series-name {
+    display: list-item;
+    font-weight: 500;
+    color: var(--text-meta-color);
+    cursor: pointer;
 }
