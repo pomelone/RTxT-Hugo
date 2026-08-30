@@ -1,0 +1,39 @@
+{{- define "main" -}}
+{{- $sections := site.Params.archives.sections | default (slice "blog") -}}
+{{- $pages := where site.RegularPages "Section" "in" $sections -}}
+<div class="main-container">
+    <div class="content-wrap">
+        {{ partial "page/breadcrumb.html" . }}
+        <article class="content-container">
+            <div class="content-body">
+                <h1 class="title">{{ .Title }}</h1>
+                <div class="archive-container">
+                {{- range $yearIndex, $year := $pages.GroupByLastmod "2006" "desc" }}
+                <details class="archive-group"{{ if eq $yearIndex 0 }} open{{ end }}>
+                    <summary class="archive-title year">{{ $year.Key }}{{ i18n "date.year" }} ({{ len $year.Pages }})</summary>
+
+                    {{- range $monthIndex, $month := $year.Pages.GroupByLastmod "1" "desc" }}
+                    <details class="archive-group"{{if eq $monthIndex 0}} open{{ end }}>
+                        <summary class="archive-title month">{{ $month.Key }}{{ i18n "date.month" }} ({{ len $month.Pages }})</summary>
+                        <ul>
+                            {{- range sort (sort $month.Pages "LinkTitle" "desc") "Lastmod" "desc" }}
+                            <li>
+                                <a class="archive-item" href="{{ .RelPermalink }}">
+                                    <span class="date">{{ .Lastmod.Format "01-02" }}</span>
+                                    {{ partial "component/svg-sprite.html" (dict "name" "file_filled" "class" "icon" "asset" "ui/static-ui.svg") }}
+                                    <span>{{ .LinkTitle }}</span>
+                                </a>
+                            </li>
+                            {{- end }}
+                        </ul>
+                    </details>
+                    {{- end }}
+                </details>
+                {{- end }}
+                </div>
+            </div>
+        </article>
+        {{ partial "component/backtop.html" }}
+    </div>
+</div>
+{{- end -}}
