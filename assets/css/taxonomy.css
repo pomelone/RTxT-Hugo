@@ -1,0 +1,42 @@
+.taxonomy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+}
+
+@media (max-width: 50rem) {
+    .taxonomy-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.taxonomy {
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: start;
+    text-wrap: wrap;
+    border: var(--block-border);
+    border-radius: var(--block-border-radius);
+    overflow: hidden;
+}
+
+.taxonomy:hover {
+    background-color: var(--page-hover-bg);
+}
+
+.taxonomy a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.taxonomy a:hover {
+    text-decoration: none;
+}
