@@ -4,6 +4,8 @@
     {{ if .Page -}}
         {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
             <a class="menu activated" href="{{ .Page.RelPermalink }}" title="{{ $name }}">
+        {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
+            <a class="menu activated" href="{{ .Page.RelPermalink }}" title="{{ $name }}">
         {{- else -}}
             <a class="menu" href="{{ .Page.RelPermalink }}" title="{{ $name }}">
         {{- end -}}
