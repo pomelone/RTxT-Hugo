@@ -10,11 +10,11 @@
                 <div class="archive-container">
                 {{- range $yearIndex, $year := $pages.GroupByLastmod "2006" "desc" }}
                 <details class="archive-group"{{ if eq $yearIndex 0 }} open{{ end }}>
-                    <summary class="archive-title year">{{ $year.Key }}{{ i18n "date.year" }} ({{ len $year.Pages }})</summary>
+                    <summary class="archive-title year">{{ $year.Key }} {{ i18n "date.year" }} ({{ len $year.Pages }} {{ i18n "taxonomy.posts" }})</summary>
 
                     {{- range $monthIndex, $month := $year.Pages.GroupByLastmod "1" "desc" }}
                     <details class="archive-group"{{if eq $monthIndex 0}} open{{ end }}>
-                        <summary class="archive-title month">{{ $month.Key }}{{ i18n "date.month" }} ({{ len $month.Pages }})</summary>
+                        <summary class="archive-title month">{{ $month.Key }} {{ i18n "date.month" }} ({{ len $month.Pages }} {{ i18n "taxonomy.posts" }})</summary>
                         <ul>
                             {{- range sort (sort $month.Pages "LinkTitle" "desc") "Lastmod" "desc" }}
                             <li>
