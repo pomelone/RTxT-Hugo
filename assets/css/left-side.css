@@ -46,6 +46,14 @@
     text-decoration: none;
 }
 
+.left-side a > span {
+    display: inline-block;
+    max-width: var(--left-side-text-max-width);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .left-side a:hover {
     color: var(--text-meta-hover-color);
     opacity: 1;

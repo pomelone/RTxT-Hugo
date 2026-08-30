@@ -13,13 +13,13 @@
     {{- range .Ancestors.Reverse }}
         {{ if not .IsHome -}}
             {{- if eq $firstSection.RelPermalink .RelPermalink -}}
-            <li><a href="{{ .RelPermalink }}">{{ i18n (printf "section.%s" .Section) }}</a></li>
+            <li><a href="{{ .RelPermalink }}"><span>{{ i18n (printf "section.%s" .Section) }}</span></a></li>
             {{- else -}}
-            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            <li><a href="{{ .RelPermalink }}"><span>{{ .LinkTitle }}</span></a></li>
             {{- end -}}
         {{- end }}
     {{- end }}
-        <li class="activated"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        <li class="activated"><a href="{{ .RelPermalink }}"><span>{{ .LinkTitle }}</span></a></li>
     </ol>
 </nav>
 {{- end -}}

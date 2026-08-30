@@ -10,9 +10,8 @@
         <ul>
             {{- range (index site.Taxonomies $type).Alphabetical }}
             <li{{ if eq .Term $term }} class="activated"{{ end }}>
-                <a href="{{ .Page.RelPermalink }}">
-                    <span>{{ .Page.LinkTitle }}</span>
-                    <span>({{ .Count }} {{ i18n "taxonomy.posts" }})</span>
+                <a href="{{ .Page.RelPermalink }}" title="{{ .Page.LinkTitle }}">
+                    <span>{{ .Page.LinkTitle }} ({{ .Count }} {{ i18n "taxonomy.posts" }})</span>
                 </a>
             </li>
             {{- end }}

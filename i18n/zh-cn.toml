@@ -41,11 +41,15 @@ collapse_all = '全部收起'
 draft = '草稿'
 future = '未发布'
 expired = '已下架'
+pinned = '置顶'
 
 [date]
 date = '日期'
 lastmod = '最后修改日期'
 pub = '发布日期'
+year = '年'
+month = '月'
+day = '日'
 
 [toc]
 title = '目录'
@@ -61,9 +65,12 @@ caution = '危险'
 blog = '博客'
 docs = '文档'
 series = '系列'
+archive = '归档'
 archives = '归档'
 tag = '标签'
 tags = '标签'
+category = '分类'
+categories = '分类'
 
 [taxonomy]
 posts = '篇'

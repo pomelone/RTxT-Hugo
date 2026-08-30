@@ -14,7 +14,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
     list-style: none;
 }
 
@@ -43,9 +43,19 @@
 }
 
 .breadcrumb li + li::before {
-    margin-right: 0.5rem;
+    margin-right: 0.3rem;
     content: "/";
+    display: inline-flex;
+    align-self: flex-start;
     font-weight: 600;
     color: var(--text-meta-color);
     opacity: 0.8;
+}
+
+.breadcrumb a > span {
+    display: inline-block;
+    max-width: var(--breadcrumb-max-width);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

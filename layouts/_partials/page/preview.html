@@ -1,7 +1,7 @@
 {{- $paginator := . -}}
 {{- range $paginator.Pages }}
-<div class="page">
-    <div class="title">
+<section class="page">
+    <h2 class="title">
         <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         {{ if .Draft -}}
             {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "draft" "class" "icon" "title" (i18n "status.draft")) }}
@@ -12,11 +12,14 @@
         {{ if and (isset .Params "expirydate") (lt .ExpiryDate now) -}}
             {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "expired" "class" "icon" "title" (i18n "status.expired")) }}
         {{- end }}
-    </div>
+        {{- if lt .Weight 0 -}}
+            {{ partial "component/svg-sprite.html" (dict "name" "pinned_filled" "class" "icon" "title" (i18n "status.pinned") "asset" "ui/static-ui.svg") }}
+        {{- end -}}
+    </h2>
     <div class="meta">
         <span class="date">
             {{ partial "component/svg-sprite.html" (dict "name" "date" "class" "icon" "title" (i18n "date.lastmod") "asset" "ui/static-ui.svg") }}
-            <span>{{ .Lastmod | time.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
+            <span>{{ .Lastmod.Format (site.Params.dateFormat | default "2006-01-02" ) }}</span>
         </span>
     </div>
     {{ with .Summary -}}
@@ -32,5 +35,5 @@
         {{- end }}
     </div>
     {{- end }}
-</div>
+</section>
 {{- end -}}
