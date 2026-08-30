@@ -12,6 +12,7 @@ tag = 'Tag'
 tags = 'Tags'
 category = 'Category'
 categories = 'Categories'
+more = 'More'
 
 [button]
 backtop = 'Back to top'
