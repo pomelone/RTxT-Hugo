@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isVisible = false;
     let ticking = false;
 
-    function updateVisibility () {
+    const updateVisibility = () => {
         const shouldShow = window.scrollY > window.innerHeight / 4;
         if (shouldShow === isVisible) return;
 
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isVisible && document.activeElement === backTopButton) {
             backTopButton.blur();
         }
-    }
+    };
 
-    function onScroll () {
+    const onScroll = () => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 updateVisibility();
@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             ticking = true;
         }
-    }
+    };
 
-    function scrollToTop () {
+    const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    };
 
     window.addEventListener("scroll", onScroll, { passive: true });
     backTopButton.addEventListener("click", scrollToTop);

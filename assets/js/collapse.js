@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const el = document.getElementById("content");
     if (!el) return;
 
-    function handleCollapseClick (event) {
+    const handleCollapseClick = (event) => {
         const btn = event.target.closest(".collapse-button");
         if (!btn) return;
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!container) return;
 
         container.classList.toggle('collapsed');
-    }
+    };
 
     el.addEventListener("click", handleCollapseClick);
 });
