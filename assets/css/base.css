@@ -31,13 +31,12 @@
     --button-bg: #f3f3f3;
     --link-color: #2440ff;
     --link-hover-color: #008000;
-    --page-hover-bg: color-mix(in srgb, currentColor 5%, transparent);
     --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
     --code-border: 1px solid #008000;
     --table-th-bg: #008000;
     --table-th-fg: #ffffff;
     --table-even: #ebebeb;
-    --block-border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+    --block-border: 1px solid color-mix(in srgb, #008000 10%, transparent);
     --block-bg: color-mix(in srgb, currentColor 5%, white);
     --block-summary-bg: color-mix(in srgb, currentColor 10%, white);
     /* --block-shadow: 0 8px 16px rgb(200, 200, 200); */
@@ -65,13 +64,12 @@
         --button-bg: #f3f3f3;
         --link-color: #2440ff;
         --link-hover-color: #008000;
-        --page-hover-bg: color-mix(in srgb, currentColor 5%, transparent);
         --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
         --code-border: 1px solid #008000;
         --table-th-bg: #008000;
         --table-th-fg: #ffffff;
         --table-even: #3c3c3c;
-        --block-border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+        --block-border: 1px solid color-mix(in srgb, #008000 10%, transparent);
         --block-bg: color-mix(in srgb, currentColor 5%, white);
         --block-summary-bg: color-mix(in srgb, currentColor 10%, white);
         /* --block-shadow: inset 0 -4px 16px rgb(52, 52, 52); */

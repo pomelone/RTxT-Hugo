@@ -52,6 +52,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .left-side a:hover {
@@ -106,6 +107,6 @@
 .left-side .term .series-name {
     display: list-item;
     font-weight: 500;
-    color: var(--text-meta-color);
+    color: var(--text-meta-hover-color);
     cursor: pointer;
 }

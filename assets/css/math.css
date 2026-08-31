@@ -1,4 +1,4 @@
-#content .katex-display {
+.katex-display {
     margin: 0.8em 0;
     padding: 0.2em 0;
     overflow: auto hidden;
@@ -7,11 +7,11 @@
     scrollbar-gutter: stable;
 }
 
-#content .katex {
+.katex {
     font-size: 1.1em;
 }
 
-#content .katex .katex-tag {
+.katex .katex-tag {
     display: inline-block;
     position: sticky !important;
     right: 0;

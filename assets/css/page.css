@@ -54,13 +54,14 @@
 .meta .tag {
     font-size: 0.8rem;
     opacity: 0.8;
-    transition: color 0.3s ease, opacity 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
 .meta .tag:hover {
     color: var(--text-meta-hover-color);
     opacity: 1;
     text-decoration: none;
+    transform: scale(1.1);
 }
 
 .meta .tag > span {
@@ -78,12 +79,17 @@
     border: var(--block-border);
     border-radius: var(--block-border-radius);
     overflow: hidden;
+    transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 .page:hover {
-    background-color: var(--page-hover-bg);
+    transform: scale(1.1);
 }
 
+/* .content-body:hover > .page:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9);
+} */
 
 .page .title {
     justify-content: flex-start;

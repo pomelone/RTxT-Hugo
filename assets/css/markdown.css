@@ -1,11 +1,5 @@
-/* ---- markdown content typography ---- */
-#content {
-    line-height: 1.5;
-    overflow-wrap: break-word;
-}
-
 #content > *:first-child {
-    margin-top: 0;
+    margin-top: 1rem;
 }
 
 #content h1,
@@ -55,8 +49,4 @@
 #content h5:hover .heading-anchor,
 #content h6:hover .heading-anchor {
     opacity: 1;
-}
-
-#content input[type="checkbox"] {
-    margin-right: 0.2em;
 }

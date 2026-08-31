@@ -25,11 +25,13 @@
 .paginator-button,
 .paginator-number-button {
     height: var(--paginator-height);
+    border: var(--block-border);
     border-radius: var(--paginator-height);
     overflow: hidden;
     font-weight: 600;
     font-size: 1rem;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    background-color: var(--bg);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .paginator-button {
@@ -40,6 +42,15 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+}
+
+.paginator-button:hover,
+.paginator-number-button:hover {
+    transform: translateY(-4px) scale(1.1);
+}
+
+.paginator-button:active {
+    transform: scale(0.9);
 }
 
 .paginator-button img,
@@ -59,13 +70,4 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.paginator-button:hover,
-.paginator-number-button:hover {
-    transform: translateY(-4px);
-}
-
-.paginator-button:active {
-    transform: scale(0.9);
 }
