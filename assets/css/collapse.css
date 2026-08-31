@@ -19,7 +19,6 @@
 .collapse-button {
     padding: 0.2rem;
     gap: 0.2rem;
-    border: var(--block-border);
     border-radius: 0.4rem;
     font-size: 1rem;
     font-weight: 600;

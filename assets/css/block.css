@@ -54,3 +54,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.callout-block .collapse-button {
+    border: 1px solid color-mix(in srgb, #111111 10%, transparent);
+}

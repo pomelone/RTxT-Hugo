@@ -25,7 +25,6 @@
 .paginator-button,
 .paginator-number-button {
     height: var(--paginator-height);
-    border: var(--block-border);
     border-radius: var(--paginator-height);
     overflow: hidden;
     font-weight: 600;
