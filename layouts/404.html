@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <link rel="preload" href="/fonts/Facon/Facon.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        @font-face {
+            font-family: "Facon";
+            src: url('/fonts/Facon/Facon.woff2') format('woff2'),
+                url('/fonts/Facon/Facon.woff') format('woff')
+                url("/fonts/Facon/Facon.ttf") format("truetype");
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .nf-body { 
+            background-color: #008000; 
+            color: #fff;
+            font-size: 100%;
+            line-height: 1.5;
+            font-family: "Facon", sans-serif;
+            font-weight: 700;
+        }
+
+        .nf-body h1 {
+            margin: 10rem 0 5rem;
+            text-align: center;
+            font-size: 16rem;
+        }
+
+        .nf-body p {
+            text-align: center;
+            font-size: 4rem;
+        }
+    </style>
+    <script>
+        class TextExtrude {
+            constructor(selector, options = {}) {
+                this.el = document.querySelector(selector);
+                if (!this.el) return;
+
+                this.config = {
+                    depth: 200,
+                    steps: 40,
+                    colorStart: [0, 98, 204],   // #0062cc
+                    colorEnd: [0, 122, 255],    // #007aff
+                    angle: 45,
+                    ...options
+                };
+
+                this.render();
+            }
+
+            lerpColor(start, end, ratio) {
+                const r = Math.round(start[0] + (end[0] - start[0]) * ratio);
+                const g = Math.round(start[1] + (end[1] - start[1]) * ratio);
+                const b = Math.round(start[2] + (end[2] - start[2]) * ratio);
+                return `rgb(${r},${g},${b})`;
+            }
+
+            render() {
+                const { depth, steps, colorStart, colorEnd, angle } = this.config;
+                const rad = (angle * Math.PI) / 180;
+                const dx = Math.cos(rad);
+                const dy = Math.sin(rad);
+                const shadows = [];
+
+                for (let i = 1; i <= steps; i++) {
+                    const ratio = i / steps;
+                    const offset = (depth * i) / steps;
+                    const color = this.lerpColor(colorStart, colorEnd, ratio);
+                    shadows.push(`${color} ${offset * dx}px ${offset * dy}px`);
+                }
+
+                this.el.style.textShadow = shadows.join(',');
+            }
+
+            update(newOptions) {
+                Object.assign(this.config, newOptions);
+                this.render();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = new TextExtrude('.nf-body h1', {
+                depth: 200,
+                steps: 200,
+                colorStart: [0, 108, 0],   // 20, 50
+                colorEnd: [0, 128, 0]
+            });
+        });
+    </script>
+</head>
+
+<body class="nf-body">
+    <h1>404</h1>
+    <p>Oops! Page not found.</p>
+</body>
+</html>
