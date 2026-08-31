@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const timerMap = new WeakMap();
 
-    function showFeedback (btn, isError = false) {
+    const showFeedback = (btn, isError = false) => {
         const prevTimer = timerMap.get(btn);
         if (prevTimer) clearTimeout(prevTimer);
 
@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const timer = setTimeout(() => {
             btn.classList.remove("copied", "failed");
             timerMap.delete(btn);
-        }, 3000);
+        }, 2000);
         timerMap.set(btn, timer);
     };
 
-    async function handleCodeCopyClick (event) {
+    const handleCodeCopyClick = async (event) => {
         const btn = event.target.closest(".copy-button");
         if (!btn) return;
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } finally {
             delete btn.dataset.copying;
         }
-    }
+    };
 
     el.addEventListener("click", handleCodeCopyClick);
 });

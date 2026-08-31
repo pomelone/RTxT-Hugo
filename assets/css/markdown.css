@@ -9,18 +9,23 @@
 #content h5,
 #content h6 {
     margin: 0 0 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     font-weight: 700;
     color: var(--text-color);
     scroll-margin-top: calc(var(--nav-height) + 1rem);
 }
 
 #content h1 {
+    margin: 1rem 0 2rem;
     padding-bottom: 0.2rem;
     font-size: 1.8rem;
     border-bottom: 1px solid var(--hr-color);
 }
 
 #content h2 {
+    margin: 0.5rem 0 1rem;
     padding-bottom: 0.2rem;
     font-size: 1.6rem;
 }
@@ -35,8 +40,7 @@
 
 .heading-anchor {
     display: inline-flex;
-    margin-left: 0.4em;
-    padding-bottom: 0.2em;
+    align-items: center;
     text-decoration: none;
     opacity: 0;
     transition: color 0.3s ease, opacity 0.3s ease;

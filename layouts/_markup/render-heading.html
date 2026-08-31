@@ -1,5 +1,7 @@
 {{- $anchor := .Anchor -}}
 <h{{ .Level }} id="{{ $anchor | safeURL }}">
-    {{- .Text | safeHTML -}}
-    <a class="heading-anchor" href="#{{ $anchor | safeURL }}">#</a>
+    <span>{{- .Text | safeHTML -}}</span>
+    <a class="heading-anchor" href="#{{ $anchor | safeURL }}">
+        {{ partial "component/svg-sprite.html" (dict "name" "link-static" "class" "icon" "asset" "ui/static-ui.svg") }}
+    </a>
 </h{{ .Level }}>
