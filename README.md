@@ -7,187 +7,75 @@
     <span><b>Rich Text Theme for Hugo</b></span>
 </div>
 
-## 特性
+## Features
 
-- Hugo 0.146+ 新模板系统（layouts 根按页面类型布局）
-- 响应式双栏布局：左侧系列/分类导航，右侧目录 + 标签
-- 导航栏一级菜单 + 二级折叠菜单（`details/summary`，支持图标）
-- 文章列表卡片式预览、分页；排序 weight > lastmod > title
-- 状态图标：草稿 / 未发布 / 已过期 / 置顶（weight 为负）
-- 代码块：文件名、链接、行高亮、一键复制、折叠
-- 引用块 callout：NOTE / TIP / IMPORTANT / WARNING / CAUTION（Hugo 原生 alert 语法）
-- 数学公式（KaTeX）：长公式滚动、编号固定右侧
-- 归档页：按年 / 月折叠分组
-- 分类页：两列卡片；分类详情页左侧分类列表
-- 面包屑、返回顶部、i18n（zh-cn / en）
-- 文章卡片、标签、归档条目悬停放大动效
-- Markdown 标题悬停显示锚点链接
-- 404 页面：独立页面，绿色背景 + 自定义字体 + 3D 挤出效果
+- Built on the Hugo 0.146+ template system (root `layouts/` keyed by page kind)
+- Responsive two-sidebar layout: series / taxonomy navigation on the left, table of contents and tags on the right
+- Navbar with primary items and collapsible submenus (`details`/`summary`, optional icons)
+- Card-style post list with pagination; sorting by `weight` > `lastmod` > `title`
+- Status badges: draft / scheduled / expired / pinned (negative `weight`)
+- Code blocks: filename, link, highlighted lines, one-click copy, collapse
+- Callouts: `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts
+- Math (KaTeX): scrollable long formulas, equation numbers pinned to the right
+- Archives page: collapsible year / month groups
+- Taxonomy pages: two-column term cards; term pages with a term list in the left sidebar
+- Breadcrumbs, back-to-top button, i18n (zh-cn / en)
+- Hover effects on post cards, tags, and archive items
+- Heading anchor links shown on hover
+- Standalone 404 page: green background, custom font, 3D extruded text
 
-## 配置
+## Getting Started
 
-### 自定义 css
-
-创建 `/assets/css/custom.css`，自定义页面样式。
-
-### 自定义图标
-
-- favicon：将 `favicon.[svg|ico|png]` 文件放入 `/static` 目录
-- logo：将 `logo.svg` 文件放入 `/static` 目录
-
-### 短代码
-
-#### icon
-
-在正文中插入 `data/icons.toml` 中定义的图标：
-
-```md
-{{< icon "github" >}}
-{{< icon name="tag" size="1.5em" >}}
-```
-
-参数说明：
-
-- `name`: 图标名（必填）
-- `size`: 图标尺寸（可选）
-
-#### badge
-
-在正文中插入徽章：
-
-```md
-{{< badge "RTxT" >}}
-{{< badge content="GitHub" icon="github" color="#0aa344" border=false link="https://github.com" >}}
-```
-
-参数说明：
-
-- `content`：徽章文字（必填）
-- `link`：徽章链接（可选）
-- `icon`：`data/icons.toml` 中的图标名（可选）
-- `color`：徽章颜色（可选）
-- `border`：是否显示边框，默认 `true`（可选）
-
-### 代码块
-
-代码块可以添加文件名、链接、指定高亮行、是否折叠
-
-```md
-python {filename="test.py", link="/logo.svg", collapse=false, hl_lines=[2,8,"4-6"]}
-或
-python {filename="test.py" link="/logo.svg" collapse=false hl_lines=[2,8,"4-6"]}
-
-a = "string a"
-b = "string b"
-c = "string c"
-d = "string d"
-e = "string e"
-f = "string f"
-g = "string g"
-h = "string h"
-i = "string i"
-j = "string j"
-k = "string k"
-l = "string l"
-```
-
-参数说明：
-
-- `filename`: 文件名，默认为代码语言（可选）
-- `link`: 代码块链接（可选）
-- `collapse`：是否折叠代码，默认 true（可选）
-- `hl_lines` 指定高亮行（可选）
-
-### 引用块
-
-引用块首行以 `[!类型]` 开头即可渲染为带图标与标题的提示块，支持 5 种类型：`NOTE`、`TIP`、`IMPORTANT`、`WARNING`、`CAUTION`（大小写不敏感）：
-
-```md
-> [!NOTE]
-> 这是备注内容。
-
-> [!WARNING] 这是标题
-> 这是警告内容。
-```
-
-普通引用块为 Note 样式，不显示标题。
-
-### 面包屑
-
-文章页顶部显示面包屑导航（所属目录 / 当前页），默认开启。
-
-可在 **hugo.toml** 或页面 Front Matter 中关闭：
+Add the theme to your site:
 
 ```toml
-# hugo.toml
-[params.features]
-enable_breadcrumb = false
+theme = ['RTxT-Hugo']
 ```
+
+## Configuration
+
+All site options live in **hugo.toml**.
 
 ```toml
-enable_breadcrumb = false
-```
+[params]
+    description = 'Rich Text Theme for Hugo'
+    dateFormat = '2006-01-02 15:04'
+    summaryLength = 50
 
-### 数学公式（KaTeX）
+    [params.search]
+        enable = true
+        type = 'flexsearch'
+        flexsearch.index = 'content'
+        flexsearch.tokenize = 'forward'
 
-支持的分隔符：行内 `$...$`、`\(...\)`；块级 `$$...$$`、`\[...\]`。KaTeX 资源默认从 jsDelivr CDN 加载。
+    [params.footer]
+        enable = true
+        copyright = '© 2026 RTxT. All rights reserved.'
+        poweredBy = '<a href="/">PowerBy RTxT</a>'
 
-为避免公式中的 `_`、`\`、`&` 等字符被 Markdown 解析，需要在站点 **hugo.toml** 中启用 Goldmark passthrough 扩展：
+    [params.archives]
+        sections = ['blog']
 
-```toml
-[markup.goldmark.extensions.passthrough]
-    enable = true
-    [markup.goldmark.extensions.passthrough.delimiters]
-        block = [['\[', '\]'], ['$$', '$$']]
-        inline = [['\(', '\)'], ['$', '$']]
-```
+    [params.taxonomy]
+        pagerSize = 50
 
-可在 **hugo.toml** 中自定义 KaTeX 版本或 CDN 地址：
-
-```toml
-[params.math]
-    enable = true
-    engine = 'katex'
-    katex.cdn = 'https://cdn.jsdelivr.net/npm/katex'
-    katex.version = '0.18.4'
-```
-
-### 目录与标签（右侧栏）
-
-在页面中是否显示目录和标签。默认为显示。
-
-可以在 **hugo.toml** 或者页面 **Front Matter** 中配置，页面 **Front Matter** 优先级更高。
-
-- 在 **hugo.toml** 中配置
-
-    ```toml
     [params.features]
-    enable_toc = true
-    enable_tag = true
-    enable_series = true
-    enable_term = true
-    ```
+        enable_toc = true
+        enable_tag = true
+        enable_series = true
+        enable_term = true
+        enable_breadcrumb = true
 
-- 在页面 Front Matter 中配置
+    [params.math]
+        enable = true
+        engine = 'katex'
+        katex.cdn = 'https://cdn.jsdelivr.net/npm/katex'
+        katex.version = '0.18.4'
+```
 
-    ```toml
-    enable_toc = true
-    enable_tag = true
-    enable_series = true
-    ```
+### Menu and Submenus
 
-- 在 **hugo.toml** 中配置目录显示等级以及是否排序
-
-    ```toml
-    [markup.tableOfContents]
-    startLevel = 1
-    endLevel = 3
-    ordered = false
-    ```
-
-### 菜单与二级菜单
-
-在 **hugo.toml** 的 `[menu]` 中配置。子菜单使用 `parent` 指向父项的 `identifier`：
+Configure menus in **hugo.toml**. Use `parent` to attach an item to another item's `identifier`:
 
 ```toml
 [menu]
@@ -204,85 +92,216 @@ enable_breadcrumb = false
         weight = 42
 ```
 
-- 菜单名称优先取 `i18n` 的 `menu.<identifier>` 翻译
-- `params.icon` 指定 `data/icons.toml` 中的图标名
-- 有子项的菜单渲染为可折叠下拉（点击展开 / 收起）
+- Menu labels prefer the `menu.<identifier>` translation from the i18n files
+- `params.icon` sets an icon name from `data/icons.toml`
+- Items with children render as collapsible dropdowns
 
-### 归档
-
-创建 `content/archives/_index.md`，设置 `layout: archives`：
+### Table of Contents
 
 ```toml
----
-title: '归档'
-layout: archives
----
+[markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+    ordered = false
 ```
 
-归档页按 `[params.archives]` 配置的 section（默认 `blog`）聚合文章，按最后修改时间年 / 月折叠分组：
+## Front Matter
+
+### Feature toggles
+
+Each toggle can be set globally under `[params.features]` or per page in front matter (page value wins).
 
 ```toml
-[params.archives]
-sections = ['blog']
+enable_toc = true          # table of contents in the right sidebar
+enable_tag = true          # tags in the right sidebar
+enable_series = true       # series navigation in the left sidebar
+enable_term = true         # term list in the left sidebar (term pages)
+enable_breadcrumb = true   # breadcrumb at the top of a page
 ```
 
-### 分类页（taxonomy）
+### Pinning and Status
 
-站点声明 taxonomy（如 series / categories / tags）后，分类首页（如 `/series/`）以两列卡片显示全部分类；分页数量可在 **hugo.toml** 配置：
-
-```toml
-[params.taxonomy]
-pagerSize = 50
-```
-
-分类详情页（如 `/series/xxx/`）左侧栏列出同类全部分类（当前项高亮），开关 `enable_term`。
-
-### 系列（series）
-
-在文章 Front Matter 中声明所属系列：
-
-```toml
-series: [blog, markdown]
-```
-
-属于系列的文章，左侧栏显示本页关联系列导航：系列名可折叠，展开后列出该系列全部文章（按 weight 排序），当前文章高亮。开关 `enable_series`（页面 Front Matter 优先于站点配置）。
-
-### 置顶与状态
-
-- 置顶：`weight` 设为负值（如 `-1`），文章排在最前并显示图钉图标
-- 状态图标：
-    - `draft: true` → 草稿
-    - `date` 在未来 → 未发布
-    - `expiryDate` 已过期 → 已过期
-- 可在 `_index.md` 中用 `cascade.weight` 为整节设置默认权重：
+- Pinning: set a negative `weight` (e.g. `-1`) — the post sorts first and shows a pin icon
+- Status badges:
+    - `draft: true` → draft
+    - `date` in the future → scheduled
+    - `expiryDate` in the past → expired
+- Set a default weight for a whole section with `cascade.weight` in its `_index.md`:
 
 ```toml
 cascade:
     weight: 99
 ```
 
-### 404 页面
+### Series
 
-主题内置独立 404 页面（`layouts/404.html`），不依赖站点整体布局（无导航栏/页脚），绿色背景 + 自定义字体 + JS 3D 文字挤出效果。
+Declare the series a post belongs to in front matter:
 
-- 字体：将 "Facon" 字体文件放入 `static/fonts/Facon/`（`Facon.woff2` / `Facon.woff` / `Facon.ttf`），404 页面通过 `@font-face` 加载
-- 配色与挤出参数在 `404.html` 内联 `<style>` / `<script>` 中直接修改（背景色、字号、挤出深度/角度/颜色）
+```toml
+series: [blog, markdown]
+```
 
-### footer
+Posts that belong to series show a collapsible series navigation in the left sidebar: each associated series lists all of its posts (ordered by `weight`) with the current post highlighted.
 
-- 在 **hugo.toml** 中配置，支持 HTML
+## Shortcodes
+
+### icon
+
+Insert an icon defined in `data/icons.toml`:
+
+```md
+{{< icon "github" >}}
+{{< icon name="tag" size="1.5em" >}}
+```
+
+Parameters:
+
+- `name`: icon name (required)
+- `size`: icon size (optional)
+
+### badge
+
+Insert a badge:
+
+```md
+{{< badge "RTxT" >}}
+{{< badge content="GitHub" icon="github" color="#0aa344" border=false link="https://github.com" >}}
+```
+
+Parameters:
+
+- `content`: badge text (required)
+- `link`: badge link (optional)
+- `icon`: icon name from `data/icons.toml` (optional)
+- `color`: badge color (optional)
+- `border`: show a border, default `true` (optional)
+
+## Markdown Extras
+
+### Code Blocks
+
+Code blocks support a filename, link, highlighted lines, and collapsing:
+
+```md
+python {filename="test.py", link="/logo.svg", collapse=false, hl_lines=[2,8,"4-6"]}
+# or
+python {filename="test.py" link="/logo.svg" collapse=false hl_lines=[2,8,"4-6"]}
+
+a = "string a"
+```
+
+Parameters:
+
+- `filename`: filename, defaults to the language (optional)
+- `link`: link for the filename (optional)
+- `collapse`: collapse the code, default `true` (optional)
+- `hl_lines`: highlighted lines (optional)
+
+### Callouts
+
+Start a blockquote with `[!TYPE]` to render a callout with an icon and title. Supported types: `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION` (case-insensitive):
+
+```md
+> [!NOTE]
+> This is a note.
+
+> [!WARNING] A custom title
+> This is a warning.
+```
+
+Plain blockquotes render in the note style without a title.
+
+### Math (KaTeX)
+
+Delimiters: inline `$...$`, `\(...\)`; block `$$...$$`, `\[...\]`. KaTeX assets load from the jsDelivr CDN by default.
+
+To keep `_`, `\`, `&` etc. from being parsed as Markdown, enable the Goldmark passthrough extension in **hugo.toml**:
+
+```toml
+[markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)'], ['$', '$']]
+```
+
+Customize the KaTeX version or CDN in **hugo.toml**:
+
+```toml
+[params.math]
+    enable = true
+    engine = 'katex'
+    katex.cdn = 'https://cdn.jsdelivr.net/npm/katex'
+    katex.version = '0.18.4'
+```
+
+### Heading Anchors
+
+Headings inside the content show an anchor link icon on hover; clicking jumps to the heading (anchors account for the sticky navbar).
+
+## Pages
+
+### Archives
+
+Create `content/archives/_index.md` with `layout: archives`:
+
+```toml
+---
+title: 'Archives'
+layout: archives
+---
+```
+
+The archive page aggregates posts from the sections configured in `[params.archives]` (default `blog`), grouped by last-modified year / month in collapsible groups.
+
+### Taxonomies
+
+Once taxonomies are declared (e.g. `series`, `categories`, `tags`), the taxonomy home page (e.g. `/series/`) renders all terms as a two-column card grid. The page size is configurable:
+
+```toml
+[params.taxonomy]
+pagerSize = 50
+```
+
+Term pages (e.g. `/series/xxx/`) list all terms of the same taxonomy in the left sidebar with the current term highlighted (`enable_term`).
+
+### 404 Page
+
+The theme ships a standalone 404 page (`layouts/404.html`) that does not use the site layout (no navbar/footer): green background, a custom font, and a JS-driven 3D text extrusion.
+
+- Font: place the "Facon" font files in `static/fonts/Facon/` (`Facon.woff2` / `Facon.woff` / `Facon.ttf`); the page loads them via `@font-face`
+- Colors and extrusion settings (depth / angle / colors) live in the inline `<style>` / `<script>` inside `404.html`
+
+## Customization
+
+### Custom CSS
+
+Create `/assets/css/custom.css` to override or extend the theme styles.
+
+### Favicon and Logo
+
+- Favicon: place `favicon.[svg|ico|png]` in `/static`
+- Logo: place `logo.svg` in `/static`
+
+### Icons
+
+Icons used by shortcodes and the menu come from `data/icons.toml`; SVG sprite symbols live in `assets/ui/` (`animated-ui.svg` inlined, `static-ui.svg` referenced externally).
+
+### Footer
+
+- Configure in **hugo.toml** (HTML is allowed):
 
     ```toml
     [params.footer]
     enable = true
     copyright = '© 2026 RTxT. All rights reserved.'
-    poweredBy = '<a href="/">PowerBy RTxT</>'
+    poweredBy = '<a href="/">PowerBy RTxT</a>'
     ```
 
-- 创建 `layouts/_partials/custom/footer.html`，自定义 footer 内容
+- Create `layouts/_partials/custom/footer.html` to fully customize the footer
 
-### i18n
+## i18n
 
-主题内置 `i18n/en.toml`、`i18n/zh-cn.toml` 语言文件，自动跟随站点的 `defaultContentLanguage` 显示对应语言（目录标题、分页、回顶、状态图标提示等）。
+The theme ships `i18n/en.toml` and `i18n/zh-cn.toml` and follows the site's `defaultContentLanguage` for titles, pagination, back-to-top, status hints, and more.
 
-如需其他语言，在站点根目录 `i18n/` 下添加同结构的语言文件即可（键名相同），会覆盖或补充主题翻译。
+To add a language, create a file with the same structure under the site's `i18n/` directory (same key names) — it overrides or extends the theme translations.
