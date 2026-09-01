@@ -1,9 +1,10 @@
 .badge-sc {
+    margin-right: 0.4em;
+    padding: 0.1em 0.5em;
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
     gap: 0.2em;
-    padding: 0.1em 0.4em;
     border: 1px solid currentColor;
     border-radius: 0.6em;
     font-size: 0.8em;
@@ -15,7 +16,7 @@
 }
 
 a.badge-sc:hover {
-    transform: scale(1.1, 1.2);
+    transform: scale(1.05, 1.1);
     text-decoration: none;
 }
 
