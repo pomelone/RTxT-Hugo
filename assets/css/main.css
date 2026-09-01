@@ -51,12 +51,17 @@ button {
     justify-content: center;
     text-align: center;
     vertical-align: middle;
-    border: var(--button-border);
+    border: none;
     color: var(--theme-color);
     background-color: transparent;
     text-decoration: none;
     user-select: none;
     cursor: pointer;
+    transition: color 0.6s ease, background-color 0.6s ease, opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
+}
+
+button:hover {
+    background-color: var(--button-bg);
 }
 
 .main-container,

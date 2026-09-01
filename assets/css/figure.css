@@ -7,7 +7,6 @@ figure {
     justify-content: center;
     border: var(--block-border);
     border-radius: var(--block-border-radius);
-    box-shadow: var(--block-shadow);
     overflow: hidden;
 }
 

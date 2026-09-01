@@ -28,7 +28,6 @@ pre code {
     border: var(--block-border);
     border-radius: var(--block-border-radius);
     overflow: hidden;
-    box-shadow: var(--block-shadow);
 }
 
 .code-block .highlight {

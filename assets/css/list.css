@@ -48,9 +48,9 @@ input[type="checkbox"] {
     /* vertical-align: middle; */
     width: 1.2em;
     height: 1.2em;
-    border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+    border: 1px solid var(--list-bg);
     border-radius: 0.4em;
-    background-color: color-mix(in srgb, var(--fg) 10%, transparent);
+    background-color: var(--list-bg);
     transition: color 0.6s ease, background-color 0.6s ease;
     user-select: none;
     cursor: pointer;

@@ -30,7 +30,6 @@
     font-weight: 600;
     font-size: 1rem;
     background-color: var(--bg);
-    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .paginator-button {
@@ -45,6 +44,7 @@
 
 .paginator-button:hover,
 .paginator-number-button:hover {
+    background-color: var(--bg);
     transform: translateY(-4px) scale(1.1);
 }
 

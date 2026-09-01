@@ -5,7 +5,6 @@
     overflow: hidden;
     color: var(--quote-color);
     background-color: var(--block-bg);
-    box-shadow: var(--block-shadow);
 }
 
 .callout-note {
@@ -52,6 +51,6 @@
     text-overflow: ellipsis;
 }
 
-.callout-block .collapse-button {
-    border: 1px solid color-mix(in srgb, #111111 10%, transparent);
+.callout-block .collapse-button:hover {
+    background-color: color-mix(in srgb, #111 10%, #fff);
 }
