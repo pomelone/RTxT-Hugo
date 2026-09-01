@@ -13,7 +13,7 @@
     {{- $style = printf "color: %s;" . -}}
 {{- end -}}
 {{- if not $border -}}
-    {{- $style = printf "%s border: none;" $style -}}
+    {{- $style = printf "%s border: 1px solid transparent;" $style -}}
 {{- end -}}
 
 {{- if $link -}}
