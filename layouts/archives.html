@@ -18,8 +18,8 @@
                         <ul>
                             {{- range sort (sort $month.Pages "LinkTitle" "desc") "Lastmod" "desc" }}
                             <li>
+                                <span class="date">{{ .Lastmod.Format "01-02" }}</span>
                                 <a class="archive-item" href="{{ .RelPermalink }}">
-                                    <span class="date">{{ .Lastmod.Format "01-02" }}</span>
                                     {{ partial "component/svg-sprite.html" (dict "name" "file-filled" "class" "icon" "asset" "ui/static-ui.svg") }}
                                     <span>{{ .LinkTitle }}</span>
                                 </a>

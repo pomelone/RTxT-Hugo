@@ -27,6 +27,12 @@
     font-size: 1.2rem;
 }
 
+.archive-group .date {
+    flex-shrink: 0;
+    color: var(--text-meta-color);
+    font-size: 0.9rem;
+}
+
 .archive-group ul {
     margin: 0;
     padding: 0 0 0 2rem;
@@ -35,6 +41,9 @@
 
 .archive-group li {
     margin: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .archive-item {
@@ -49,12 +58,5 @@
 .archive-item:hover {
     color: var(--link-hover-color);
     text-decoration: none;
-    transform: scale(1.1);
-}
-
-.archive-item .date {
-    margin-right: 0.8rem;
-    flex-shrink: 0;
-    color: var(--text-meta-color);
-    font-size: 0.9rem;
+    transform: scale(1.05);
 }
