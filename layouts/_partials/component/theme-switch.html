@@ -1,0 +1,11 @@
+{{- $enable := true -}}
+{{- if and (isset site.Params "features") (isset site.Params.features "enable_theme_switch") -}}
+    {{- $enable = site.Params.features.enable_theme_switch -}}
+{{- end -}}
+
+{{- if $enable -}}
+<button id="theme-switch" class="theme-switch" type="button" title="{{ i18n "button.change_theme" }}">
+    <span class="theme-light">{{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "sunny") }}</span>
+    <span class="theme-dark">{{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "moon") }}</span>
+</button>
+{{- end -}}

@@ -11,7 +11,7 @@
 
 - Built on the Hugo 0.146+ template system (root `layouts/` keyed by page kind)
 - Responsive two-sidebar layout: series / taxonomy navigation on the left, table of contents and tags on the right
-- Navbar with primary items and collapsible submenus (`details`/`summary`, optional icons)
+- Navbar with primary items, collapsible submenus (`details`/`summary`, optional icons), and a light/dark theme switch
 - Card-style post list with pagination; sorting by `weight` > `lastmod` > `title`
 - Status badges: draft / scheduled / expired / pinned (negative `weight`)
 - Code blocks: filename, link, highlighted lines, one-click copy, collapse
@@ -65,6 +65,7 @@ All site options live in **hugo.toml**.
         enable_series = true
         enable_term = true
         enable_breadcrumb = true
+        enable_theme_switch = true
 
     [params.math]
         enable = true
@@ -105,6 +106,15 @@ Configure menus in **hugo.toml**. Use `parent` to attach an item to another item
     ordered = false
 ```
 
+### Theme Switch
+
+A light/dark toggle sits at the end of the navbar (`enable_theme_switch`).
+
+- The choice is persisted in `localStorage` (`rtxt-theme`), so it survives reloads
+- Without a saved choice, the theme follows the system `prefers-color-scheme`
+- The switch icons (`sunny` / `moon`) are symbols from `assets/ui/animated-ui.svg`
+- The button label comes from the i18n key `button.change_theme`
+
 ## Front Matter
 
 ### Feature toggles
@@ -117,6 +127,7 @@ enable_tag = true          # tags in the right sidebar
 enable_series = true       # series navigation in the left sidebar
 enable_term = true         # term list in the left sidebar (term pages)
 enable_breadcrumb = true   # breadcrumb at the top of a page
+enable_theme_switch = true # light/dark theme switch in the navbar
 ```
 
 ### Pinning and Status
@@ -302,6 +313,6 @@ Icons used by shortcodes and the menu come from `data/icons.toml`; SVG sprite sy
 
 ## i18n
 
-The theme ships `i18n/en.toml` and `i18n/zh-cn.toml` and follows the site's `defaultContentLanguage` for titles, pagination, back-to-top, status hints, and more.
+The theme ships `i18n/en.toml` and `i18n/zh-cn.toml` and follows the site's `defaultContentLanguage` for titles, pagination, back-to-top, status hints, theme switch, and more.
 
 To add a language, create a file with the same structure under the site's `i18n/` directory (same key names) — it overrides or extends the theme translations.

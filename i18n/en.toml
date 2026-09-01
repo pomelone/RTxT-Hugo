@@ -19,6 +19,7 @@ backtop = 'Back to top'
 copy = 'Copy'
 copied = 'Copied'
 copy_failed = 'Copy Failed'
+change_theme = 'Change Theme'
 
 [pagination]
 prev = 'Prev'
