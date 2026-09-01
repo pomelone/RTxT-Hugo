@@ -2,7 +2,7 @@
  * Back to Top Button Script
  */
 document.addEventListener("DOMContentLoaded", () => {
-    const backTopButton = document.getElementById("backtop");
+    const backTopButton = document.getElementById("backtop-button");
     if (!backTopButton) return;
 
     let isVisible = false;

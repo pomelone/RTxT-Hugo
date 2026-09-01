@@ -83,7 +83,7 @@
 }
 
 .page:hover {
-    z-index: 99;
+    z-index: 89;
     transform: scale(1.1);
 }
 

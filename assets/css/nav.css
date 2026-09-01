@@ -29,7 +29,8 @@
 }
 
 .nav-logo,
-.menu {
+.menu,
+.theme-switch {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -54,7 +55,8 @@
     text-decoration: none;
 }
 
-.menu {
+.menu,
+.theme-switch {
     padding: 0.5rem;
     font-weight: 500;
     font-size: 0.9rem;
@@ -70,21 +72,25 @@
 }
 
 .menu:hover,
-.menu.activated:hover {
+.menu.activated:hover,
+.theme-switch:hover {
     color: var(--text-bar-hover-color);
     text-decoration: none;
 }
 
 .nav-logo:active,
 .menu:active,
-.menu.activated:active {
+.menu.activated:active,
+.theme-switch:active {
     transform: scale(0.9);
 }
 
 .nav-logo img,
 .nav-logo svg,
 .menu img,
-.menu svg {
+.menu svg,
+.theme-switch img,
+.theme-switch svg {
     width: 2em;
     height: 2em;
     vertical-align: middle;
@@ -140,4 +146,17 @@
     .menu-group {
         display: none;
     }
+}
+
+.theme-switch:hover {
+    background-color: transparent;
+}
+
+.theme-switch .theme-dark,
+.theme-switch[data-theme="dark"] .theme-light {
+    display: none;
+}
+
+.theme-switch[data-theme="dark"] .theme-dark {
+    display: inline-flex;
 }

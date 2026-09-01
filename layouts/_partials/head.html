@@ -17,6 +17,17 @@
     <meta name="description" content="{{ site.Params.description }}">
     {{- end }}
 
+    <script>
+        (function () {
+            const key = "rtxt-theme";
+            const stored = localStorage.getItem(key);
+
+            if (stored) {
+                document.documentElement.dataset.theme = stored;
+            }
+        })();
+    </script>
+
     {{ partial "head/styles.html" }}
     {{ partial "head/scripts.html" }}
     {{ partial "head/math.html" }}
