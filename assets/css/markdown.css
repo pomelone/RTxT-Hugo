@@ -18,8 +18,8 @@
 }
 
 #content h1 {
-    margin: 1rem 0 2rem;
-    padding-bottom: 0.4rem;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.2rem;
     font-size: 1.5rem;
     border-bottom: 1px solid var(--hr-color);
 }
@@ -27,15 +27,15 @@
 #content h2 {
     margin: 1rem 0;
     padding-bottom: 0.2rem;
-    font-size: 1.4rem;
-}
-
-#content h3 {
     font-size: 1.3rem;
 }
 
-#content h4 {
+#content h3 {
     font-size: 1.2rem;
+}
+
+#content h4 {
+    font-size: 1.1rem;
 }
 
 .heading-anchor {

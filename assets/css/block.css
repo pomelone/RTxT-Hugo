@@ -1,5 +1,5 @@
 .callout-block {
-    margin: 1rem 0;
+    margin: 2rem 0;
     border: var(--block-border);
     border-radius: var(--block-border-radius);
     overflow: hidden;
@@ -28,18 +28,15 @@
     --quote-color: #ff0000;
 }
 
-.callout-block .collapse-summary,
-.callout-block .collapse-content {
-    padding: 0.8rem 1rem;
-}
-
 .callout-block .collapse-summary {
+    padding: 0.8rem 1rem;
+    /* background-color: var(--block-summary-bg); */
     font-size: 1.1em;
     font-weight: 600;
 }
 
-.callout-block .collapse-summary {
-    background-color: var(--block-summary-bg);
+.callout-block .collapse-content {
+    padding: 0 1rem 0.8rem;
 }
 
 .callout-block .callout-title {

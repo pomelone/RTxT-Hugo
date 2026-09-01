@@ -24,8 +24,8 @@ pre code {
 }
 
 .code-block {
-    margin: 1rem 0;
-    border: var(--code-border);
+    margin: 2rem 0;
+    border: var(--block-border);
     border-radius: var(--block-border-radius);
     overflow: hidden;
     box-shadow: var(--block-shadow);

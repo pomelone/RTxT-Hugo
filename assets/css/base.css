@@ -32,7 +32,6 @@
     --link-color: #2463eb;
     --link-hover-color: #008000;
     --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
-    --code-border: 1px solid #008000;
     --table-th-bg: #008000;
     --table-th-fg: #ffffff;
     --table-even: #ebebeb;
@@ -66,7 +65,6 @@
         --link-color: #2463eb;
         --link-hover-color: #008000;
         --code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
-        --code-border: 1px solid #008000;
         --table-th-bg: #008000;
         --table-th-fg: #ffffff;
         --table-even: #3c3c3c;
