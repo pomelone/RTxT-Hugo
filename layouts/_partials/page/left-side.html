@@ -37,7 +37,10 @@
         <div class="title">{{ i18n "section.series" }}</div>
         {{- range sort (.GetTerms "series") "Title" "asc" }}
         <details class="series-group">
-            <summary class="series-name">{{ .Data.Term }}</summary>
+            <summary class="series-name">
+                {{ partial "component/svg-sprite.html" (dict "name" "details-marker" "class" "icon" "asset" "ui/static-ui.svg") }}
+                <span>{{ .Data.Term }}</span>
+            </summary>
             <ul>
                 {{- range sort (sort .Pages "LinkTitle" "asc") "Weight" "asc" }}
                 <li{{ if eq $current.RelPermalink .RelPermalink }} class="activated"{{ end }}>

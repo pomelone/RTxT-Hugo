@@ -24,7 +24,7 @@
         <details class="menu-group">
             <summary class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
                 {{ partial "header/menu-detail.html" . }}
-                <span class="menu-caret">{{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}</span>
+                {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
             </summary>
             <div class="submenu">
                 {{- range .Children -}}
