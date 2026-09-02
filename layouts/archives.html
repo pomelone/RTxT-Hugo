@@ -10,11 +10,17 @@
                 <div class="archive-container">
                 {{- range $yearIndex, $year := $pages.GroupByLastmod "2006" "desc" }}
                 <details class="archive-group"{{ if eq $yearIndex 0 }} open{{ end }}>
-                    <summary class="archive-title year">{{ $year.Key }} {{ i18n "date.year" }} ({{ len $year.Pages }} {{ i18n "taxonomy.posts" }})</summary>
+                    <summary class="archive-title year">
+                        {{ partial "component/svg-sprite.html" (dict "name" "details-marker" "class" "icon" "asset" "ui/static-ui.svg") }}
+                        <span>{{ $year.Key }} {{ i18n "date.year" }} ({{ len $year.Pages }} {{ i18n "taxonomy.posts" }})</span>
+                    </summary>
 
                     {{- range $monthIndex, $month := $year.Pages.GroupByLastmod "1" "desc" }}
                     <details class="archive-group"{{if eq $monthIndex 0}} open{{ end }}>
-                        <summary class="archive-title month">{{ $month.Key }} {{ i18n "date.month" }} ({{ len $month.Pages }} {{ i18n "taxonomy.posts" }})</summary>
+                        <summary class="archive-title month">
+                            {{ partial "component/svg-sprite.html" (dict "name" "details-marker" "class" "icon" "asset" "ui/static-ui.svg") }}
+                            <span>{{ $month.Key }} {{ i18n "date.month" }} ({{ len $month.Pages }} {{ i18n "taxonomy.posts" }})</span>
+                        </summary>
                         <ul>
                             {{- range sort (sort $month.Pages "LinkTitle" "desc") "Lastmod" "desc" }}
                             <li>

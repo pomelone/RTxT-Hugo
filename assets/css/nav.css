@@ -102,24 +102,14 @@
     align-items: center;
 }
 
-.menu-group > summary {
-    list-style: none;
-    cursor: pointer;
-}
-
-.menu-caret {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+details.menu-group > summary.menu svg {
+    width: 1.2em;
+    height: 1.2em;
     transition: transform 0.3s ease;
 }
 
-.menu-caret svg {
-    width: 1.2em;
-    height: 1.2em;
-}
-
-.menu-group[open] > summary .menu-caret {
+details.menu-group[open] > summary.menu svg {
+    transform-box: fill-box;
     transform-origin: center center;
     transform: rotate(-180deg);
 }
