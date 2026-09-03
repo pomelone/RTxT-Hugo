@@ -2,9 +2,6 @@
  * Initializes the code block copy functionality
  */
 document.addEventListener("DOMContentLoaded", () => {
-    const el = document.getElementById("content");
-    if (!el) return;
-
     const timerMap = new WeakMap();
 
     const showFeedback = (btn, isError = false) => {
@@ -46,5 +43,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    el.addEventListener("click", handleCodeCopyClick);
+    document.addEventListener("click", handleCodeCopyClick);
 });

@@ -1,7 +1,5 @@
 <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
     <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="static/logo-dark.svg">
-        <source media="(prefers-color-scheme: light)" srcset="static/logo.svg">
         <img alt="RTxT" src="static/logo.svg" width="70" height="70" style="max-width: 100%;">
     </picture>
     <span><b>Rich Text Theme for Hugo</b></span>
@@ -9,20 +7,19 @@
 
 ## Features
 
-- Built on the Hugo 0.146+ template system (root `layouts/` keyed by page kind)
+- Built on the Hugo 0.146+ template system
 - Responsive two-sidebar layout: series / taxonomy navigation on the left, table of contents and tags on the right
-- Navbar with primary items, collapsible submenus (`details`/`summary`, optional icons), and a light/dark theme switch
+- Navbar with primary items, collapsible submenus (optional icons), and a light/dark theme switch
 - Card-style post list with pagination; sorting by `weight` > `lastmod` > `title`
 - Status badges: draft / scheduled / expired / pinned (negative `weight`)
 - Code blocks: filename, link, highlighted lines, one-click copy, collapse
 - Callouts: `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts
-- Math (KaTeX): scrollable long formulas, equation numbers pinned to the right
+- Math (KaTeX)
 - Archives page: collapsible year / month groups
 - Taxonomy pages: two-column term cards; term pages with a term list in the left sidebar
 - Breadcrumbs, back-to-top button, i18n (zh-cn / en)
-- Hover effects on post cards, tags, and archive items
 - Heading anchor links shown on hover
-- Standalone 404 page: green background, custom font, 3D extruded text
+- Standalone 404 page
 
 ## Getting Started
 
@@ -41,12 +38,6 @@ All site options live in **hugo.toml**.
     description = 'Rich Text Theme for Hugo'
     dateFormat = '2006-01-02 15:04'
     summaryLength = 50
-
-    [params.search]
-        enable = true
-        type = 'flexsearch'
-        flexsearch.index = 'content'
-        flexsearch.tokenize = 'forward'
 
     [params.footer]
         enable = true
@@ -112,8 +103,6 @@ A light/dark toggle sits at the end of the navbar (`enable_theme_switch`).
 
 - The choice is persisted in `localStorage` (`rtxt-theme`), so it survives reloads
 - Without a saved choice, the theme follows the system `prefers-color-scheme`
-- The switch icons (`sunny` / `moon`) are symbols from `assets/ui/animated-ui.svg`
-- The button label comes from the i18n key `button.change_theme`
 
 ## Front Matter
 
@@ -134,12 +123,12 @@ enable_theme_switch = true # light/dark theme switch in the navbar
 
 - Pinning: set a negative `weight` (e.g. `-1`) — the post sorts first and shows a pin icon
 - Status badges:
-    - `draft: true` → draft
+    - `draft` → draft
     - `date` in the future → scheduled
     - `expiryDate` in the past → expired
 - Set a default weight for a whole section with `cascade.weight` in its `_index.md`:
 
-```toml
+```yaml
 cascade:
     weight: 99
 ```
@@ -148,11 +137,11 @@ cascade:
 
 Declare the series a post belongs to in front matter:
 
-```toml
+```yaml
 series: [blog, markdown]
 ```
 
-Posts that belong to series show a collapsible series navigation in the left sidebar: each associated series lists all of its posts (ordered by `weight`) with the current post highlighted.
+Posts that belong to series show a collapsible series navigation in the left sidebar: each associated series lists all of its posts with the current post highlighted.
 
 ## Shortcodes
 
@@ -186,6 +175,29 @@ Parameters:
 - `icon`: icon name from `data/icons.toml` (optional)
 - `color`: badge color (optional)
 - `border`: show a border, default `true` (optional)
+
+### tabs
+
+Group content into switchable tabs:
+
+```md
+{{< tabs >}}
+{{< tab name="Markdown" selected=true >}}
+**Bold**, *italic*, lists, code blocks and other shortcodes are fully supported.
+{{< /tab >}}
+{{< tab name="GitHub" icon="github" >}}
+Content of the second tab.
+{{< /tab >}}
+{{< /tabs >}}
+```
+
+Parameters:
+
+- `name`: tab label (required)
+- `selected`: set `true` to select this tab by default; otherwise the first tab is selected (optional)
+- `icon`: icon name from `data/icons.toml` (optional)
+
+Tab content is rendered as Markdown.
 
 ## Markdown Extras
 
@@ -246,17 +258,13 @@ Customize the KaTeX version or CDN in **hugo.toml**:
     katex.version = '0.18.4'
 ```
 
-### Heading Anchors
-
-Headings inside the content show an anchor link icon on hover; clicking jumps to the heading (anchors account for the sticky navbar).
-
 ## Pages
 
 ### Archives
 
 Create `content/archives/_index.md` with `layout: archives`:
 
-```toml
+```yaml
 ---
 title: 'Archives'
 layout: archives
@@ -278,10 +286,9 @@ Term pages (e.g. `/series/xxx/`) list all terms of the same taxonomy in the left
 
 ### 404 Page
 
-The theme ships a standalone 404 page (`layouts/404.html`) that does not use the site layout (no navbar/footer): green background, a custom font, and a JS-driven 3D text extrusion.
+The theme ships a standalone 404 page (`layouts/404.html`) that does not use the site layout (no navbar/footer)
 
 - Font: place the "Facon" font files in `static/fonts/Facon/` (`Facon.woff2` / `Facon.woff` / `Facon.ttf`); the page loads them via `@font-face`
-- Colors and extrusion settings (depth / angle / colors) live in the inline `<style>` / `<script>` inside `404.html`
 
 ## Customization
 
@@ -312,7 +319,5 @@ Icons used by shortcodes and the menu come from `data/icons.toml`; SVG sprite sy
 - Create `layouts/_partials/custom/footer.html` to fully customize the footer
 
 ## i18n
-
-The theme ships `i18n/en.toml` and `i18n/zh-cn.toml` and follows the site's `defaultContentLanguage` for titles, pagination, back-to-top, status hints, theme switch, and more.
 
 To add a language, create a file with the same structure under the site's `i18n/` directory (same key names) — it overrides or extends the theme translations.

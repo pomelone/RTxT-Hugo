@@ -1,0 +1,22 @@
+{{- if not .Parent -}}
+    {{- errorf "tab shortcode: must be nested inside a tabs shortcode" -}}
+{{- end -}}
+
+{{- $id := printf "%d-%d" .Parent.Ordinal .Ordinal -}}
+{{- $name := .Get "name" | default (.Get 0) -}}
+{{- $icon := .Get "icon" -}}
+{{- $selected := eq (printf "%v" (.Get "selected" | default false)) "true" -}}
+
+{{- if not $name -}}
+    {{- errorf "tab shortcode: requires a name" -}}
+{{- end -}}
+
+{{- if and $selected (not (.Parent.Store.Get "selected")) -}}
+    {{- .Parent.Store.Set "selected" $id -}}
+{{- end -}}
+
+{{- $content := trim .InnerDeindent "\r\n" -}}
+{{- $tab := dict "id" $id "name" $name "icon" $icon "content" $content -}}
+
+{{- $tabs := .Parent.Store.Get "tabs" | default slice -}}
+{{- .Parent.Store.Set "tabs" ($tabs | append $tab) -}}

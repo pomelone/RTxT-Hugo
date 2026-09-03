@@ -78,3 +78,7 @@ categories = '分类'
 
 [taxonomy]
 posts = '篇'
+
+[tabs]
+scroll_left = '向左滚动'
+scroll_right = '向右滚动'

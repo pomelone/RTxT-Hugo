@@ -78,3 +78,7 @@ categories = 'Categories'
 
 [taxonomy]
 posts = 'Posts'
+
+[tabs]
+scroll_left = 'Scroll Left'
+scroll_right = 'Scroll Right'
