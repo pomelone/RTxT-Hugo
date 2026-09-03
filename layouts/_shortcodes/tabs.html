@@ -1,0 +1,40 @@
+{{- $currentPage := .Page -}}
+{{- $_ := .Inner -}}
+
+{{- $tabs := .Store.Get "tabs" | default slice -}}
+{{- if not $tabs -}}
+    {{- errorf "tabs shortcode: requires at least one nested tab shortcode" -}}
+{{- end -}}
+
+{{- $selected := .Store.Get "selected" | default (index $tabs 0).id -}}
+<div class="tabs">
+    <div class="tabs-nav">
+        <button id="scroll-button" class="scroll-button" data-scroll="left" title="{{ i18n "tabs.scroll_left" }}" type="button">
+            {{ partial "component/svg-sprite.html" (dict "name" "scroll-left" "class" "icon" "asset" "ui/static-ui.svg") }}
+        </button>
+        <div class="tabs-nav-scroll">
+        {{- range $tabs }}
+            <button id="tabs-button" class="tabs-button{{ if eq .id $selected }} activated{{ end }}" title="{{ .name }}" data-tab="{{ .id }}" type="button">
+                {{ with .icon -}}
+                    {{- with index hugo.Data.icons . -}}
+                        <span class="icon">{{ . | safeHTML }}</span>
+                    {{- else -}}
+                        {{- errorf "tab shortcode: icon %q not found in data/icons.toml" . -}}
+                    {{- end -}}
+                {{- end }}
+                <span>{{ .name }}</span>
+            </button>
+        {{- end }}
+        </div>
+        <button id="scroll-button" class="scroll-button" data-scroll="right" title="{{ i18n "tabs.scroll_right" }}" type="button">
+            {{ partial "component/svg-sprite.html" (dict "name" "scroll-right" "class" "icon" "asset" "ui/static-ui.svg") }}
+        </button>
+    </div>
+    <div class="tabs-panels">
+        {{- range $tabs }}
+            <div class="tabs-panel{{ if eq .id $selected }} activated{{ end }}" data-panel="{{ .id }}">
+                {{ .content | $currentPage.RenderString }}
+            </div>
+        {{- end }}
+    </div>
+</div>

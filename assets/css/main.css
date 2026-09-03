@@ -51,13 +51,15 @@ button {
     justify-content: center;
     text-align: center;
     vertical-align: middle;
+    flex-shrink: 0;
     border: none;
     color: var(--theme-color);
     background-color: transparent;
     text-decoration: none;
+    white-space: nowrap;
     user-select: none;
     cursor: pointer;
-    transition: color 0.6s ease, background-color 0.6s ease, opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
+    transition: color 0.6s ease, background-color 0.6s ease, border-color 0.3s ease, opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
 }
 
 button:hover {

@@ -63,19 +63,21 @@
     color: var(--text-bar-color);
 }
 
-.menu.activated {
-    color: var(--text-color);
-}
-
-.submenu .menu {
-    padding: 0.4rem 0.5rem;
-}
-
 .menu:hover,
 .menu.activated:hover,
 .theme-switch:hover {
+    transform: scale(1.1);
+}
+
+.menu:hover,
+.theme-switch:hover {
     color: var(--text-bar-hover-color);
     text-decoration: none;
+}
+
+.menu.activated,
+.menu.activated:hover {
+    color: var(--text-color);
 }
 
 .nav-logo:active,
@@ -126,6 +128,7 @@ details.menu-group[open] > summary.menu svg {
     padding: 0.5rem 1rem;
     border: var(--block-border);
     border-radius: var(--block-border-radius);
+    overflow: hidden;
     background-color: var(--nav-bg);
     backdrop-filter: var(--nav-bf);
     box-shadow: var(--nav-shadow);
@@ -136,6 +139,10 @@ details.menu-group[open] > summary.menu svg {
     .menu-group {
         display: none;
     }
+}
+
+.submenu .menu {
+    padding: 0.4rem 0.5rem;
 }
 
 .theme-switch:hover {

@@ -2,9 +2,6 @@
  * Collapse controls: toggle the closest .callout-block / .code-block
  */
 document.addEventListener("DOMContentLoaded", () => {
-    const el = document.getElementById("content");
-    if (!el) return;
-
     const handleCollapseClick = (event) => {
         const btn = event.target.closest(".collapse-button");
         if (!btn) return;
@@ -15,5 +12,5 @@ document.addEventListener("DOMContentLoaded", () => {
         container.classList.toggle('collapsed');
     };
 
-    el.addEventListener("click", handleCollapseClick);
+    document.addEventListener("click", handleCollapseClick);
 });
