@@ -2,7 +2,7 @@
 {{- $size := .Get "size" | default (.Get 1) -}}
 
 {{- if not $name -}}
-    {{- errorf "icon shortcode requires an icon name, e.g. {{< icon \"github\" >}}" -}}
+    {{- errorf "icon shortcode: requires an icon name" -}}
 {{- end -}}
 
 {{- with index hugo.Data.icons $name -}}

@@ -12,7 +12,7 @@
     {{- $opts = merge $opts (dict "hl_lines" .) -}}
 {{- end -}}
 
-{{- $lineAnchors := printf "C-%d-L" .Ordinal -}}
+{{- $lineAnchors := printf "Code-%d-Line" .Ordinal -}}
 {{- $opts = merge $opts (dict "lineAnchors" $lineAnchors) -}}
 
 {{- $highlighted := highlight .Inner $lang $opts -}}
