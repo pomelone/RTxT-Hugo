@@ -1,7 +1,7 @@
 {{- $name := i18n (printf "menu.%s" (.Identifier | default .Name)) -}}
 
-{{- if .Params.icon -}}
-    {{- with index hugo.Data.icons .Params.icon -}}
+{{- with .Params.icon -}}
+    {{- with index hugo.Data.icons . -}}
         {{- . | safeHTML -}}
     {{- else -}}
         <span>{{ $name }}</span>
