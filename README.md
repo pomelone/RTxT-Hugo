@@ -9,26 +9,30 @@
 
 - Core
     - Built on the **Hugo 0.146+** template system
-    - Card-style post list with pagination; sorting by `weight` > `lastmod` > `title`
-    - Breadcrumbs, back-to-top button, [i18n](#i18n) (zh-cn / en)
+    - Post list sorting by `weight` > `lastmod` > `title`
 - Configuration
-    - Navbar with primary items, collapsible [submenus](#menu-and-submenus) (optional icons), and a light/dark theme switch
-    - [Feature toggles](#feature-toggles): toc, tags, series, term list, breadcrumb, theme switch
+    - collapsible [menus](#menu-and-submenus) (optional icons)
+    - Regular configuration: [Table of Contents](#table-of-contents), [Default Pagination Size](#default-pagination-size)
+    - [Feature toggles](#feature-toggles): theme switch, breadcrumb, toc, tags, series, term list
 - Front Matter
     - [Pinning and status](#pinning-and-status): draft / scheduled / expired / pinned (negative `weight`)
+    - [Feature Toggles per Page](#feature-toggles-per-page) in front matter
     - [Tags, series, and categories](#tags-series-and-categories) in front matter
 - Markdown Extras
     - [Code blocks](#code-blocks): filename, link, highlighted lines, one-click copy, collapse
     - [Callouts](#callouts): `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts
     - [Math (KaTeX)](#math-katex)
 - Shortcodes
-    - [icon](#icon), [badge](#badge), [tabs](#tabs): switchable panels with Markdown content
+    - [icon](#icon), [badge](#badge), [tabs](#tabs)
 - Pages
-    - [Taxonomies](#taxonomies): two-column term cards; term pages with a term list in the left sidebar
+    - [Taxonomies](#taxonomies): term pages with a term list in the left sidebar
     - [Archives](#archives): collapsible year / month groups
-    - Standalone [404 page](#404-page)
+    - [404 Page](#404-page)
 - Customization
-    - [Custom CSS](#custom-css), [favicon and logo](#favicon-and-logo), [footer](#footer), [icons](#icons)
+    - [Favicon and Logo](#favicon-and-logo), [Custom CSS](#custom-css), [Footer](#footer), [Icons](#icons), [i18n](#i18n)
+- Others
+    - [Render Outputs](#render-outputs)
+    - [Markup Configuration](#markup-configuration)
 
 ## Getting Started
 
@@ -43,10 +47,21 @@ theme = ['RTxT-Hugo']
 All site options live in **hugo.toml**.
 
 ```toml
+baseURL = 'https://example.org/'
+title = 'RTxT'
+
+locale = 'zh-CN'
+defaultContentLanguage = 'zh-cn'
+hasCJKLanguage = true
+enableGitInfo = true
+enableEmoji = true
+enableInlineShortcodes = true
+enableRobotsTXT = true
+summaryLength = 50
+
 [params]
     description = 'Rich Text Theme for Hugo'
     dateFormat = '2006-01-02 15:04'
-    summaryLength = 50
 ```
 
 ### Menu and Submenus
@@ -83,6 +98,15 @@ Configure the table of contents depth in **hugo.toml**:
     ordered = false
 ```
 
+### Default Pagination Size
+
+Set the default pagination size in **hugo.toml**:
+
+```toml
+[pagination]
+    pagerSize = 10
+```
+
 ### Feature Toggles
 
 Each toggle can be set globally under `[params.features]`:
@@ -91,18 +115,9 @@ Each toggle can be set globally under `[params.features]`:
 enable_theme_switch = true   # light/dark theme switch in the navbar
 enable_breadcrumb = true     # breadcrumb at the top of a page
 enable_toc = true            # table of contents in the right sidebar
-enable_tag = true            # tags in the right sidebar
-enable_term = true           # term list in the left sidebar (term pages)
+enable_tags = true           # tags in the right sidebar
 enable_series = true         # series navigation in the left sidebar
-```
-
-### Default Pagination Size
-
-Set the default pagination size in **hugo.toml**:
-
-```toml
-[pagination]
-    pagerSize = 10
+enable_term = true           # term list in the left sidebar (term pages)
 ```
 
 ## Front Matter
@@ -113,7 +128,7 @@ The same toggles can be set per page in front matter (the page value wins):
 
 ```yaml
 enable_toc = true
-enable_tag = false
+enable_tags = false
 ```
 
 ### Pinning and Status
@@ -260,7 +275,7 @@ Once taxonomies are declared, the taxonomy home page renders all terms as a two-
 
 Term pages (e.g. `/series/xxx/`) list all terms of the same taxonomy in the left sidebar with the current term highlighted (`enable_term`).
 
-The Term page pagination size is configurable:
+The taxonomy page pagination size is configurable:
 
 ```toml
 [params.taxonomy]
@@ -277,7 +292,7 @@ series: [RTxT]
 categories: theme
 ```
 
-- Tags show in the right sidebar (`enable_tag`).
+- Tags show in the right sidebar (`enable_tags`).
 - Posts that belong to series show a collapsible series navigation in the left sidebar (`enable_series`): each associated series lists all of its posts with the current post highlighted.
 - Categories work like any other taxonomy (see [Taxonomies](#taxonomies)).
 
@@ -336,3 +351,62 @@ Icons used by shortcodes and the menu come from `data/icons.toml`; SVG sprite sy
 ### i18n
 
 To add a language, create a file with the same structure under the site's `i18n/` directory (same key names) — it overrides or extends the theme translations.
+
+## Others
+
+### Render Outputs
+
+Configure the render outputs in **hugo.toml**:
+
+```toml
+[outputs]
+    home = ['html']
+    page = ['html']
+    section = ['html']
+    taxonomy = ['html']
+    term = ['html']
+```
+
+### Markup Configuration
+
+Configure markup rendering in **hugo.toml**:
+
+```toml
+[markup.highlight]
+    noHl = false
+    noClasses = true
+    style = 'base16-snazzy'
+    hl_inline = false
+    guessSyntax = false
+    lineNos = true
+    lineNoStart = 1
+    anchorLineNos = true
+    lineAnchors = ''
+    lineNumbersInTable = true
+    codeFences = true
+    tabWidth = 4
+
+[markup.goldmark]
+    [markup.goldmark.renderer]
+        hardWraps = true
+        unsafe = true
+        xhtml = false
+
+    [markup.goldmark.extensions]
+        definitionList = true
+        footnote = true
+        linkify = true
+        linkifyProtocol = 'https'
+        strikethrough = true
+        table = true
+        taskList = true
+
+    [markup.goldmark.extensions.typographer]
+        disable = false
+
+    [markup.goldmark.extensions.cjk]
+        enable = true
+        escapedSpace = true
+        eastAsianLineBreaks = true
+        eastAsianLineBreaksStyle = 'simple'
+```

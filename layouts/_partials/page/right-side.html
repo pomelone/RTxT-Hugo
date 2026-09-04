@@ -6,10 +6,10 @@
 {{- end -}}
 
 {{- $enableTag := true -}}
-{{- if isset .Params "enable_tag" -}}
-    {{- $enableTag = .Params.enable_tag -}}
-{{- else if and (isset site.Params "features") (isset site.Params.features "enable_tag") -}}
-    {{- $enableTag = site.Params.features.enable_tag -}}
+{{- if isset .Params "enable_tags" -}}
+    {{- $enableTag = .Params.enable_tags -}}
+{{- else if and (isset site.Params "features") (isset site.Params.features "enable_tags") -}}
+    {{- $enableTag = site.Params.features.enable_tags -}}
 {{- end -}}
 
 {{- $enable := and .IsPage (or $enableToc $enableTag) -}}
