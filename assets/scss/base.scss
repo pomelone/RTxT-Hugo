@@ -1,0 +1,28 @@
+@use "themes" as *;
+@use "media" as *;
+@use "size" as *;
+
+:root {
+    @include light-theme;
+    @include regular-media;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include dark-theme;
+    }
+}
+
+:root[data-theme="light"] {
+    @include light-theme;
+}
+
+:root[data-theme="dark"] {
+    @include dark-theme;
+}
+
+@media (max-width: $breakpoint-narrow) {
+    :root {
+        @include narrow-media;
+    }
+}

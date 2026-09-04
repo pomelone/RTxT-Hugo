@@ -1,0 +1,12 @@
+.icon-sc {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+
+    img,
+    svg {
+        width: auto;
+        height: 1.2em;
+    }
+}

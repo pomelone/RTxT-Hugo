@@ -1,40 +1,9 @@
-{{- $fileNames := slice
-    "css/base.css"
-    "css/main.css"
-    "css/link.css"
-    "css/list.css"
-    "css/figure.css"
-    "css/copy.css"
-    "css/collapse.css"
-    "css/scroll.css"
-    "css/table.css"
-    "css/block.css"
-    "css/nav.css"
-    "css/left-side.css"
-    "css/right-side.css"
-    "css/backtop.css"
-    "css/paginator.css"
-    "css/footer.css"
-    "css/page.css"
-    "css/breadcrumb.css"
-    "css/markdown.css"
-    "css/code.css"
-    "css/math.css"
-    "css/archives.css"
-    "css/taxonomy.css"
-    "css/icon.css"
-    "css/badge.css"
-    "css/tabs.css"
+{{- $options := dict
+    "transpiler" "dartsass"
+    "targetPath" "css/rtxt.css"
 -}}
 
-{{- $styles := slice -}}
-{{- range $fileNames -}}
-    {{- with resources.Get . -}}
-        {{- $styles = $styles | append . -}}
-    {{- end -}}
-{{- end -}}
-
-{{- if gt (len $styles) 0 -}}
-    {{- $rtxtStyles := $styles | resources.Concat "css/rtxt-styles.css" | minify | fingerprint -}}
+{{- with resources.Get "scss/rtxt.scss" -}}
+    {{- $rtxtStyles := . | toCSS $options | minify | fingerprint -}}
     <link rel="stylesheet" type="text/css" href="{{ $rtxtStyles.RelPermalink }}">
 {{- end -}}

@@ -1,0 +1,46 @@
+@use "layers" as *;
+@use "size" as *;
+
+.backtop-container {
+    position: sticky;
+    z-index: z-index(top);
+    bottom: $paginator-height + 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+}
+
+.backtop-button {
+    width: $backtop-height;
+    height: $backtop-height;
+    border-radius: $backtop-height;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    &:hover {
+        background-color: var(--bg);
+        transform: translateY(-4px) scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    img,
+    svg {
+        width: $backtop-height;
+        height: $backtop-height;
+    }
+}

@@ -1,0 +1,74 @@
+@use "mixins" as *;
+@use "colors" as *;
+@use "size" as *;
+
+.tabs {
+    margin: 2rem 0;
+
+    .tabs-nav {
+        display: flex;
+        align-items: flex-end;
+        gap: 0.2rem;
+        font-size: 1rem;
+
+        .scroll-button {
+            margin: 0.2rem 0;
+            font-size: 1.2rem;
+
+            &[data-scroll="left"] {
+                margin-left: -0.3rem;
+            }
+
+            &[data-scroll="right"] {
+                margin-right: -0.3rem;
+            }
+        }
+    }
+
+    .tabs-panel {
+        margin: 1rem 1rem;
+        display: none;
+
+        &.activated {
+            display: block;
+        }
+    }
+}
+
+.tabs-nav-scroll {
+    margin: 0 0.2rem;
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    overflow: auto hidden;
+    gap: 1rem;
+    box-shadow: inset 0 -1px 0 var(--hr-color);
+    scrollbar-width: none;
+}
+
+.tabs-button {
+    padding: 0.2rem 0;
+    gap: 0.2rem;
+    border-bottom: 2px solid transparent;
+    color: var(--text-meta-color);
+    font-size: 0.9rem;
+
+    &:hover {
+        color: var(--text-meta-hover-color);
+        background-color: transparent;
+        border-bottom-color: var(--hr-color);
+    }
+
+    &.activated {
+        &,
+        &:hover {
+            color: $theme-color;
+            background-color: transparent;
+            border-bottom-color: $theme-color;
+        }
+    }
+
+    > span {
+        @include ellipsis($tabs-button-max-width);
+    }
+}

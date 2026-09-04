@@ -1,0 +1,156 @@
+@use "mixins" as *;
+@use "layers" as *;
+@use "colors" as *;
+@use "size" as *;
+
+.nav-container {
+    position: sticky;
+    top: 0;
+    z-index: z-index(nav);
+    width: 100%;
+    background: transparent;
+}
+
+.nav-blur {
+    position: absolute;
+    z-index: z-index(bottom);
+    width: 100%;
+    height: 100%;
+    @include nav-box;
+    pointer-events: none;
+}
+
+.nav-bar {
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: $main-max-width;
+    height: $nav-height;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.nav-logo,
+.menu,
+.theme-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    text-decoration: none;
+    user-select: none;
+    @include transition("color, opacity, transform", 0.3s, ease);
+}
+
+.nav-logo {
+    margin-right: auto;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-color);
+
+    &:hover {
+        color: var(--text-color);
+        opacity: 0.8;
+        text-decoration: none;
+    }
+}
+
+.menu,
+.theme-switch {
+    padding: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-bar-color);
+
+    &:hover {
+        color: var(--text-bar-hover-color);
+        text-decoration: none;
+        transform: scale(1.1);
+    }
+}
+
+.menu.activated {
+    &,
+    &:hover {
+        color: var(--text-color);
+    }
+}
+
+.nav-logo:active,
+.menu:active,
+.menu.activated:active,
+.theme-switch:active {
+    transform: scale(0.9);
+}
+
+.nav-logo,
+.menu,
+.theme-switch {
+    img,
+    svg {
+        width: 2em;
+        height: 2em;
+    }
+}
+
+.menu-group {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+details.menu-group {
+    > summary.menu svg {
+        width: 1.2em;
+        height: 1.2em;
+        @include transition(transform, 0.3s, ease);
+    }
+
+    &[open] > summary.menu svg {
+        @include svg-rotate(-180deg);
+    }
+}
+
+.submenu {
+    position: absolute;
+    z-index: z-index(nav) + 1;
+    top: 100%;
+    right: 0;
+    margin-top: 0.1rem;
+    padding: 0.5rem 1rem;
+    min-width: 100%;
+    @include border($block-border, $block-border-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    @include nav-box;
+
+    .menu {
+        padding: 0.4rem 0.5rem;
+    }
+}
+
+.theme-switch {
+    &:hover {
+        background-color: transparent;
+    }
+
+    .theme-dark,
+    &[data-theme="dark"] .theme-light {
+        display: none;
+    }
+
+    &[data-theme="dark"] .theme-dark {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: $breakpoint-narrow) {
+    .menu,
+    .menu-group {
+        display: none;
+    }
+}

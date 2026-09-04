@@ -1,0 +1,63 @@
+@use "mixins" as *;
+@use "size" as *;
+
+p {
+    margin: 0 0 1rem;
+}
+
+#content {
+    > *:first-child {
+        margin-top: 1rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: {
+            top: 0.4rem;
+            bottom: 0.8rem;
+        }
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 700;
+        color: var(--text-color);
+        scroll-margin-top: $nav-height + 1rem;
+
+        &:hover .heading-anchor {
+            opacity: 1;
+        }
+    }
+
+    h1 {
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.2rem;
+        font-size: 1.5rem;
+        border-bottom: 1px solid var(--hr-color);
+    }
+
+    h2 {
+        margin: 1rem 0;
+        padding-bottom: 0.2rem;
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    h4 {
+        font-size: 1.1rem;
+    }
+}
+
+.heading-anchor {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0;
+    @include transition("color, opacity", 0.3s, ease);
+}

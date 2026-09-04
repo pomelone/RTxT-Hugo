@@ -1,0 +1,20 @@
+// Surfaces
+$bg: #fff;
+$fg: #141414;
+$side-bg: #fff;
+$nav-bg: rgba(255, 255, 255, 0.8);
+$nav-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.06);
+
+// Text colors
+$text-color: #141414;
+$text-meta-color: #505050;
+$text-meta-hover-color: #141414;
+$text-bar-color: #505050;
+$text-bar-hover-color: #008000;
+
+// Component colors
+$hr-color: #d7d7d7;
+$list-bg: color-mix(in srgb, #111 10%, transparent);
+$table-even: #ebebeb;
+$button-border: 1px solid color-mix(in srgb, #111 10%, transparent);
+$button-bg: color-mix(in srgb, #111 10%, #fff);

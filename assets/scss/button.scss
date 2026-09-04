@@ -1,0 +1,25 @@
+@use "mixins" as *;
+@use "colors" as *;
+
+button {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    flex-shrink: 0;
+    border: none;
+    color: $theme-color;
+    background-color: transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+    @include transition("color, background-color, border-color, max-width, opacity, visibility, transform", 0.6s, ease);
+
+    &:hover {
+        background-color: var(--button-bg);
+    }
+}

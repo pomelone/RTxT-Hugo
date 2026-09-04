@@ -1,0 +1,38 @@
+@use "mixins" as *;
+@use "colors" as *;
+@use "size" as *;
+
+.taxonomy-grid {
+    margin: 1rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 2rem;
+
+    @media (max-width: $breakpoint-narrow) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.taxonomy {
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: start;
+    text-wrap: wrap;
+    text-decoration: none;
+    color: var(--text-color);
+    @include border($block-border, $block-border-radius);
+    overflow: hidden;
+    @include transition(transform, 0.6s, ease);
+
+    &:hover {
+        color: var(--text-color);
+        text-decoration: none;
+        transform: scale(1.1);
+    }
+}

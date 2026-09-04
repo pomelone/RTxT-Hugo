@@ -1,0 +1,38 @@
+@use "colors/light";
+@use "colors/dark";
+
+@mixin light-theme {
+    --bg: #{light.$bg};
+    --fg: #{light.$fg};
+    --side-bg: #{light.$side-bg};
+    --nav-bg: #{light.$nav-bg};
+    --nav-shadow: #{light.$nav-shadow};
+    --text-color: #{light.$text-color};
+    --text-meta-color: #{light.$text-meta-color};
+    --text-meta-hover-color: #{light.$text-meta-hover-color};
+    --text-bar-color: #{light.$text-bar-color};
+    --text-bar-hover-color: #{light.$text-bar-hover-color};
+    --hr-color: #{light.$hr-color};
+    --list-bg: #{light.$list-bg};
+    --table-even: #{light.$table-even};
+    --button-border: #{light.$button-border};
+    --button-bg: #{light.$button-bg};
+}
+
+@mixin dark-theme {
+    --bg: #{dark.$bg};
+    --fg: #{dark.$fg};
+    --side-bg: #{dark.$side-bg};
+    --nav-bg: #{dark.$nav-bg};
+    --nav-shadow: #{dark.$nav-shadow};
+    --text-color: #{dark.$text-color};
+    --text-meta-color: #{dark.$text-meta-color};
+    --text-meta-hover-color: #{dark.$text-meta-hover-color};
+    --text-bar-color: #{dark.$text-bar-color};
+    --text-bar-hover-color: #{dark.$text-bar-hover-color};
+    --hr-color: #{dark.$hr-color};
+    --list-bg: #{dark.$list-bg};
+    --table-even: #{dark.$table-even};
+    --button-border: #{dark.$button-border};
+    --button-bg: #{dark.$button-bg};
+}

@@ -1,0 +1,28 @@
+@use "mixins" as *;
+
+.copy-button {
+    @include compact-button;
+    @include button-scale;
+
+    &:hover {
+        color: var(--text-meta-hover-color);
+    }
+
+    .copy-show,
+    &.copied .copy-successful,
+    &.failed .copy-failed {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+    }
+
+    .copy-successful,
+    .copy-failed,
+    &.copied .copy-show,
+    &.copied .copy-failed,
+    &.failed .copy-show,
+    &.failed .copy-successful {
+        display: none;
+    }
+}

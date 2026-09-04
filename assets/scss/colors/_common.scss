@@ -1,0 +1,20 @@
+// Brand colors
+$theme-color: #008000;
+$theme-hover-color: #008f00;
+
+// Surfaces
+$nav-bf: blur(12px) saturate(180%);
+
+// Link colors
+$link-color: #2463eb;
+$link-hover-color: #008000;
+
+// Component colors
+$scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
+$code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
+$table-th-bg: #008000;
+$table-th-fg: #fff;
+$block-border: color-mix(in srgb, currentColor 10%, transparent);
+$block-bg: color-mix(in srgb, currentColor 5%, #fff);
+$block-button-bg: color-mix(in srgb, #111 10%, #fff);
+$block-summary-bg: color-mix(in srgb, currentColor 10%, #fff);

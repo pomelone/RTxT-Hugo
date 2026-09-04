@@ -1,0 +1,141 @@
+@use "mixins" as *;
+@use "layers" as *;
+@use "colors" as *;
+@use "size" as *;
+
+.title {
+    margin: 0.5rem 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.7rem;
+    text-align: center;
+    text-wrap: balance;
+
+    > span:first-child {
+        flex: 1;
+        text-align: center;
+    }
+
+    a {
+        margin-right: auto;
+    }
+}
+
+.meta {
+    margin: 0.5rem 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 1.5rem;
+    gap: 0 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-meta-color);
+
+    &.content {
+        margin: 1rem 0;
+        justify-content: flex-end;
+    }
+
+    .date,
+    .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-decoration: none;
+    }
+
+    .date {
+        gap: 0.2rem;
+        font-size: 0.9rem;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        @include transition("color, opacity, transform", 0.3s, ease);
+
+        &:hover {
+            color: var(--text-meta-hover-color);
+            opacity: 1;
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+
+        > span {
+            @include ellipsis($meta-tag-max-width);
+        }
+    }
+}
+
+.page {
+    margin: 1rem 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    @include border($block-border, $block-border-radius);
+    overflow: hidden;
+    @include transition("transform, filter", 0.6s, ease);
+
+    &:hover {
+        z-index: z-index(nav) - 1;
+        transform: scale(1.1);
+    }
+
+    .title {
+        margin: 0.5rem 0;
+        justify-content: flex-start;
+        gap: 0.2rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+        text-align: start;
+        text-wrap: wrap;
+    }
+
+    .meta .date {
+        font-size: 0.8rem;
+    }
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        color: var(--text-color);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .page-summary {
+        margin: 0;
+        max-height: 0;
+        line-height: 1.6rem;
+        font-size: 0.9rem;
+        opacity: 0;
+        transform: scale(0.6);
+        overflow: hidden;
+        @include transition("max-height, margin, opacity, transform", 0.6s, ease);
+    }
+
+    &:hover .page-summary {
+        margin: 0.5rem 0;
+        max-height: 4.8rem;
+        opacity: 0.8;
+        transform: scale(1);
+    }
+}
+
+@media (hover: none) {
+    .page .page-summary {
+        margin: 0.5rem 0;
+        max-height: 4.8rem;
+        opacity: 0.8;
+        transform: none;
+    }
+}
