@@ -7,19 +7,28 @@
 
 ## Features
 
-- Built on the Hugo 0.146+ template system
-- Responsive two-sidebar layout: series / taxonomy navigation on the left, table of contents and tags on the right
-- Navbar with primary items, collapsible submenus (optional icons), and a light/dark theme switch
-- Card-style post list with pagination; sorting by `weight` > `lastmod` > `title`
-- Status badges: draft / scheduled / expired / pinned (negative `weight`)
-- Code blocks: filename, link, highlighted lines, one-click copy, collapse
-- Callouts: `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts
-- Math (KaTeX)
-- Archives page: collapsible year / month groups
-- Taxonomy pages: two-column term cards; term pages with a term list in the left sidebar
-- Breadcrumbs, back-to-top button, i18n (zh-cn / en)
-- Heading anchor links shown on hover
-- Standalone 404 page
+- Core
+    - Built on the **Hugo 0.146+** template system
+    - Card-style post list with pagination; sorting by `weight` > `lastmod` > `title`
+    - Breadcrumbs, back-to-top button, [i18n](#i18n) (zh-cn / en)
+- Configuration
+    - Navbar with primary items, collapsible [submenus](#menu-and-submenus) (optional icons), and a light/dark theme switch
+    - [Feature toggles](#feature-toggles): toc, tags, series, term list, breadcrumb, theme switch
+- Front Matter
+    - [Pinning and status](#pinning-and-status): draft / scheduled / expired / pinned (negative `weight`)
+    - [Tags, series, and categories](#tags-series-and-categories) in front matter
+- Markdown Extras
+    - [Code blocks](#code-blocks): filename, link, highlighted lines, one-click copy, collapse
+    - [Callouts](#callouts): `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts
+    - [Math (KaTeX)](#math-katex)
+- Shortcodes
+    - [icon](#icon), [badge](#badge), [tabs](#tabs): switchable panels with Markdown content
+- Pages
+    - [Taxonomies](#taxonomies): two-column term cards; term pages with a term list in the left sidebar
+    - [Archives](#archives): collapsible year / month groups
+    - Standalone [404 page](#404-page)
+- Customization
+    - [Custom CSS](#custom-css), [favicon and logo](#favicon-and-logo), [footer](#footer), [icons](#icons)
 
 ## Getting Started
 
@@ -38,31 +47,6 @@ All site options live in **hugo.toml**.
     description = 'Rich Text Theme for Hugo'
     dateFormat = '2006-01-02 15:04'
     summaryLength = 50
-
-    [params.footer]
-        enable = true
-        copyright = '© 2026 RTxT. All rights reserved.'
-        poweredBy = '<a href="/">PowerBy RTxT</a>'
-
-    [params.archives]
-        sections = ['blog']
-
-    [params.taxonomy]
-        pagerSize = 50
-
-    [params.features]
-        enable_toc = true
-        enable_tag = true
-        enable_series = true
-        enable_term = true
-        enable_breadcrumb = true
-        enable_theme_switch = true
-
-    [params.math]
-        enable = true
-        engine = 'katex'
-        katex.cdn = 'https://cdn.jsdelivr.net/npm/katex'
-        katex.version = '0.18.4'
 ```
 
 ### Menu and Submenus
@@ -84,11 +68,13 @@ Configure menus in **hugo.toml**. Use `parent` to attach an item to another item
         weight = 42
 ```
 
-- Menu labels prefer the `menu.<identifier>` translation from the i18n files
-- `params.icon` sets an icon name from `data/icons.toml`
-- Items with children render as collapsible dropdowns
+- Menu labels prefer the `menu.<identifier>` translation from the i18n files.
+- `params.icon` sets an icon name from `data/icons.toml`.
+- Items with children render as collapsible dropdowns.
 
 ### Table of Contents
+
+Configure the table of contents depth in **hugo.toml**:
 
 ```toml
 [markup.tableOfContents]
@@ -97,31 +83,42 @@ Configure menus in **hugo.toml**. Use `parent` to attach an item to another item
     ordered = false
 ```
 
-### Theme Switch
+### Feature Toggles
 
-A light/dark toggle sits at the end of the navbar (`enable_theme_switch`).
+Each toggle can be set globally under `[params.features]`:
 
-- The choice is persisted in `localStorage` (`rtxt-theme`), so it survives reloads
-- Without a saved choice, the theme follows the system `prefers-color-scheme`
+```toml
+enable_theme_switch = true   # light/dark theme switch in the navbar
+enable_breadcrumb = true     # breadcrumb at the top of a page
+enable_toc = true            # table of contents in the right sidebar
+enable_tag = true            # tags in the right sidebar
+enable_term = true           # term list in the left sidebar (term pages)
+enable_series = true         # series navigation in the left sidebar
+```
+
+### Default Pagination Size
+
+Set the default pagination size in **hugo.toml**:
+
+```toml
+[pagination]
+    pagerSize = 10
+```
 
 ## Front Matter
 
-### Feature toggles
+### Feature Toggles per Page
 
-Each toggle can be set globally under `[params.features]` or per page in front matter (page value wins).
+The same toggles can be set per page in front matter (the page value wins):
 
-```toml
-enable_toc = true          # table of contents in the right sidebar
-enable_tag = true          # tags in the right sidebar
-enable_series = true       # series navigation in the left sidebar
-enable_term = true         # term list in the left sidebar (term pages)
-enable_breadcrumb = true   # breadcrumb at the top of a page
-enable_theme_switch = true # light/dark theme switch in the navbar
+```yaml
+enable_toc = true
+enable_tag = false
 ```
 
 ### Pinning and Status
 
-- Pinning: set a negative `weight` (e.g. `-1`) — the post sorts first and shows a pin icon
+- Pinning: set a negative `weight` (e.g. `-1`) — the post sorts first and shows a pin icon.
 - Status badges:
     - `draft` → draft
     - `date` in the future → scheduled
@@ -132,72 +129,6 @@ enable_theme_switch = true # light/dark theme switch in the navbar
 cascade:
     weight: 99
 ```
-
-### Series
-
-Declare the series a post belongs to in front matter:
-
-```yaml
-series: [blog, markdown]
-```
-
-Posts that belong to series show a collapsible series navigation in the left sidebar: each associated series lists all of its posts with the current post highlighted.
-
-## Shortcodes
-
-### icon
-
-Insert an icon defined in `data/icons.toml`:
-
-```md
-{{< icon "github" >}}
-{{< icon name="tag" size="1.5em" >}}
-```
-
-Parameters:
-
-- `name`: icon name (required)
-- `size`: icon size (optional)
-
-### badge
-
-Insert a badge:
-
-```md
-{{< badge "RTxT" >}}
-{{< badge content="GitHub" icon="github" color="#0aa344" border=false link="https://github.com" >}}
-```
-
-Parameters:
-
-- `content`: badge text (required)
-- `link`: badge link (optional)
-- `icon`: icon name from `data/icons.toml` (optional)
-- `color`: badge color (optional)
-- `border`: show a border, default `true` (optional)
-
-### tabs
-
-Group content into switchable tabs:
-
-```md
-{{< tabs >}}
-{{< tab name="Markdown" selected=true >}}
-**Bold**, *italic*, lists, code blocks and other shortcodes are fully supported.
-{{< /tab >}}
-{{< tab name="GitHub" icon="github" >}}
-Content of the second tab.
-{{< /tab >}}
-{{< /tabs >}}
-```
-
-Parameters:
-
-- `name`: tab label (required)
-- `selected`: set `true` to select this tab by default; otherwise the first tab is selected (optional)
-- `icon`: icon name from `data/icons.toml` (optional)
-
-Tab content is rendered as Markdown.
 
 ## Markdown Extras
 
@@ -215,10 +146,10 @@ a = "string a"
 
 Parameters:
 
-- `filename`: filename, defaults to the language (optional)
-- `link`: link for the filename (optional)
-- `collapse`: collapse the code, default `true` (optional)
-- `hl_lines`: highlighted lines (optional)
+- `filename`: filename, defaults to the language (optional).
+- `link`: link for the filename (optional).
+- `collapse`: collapse the code, default `true` (optional).
+- `hl_lines`: highlighted lines (optional).
 
 ### Callouts
 
@@ -258,7 +189,97 @@ Customize the KaTeX version or CDN in **hugo.toml**:
     katex.version = '0.18.4'
 ```
 
+## Shortcodes
+
+### icon
+
+Insert an icon defined in `data/icons.toml`:
+
+```md
+{{< icon "github" >}}
+{{< icon name="tag" size="1.5em" >}}
+```
+
+Parameters:
+
+- `name`: icon name (required).
+- `size`: icon size (optional).
+
+### badge
+
+Insert a badge:
+
+```md
+{{< badge "RTxT" >}}
+{{< badge content="GitHub" icon="github" color="#0aa344" border=false link="https://github.com" >}}
+```
+
+Parameters:
+
+- `content`: badge text (required).
+- `link`: badge link (optional).
+- `icon`: icon name from `data/icons.toml` (optional).
+- `color`: badge color (optional).
+- `border`: show a border, default `true` (optional).
+
+### tabs
+
+Group content into switchable tabs:
+
+```md
+{{< tabs >}}
+{{< tab name="Markdown" selected=true >}}
+**Bold**, *italic*, lists, code blocks and other shortcodes are fully supported.
+{{< /tab >}}
+{{< tab name="GitHub" icon="github" >}}
+Content of the second tab.
+{{< /tab >}}
+{{< /tabs >}}
+```
+
+Parameters:
+
+- `name`: tab label (required).
+- `selected`: set `true` to select this tab by default; otherwise the first tab is selected (optional).
+- `icon`: icon name from `data/icons.toml` (optional).
+
+Tab content is rendered as Markdown (nested shortcodes included).
+
 ## Pages
+
+### Taxonomies
+
+Once taxonomies are declared, the taxonomy home page renders all terms as a two-column card grid.
+
+```toml
+[taxonomies]
+    tag = 'tags'               # -> /tags/
+    category = 'categories'    # -> /categories/
+    series = 'series'          # -> /series/
+```
+
+Term pages (e.g. `/series/xxx/`) list all terms of the same taxonomy in the left sidebar with the current term highlighted (`enable_term`).
+
+The Term page pagination size is configurable:
+
+```toml
+[params.taxonomy]
+pagerSize = 50
+```
+
+### Tags, Series, and Categories
+
+Declare taxonomies for a post in front matter:
+
+```yaml
+tags: [blog, markdown]
+series: [RTxT]
+categories: theme
+```
+
+- Tags show in the right sidebar (`enable_tag`).
+- Posts that belong to series show a collapsible series navigation in the left sidebar (`enable_series`): each associated series lists all of its posts with the current post highlighted.
+- Categories work like any other taxonomy (see [Taxonomies](#taxonomies)).
 
 ### Archives
 
@@ -273,37 +294,27 @@ layout: archives
 
 The archive page aggregates posts from the sections configured in `[params.archives]` (default `blog`), grouped by last-modified year / month in collapsible groups.
 
-### Taxonomies
-
-Once taxonomies are declared (e.g. `series`, `categories`, `tags`), the taxonomy home page (e.g. `/series/`) renders all terms as a two-column card grid. The page size is configurable:
-
 ```toml
-[params.taxonomy]
-pagerSize = 50
+[params.archives]
+    sections = ['blog']
 ```
-
-Term pages (e.g. `/series/xxx/`) list all terms of the same taxonomy in the left sidebar with the current term highlighted (`enable_term`).
 
 ### 404 Page
 
-The theme ships a standalone 404 page (`layouts/404.html`) that does not use the site layout (no navbar/footer)
+The theme ships a standalone 404 page (no navbar or footer).
 
-- Font: place the "Facon" font files in `static/fonts/Facon/` (`Facon.woff2` / `Facon.woff` / `Facon.ttf`); the page loads them via `@font-face`
+- Font: place the "Facon" font files in `static/fonts/Facon/` (`Facon.woff2` / `Facon.woff` / `Facon.ttf`); the page loads them via `@font-face`.
 
 ## Customization
+
+### Favicon and Logo
+
+- Favicon: place `favicon.[svg|ico|png]` in `/static`.
+- Logo: place `logo.svg` in `/static`.
 
 ### Custom CSS
 
 Create `/assets/css/custom.css` to override or extend the theme styles.
-
-### Favicon and Logo
-
-- Favicon: place `favicon.[svg|ico|png]` in `/static`
-- Logo: place `logo.svg` in `/static`
-
-### Icons
-
-Icons used by shortcodes and the menu come from `data/icons.toml`; SVG sprite symbols live in `assets/ui/` (`animated-ui.svg` inlined, `static-ui.svg` referenced externally).
 
 ### Footer
 
@@ -316,8 +327,12 @@ Icons used by shortcodes and the menu come from `data/icons.toml`; SVG sprite sy
     poweredBy = '<a href="/">PowerBy RTxT</a>'
     ```
 
-- Create `layouts/_partials/custom/footer.html` to fully customize the footer
+- Create `layouts/_partials/custom/footer.html` to fully customize the footer.
 
-## i18n
+### Icons
+
+Icons used by shortcodes and the menu come from `data/icons.toml`; SVG sprite symbols live in `assets/ui/` (`animated-ui.svg` inlined, `static-ui.svg` referenced externally).
+
+### i18n
 
 To add a language, create a file with the same structure under the site's `i18n/` directory (same key names) — it overrides or extends the theme translations.

@@ -84,7 +84,7 @@
 
 .left-side .term ul {
     margin: 0;
-    padding: 0 1rem 0 1rem;
+    padding: 0 1rem 0 0;
     list-style: none;
 }
 
@@ -100,13 +100,13 @@
 
 .left-side .term .series-group {
     margin: 0 0 0.5rem;
-    padding: 0 1rem 0 0.5rem;
+    padding: 0 1rem 0 0;
     width: 100%;
 }
 
 .left-side .term .series-name {
     display: list-item;
     font-weight: 500;
-    color: var(--text-meta-hover-color);
+    color: var(--text-meta-color);
     cursor: pointer;
 }
