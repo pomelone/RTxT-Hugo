@@ -1,0 +1,10 @@
+@use "size/regular";
+@use "size/narrow";
+
+@mixin regular-media {
+    --block-title-max-width: #{regular.$block-title-max-width};
+}
+
+@mixin narrow-media {
+    --block-title-max-width: #{narrow.$block-title-max-width};
+}

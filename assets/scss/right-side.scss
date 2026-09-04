@@ -1,0 +1,61 @@
+@use "mixins" as *;
+@use "layers" as *;
+
+.right-side {
+    margin-right: 2rem;
+    @include side-panel;
+    order: order(middle);
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        color: var(--text-meta-color);
+        opacity: 0.8;
+        @include transition("color, opacity", 0.3s, ease);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--text-meta-hover-color);
+            opacity: 1;
+            text-decoration: none;
+        }
+    }
+
+    .toc {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .title {
+            @include side-title;
+            padding: 1rem 0 0.5rem 1rem;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0 0 0 2rem;
+            list-style: none;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .meta {
+        position: sticky;
+        z-index: z-index(side) + 1;
+        bottom: 0;
+        margin: auto 0 0;
+        flex: none;
+        padding: 0.5rem 0 1rem 1rem;
+        background-color: var(--side-bg);
+
+        hr {
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+    }
+}

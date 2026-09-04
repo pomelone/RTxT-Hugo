@@ -1,0 +1,33 @@
+@use "sass:map";
+
+$z-layers: (
+    bottom: -1,
+    top: 99,
+    page: 1,
+    math: 20,
+    side: 80,
+    nav: 90
+);
+
+@function z-index($layer) {
+    @if not map.has-key($z-layers, $layer) {
+        @error "Unknown z-index layer: #{$layer}";
+        @return null;
+    }
+    @return map.get($z-layers, $layer);
+}
+
+$ele-order: (
+    base: 0,
+    head: -1,
+    middle: 10,
+    tail: 20
+);
+
+@function order($position) {
+    @if not map.has-key($ele-order, $position) {
+        @error "Unknown order position: #{$position}";
+        @return null;
+    }
+    @return map.get($ele-order, $position);
+}

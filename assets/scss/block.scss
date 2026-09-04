@@ -1,0 +1,49 @@
+@use "mixins" as *;
+@use "colors" as *;
+@use "size" as *;
+
+$callout-colors: (
+    note: #0038f3,
+    tip: #008000,
+    important: #9b00ec,
+    warning: #ff6800,
+    caution: #ff0000
+);
+
+@each $name, $color in $callout-colors {
+    .callout-#{$name} {
+        --quote-color: #{$color};
+    }
+}
+
+.callout-block {
+    margin: 1rem 0;
+    @include border($block-border, $block-border-radius);
+    overflow: hidden;
+    color: var(--quote-color);
+    background-color: $block-bg;
+
+    .collapse-summary {
+        padding: 0.8rem 1rem;
+        font-weight: 600;
+        font-size: 1.1em;
+    }
+
+    .collapse-content {
+        padding: 0 1rem 0.8rem 2rem;
+    }
+
+    .callout-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
+
+        > span {
+            @include ellipsis(var(--block-title-max-width));
+        }
+    }
+
+    .collapse-button:hover {
+        background-color: $block-button-bg;
+    }
+}

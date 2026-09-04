@@ -1,0 +1,64 @@
+@use "mixins" as *;
+
+.collapsed .collapse-content {
+    display: none;
+}
+
+.collapse-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .collapse-actions {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+}
+
+.collapse-button {
+    @include compact-button;
+    @include button-scale;
+
+    &:hover {
+        color: var(--text-meta-hover-color);
+    }
+
+    svg {
+        @include transition(transform, 0.3s, ease);
+    }
+
+    .collapse-open,
+    .collapsed & .collapse-closed {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .collapse-closed,
+    .collapsed & .collapse-open {
+        display: none;
+    }
+}
+
+.collapsed .collapse-button svg {
+    @include svg-rotate(180deg);
+}
+
+details > summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+
+    svg {
+        @include transition(transform, 0.3s, ease);
+    }
+}
+
+details[open] > summary svg {
+    @include svg-rotate(90deg);
+}

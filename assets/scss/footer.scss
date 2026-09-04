@@ -1,0 +1,36 @@
+@use "mixins" as *;
+@use "size" as *;
+
+.footer-container {
+    &,
+    a {
+        color: var(--text-bar-color);
+        text-decoration: none;
+        @include transition(color, 0.3s, ease);
+    }
+
+    a:hover {
+        color: var(--text-bar-hover-color);
+        text-decoration: underline;
+    }
+}
+
+.footer-bar {
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    max-width: $main-max-width;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer-text {
+    font-size: 0.75rem;
+
+    img,
+    svg {
+        display: inline-block;
+        height: 0.75rem;
+    }
+}

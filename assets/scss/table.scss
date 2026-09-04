@@ -1,0 +1,39 @@
+@use "mixins" as *;
+@use "colors" as *;
+@use "size" as *;
+
+table {
+    margin: 1rem 0;
+    width: 100%;
+    display: block;
+    @include border($block-border, $block-border-radius);
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 1em 1.25rem;
+
+    &:last-child {
+        border-right: none;
+    }
+}
+
+tr:last-child {
+    th,
+    td {
+        border-bottom: none;
+    }
+}
+
+th {
+    font-weight: 600;
+    background-color: $table-th-bg;
+    color: $table-th-fg;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: var(--table-even);
+}

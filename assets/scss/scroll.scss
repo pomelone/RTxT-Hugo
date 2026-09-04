@@ -1,0 +1,22 @@
+.scroll-button {
+    display: none;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    color: var(--text-meta-color);
+    font-weight: 600;
+    font-size: 1rem;
+
+    &.visible {
+        display: inline-flex;
+    }
+
+    &[disabled] {
+        max-width: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &:hover {
+        color: var(--text-meta-hover-color);
+    }
+}

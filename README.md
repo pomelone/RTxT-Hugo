@@ -95,7 +95,6 @@ Configure the table of contents depth in **hugo.toml**:
 [markup.tableOfContents]
     startLevel = 1
     endLevel = 3
-    ordered = false
 ```
 
 ### Default Pagination Size
@@ -373,17 +372,9 @@ Configure markup rendering in **hugo.toml**:
 
 ```toml
 [markup.highlight]
-    noHl = false
-    noClasses = true
     style = 'base16-snazzy'
-    hl_inline = false
-    guessSyntax = false
     lineNos = true
-    lineNoStart = 1
     anchorLineNos = true
-    lineAnchors = ''
-    lineNumbersInTable = true
-    codeFences = true
     tabWidth = 4
 
 [markup.goldmark]
@@ -391,18 +382,6 @@ Configure markup rendering in **hugo.toml**:
         hardWraps = true
         unsafe = true
         xhtml = false
-
-    [markup.goldmark.extensions]
-        definitionList = true
-        footnote = true
-        linkify = true
-        linkifyProtocol = 'https'
-        strikethrough = true
-        table = true
-        taskList = true
-
-    [markup.goldmark.extensions.typographer]
-        disable = false
 
     [markup.goldmark.extensions.cjk]
         enable = true

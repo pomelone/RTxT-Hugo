@@ -1,0 +1,96 @@
+@use "mixins" as *;
+@use "colors" as *;
+
+ul,
+ol {
+    margin: 0.4em 0;
+    padding-left: 1.4em;
+}
+
+li {
+    margin: 0.2em 0;
+
+    > ul,
+    > ol {
+        margin: 0;
+    }
+}
+
+@keyframes pop {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+ul:has(> li > input[type="checkbox"]) {
+    padding-left: 0;
+}
+
+li:has(> input[type="checkbox"]) {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    background: none;
+    box-sizing: border-box;
+
+    position: relative;
+    margin: 0 0.4em;
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    @include border(var(--list-bg), 0.4em);
+    overflow: hidden;
+    background-color: var(--list-bg);
+    user-select: none;
+    cursor: pointer;
+    @include transition("color, background-color", 0.6s, ease);
+
+    &:checked {
+        border-color: transparent;
+        background-color: $theme-color;
+        animation: pop 0.6s ease-in-out;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 0.2em;
+        background-color: var(--bg);
+        opacity: 0;
+        @include transition("opacity, transform", 0.6s, ease);
+    }
+
+    &::before {
+        width: 0.5em;
+        height: 0.2em;
+        transform: translate(10%, 290%);
+    }
+
+    &::after {
+        width: 0.8em;
+        height: 0.2em;
+        transform: translate(30%, 240%);
+    }
+
+    &:checked::before {
+        opacity: 1;
+        transform: translate(10%, 290%) rotate(45deg);
+    }
+
+    &:checked::after {
+        opacity: 1;
+        transform: translate(30%, 240%) rotate(-45deg);
+    }
+}

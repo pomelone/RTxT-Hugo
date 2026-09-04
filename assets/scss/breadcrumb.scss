@@ -1,0 +1,60 @@
+@use "mixins" as *;
+@use "size" as *;
+
+.breadcrumb {
+    margin: 0.5rem 0 0;
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--text-meta-color);
+
+    ol {
+        margin: 0;
+        padding: 0;
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.3rem;
+        list-style: none;
+    }
+
+    li {
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+
+        &.activated a {
+            color: var(--text-meta-hover-color);
+            opacity: 1;
+        }
+
+        + li::before {
+            margin-right: 0.3rem;
+            content: "/";
+            display: inline-flex;
+            align-self: flex-start;
+            font-weight: 600;
+            color: var(--text-meta-color);
+            opacity: 0.8;
+        }
+    }
+
+    a {
+        color: var(--text-meta-color);
+        opacity: 0.8;
+        @include transition("color, opacity", 0.3s, ease);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--text-meta-hover-color);
+            opacity: 1;
+            text-decoration: none;
+        }
+
+        > span {
+            @include ellipsis($breadcrumb-max-width);
+        }
+    }
+}

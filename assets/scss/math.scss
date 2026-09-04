@@ -1,0 +1,32 @@
+@use "mixins" as *;
+@use "colors" as *;
+@use "layers" as *;
+
+.katex-display {
+    margin: 0.8em 0;
+    padding: 0.2em 0;
+    overflow: auto hidden;
+    scrollbar: {
+        width: thin;
+        color: transparent transparent;
+        gutter: stable;
+    }
+
+    &:hover {
+        scrollbar-color: $scrollbar-color;
+    }
+}
+
+.katex {
+    font-size: 1.1em;
+
+    .katex-tag {
+        position: sticky !important;
+        right: 0;
+        margin-left: 0.4em;
+        z-index: z-index(math);
+        padding: 0.2em;
+        display: inline-block;
+        background-color: var(--bg);
+    }
+}

@@ -1,0 +1,78 @@
+@use "mixins" as *;
+@use "colors" as *;
+@use "size" as *;
+
+$mono-font: ui-monospace, Monaco, SFMono-Regular, Menlo, Consolas, monospace;
+
+code {
+    padding: 0.1em 0.4em;
+    border-radius: 0.4em;
+    font-family: $mono-font;
+    font-size: 0.9em;
+    background-color: $code-inline-bg;
+}
+
+pre {
+    margin: 0;
+    padding: 0.5rem;
+    background-color: transparent;
+    border-radius: 0;
+    overflow: auto hidden;
+    @include thin-scrollbar;
+
+    code {
+        padding: 0;
+        background-color: transparent;
+        font-size: 0.9em;
+    }
+}
+
+.code-block {
+    margin: 1rem 0;
+    @include border($block-border, $block-border-radius);
+    overflow: hidden;
+
+    .highlight {
+        margin: 0;
+
+        table {
+            overflow: auto hidden;
+            @include thin-scrollbar;
+            border: none;
+            box-shadow: none;
+        }
+    }
+
+    .collapse-summary {
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+
+    .code-filename {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2em;
+        font-family: $mono-font;
+        color: var(--text-meta-color);
+
+        > span {
+            @include ellipsis(var(--block-title-max-width));
+        }
+    }
+
+    a.code-filename {
+        text-decoration: none;
+        @include transition("color, transform", 0.3s, ease);
+
+        &:hover {
+            text-decoration: none;
+            color: var(--text-meta-hover-color);
+            transform: scale(1.1);
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+}

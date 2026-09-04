@@ -1,0 +1,52 @@
+@use "mixins" as *;
+@use "colors" as *;
+@use "size" as *;
+
+img,
+svg {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    width: auto;
+    height: 1.2em;
+    vertical-align: middle;
+}
+
+.icon {
+    max-width: 100%;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+figure {
+    margin: 0.4em 0;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include border($block-border, $block-border-radius);
+    overflow: hidden;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    figcaption {
+        padding: 0.5em 4em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.9em;
+        color: var(--text-meta-color);
+
+        @media (max-width: $breakpoint-narrow) {
+            padding: 0.5em 2em;
+        }
+    }
+}

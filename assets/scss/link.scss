@@ -1,0 +1,19 @@
+@use "mixins" as *;
+@use "colors" as *;
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    @include transition(color, 0.3s, ease);
+
+    &:hover {
+        color: $link-hover-color;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.footnotes {
+    margin: 2rem 0 0;
+    font-size: 0.9rem;
+}

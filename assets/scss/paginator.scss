@@ -1,0 +1,74 @@
+@use "mixins" as *;
+@use "layers" as *;
+@use "colors" as *;
+@use "size" as *;
+
+.paginator-container {
+    position: sticky;
+    z-index: z-index(top);
+    bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+
+    a {
+        &,
+        &:hover {
+            color: $theme-color;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+
+    .paginator-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+        white-space: nowrap;
+        gap: 1rem;
+    }
+}
+
+.paginator-button,
+.paginator-number-button {
+    height: $paginator-height;
+    border-radius: $paginator-height;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: var(--bg);
+
+    &:hover {
+        background-color: var(--bg);
+        transform: translateY(-4px) scale(1.1);
+    }
+}
+
+.paginator-button {
+    width: $paginator-height;
+
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    img,
+    svg {
+        width: $paginator-height;
+        height: $paginator-height;
+    }
+}
+
+.paginator-number-button {
+    padding: 0 0.5rem;
+
+    > span {
+        @include ellipsis($paginator-number-max-width);
+        min-width: $paginator-height;
+    }
+}
