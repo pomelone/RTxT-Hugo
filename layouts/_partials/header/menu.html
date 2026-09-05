@@ -21,11 +21,19 @@
                 {{- end -}}
             {{- end -}}
         {{- end -}}
-        <details class="menu-group">
-            <summary class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
+        <div class="menu-group">
+            {{ if .Page -}}
+                <a class="menu{{ if $active }} activated{{ end }}" href="{{ .Page.RelPermalink }}" title="{{ $name }}">
+            {{- else -}}
+                <span class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
+            {{- end }}
                 {{ partial "header/menu-detail.html" . }}
                 {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
-            </summary>
+            {{ if .Page -}}
+                </a>
+            {{- else -}}
+                </span>
+            {{- end }}
             <div class="submenu">
                 {{- range .Children -}}
                     {{- $childName := i18n (printf "menu.%s" (.Identifier | default .Name)) }}
@@ -44,7 +52,7 @@
                     </a>
                 {{- end }}
             </div>
-        </details>
+        </div>
     {{- else -}}
         {{ if .Page -}}
             <a class="menu{{ if $active }} activated{{ end }}" href="{{ .Page.RelPermalink }}" title="{{ $name }}">

@@ -100,16 +100,29 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-}
 
-details.menu-group {
-    > summary.menu svg {
+    // Bridge the hover gap between the trigger and the submenu
+    &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 0.5rem;
+    }
+
+    > .menu svg {
         width: 1.2em;
         height: 1.2em;
         @include transition(transform, 0.3s, ease);
     }
 
-    &[open] > summary.menu svg {
+    > span.menu {
+        cursor: default;
+    }
+
+    &:hover > .menu svg,
+    &:focus-within > .menu svg {
         @include svg-rotate(-180deg);
     }
 }
@@ -127,10 +140,23 @@ details.menu-group {
     display: flex;
     flex-direction: column;
     @include nav-box;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-0.5rem);
+    @include transition("opacity, visibility, transform", 0.3s, ease);
 
     .menu {
         padding: 0.4rem 0.5rem;
     }
+}
+
+.menu-group:hover .submenu,
+.menu-group:focus-within .submenu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 .theme-switch {

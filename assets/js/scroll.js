@@ -2,32 +2,17 @@
  * Scroll controls: toggle the closest .tabs
  */
 document.addEventListener("DOMContentLoaded", () => {
-    const globalRO = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-            updateButtonStates(entry.target);
-        }
-    });
-
     const updateButtonStates = (nav) => {
         const tabs = nav.closest(".tabs");
         if (!tabs) return;
 
         const { scrollLeft, scrollWidth, clientWidth } = nav;
-        const atStart = scrollLeft <= 1;
-        const atEnd = scrollLeft + clientWidth >= scrollWidth - 1;
+        const overflowing = scrollWidth - clientWidth > 1;
 
         tabs.querySelector('.scroll-button[data-scroll="left"]')
-            ?.toggleAttribute("disabled", atStart);
+            ?.classList.toggle("visible", overflowing && !(scrollLeft <= 1));
         tabs.querySelector('.scroll-button[data-scroll="right"]')
-            ?.toggleAttribute("disabled", atEnd);
-    };
-
-    const activateTabs = (nav) => {
-        if (nav._tabsActivated) return;
-        nav._tabsActivated = true;
-
-        globalRO.observe(nav);
-        updateButtonStates(nav);
+            ?.classList.toggle("visible", overflowing && !(scrollLeft + clientWidth >= scrollWidth - 1));
     };
 
     const onScroll = (event) => {
@@ -36,8 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const nav = target.closest(".tabs-nav-scroll");
         if (!nav) return;
-
-        activateTabs(nav);
 
         if (!nav._tabsTicking) {
             requestAnimationFrame(() => {
@@ -57,8 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const nav = tabs.querySelector(".tabs-nav-scroll");
         if (!nav) return;
-
-        activateTabs(nav);
 
         const direction = btn.dataset.scroll;
         const distance = nav.clientWidth * 0.5;

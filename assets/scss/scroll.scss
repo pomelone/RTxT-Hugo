@@ -1,19 +1,17 @@
 .scroll-button {
-    display: none;
     border-radius: 0.4rem;
     overflow: hidden;
     color: var(--text-meta-color);
     font-weight: 600;
     font-size: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
     &.visible {
-        display: inline-flex;
-    }
-
-    &[disabled] {
-        max-width: 0;
-        opacity: 0;
-        pointer-events: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     &:hover {
