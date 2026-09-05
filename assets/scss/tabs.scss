@@ -10,23 +10,16 @@
         align-items: flex-end;
         gap: 0.2rem;
         font-size: 1rem;
+        box-shadow: inset 0 -1px 0 var(--hr-color);
 
         .scroll-button {
             margin: 0.2rem 0;
             font-size: 1.2rem;
-
-            &[data-scroll="left"] {
-                margin-left: -0.3rem;
-            }
-
-            &[data-scroll="right"] {
-                margin-right: -0.3rem;
-            }
         }
     }
 
     .tabs-panel {
-        margin: 1rem 1rem;
+        padding: 1rem 0.5rem;
         display: none;
 
         &.activated {
@@ -36,13 +29,11 @@
 }
 
 .tabs-nav-scroll {
-    margin: 0 0.2rem;
     display: flex;
     flex: 1;
     align-items: flex-end;
     overflow: auto hidden;
     gap: 1rem;
-    box-shadow: inset 0 -1px 0 var(--hr-color);
     scrollbar-width: none;
 }
 

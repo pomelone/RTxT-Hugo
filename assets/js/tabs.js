@@ -4,27 +4,31 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navCache = new WeakMap();
     const getNavData = (nav) => {
-        if (navCache.has(nav)) return navCache.get(nav);
+        let cached = navCache.get(nav);
+        if (cached) return cached;
+
         const tabs = nav.closest(".tabs");
-        const buttons = tabs ? Array.from(tabs.querySelectorAll(".scroll-button")) : [];
-        navCache.set(nav, buttons);
-        return buttons;
+        const leftBtn = tabs ? tabs.querySelector('.scroll-button[data-scroll="left"]') : null;
+        const rightBtn = tabs ? tabs.querySelector('.scroll-button[data-scroll="right"]') : null;
+        cached =  { leftBtn, rightBtn };
+        navCache.set(nav, cached);
+        return cached;
     };
 
     const globalRO = new ResizeObserver((entries) => {
         for (const entry of entries) {
-            updateScrollButtons(entry.target);
+            updateButtonStates(entry.target);
         }
     });
 
-    const updateScrollButtons = (nav) => {
-        const scrollButtons = getNavData(nav);
-        if (scrollButtons.length === 0) return;
+    const updateButtonStates = (nav) => {
+        const {leftBtn, rightBtn } = getNavData(nav);
 
-        const overflowing = nav.scrollWidth - nav.clientWidth > 1;
-        for (const btn of scrollButtons) {
-            btn.classList.toggle("visible", overflowing);
-        }
+        const { scrollLeft, scrollWidth, clientWidth } = nav;
+        const overflowing = scrollWidth - clientWidth > 1;
+
+        leftBtn?.classList.toggle("visible", overflowing && !(scrollLeft <= 1));
+        rightBtn?.classList.toggle("visible", overflowing && !(scrollLeft + clientWidth >= scrollWidth - 1));
     };
 
     const scrollToActive = (nav) => {
@@ -36,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".tabs-nav-scroll").forEach((nav) => {
         globalRO.observe(nav);
-        updateScrollButtons(nav);
+        updateButtonStates(nav);
         scrollToActive(nav);
     });
 
