@@ -2,20 +2,17 @@
 @use "media" as *;
 @use "size" as *;
 
+:root[data-theme="light"],
 :root {
     @include light-theme;
     @include regular-media;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        @include dark-theme;
-    }
-}
-
-:root[data-theme="light"] {
-    @include light-theme;
-}
+// @media (prefers-color-scheme: dark) {
+//     :root {
+//         @include dark-theme;
+//     }
+// }
 
 :root[data-theme="dark"] {
     @include dark-theme;

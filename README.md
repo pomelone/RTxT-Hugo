@@ -11,7 +11,7 @@
     - Built on the **Hugo 0.146+** template system
     - Post list sorting by `weight` > `lastmod` > `title`
 - Configuration
-    - collapsible [menus](#menu-and-submenus) (optional icons)
+    - hover dropdown [menus](#menu-and-submenus) (optional icons)
     - Regular configuration: [Table of Contents](#table-of-contents), [Default Pagination Size](#default-pagination-size)
     - [Feature toggles](#feature-toggles): theme switch, breadcrumb, toc, tags, series, term list
 - Front Matter
@@ -21,7 +21,7 @@
 - Markdown Extras
     - [Code blocks](#code-blocks): filename, link, highlighted lines, one-click copy, collapse
     - [Callouts](#callouts): `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts
-    - [Math (KaTeX)](#math-katex)
+    - [Math](#math): KaTeX or MathJax
 - Shortcodes
     - [icon](#icon), [badge](#badge), [tabs](#tabs)
 - Pages
@@ -85,7 +85,7 @@ Configure menus in **hugo.toml**. Use `parent` to attach an item to another item
 
 - Menu labels prefer the `menu.<identifier>` translation from the i18n files.
 - `params.icon` sets an icon name from `data/icons.toml`.
-- Items with children render as collapsible dropdowns.
+- Items with children render as hover dropdowns.
 
 ### Table of Contents
 
@@ -179,11 +179,19 @@ Start a blockquote with `[!TYPE]` to render a callout with an icon and title. Su
 
 Plain blockquotes render in the note style without a title.
 
-### Math (KaTeX)
+### Math
 
-Delimiters: inline `$...$`, `\(...\)`; block `$$...$$`, `\[...\]`. KaTeX assets load from the jsDelivr CDN by default.
+Delimiters: inline `$...$`, `\(...\)`; block `$$...$$`, `\[...\]`. Two engines are supported (MathJax & Katex):
 
-To keep `_`, `\`, `&` etc. from being parsed as Markdown, enable the Goldmark passthrough extension in **hugo.toml**:
+```toml
+[params.math]
+    enable = true
+    engine = 'mathjax'  # mathjax | katex
+    cdn = 'https://cdn.jsdelivr.net/npm'
+    version = '4.1.3'
+```
+
+To keep `\(`, `\)`, `\[`, `\]`, `$`, `$$` etc. from being parsed as Markdown, enable the Goldmark passthrough extension in **hugo.toml**:
 
 ```toml
 [markup.goldmark.extensions.passthrough]
@@ -191,16 +199,6 @@ To keep `_`, `\`, `&` etc. from being parsed as Markdown, enable the Goldmark pa
     [markup.goldmark.extensions.passthrough.delimiters]
         block = [['\[', '\]'], ['$$', '$$']]
         inline = [['\(', '\)'], ['$', '$']]
-```
-
-Customize the KaTeX version or CDN in **hugo.toml**:
-
-```toml
-[params.math]
-    enable = true
-    engine = 'katex'
-    katex.cdn = 'https://cdn.jsdelivr.net/npm/katex'
-    katex.version = '0.18.4'
 ```
 
 ## Shortcodes
