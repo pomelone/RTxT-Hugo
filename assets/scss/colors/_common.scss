@@ -16,6 +16,15 @@ $code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
 $table-th-bg: #008000;
 $table-th-fg: #fff;
 $block-border: color-mix(in srgb, currentColor 10%, transparent);
-$block-bg: color-mix(in srgb, currentColor 5%, #fff);
-$block-button-bg: color-mix(in srgb, #111 10%, #fff);
+$block-bg: color-mix(in srgb, currentColor 5%, transparent);
+$block-button-bg: color-mix(in srgb, #111 10%, transparent);
 $block-summary-bg: color-mix(in srgb, currentColor 10%, #fff);
+
+// Callout block colors
+$callout-colors: (
+    note: #2563eb,
+    tip: #008000,
+    important: #9b00ec,
+    warning: #ff6800,
+    caution: #ff0000
+);

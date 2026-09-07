@@ -2,14 +2,6 @@
 @use "colors" as *;
 @use "size" as *;
 
-$callout-colors: (
-    note: #0038f3,
-    tip: #008000,
-    important: #9b00ec,
-    warning: #ff6800,
-    caution: #ff0000
-);
-
 @each $name, $color in $callout-colors {
     .callout-#{$name} {
         --quote-color: #{$color};

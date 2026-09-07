@@ -8,12 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("theme-switch");
     if (!btn) return;
 
-    const currentTheme = () => {
-        const current = document.documentElement.dataset.theme || null;
-        if (current) {
+    const currentTheme = (isMedia=false) => {
+        let current = media.matches ? "dark" : "light";
+        if (isMedia) {
             return current;
         }
-        return media.matches ? "dark" : "light";
+        current = document.documentElement.dataset.theme || current;
+        return current;
     };
 
     const nextTheme = () => {
@@ -28,8 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.dataset.theme = next;
     };
 
-    const syncTheme = () => {
-        btn.dataset.theme = currentTheme();
+    const syncTheme = (isMedia=false) => {
+        const current = currentTheme(isMedia);
+        if (isMedia) {
+            document.documentElement.dataset.theme = current;
+        }
+        btn.dataset.theme = current;
     }
 
     syncTheme();
@@ -37,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", changeTheme);
     media.addEventListener("change", () => {
         if (!localStorage.getItem(STORAGE_KEY)) {
-            syncTheme();
+            syncTheme(true);
         }
     });
 });
