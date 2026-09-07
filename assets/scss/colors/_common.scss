@@ -10,7 +10,8 @@ $link-color: #2463eb;
 $link-hover-color: #008000;
 
 // Component colors
-$scrollbar-color: rgba(0, 128, 0, 0.8) transparent;
+$scrollbar-thumb: rgba(0, 128, 0, 0.8);
+$scrollbar-track: transparent;
 $code-inline-bg: color-mix(in srgb, currentColor 10%, transparent);
 $table-th-bg: #008000;
 $table-th-fg: #fff;

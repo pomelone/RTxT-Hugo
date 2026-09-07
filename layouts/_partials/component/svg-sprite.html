@@ -58,5 +58,5 @@
     {{ $spriteContent | safeHTML }}
     <svg{{ with $class }} class="{{ . }}"{{ end }}>{{ with $title }}<title>{{ . }}</title>{{ end }}<use href="#{{ $name }}"></use></svg>
 {{- else -}}
-    {{- errorf "svg-sprite partial: mode '%s' not supported" $mode -}}
+    {{- errorf "svg-sprite partial: mode %q is not supported" $mode -}}
 {{- end -}}

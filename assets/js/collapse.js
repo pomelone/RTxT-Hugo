@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = btn.closest(".callout-block, .code-block");
         if (!container) return;
 
-        container.classList.toggle('collapsed');
+        container.classList.toggle("collapsed");
     };
 
     document.addEventListener("click", handleCollapseClick);

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!pre) return;
 
         if (btn.dataset.copying === "true") return;
-        btn.dataset.copying = 'true';
+        btn.dataset.copying = "true";
 
         const text = (pre.querySelector("code") || pre).textContent;
         try {

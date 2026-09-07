@@ -1,9 +1,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" crossorigin="anonymous">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/favicon.png" crossorigin="anonymous">
 
     {{- if .Title }}
     <title>{{ .Title }} &ndash; {{ site.Title }}</title>
@@ -33,6 +33,6 @@
     {{ partial "head/math.html" }}
 
     {{- with resources.Get "css/custom.css" }}
-    <link rel="stylesheet" type="text/css" href="{{ (. | minify | fingerprint).RelPermalink }}">
+    <link rel="stylesheet" type="text/css" href="{{ (. | minify | fingerprint).RelPermalink }}" crossorigin="anonymous">
     {{- end }}
 </head>

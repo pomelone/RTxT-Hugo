@@ -5,5 +5,5 @@
 
 {{- with resources.Get "scss/rtxt.scss" -}}
     {{- $rtxtStyles := . | toCSS $options | minify | fingerprint -}}
-    <link rel="stylesheet" type="text/css" href="{{ $rtxtStyles.RelPermalink }}">
+    <link rel="stylesheet" type="text/css" href="{{ $rtxtStyles.RelPermalink }}" crossorigin="anonymous">
 {{- end -}}
