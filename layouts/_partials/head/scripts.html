@@ -18,13 +18,21 @@
     {{- $engine := site.Params.math.engine -}}
 
     {{- if eq $engine "katex" -}}
-    {{- with resources.Get "js/katex.js" -}}
-        {{- $scripts = $scripts | append . -}}
-    {{- end -}}
+        {{- with resources.Get "js/katex.js" -}}
+            {{- $scripts = $scripts | append . -}}
+        {{- end -}}
+
+    {{- else if eq $engine "mathjax" -}}
+        {{- with resources.Get "js/mathjax.js" -}}
+            {{- $scripts = $scripts | append . -}}
+        {{- end -}}
+
+    {{- else -}}
+        {{- errorf "math engine is not support %q, it only supports [katex] or [mathjax]." $engine -}}
     {{- end -}}
 {{- end -}}
 
 {{- if gt (len $scripts) 0 -}}
     {{- $rtxtScripts := $scripts | resources.Concat "js/rtxt-scripts.js" | minify | fingerprint -}}
-    <script defer src="{{ $rtxtScripts.RelPermalink }}"></script>
+    <script defer src="{{ $rtxtScripts.RelPermalink }}" crossorigin="anonymous"></script>
 {{- end -}}

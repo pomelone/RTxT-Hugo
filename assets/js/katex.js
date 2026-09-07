@@ -5,11 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const el = document.getElementById("content");
     if (el) {
         renderMathInElement(el, {
+            output: "html",
+            strict: true,
             delimiters: [
-                { left: '$$', right: '$$', display: true },
-                { left: '\\[', right: '\\]', display: true },
-                { left: '$', right: '$', display: false },
-                { left: '\\(', right: '\\)', display: false }
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false }
             ],
             throwOnError: false
         });

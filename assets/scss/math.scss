@@ -3,30 +3,41 @@
 @use "layers" as *;
 
 .katex-display {
-    margin: 0.8em 0;
-    padding: 0.2em 0;
-    overflow: auto hidden;
-    scrollbar: {
-        width: thin;
-        color: transparent transparent;
-        gutter: stable;
-    }
+    margin: 1em !important;
+    padding: 0 !important;
+    overflow: auto hidden !important;
+    @include thin-scrollbar(transparent, transparent);
 
     &:hover {
-        scrollbar-color: $scrollbar-color;
+        scrollbar-color: $scrollbar-thumb $scrollbar-track;
+    }
+
+    .katex .katex-tag {
+        position: sticky !important;
+        z-index: z-index(math) !important;
+        right: 0 !important;
+        padding: 0 1em !important;
+        display: inline-block !important;
+        background-color: var(--bg) !important;
     }
 }
 
-.katex {
-    font-size: 1.1em;
 
-    .katex-tag {
-        position: sticky !important;
-        right: 0;
-        margin-left: 0.4em;
-        z-index: z-index(math);
-        padding: 0.2em;
-        display: inline-block;
-        background-color: var(--bg);
+
+mjx-container[display] {
+    @include thin-scrollbar(transparent, transparent);
+
+    &:hover {
+        scrollbar-color: $scrollbar-thumb $scrollbar-track;
+    }
+
+    > mjx-math > mjx-mtable {
+        min-width: 0 !important;
+
+        > mjx-table {
+            margin: 0 !important;
+            padding: 0 1em !important;
+            min-width: 0 !important;
+        }
     }
 }

@@ -28,11 +28,11 @@
 }
 
 // Thin scrollbar with the theme color
-@mixin thin-scrollbar {
+@mixin thin-scrollbar($thumb, $track) {
     scroll-behavior: smooth;
     scrollbar: {
         width: thin;
-        color: $scrollbar-color;
+        color: $thumb $track;
         gutter: stable;
     }
 }
@@ -92,7 +92,7 @@
     line-height: 1.5rem;
     overflow-wrap: break-word;
     overflow: hidden auto;
-    @include thin-scrollbar;
+    @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

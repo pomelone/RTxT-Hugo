@@ -57,7 +57,7 @@ enableGitInfo = true
 enableEmoji = true
 enableInlineShortcodes = true
 enableRobotsTXT = true
-summaryLength = 50
+summaryLength = 30
 
 [params]
     description = 'Rich Text Theme for Hugo'

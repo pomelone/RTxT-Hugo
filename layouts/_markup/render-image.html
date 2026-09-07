@@ -2,7 +2,7 @@
 {{- $alt := .Text -}}
 {{- $title := .Title -}}
 <figure>
-    <img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+    <img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async" crossorigin="anonymous">
     {{ with $title -}}
     <figcaption>{{ . }}</figcaption>
     {{- end }}
