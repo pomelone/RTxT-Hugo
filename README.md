@@ -14,6 +14,7 @@
     - hover dropdown [menus](#menu-and-submenus) (optional icons)
     - Regular configuration: [Table of Contents](#table-of-contents), [Default Pagination Size](#default-pagination-size)
     - [Feature toggles](#feature-toggles): theme switch, breadcrumb, toc, tags, series, term list
+    - [Search](#search): Pagefind modal search
 - Front Matter
     - [Pinning and status](#pinning-and-status): draft / scheduled / expired / pinned (negative `weight`)
     - [Feature Toggles per Page](#feature-toggles-per-page) in front matter
@@ -86,6 +87,7 @@ Configure menus in **hugo.toml**. Use `parent` to attach an item to another item
 - Menu labels prefer the `menu.<identifier>` translation from the i18n files.
 - `params.icon` sets an icon name from `data/icons.toml`.
 - Items with children render as hover dropdowns.
+- An item with `params.type = 'search'` renders a search trigger that opens the [Search](#search) modal.
 
 ### Table of Contents
 
@@ -118,6 +120,29 @@ enable_tags = true           # tags in the right sidebar
 enable_series = true         # series navigation in the left sidebar
 enable_term = true           # term list in the left sidebar (term pages)
 ```
+
+### Search
+
+Add a menu item with `params.type = 'search'` to show a search trigger in the navbar. Clicking it opens a modal search UI powered by [Pagefind](https://pagefind.app/):
+
+```toml
+[menu]
+    [[menu.main]]
+        identifier = 'search'
+        name = 'Search'
+        weight = 5
+        params.type = 'search'
+        params.baseUrl = '/blog/'      # default '/'
+        params.bundlePath = '/search/' # default '/search/'
+```
+
+Build the search index after `hugo`:
+
+```sh
+npx pagefind --site public --output-subdir search
+```
+
+`--output-subdir search` must match `bundlePath` (without the leading slash). With the default settings the index lives at `/search/`.
 
 ## Front Matter
 

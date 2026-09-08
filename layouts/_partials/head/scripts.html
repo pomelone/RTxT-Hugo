@@ -32,6 +32,19 @@
     {{- end -}}
 {{- end -}}
 
+{{- $searchAdded := false -}}
+{{- range site.Menus.main -}}
+    {{- if and (eq .Params.type "search") (not $searchAdded) -}}
+        {{- with resources.Get "pagefind/pagefind-component-ui.js" -}}
+            {{- $scripts = $scripts | append .  -}}
+        {{- end -}}
+        {{- with resources.Get "pagefind/search-modal.js" -}}
+            {{- $scripts = $scripts | append .  -}}
+        {{- end -}}
+        {{- $searchAdded = true -}}
+    {{- end -}}
+{{- end -}}
+
 {{- if gt (len $scripts) 0 -}}
     {{- $rtxtScripts := $scripts | resources.Concat "js/rtxt-scripts.js" | minify | fingerprint -}}
     <script defer src="{{ $rtxtScripts.RelPermalink }}" crossorigin="anonymous"></script>

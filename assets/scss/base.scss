@@ -2,20 +2,22 @@
 @use "media" as *;
 @use "size" as *;
 
-:root[data-theme="light"],
-:root {
+:root[data-theme="light"] {
     @include light-theme;
     @include regular-media;
 }
 
-// @media (prefers-color-scheme: dark) {
-//     :root {
-//         @include dark-theme;
-//     }
-// }
-
 :root[data-theme="dark"] {
     @include dark-theme;
+}
+
+:root:not([data-theme]) {
+    @include light-theme;
+    @include regular-media;
+
+    @media (prefers-color-scheme: dark) {
+        @include dark-theme;
+    }
 }
 
 @media (max-width: $breakpoint-narrow) {

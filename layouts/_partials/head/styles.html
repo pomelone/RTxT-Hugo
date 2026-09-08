@@ -3,7 +3,25 @@
     "targetPath" "css/rtxt.css"
 -}}
 
+{{- $styles := slice -}}
 {{- with resources.Get "scss/rtxt.scss" -}}
-    {{- $rtxtStyles := . | toCSS $options | minify | fingerprint -}}
+    {{- $styles = $styles | append (. | toCSS $options) -}}
+{{- end -}}
+
+{{- $searchAdded := false -}}
+{{- range site.Menus.main -}}
+    {{- if and (eq .Params.type "search") (not $searchAdded) -}}
+        {{- with resources.Get "pagefind/pagefind-component-ui.css" -}}
+            {{- $styles = $styles | append .  -}}
+        {{- end -}}
+        {{- with resources.Get "pagefind/search-modal.css" -}}
+            {{- $styles = $styles | append .  -}}
+        {{- end -}}
+        {{- $searchAdded = true -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if gt (len $styles) 0 -}}
+    {{- $rtxtStyles := $styles | resources.Concat "css/rtxt-styles.css" | minify | fingerprint -}}
     <link rel="stylesheet" type="text/css" href="{{ $rtxtStyles.RelPermalink }}" crossorigin="anonymous">
 {{- end -}}

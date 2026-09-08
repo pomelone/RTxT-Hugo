@@ -1,0 +1,27 @@
+{{- $baseUrl := .Params.baseUrl | default "/" -}}
+{{- $bundlePath := .Params.bundlePath | default "/search/" -}}
+
+<pagefind-config 
+    base-url="{{ $baseUrl }}"
+    bundle-path="{{ $bundlePath }}"
+    preload="false" 
+    excerpt-length="30" 
+    highlight-param="highlight"></pagefind-config>
+
+<button class="search-trigger" type="button" title="{{ i18n "menu.search" }}">
+    {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "mood-look" "title" (i18n "menu.search")) }}
+</button>
+
+<pagefind-modal reset-on-close="true">
+    <pagefind-modal-header>
+        <pagefind-input autofocus="false"></pagefind-input>
+    </pagefind-modal-header>
+    <pagefind-modal-body>
+        <pagefind-summary></pagefind-summary>
+        <pagefind-results 
+            show-images="false" 
+            hide-sub-results="false" 
+            max-sub-results="3">
+        </pagefind-results>
+    </pagefind-modal-body>
+</pagefind-modal>

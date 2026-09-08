@@ -1,11 +1,37 @@
-{{- $name := i18n (printf "menu.%s" (.Identifier | default .Name)) -}}
+{{- $menu := .menu -}}
+{{- $active := .active | default false -}}
+{{- $icon:= .icon | default false -}}
 
-{{- with .Params.icon -}}
-    {{- with index hugo.Data.icons . -}}
-        {{- . | safeHTML -}}
-    {{- else -}}
-        <span>{{ $name }}</span>
-    {{- end -}}
+{{- $name := i18n (printf "menu.%s" ($menu.Identifier | default $menu.Name)) -}}
+
+{{- if eq $menu.Params.type "search" -}}
+    {{ partial "header/search.html" $menu }}
 {{- else -}}
-    <span>{{ $name }}</span>
+    {{ if $menu.Page -}}
+        <a class="menu{{ if $active }} activated{{ end }}" href="{{ $menu.Page.RelPermalink }}" title="{{ $name }}">
+    {{- else if $menu.URL -}}
+        <a class="menu" href="{{ $menu.URL }}" target="_blank" rel="noopener noreferrer" title="{{ $name }}">
+    {{- else -}}
+        <span class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
+    {{- end }}
+
+        {{ with $menu.Params.icon -}}
+            {{- with index hugo.Data.icons . -}}
+                {{- . | safeHTML -}}
+            {{- else -}}
+                <span>{{ $name }}</span>
+            {{- end -}}
+        {{- else -}}
+            <span>{{ $name }}</span>
+        {{- end -}}
+
+        {{- if $icon -}}
+            {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
+        {{- end -}}
+
+    {{- if or $menu.Page $menu.URL }}
+        </a>
+    {{- else -}}
+        </span>
+    {{- end -}}
 {{- end -}}

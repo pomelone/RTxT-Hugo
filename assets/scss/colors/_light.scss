@@ -18,3 +18,21 @@ $list-bg: color-mix(in srgb, #111 10%, transparent);
 $table-even: #ebebeb;
 $button-border: 1px solid color-mix(in srgb, #111 10%, transparent);
 $button-bg: color-mix(in srgb, #111 10%, #fff);
+
+// Pagefind colors
+$pf-text-secondary: #666;
+$pf-text-muted: #767676;
+$pf-border: color-mix(in srgb, #111 10%, transparent);
+$pf-border-focus: color-mix(in srgb, #111 10%, transparent);
+$pf-skeleton: #eee;
+$pf-skeleton-shine: #f5f5f5;
+$pf-hover: #f5f5f5;
+$pf-scroll-shadow: rgba(0, 0, 0, 0.08);
+$pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+$pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+$pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+$pf-error-bg: #fef2f2;
+$pf-error-border: #fecaca;
+$pf-error-text: #dc2626;
+$pf-error-text-secondary: #b91c1c;
+$pf-modal-backdrop: rgba(0, 0, 0, 0.5);
