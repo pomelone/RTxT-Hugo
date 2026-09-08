@@ -1,0 +1,171 @@
+pagefind-modal {
+    --pf-text: var(--text-color);
+    --pf-text-secondary: var(--pf-r-text-secondary);
+    --pf-text-muted: var(--pf-r-text-muted);
+    --pf-background: var(--bg);
+    --pf-border: var(--pf-r-border);
+    --pf-border-focus: var(--pf-r-border-focus);
+    --pf-skeleton: var(--pf-r-skeleton);
+    --pf-skeleton-shine: var(--pf-r-skeleton-shine);
+    --pf-hover: var(--pf-r-hover);
+    --pf-mark: var(--text-color);
+    --pf-scroll-shadow: var(--pf-r-scroll-shadow);
+    --pf-outline-focus: #008000;
+
+    --pf-shadow-sm: var(--pf-r-shadow-sm);
+    --pf-shadow-md: var(--pf-r-shadow-md);
+    --pf-shadow-lg: var(--pf-r-shadow-lg);
+
+    --pf-error-bg: var(--pf-r-error-bg);
+    --pf-error-border: var(--pf-r-error-border);
+    --pf-error-text: var(--pf-r-error-text);
+    --pf-error-text-secondary: var(--pf-r-error-text-secondary);
+
+    --pf-modal-backdrop: var(--pf-r-modal-backdrop);
+
+    --pf-font:
+        -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto,
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei",
+        "Noto Sans CJK SC", "Source Han Sans SC",
+        Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    --pf-input-height: 2rem;
+    --pf-input-font-size: 0.9rem;
+    --pf-summary-font-size: 0.75rem;
+    --pf-result-title-font-size: 0.8rem;
+    --pf-result-excerpt-font-size: 0.8rem;
+    --pf-results-display: flex;
+    --pf-results-flex-direction: column;
+    --pf-results-flex-wrap: nowrap;
+    --pf-results-columns: none;
+    --pf-results-gap: 8px;
+
+    --pf-border-radius: 1rem;
+    --pf-image-width: 64px;
+    --pf-image-height: 48px;
+
+    --pf-dropdown-z-index: 9999;
+
+    --pf-modal-max-width: min(80dvw, 40rem);
+    --pf-modal-max-height: min(80dvh, 50rem);
+    --pf-modal-top: 5rem;
+
+    --pf-searchbox-max-width: 30rem;
+    --pf-searchbox-dropdown-max-height: 20rem;
+
+    --pf-dropdown-max-height: 16rem;
+}
+
+pagefind-config {
+    display: none;
+}
+
+pagefind-modal {
+    display: contents;
+}
+
+.search-trigger {
+    position: relative;
+    padding: 0.5rem;
+    gap: 0.2rem;
+    color: var(--text-bar-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition-property: color, opacity, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+.search-trigger:focus {
+    outline: none;
+}
+
+.search-trigger svg {
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.search-trigger:hover {
+    color: var(--text-bar-hover-color);
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.search-trigger:active {
+    transform: scale(0.9);
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) dialog.pf-modal {
+    border-radius: var(--pf-border-radius) !important;
+}
+
+@media (max-width: 640px) {
+    :is(*,#\#):is(*,#\#):is(*,#\#) dialog.pf-modal[open] {
+        top: 4rem !important;
+        justify-self: center !important;
+        width: 90dvw !important;
+        height: 80dvh !important;
+    }
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) pagefind-modal-header .pf-input-wrapper::before,
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-modal-header .pf-input-wrapper::before {
+    background-color: #008000 !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) pagefind-modal-header .pf-input,
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-modal-header .pf-input {
+    box-shadow: 0 0 0 var(--pf-outline-width) var(--pf-outline-focus) !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-input-clear {
+    border-radius: var(--pf-border-radius) !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-input-clear:hover {
+    color: #008000 !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) pagefind-modal-body,
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-modal-body {
+    scrollbar-width: thin !important;
+    scrollbar-color: #008000 transparent !important;
+    scrollbar-gutter: stable !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-result-card {
+    margin: 0.2rem 1rem !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-result-card:hover {
+    transform: scale(1.05, 1.1) !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-result-link:hover {
+    text-decoration: none !important;
+    color: #008000 !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-chips {
+    margin: 0 1rem 0 1.5rem !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-chip {
+    border-radius: var(--pf-border-radius) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-chip:hover {
+    transform: scale(1.05, 1.1) !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-link:hover {
+    text-decoration: none !important;
+    color: #008000 !important;
+}

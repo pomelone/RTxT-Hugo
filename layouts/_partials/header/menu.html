@@ -13,7 +13,7 @@
 
     {{ if .HasChildren -}}
         {{- range .Children -}}
-            {{- if .Page -}}
+            {{- if and (not $active) .Page -}}
                 {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
                     {{- $active = true -}}
                 {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
@@ -21,45 +21,24 @@
                 {{- end -}}
             {{- end -}}
         {{- end -}}
+
         <div class="menu-group">
-            {{ if .Page -}}
-                <a class="menu{{ if $active }} activated{{ end }}" href="{{ .Page.RelPermalink }}" title="{{ $name }}">
-            {{- else -}}
-                <span class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
-            {{- end }}
-                {{ partial "header/menu-detail.html" . }}
-                {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
-            {{ if .Page -}}
-                </a>
-            {{- else -}}
-                </span>
-            {{- end }}
+            {{ partial "header/menu-detail.html" (dict "menu" . "active" $active "icon" true) }}
             <div class="submenu">
+
                 {{- range .Children -}}
-                    {{- $childName := i18n (printf "menu.%s" (.Identifier | default .Name)) }}
-                    {{ if .Page -}}
-                        {{- $activeChild := false -}}
-                        {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
-                            {{- $activeChild = true -}}
-                        {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
-                            {{- $activeChild = true -}}
-                        {{- end -}}
-                        <a class="menu{{ if $activeChild }} activated{{ end }}" href="{{ .Page.RelPermalink }}" title="{{ $childName }}">
-                    {{- else -}}
-                        <a class="menu" href="{{ .URL }}" target="_blank" rel="noopener noreferrer" title="{{ $childName }}">
-                    {{- end }}
-                        {{ partial "header/menu-detail.html" . }}
-                    </a>
+                    {{- $activeChild := false -}}
+                    {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
+                        {{- $activeChild = true -}}
+                    {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
+                        {{- $activeChild = true -}}
+                    {{- end -}}
+
+                    {{ partial "header/menu-detail.html" (dict "menu" . "active" $activeChild) }}
                 {{- end }}
             </div>
         </div>
     {{- else -}}
-        {{ if .Page -}}
-            <a class="menu{{ if $active }} activated{{ end }}" href="{{ .Page.RelPermalink }}" title="{{ $name }}">
-        {{- else -}}
-            <a class="menu" href="{{ .URL }}" target="_blank" rel="noopener noreferrer" title="{{ $name }}">
-        {{- end }}
-            {{ partial "header/menu-detail.html" . }}
-        </a>
-    {{- end }}
-{{ end -}}
+        {{ partial "header/menu-detail.html" (dict "menu" . "active" $active) }}
+    {{- end -}}
+{{- end -}}

@@ -17,6 +17,22 @@
     --table-even: #{light.$table-even};
     --button-border: #{light.$button-border};
     --button-bg: #{light.$button-bg};
+    --pf-r-text-secondary: #{light.$pf-text-secondary};
+    --pf-r-text-muted: #{light.$pf-text-muted};
+    --pf-r-border: #{light.$pf-border};
+    --pf-r-border-focus: #{light.$pf-border-focus};
+    --pf-r-skeleton: #{light.$pf-skeleton};
+    --pf-r-skeleton-shine: #{light.$pf-skeleton-shine};
+    --pf-r-hover: #{light.$pf-hover};
+    --pf-r-scroll-shadow: #{light.$pf-scroll-shadow};
+    --pf-r-shadow-sm: #{light.$pf-shadow-sm};
+    --pf-r-shadow-md: #{light.$pf-shadow-md};
+    --pf-r-shadow-lg: #{light.$pf-shadow-lg};
+    --pf-r-error-bg: #{light.$pf-error-bg};
+    --pf-r-error-border: #{light.$pf-error-border};
+    --pf-r-error-text: #{light.$pf-error-text};
+    --pf-r-error-text-secondary: #{light.$pf-error-text-secondary};
+    --pf-r-modal-backdrop: #{light.$pf-modal-backdrop};
 }
 
 @mixin dark-theme {
@@ -35,4 +51,20 @@
     --table-even: #{dark.$table-even};
     --button-border: #{dark.$button-border};
     --button-bg: #{dark.$button-bg};
+    --pf-r-text-secondary: #{dark.$pf-text-secondary};
+    --pf-r-text-muted: #{dark.$pf-text-muted};
+    --pf-r-border: #{dark.$pf-border};
+    --pf-r-border-focus: #{dark.$pf-border-focus};
+    --pf-r-skeleton: #{dark.$pf-skeleton};
+    --pf-r-skeleton-shine: #{dark.$pf-skeleton-shine};
+    --pf-r-hover: #{dark.$pf-hover};
+    --pf-r-scroll-shadow: #{dark.$pf-scroll-shadow};
+    --pf-r-shadow-sm: #{dark.$pf-shadow-sm};
+    --pf-r-shadow-md: #{dark.$pf-shadow-md};
+    --pf-r-shadow-lg: #{dark.$pf-shadow-lg};
+    --pf-r-error-bg: #{dark.$pf-error-bg};
+    --pf-r-error-border: #{dark.$pf-error-border};
+    --pf-r-error-text: #{dark.$pf-error-text};
+    --pf-r-error-text-secondary: #{dark.$pf-error-text-secondary};
+    --pf-r-modal-backdrop: #{dark.$pf-modal-backdrop};
 }
