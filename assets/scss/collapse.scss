@@ -29,18 +29,6 @@
     svg {
         @include transition(transform, 0.3s, ease);
     }
-
-    .collapse-open,
-    .collapsed & .collapse-closed {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .collapse-closed,
-    .collapsed & .collapse-open {
-        display: none;
-    }
 }
 
 .collapsed .collapse-button svg {

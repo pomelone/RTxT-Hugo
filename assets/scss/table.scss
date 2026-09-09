@@ -9,7 +9,7 @@ table {
     @include border($block-border, $block-border-radius);
     border-collapse: separate;
     border-spacing: 0;
-    overflow: hidden;
+    overflow: clip;
 }
 
 th,

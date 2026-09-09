@@ -1,0 +1,36 @@
+{{- $lang := .lang | default "text" -}}
+{{- $filename := .filename -}}
+{{- $link := .link -}}
+{{- $collapse := .collapse | default true -}}
+{{- $content := .content -}}
+{{- $opts := .opts -}}
+
+{{- $highlighted := highlight $content $lang $opts -}}
+
+<div class="code-block{{ if $collapse }} collapsed{{ end }}">
+    <div class="collapse-summary">
+        {{ if $link -}}
+            {{- $parseLink := urls.Parse $link -}}
+            {{- if or (eq $parseLink.Scheme "http") (eq $parseLink.Scheme "https") -}}
+            <a class="code-filename" href="{{ $link | safeURL }}" title="{{ $filename | default $lang }}" target="_blank" rel="noopener noreferrer">
+            {{- else -}}
+            <a class="code-filename" href="{{ $link | safeURL }}" title="{{ $filename | default $lang }}">
+            {{- end -}}
+        {{- else -}}
+            <span class="code-filename" title="{{ $filename | default $lang }}">
+        {{- end }}
+            {{ partial "component/svg-sprite.html" (dict "name" "code-file" "class" "icon" "asset" "ui/static-ui.svg") }}
+            <span>{{ $filename | default $lang }}</span>
+        {{ if $link -}}
+            {{ partial "component/svg-sprite.html" (dict "name" "link-static" "class" "icon" "asset" "ui/static-ui.svg") }}
+            </a>
+        {{- else -}}
+            </span>
+        {{- end }}
+        <span class="collapse-actions">
+            {{ partial "component/copy.html" }}
+            {{ partial "component/collapse.html" }}
+        </span>
+    </div>
+    <div class="collapse-content">{{ $highlighted }}</div>
+</div>

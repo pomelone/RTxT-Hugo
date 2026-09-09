@@ -1,27 +1,14 @@
-{{- $alertTypes := slice "note" "tip" "important" "warning" "caution" -}}
-
 {{- $type := lower (.AlertType | default "tip") -}}
-{{- if not (in $alertTypes $type) -}}
-    {{- $type = "tip" -}}
-{{- end -}}
-
 {{- if ne .Type "alert" -}} 
     {{- $type = "note" -}}
 {{- end -}}
 
 {{- $title := .AlertTitle | default (i18n (printf "callout.%s" $type)) | default $type -}}
 
-{{- if eq .Type "alert" -}}
-    <div class="callout-block callout-{{ $type }}">
-{{- else -}}
-    <div class="callout-block callout-note">
-{{- end }}
-    <div class="collapse-summary">
-        <span class="callout-title" title="{{ title $title }}">
-            {{ partial "component/svg-sprite.html" (dict "name" $type "class" "icon" "asset" "ui/static-ui.svg") }}
-            <span>{{ title $title  }}</span>
-        </span>
-        {{ partial "component/collapse.html" }}
-    </div>
-    <div class="collapse-content">{{ .Text }}</div>
-</div>
+{{- $args := (dict
+    "type" $type
+    "title" $title
+    "content" .Text
+) -}}
+
+{{ partial "common/callout.html" $args }}

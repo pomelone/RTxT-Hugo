@@ -16,11 +16,7 @@
         {{- range $tabs }}
             <button class="tabs-button{{ if eq .id $selected }} activated{{ end }}" title="{{ .name }}" data-tab="{{ .id }}" type="button">
                 {{ with .icon -}}
-                    {{- with index hugo.Data.icons . -}}
-                        <span class="icon">{{ . | safeHTML }}</span>
-                    {{- else -}}
-                        {{- errorf "tab shortcode: icon %q not found in data/icons.toml" . -}}
-                    {{- end -}}
+                    {{ partial "common/icon.html" (dict "name" .) }}
                 {{- end }}
                 <span>{{ .name }}</span>
             </button>

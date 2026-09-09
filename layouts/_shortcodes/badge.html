@@ -1,7 +1,7 @@
 {{- $content := .Get "content" | default (.Get 0) -}}
 {{- $icon := .Get "icon" -}}
 {{- $color := .Get "color" -}}
-{{- $border := .Get "border" | default true -}}
+{{- $border := eq (printf "%v" (.Get "border" | default true)) "true" -}}
 {{- $link := .Get "link" -}}
 
 {{- if not $content -}}
@@ -28,11 +28,7 @@
 {{- end }}
 
     {{ with $icon -}}
-        {{- with index hugo.Data.icons . -}}
-            {{- . | safeHTML -}}
-        {{- else -}}
-            {{- errorf "badge shortcode: icon %q not found" . -}}
-        {{- end -}}
+        {{ partial "common/icon.html" (dict "name" .) }}
     {{- end }}
     <span>{{ $content }}</span>
 

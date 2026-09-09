@@ -47,7 +47,7 @@ input[type="checkbox"] {
     width: 1.2em;
     height: 1.2em;
     @include border(var(--list-bg), 0.4em);
-    overflow: hidden;
+    overflow: clip;
     background-color: var(--list-bg);
     user-select: none;
     cursor: pointer;

@@ -9,7 +9,7 @@
     vertical-align: middle;
     gap: 0.2em;
     @include border(currentColor, 0.6em);
-    overflow: hidden;
+    overflow: clip;
     font-size: 0.8em;
     color: $theme-color;
     background-color: color-mix(in srgb, currentColor 30%, white);

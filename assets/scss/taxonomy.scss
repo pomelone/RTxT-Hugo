@@ -27,7 +27,7 @@
     text-decoration: none;
     color: var(--text-color);
     @include border($block-border, $block-border-radius);
-    overflow: hidden;
+    overflow: clip;
     @include transition(transform, 0.6s, ease);
 
     &:hover {

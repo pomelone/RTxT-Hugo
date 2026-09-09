@@ -28,7 +28,7 @@ figure {
     align-items: center;
     justify-content: center;
     @include border($block-border, $block-border-radius);
-    overflow: hidden;
+    overflow: clip;
 
     img {
         max-width: 100%;

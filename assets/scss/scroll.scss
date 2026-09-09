@@ -1,6 +1,6 @@
 .scroll-button {
     border-radius: 0.4rem;
-    overflow: hidden;
+    overflow: clip;
     color: var(--text-meta-color);
     font-weight: 600;
     font-size: 1rem;

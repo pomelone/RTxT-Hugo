@@ -5,7 +5,7 @@
 .katex-display {
     margin: 1em !important;
     padding: 0 !important;
-    overflow: auto hidden !important;
+    overflow: auto clip !important;
     @include thin-scrollbar(transparent, transparent);
 
     &:hover {

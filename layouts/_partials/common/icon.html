@@ -1,0 +1,7 @@
+{{- $name := .name -}}
+
+{{- with index hugo.Data.icons $name -}}
+    {{ . | safeHTML }}
+{{- else -}}
+    {{- errorf "icon %q not found in data/icons.toml" $name -}}
+{{- end -}}

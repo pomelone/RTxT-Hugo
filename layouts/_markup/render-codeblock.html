@@ -1,12 +1,13 @@
 {{- $lang := .Type | default "text" -}}
-{{- $opts := .Options | default (dict) -}}
-
-{{- $filename := .Attributes.filename | default $lang -}}
+{{- $filename := .Attributes.filename -}}
 {{- $link := .Attributes.link | default "" -}}
+
 {{- $collapse := .Attributes.collapse | default true -}}
 {{- if eq (printf "%v" $collapse) "false" -}}
     {{- $collapse = false -}}
 {{- end -}}
+
+{{- $opts := .Options | default (dict) -}}
 
 {{- with index .Attributes "hl_lines" -}}
     {{- $opts = merge $opts (dict "hl_lines" .) -}}
@@ -15,32 +16,13 @@
 {{- $lineAnchors := printf "Code-%d-Line" .Ordinal -}}
 {{- $opts = merge $opts (dict "lineAnchors" $lineAnchors) -}}
 
-{{- $highlighted := highlight .Inner $lang $opts -}}
+{{- $args := (dict
+    "lang" $lang
+    "filename" $filename
+    "link" $link
+    "collapse" $collapse
+    "content" .Inner
+    "opts" $opts
+) -}}
 
-<div class="code-block{{ if $collapse }} collapsed{{ end }}">
-    <div class="collapse-summary">
-        {{ if $link -}}
-            {{- $link = urls.Parse $link -}}
-            {{- if or (eq $link.Scheme "http") (eq $link.Scheme "https") -}}
-            <a class="code-filename" href="{{ $link }}" title="{{ $filename | default $lang }}" target="_blank" rel="noopener noreferrer">
-            {{- else -}}
-            <a class="code-filename" href="{{ $link }}" title="{{ $filename | default $lang }}">
-            {{- end -}}
-        {{- else -}}
-            <span class="code-filename" title="{{ $filename | default $lang }}">
-        {{- end }}
-            {{ partial "component/svg-sprite.html" (dict "name" "code-file" "class" "icon" "asset" "ui/static-ui.svg") }}
-            <span>{{ $filename | default $lang }}</span>
-        {{ if $link -}}
-            {{ partial "component/svg-sprite.html" (dict "name" "link-static" "class" "icon" "asset" "ui/static-ui.svg") }}
-            </a>
-        {{- else -}}
-            </span>
-        {{- end }}
-        <span class="collapse-actions">
-            {{ partial "component/copy.html" }}
-            {{ partial "component/collapse.html" }}
-        </span>
-    </div>
-    <div class="collapse-content">{{ $highlighted }}</div>
-</div>
+{{ partial "common/code.html" $args }}

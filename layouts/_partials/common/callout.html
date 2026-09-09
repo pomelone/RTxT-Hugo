@@ -1,0 +1,28 @@
+{{- $alertTypes := slice "note" "tip" "important" "warning" "caution" -}}
+
+{{- $type := .type -}}
+{{- $title := .title -}}
+{{- $emoji := .emoji -}}
+{{- $icon := .icon -}}
+{{- $content := .content -}}
+
+{{- if not (in $alertTypes $type) -}}
+    {{- $type = "tip" -}}
+{{- end -}}
+
+<div class="callout-block callout-{{ $type }}">
+    <div class="collapse-summary">
+        <span class="callout-title" title="{{ title $title }}">
+            {{ if $emoji -}}
+                <span>{{ $emoji }}</span>
+            {{- else if $icon -}}
+                {{ partial "common/icon.html" (dict "name" $icon) }}
+            {{- else -}}
+                {{ partial "component/svg-sprite.html" (dict "name" $type "class" "icon" "asset" "ui/static-ui.svg") }}
+            {{- end }}
+            <span>{{ title $title  }}</span>
+        </span>
+        {{ partial "component/collapse.html" }}
+    </div>
+    <div class="collapse-content">{{ $content }}</div>
+</div>

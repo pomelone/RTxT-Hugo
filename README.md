@@ -21,10 +21,10 @@
     - [Tags, series, and categories](#tags-series-and-categories) in front matter
 - Markdown Extras
     - [Code blocks](#code-blocks): filename, link, highlighted lines, one-click copy, collapse
-    - [Callouts](#callouts): `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts
+    - [Callouts](#callouts): `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts, collapsible
     - [Math](#math): KaTeX or MathJax
 - Shortcodes
-    - [icon](#icon), [badge](#badge), [tabs](#tabs)
+    - [icon](#icon), [badge](#badge), [callout](#callouts), [tabs](#tabs)
 - Pages
     - [Taxonomies](#taxonomies): term pages with a term list in the left sidebar
     - [Archives](#archives): collapsible year / month groups
@@ -203,6 +203,21 @@ Start a blockquote with `[!TYPE]` to render a callout with an icon and title. Su
 ```
 
 Plain blockquotes render in the note style without a title.
+
+Alternatively, use the `callout` shortcode:
+
+```md
+{{< callout type="warning" title="A custom title" >}}
+Content is rendered as Markdown.
+{{< /callout >}}
+```
+
+Parameters:
+
+- `type`: `note` / `tip` / `important` / `warning` / `caution`, default `note` (optional).
+- `title`: defaults to the callout's type (optional).
+- `emoji`: emoji shown before the title (optional).
+- `icon`: icon name from `data/icons.toml` (optional).
 
 ### Math
 
