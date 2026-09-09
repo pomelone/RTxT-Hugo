@@ -2,7 +2,7 @@
 {{- $filename := .Attributes.filename -}}
 {{- $link := .Attributes.link | default "" -}}
 
-{{- $collapse := .Attributes.collapse | default true -}}
+{{- $collapse := .Attributes.closed | default true -}}
 {{- if eq (printf "%v" $collapse) "false" -}}
     {{- $collapse = false -}}
 {{- end -}}

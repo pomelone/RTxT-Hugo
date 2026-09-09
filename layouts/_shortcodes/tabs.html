@@ -15,8 +15,10 @@
         <div class="tabs-nav-scroll">
         {{- range $tabs }}
             <button class="tabs-button{{ if eq .id $selected }} activated{{ end }}" title="{{ .name }}" data-tab="{{ .id }}" type="button">
-                {{ with .icon -}}
-                    {{ partial "common/icon.html" (dict "name" .) }}
+                {{ if .emoji -}}
+                    <span>{{ .emoji | emojify }}</span>
+                {{- else if .icon -}}
+                    {{ partial "common/icon.html" (dict "name" .icon) }}
                 {{- end }}
                 <span>{{ .name }}</span>
             </button>

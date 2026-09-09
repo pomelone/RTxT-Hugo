@@ -1,4 +1,5 @@
 {{- $content := .Get "content" | default (.Get 0) -}}
+{{- $emoji := .Get "emoji" -}}
 {{- $icon := .Get "icon" -}}
 {{- $color := .Get "color" -}}
 {{- $border := eq (printf "%v" (.Get "border" | default true)) "true" -}}
@@ -27,8 +28,10 @@
     <span class="badge-sc"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
 {{- end }}
 
-    {{ with $icon -}}
-        {{ partial "common/icon.html" (dict "name" .) }}
+    {{ if $emoji -}}
+        <span>{{ $emoji | emojify }}</span>
+    {{- else if $icon -}}
+        {{ partial "common/icon.html" (dict "name" $icon) }}
     {{- end }}
     <span>{{ $content }}</span>
 
