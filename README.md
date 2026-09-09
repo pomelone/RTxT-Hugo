@@ -24,7 +24,7 @@
     - [Callouts](#callouts): `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts, collapsible
     - [Math](#math): KaTeX or MathJax
 - Shortcodes
-    - [icon](#icon), [badge](#badge), [callout](#callouts), [tabs](#tabs)
+    - [icon](#icon), [emoji](#emoji), [badge](#badge), [callout](#callouts), [tabs](#tabs)
 - Pages
     - [Taxonomies](#taxonomies): term pages with a term list in the left sidebar
     - [Archives](#archives): collapsible year / month groups
@@ -176,9 +176,9 @@ cascade:
 Code blocks support a filename, link, highlighted lines, and collapsing:
 
 ```md
-python {filename="test.py", link="/logo.svg", collapse=false, hl_lines=[2,8,"4-6"]}
+python {filename="test.py", link="/logo.svg", closed=false, hl_lines=[2,8,"4-6"]}
 # or
-python {filename="test.py" link="/logo.svg" collapse=false hl_lines=[2,8,"4-6"]}
+python {filename="test.py" link="/logo.svg" closed=false hl_lines=[2,8,"4-6"]}
 
 a = "string a"
 ```
@@ -187,7 +187,7 @@ Parameters:
 
 - `filename`: filename, defaults to the language (optional).
 - `link`: link for the filename (optional).
-- `collapse`: collapse the code, default `true` (optional).
+- `closed`: collapse the code, default `true` (optional).
 - `hl_lines`: highlighted lines (optional).
 
 ### Callouts
@@ -216,7 +216,7 @@ Parameters:
 
 - `type`: `note` / `tip` / `important` / `warning` / `caution`, default `note` (optional).
 - `title`: defaults to the callout's type (optional).
-- `emoji`: emoji shown before the title (optional).
+- `emoji`: emoji shown before the title (optional; takes precedence over `icon`).
 - `icon`: icon name from `data/icons.toml` (optional).
 
 ### Math
@@ -250,12 +250,29 @@ Insert an icon defined in `data/icons.toml`:
 ```md
 {{< icon "github" >}}
 {{< icon name="tag" size="1.5em" >}}
+{{< icon "git" 2rem >}}
 ```
 
 Parameters:
 
 - `name`: icon name (required).
 - `size`: icon size (optional).
+
+### emoji
+
+Insert an emoji, with `:code:` shorthand or a literal emoji:
+
+```md
+{{< emoji ":bulb:" >}}
+{{< emoji "😀" >}}
+{{< emoji name=":rocket:" >}}
+```
+
+Parameters:
+
+- `name`: emoji or its `:code:` shorthand (required).
+
+To also use `:code:` shorthand directly in Markdown text, enable Hugo's emoji extension (`enableEmoji = true`)
 
 ### badge
 
@@ -270,6 +287,7 @@ Parameters:
 
 - `content`: badge text (required).
 - `link`: badge link (optional).
+- `emoji`: emoji supported (optional; takes precedence over `icon`).
 - `icon`: icon name from `data/icons.toml` (optional).
 - `color`: badge color (optional).
 - `border`: show a border, default `true` (optional).
@@ -286,6 +304,9 @@ Group content into switchable tabs:
 {{< tab name="GitHub" icon="github" >}}
 Content of the second tab.
 {{< /tab >}}
+{{< tab name="Idea" emoji=":bulb:" >}}
+Content of the third tab.
+{{< /tab >}}
 {{< /tabs >}}
 ```
 
@@ -293,6 +314,7 @@ Parameters:
 
 - `name`: tab label (required).
 - `selected`: set `true` to select this tab by default; otherwise the first tab is selected (optional).
+- `emoji`: emoji supported (optional; takes precedence over `icon`).
 - `icon`: icon name from `data/icons.toml` (optional).
 
 Tab content is rendered as Markdown (nested shortcodes included).

@@ -1,0 +1,7 @@
+{{- $name := .Get "name" | default (.Get 0) -}}
+
+{{- if not $name -}}
+    {{- errorf "emoji shortcode: require name" -}}
+{{- end -}}
+
+<span>{{ $name | emojify }}</span>

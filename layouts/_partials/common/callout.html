@@ -14,7 +14,7 @@
     <div class="collapse-summary">
         <span class="callout-title" title="{{ title $title }}">
             {{ if $emoji -}}
-                <span>{{ $emoji }}</span>
+                <span>{{ $emoji | emojify }}</span>
             {{- else if $icon -}}
                 {{ partial "common/icon.html" (dict "name" $icon) }}
             {{- else -}}
