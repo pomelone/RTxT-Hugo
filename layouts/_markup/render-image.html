@@ -1,9 +1,7 @@
-{{- $dest := .Destination | safeURL -}}
-{{- $alt := .Text -}}
-{{- $title := .Title -}}
-<figure>
-    <img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async" crossorigin="anonymous">
-    {{ with $title -}}
-    <figcaption>{{ . }}</figcaption>
-    {{- end }}
-</figure>
+{{- $args := (dict
+    "dest" .Destination
+    "alt" .Text
+    "title" .Title
+) -}}
+
+{{ partial "common/image.html" $args }}

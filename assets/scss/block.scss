@@ -11,7 +11,7 @@
 .callout-block {
     margin: 1rem 0;
     @include border($block-border, $block-border-radius);
-    overflow: hidden;
+    overflow: clip;
     color: var(--quote-color);
     background-color: $block-bg;
 

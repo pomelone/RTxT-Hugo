@@ -16,11 +16,7 @@
     {{- end }}
 
         {{ with $menu.Params.icon -}}
-            {{- with index hugo.Data.icons . -}}
-                {{- . | safeHTML -}}
-            {{- else -}}
-                <span>{{ $name }}</span>
-            {{- end -}}
+            {{ partial "common/icon.html" (dict "name" .) }}
         {{- else -}}
             <span>{{ $name }}</span>
         {{- end -}}

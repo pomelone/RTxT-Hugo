@@ -136,7 +136,7 @@
     padding: 0.5rem 1rem;
     min-width: 100%;
     @include border($block-border, $block-border-radius);
-    overflow: hidden;
+    overflow: clip;
     display: flex;
     flex-direction: column;
     @include nav-box;

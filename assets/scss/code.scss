@@ -16,7 +16,7 @@ pre {
     padding: 0.5rem;
     background-color: transparent;
     border-radius: 0;
-    overflow: auto hidden;
+    overflow: auto clip;
     @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
 
     code {
@@ -29,13 +29,13 @@ pre {
 .code-block {
     margin: 1rem 0;
     @include border($block-border, $block-border-radius);
-    overflow: hidden;
+    overflow: clip;
 
     .highlight {
         margin: 0;
 
         table {
-            overflow: auto hidden;
+            overflow: auto clip;
             @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
             border: none;
             box-shadow: none;

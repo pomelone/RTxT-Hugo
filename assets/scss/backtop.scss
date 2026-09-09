@@ -15,7 +15,7 @@
     width: $backtop-height;
     height: $backtop-height;
     border-radius: $backtop-height;
-    overflow: hidden;
+    overflow: clip;
     font-weight: 600;
     font-size: 1rem;
     background-color: var(--bg);

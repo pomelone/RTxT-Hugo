@@ -1,0 +1,15 @@
+{{- $type := lower (.Get "type" | default "note") -}}
+{{- $title := .Get "title" | default (i18n (printf "callout.%s" $type)) | default $type -}}
+{{- $emoji := .Get "emoji" -}}
+{{- $icon := .Get "icon" -}}
+{{- $content := (trim .InnerDeindent "\r\n") | .Page.RenderString -}}
+
+{{- $args := (dict
+    "type" $type
+    "title" $title
+    "emoji" $emoji
+    "icon" $icon
+    "content" $content
+) -}}
+
+{{ partial "common/callout.html" $args }}

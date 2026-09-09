@@ -33,7 +33,7 @@
 .paginator-number-button {
     height: $paginator-height;
     border-radius: $paginator-height;
-    overflow: hidden;
+    overflow: clip;
     font-weight: 600;
     font-size: 1rem;
     background-color: var(--bg);
