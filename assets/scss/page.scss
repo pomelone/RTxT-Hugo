@@ -141,7 +141,7 @@
         opacity: 0;
         transform: scale(0.6);
         overflow: clip;
-        @include transition("max-height, margin, opacity, transform", 0.6s, ease);
+        @include transition("max-height, margin, opacity, transform", 0.6s, ease-in-out);
     }
 
     &:hover .page-summary {
