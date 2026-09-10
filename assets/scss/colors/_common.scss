@@ -17,7 +17,7 @@ $table-th-bg: #008000;
 $table-th-fg: #fff;
 $block-border: color-mix(in srgb, currentColor 10%, transparent);
 $block-bg: color-mix(in srgb, currentColor 5%, transparent);
-$block-button-bg: color-mix(in srgb, #111 10%, transparent);
+$block-button-bg: color-mix(in srgb, #111 10%, #fff);
 $block-summary-bg: color-mix(in srgb, currentColor 10%, #fff);
 
 // Callout block colors

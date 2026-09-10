@@ -4,36 +4,34 @@
 
 table {
     margin: 1rem 0;
+    padding: 0 0.5rem;
+    max-width: 100%;
     width: 100%;
     display: block;
-    @include border($block-border, $block-border-radius);
-    border-collapse: separate;
-    border-spacing: 0;
     overflow: clip;
+    border-spacing: 0;
+    border-top: 2px solid $theme-color;
+    border-bottom: 2px solid $theme-color;
 }
 
 th,
 td {
-    padding: 1em 1.25rem;
-
-    &:last-child {
-        border-right: none;
-    }
-}
-
-tr:last-child {
-    th,
-    td {
-        border-bottom: none;
-    }
+    padding: 0.4em 0.9em;
+    border: none;
+    font-size: 0.9em;
+    @include transition("background-color", 0.3s, ease);
 }
 
 th {
+    text-align: center;
     font-weight: 600;
-    background-color: $table-th-bg;
-    color: $table-th-fg;
+    border-bottom: 1px solid $theme-color;
 }
 
-tbody tr:nth-child(even) td {
-    background-color: var(--table-even);
+td {
+    text-align: left;
+}
+
+tbody tr:hover td {
+    background-color: color-mix(in srgb, $theme-color 10%, transparent);
 }

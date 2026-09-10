@@ -22,7 +22,7 @@
     }
 
     .collapse-content {
-        padding: 0 1rem 0.8rem 2rem;
+        padding: 0 1rem 0.8rem;
     }
 
     .callout-title {
@@ -33,9 +33,5 @@
         > span {
             @include ellipsis(var(--block-title-max-width));
         }
-    }
-
-    .collapse-button:hover {
-        background-color: $block-button-bg;
     }
 }

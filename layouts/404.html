@@ -8,8 +8,8 @@
     <style>
         @font-face {
             font-family: "Facon";
-            src: url('/fonts/Facon/Facon.woff2') format('woff2'),
-                url('/fonts/Facon/Facon.woff') format('woff')
+            src: url("/fonts/Facon/Facon.woff2") format("woff2"),
+                url("/fonts/Facon/Facon.woff") format("woff"),
                 url("/fonts/Facon/Facon.ttf") format("truetype");
             font-weight: 700;
             font-style: normal;
@@ -30,11 +30,20 @@
             margin: 10rem 0 5rem;
             text-align: center;
             font-size: 16rem;
+            
+            @media (max-width: 50rem) {
+                margin: 8rem 0 5rem;
+                font-size: 8rem;
+            }
         }
 
         .nf-body p {
             text-align: center;
             font-size: 4rem;
+
+            @media (max-width: 50rem) {
+                font-size: 2rem;
+            }
         }
     </style>
     <script>
@@ -76,7 +85,7 @@
                     shadows.push(`${color} ${offset * dx}px ${offset * dy}px`);
                 }
 
-                this.el.style.textShadow = shadows.join(',');
+                this.el.style.textShadow = shadows.join(",");
             }
 
             update(newOptions) {
@@ -85,13 +94,22 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const title = new TextExtrude('.nf-body h1', {
+        document.addEventListener("DOMContentLoaded", () => {
+            let args = {
                 depth: 200,
                 steps: 200,
                 colorStart: [0, 108, 0],   // 20, 50
                 colorEnd: [0, 128, 0]
-            });
+            };
+            if (window.innerWidth < 800) {
+                args = {
+                    depth: 100,
+                    steps: 100,
+                    colorStart: [0, 108, 0],   // 20, 50
+                    colorEnd: [0, 128, 0]
+                };
+            }
+            const title = new TextExtrude(".nf-body h1", args);
         });
     </script>
 </head>
