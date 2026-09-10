@@ -1,11 +1,11 @@
 @use "sass:map";
 
 $z-layers: (
-    bottom: -1,
+    bottom: -10,
     top: 99,
-    page: 1,
+    page: 0,
     math: 20,
-    side: 80,
+    side: 40,
     nav: 90
 );
 

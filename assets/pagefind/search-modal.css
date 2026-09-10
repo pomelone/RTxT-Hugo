@@ -8,7 +8,7 @@ pagefind-modal {
     --pf-skeleton: var(--pf-r-skeleton);
     --pf-skeleton-shine: var(--pf-r-skeleton-shine);
     --pf-hover: var(--pf-r-hover);
-    --pf-mark: var(--text-color);
+    --pf-mark: #008000;
     --pf-scroll-shadow: var(--pf-r-scroll-shadow);
     --pf-outline-focus: #008000;
 
@@ -143,12 +143,13 @@ pagefind-modal {
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-result-card:hover {
+    border-color: #008000 !important;
     transform: scale(1.05, 1.1) !important;
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-result-link:hover {
     text-decoration: none !important;
-    color: #008000 !important;
+    color: #2463eb !important;
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-chips {
@@ -162,10 +163,11 @@ pagefind-modal {
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-chip:hover {
+    border-color: #008000 !important;
     transform: scale(1.05, 1.1) !important;
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-link:hover {
     text-decoration: none !important;
-    color: #008000 !important;
+    color: #2463eb !important;
 }

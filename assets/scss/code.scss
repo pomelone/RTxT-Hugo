@@ -18,6 +18,7 @@ pre {
     border-radius: 0;
     overflow: auto clip;
     @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
+    overscroll-behavior: contain auto;
 
     code {
         padding: 0;

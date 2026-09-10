@@ -1,0 +1,61 @@
+{{- $cols := .Get "cols" | default 2 | int -}}
+{{- if gt $cols 4 -}}
+    {{- errorf "cards shortcode: the maximum number of columns is [4]" -}}
+{{- end -}}
+
+{{- $_ := .Inner -}}
+
+{{- $cards := .Store.Get "cards" | default slice -}}
+{{- if not $cards -}}
+    {{- errorf "cards shortcode: requires at least one nested card shortcode" -}}
+{{- end -}}
+
+<div class="cards" style="--cards-cols: {{ $cols }};">
+    {{- range $cards }}
+        {{ if .link -}}
+            {{- $parseLink := urls.Parse .link -}}
+            {{- if or (eq $parseLink.Scheme "http") (eq $parseLink.Scheme "https") -}}
+            <a class="card" href="{{ .link | safeURL }}" target="_blank" rel="noopener noreferrer">
+            {{- else -}}
+            <a class="card" href="{{ .link | safeURL }}">
+            {{- end -}}
+        {{- else -}}
+        <div class="card">
+        {{- end -}}
+            {{- if .tag }}
+            <span class="card-tag card-tag-{{ .tagType }}" title="{{ .tag }}">{{ .tag }}</span>
+            {{- end }}
+
+            {{- with .image }}
+            <img class="card-image" src="{{ . | safeURL }}" loading="lazy" decoding="async" crossorigin="anonymous">
+            {{- end -}}
+            
+
+            {{- if or .emoji .icon .title .subtitle }}
+            <div class="card-content">
+                {{- if or .emoji .icon .title }}
+                <span class="card-title">
+                    {{- if .emoji }}
+                    <span>{{ .emoji | emojify }}</span>
+                    {{- else if .icon -}}
+                        {{ partial "common/icon.html" (dict "name" .icon) }}
+                    {{- end -}}
+
+                    {{- with .title }}
+                    <span>{{ . }}</span>
+                    {{- end }}
+                </span>
+                {{- end -}}
+
+                {{- with .subtitle }}
+                <span class="card-subtitle">{{ . }}</span>
+                {{- end -}}
+            </div>
+            {{- end }}
+        {{ if .link -}}
+        </a>
+        {{- else -}}
+        </div>
+        {{- end -}}
+    {{- end }}
+</div>

@@ -7,6 +7,7 @@
     padding: 0 !important;
     overflow: auto clip !important;
     @include thin-scrollbar(transparent, transparent);
+    overscroll-behavior: contain auto;
 
     &:hover {
         scrollbar-color: $scrollbar-thumb $scrollbar-track;
@@ -26,6 +27,7 @@
 
 mjx-container[display] {
     @include thin-scrollbar(transparent, transparent);
+    overscroll-behavior: contain auto;
 
     &:hover {
         scrollbar-color: $scrollbar-thumb $scrollbar-track;
