@@ -4,24 +4,21 @@
 
 :root[data-theme="light"] {
     @include light-theme;
-    @include regular-media;
 }
 
 :root[data-theme="dark"] {
     @include dark-theme;
 }
 
-:root:not([data-theme]) {
+:root {
     @include light-theme;
     @include regular-media;
 
     @media (prefers-color-scheme: dark) {
         @include dark-theme;
     }
-}
 
-@media (max-width: $breakpoint-narrow) {
-    :root {
+    @media (max-width: $breakpoint-narrow) {
         @include narrow-media;
     }
 }

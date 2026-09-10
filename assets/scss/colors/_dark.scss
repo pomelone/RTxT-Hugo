@@ -17,13 +17,13 @@ $hr-color: #282828;
 $list-bg: color-mix(in srgb, #fff 10%, transparent);
 $table-even: #3c3c3c;
 $button-border: 1px solid color-mix(in srgb, #fff 10%, transparent);
-$button-bg: color-mix(in srgb, #fff 10%, #111);
+$button-bg: color-mix(in srgb, #fff 10%, transparent);
 
 // Pagefind colors
 $pf-text-secondary: #a0a0a0;
 $pf-text-muted: #949494;
-$pf-border: #333;
-$pf-border-focus: #555;
+$pf-border: color-mix(in srgb, #fff 10%, transparent);
+$pf-border-focus: color-mix(in srgb, #fff 10%, transparent);
 $pf-skeleton: #2a2a2a;
 $pf-skeleton-shine: #333;
 $pf-hover: #252525;
