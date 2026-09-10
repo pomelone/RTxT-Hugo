@@ -1,0 +1,31 @@
+{{- if not .Parent -}}
+    {{- errorf "card shortcode: must be nested inside a cards shortcode" -}}
+{{- end -}}
+
+{{- $tagTypes := slice "note" "tip" "important" "warning" "caution" -}}
+
+{{- $title := .Get "title" | default (.Get 0) -}}
+{{- $subtitle := .Get "subtitle" -}}
+{{- $link := .Get "link" -}}
+{{- $tag := .Get "tag" -}}
+{{- $tagType := lower (.Get "tagType" | default "tip") -}}
+{{- if not (in $tagTypes $tagType) -}}
+    {{- $tagType = "tip" -}}
+{{- end -}}
+{{- $emoji := .Get "emoji" -}}
+{{- $icon := .Get "icon" -}}
+{{- $image := .Get "image" -}}
+
+{{- $card := dict
+    "title" $title
+    "subtitle" $subtitle
+    "link" $link
+    "tag" $tag
+    "tagType" $tagType
+    "emoji" $emoji
+    "icon" $icon
+    "image" $image
+-}}
+
+{{- $cards := .Parent.Store.Get "cards" | default slice -}}
+{{- .Parent.Store.Set "cards" ($cards | append $card) -}}

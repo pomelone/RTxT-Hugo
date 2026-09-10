@@ -24,7 +24,7 @@
     - [Callouts](#callouts): `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` via Hugo's native blockquote alerts, collapsible
     - [Math](#math): KaTeX or MathJax
 - Shortcodes
-    - [icon](#icon), [emoji](#emoji), [badge](#badge), [callout](#callouts), [tabs](#tabs)
+    - [icon](#icon), [emoji](#emoji), [badge](#badge), [callout](#callouts), [tabs](#tabs), [cards](#cards)
 - Pages
     - [Taxonomies](#taxonomies): term pages with a term list in the left sidebar
     - [Archives](#archives): collapsible year / month groups
@@ -318,6 +318,33 @@ Parameters:
 - `icon`: icon name from `data/icons.toml` (optional).
 
 Tab content is rendered as Markdown (nested shortcodes included).
+
+### cards
+
+Group cards into a responsive grid:
+
+```md
+{{< cards cols=3 >}}
+{{< card title="Card One" subtitle="A subtitle" icon="github" link="https://example.com" >}}
+{{< card title="Card Two" image="/images/foo.png" >}}
+{{< card title="Card Three" tag="New" tagType="warning" >}}
+{{< /cards >}}
+```
+
+Parameters (`cards`):
+
+- `cols`: max columns per row, default `2`, max `4`; on small screens one card per row regardless (optional).
+
+Parameters (`card`):
+
+- `title`: card title, shown below the image when present (optional).
+- `subtitle`: card subtitle, shown below the title (optional).
+- `link`: URL the card links to; external links open in a new tab (optional).
+- `tag`: label shown in the top-right corner (optional).
+- `tagType`: tag color type — `note` / `tip` / `important` / `warning` / `caution`, default `tip` (optional).
+- `emoji`: emoji shown before the title (optional; takes precedence over `icon`).
+- `icon`: icon name from `data/icons.toml` (optional).
+- `image`: image URL (optional).
 
 ## Pages
 

@@ -34,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollToActive = (nav) => {
         const active = nav.querySelector(".tabs-button.activated");
         if (active) {
-            active.scrollIntoView({ block: "nearest", inline: "nearest" });
+            // Scroll the tab bar horizontally only; never scroll the page.
+            nav.scrollLeft = Math.min(active.offsetLeft - nav.offsetLeft, nav.scrollWidth - nav.clientWidth);
         }
     };
 

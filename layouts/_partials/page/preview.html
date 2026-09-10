@@ -2,7 +2,7 @@
 {{- range $paginator.Pages }}
 <section class="page">
     <h2 class="title">
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <a class="title-link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         {{ if .Draft -}}
             {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "draft" "class" "icon" "title" (i18n "status.draft")) }}
         {{- end }}
