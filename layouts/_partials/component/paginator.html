@@ -2,36 +2,28 @@
 {{ if gt $paginator.TotalPages 1 -}}
 <div class="paginator-container">
     <div class="paginator-nav">
-        {{ if $paginator.HasPrev -}}
-        <a href="{{ $paginator.Prev.URL }}" title="{{ i18n "pagination.prev" }}">
-            <button class="paginator-button" type="button">
-        {{- else -}}
-        <button class="paginator-button hidden" type="button">
-        {{- end -}}
-        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow-left-circle") }}
-        {{- if $paginator.HasPrev -}}
-            </button>
+        {{- if $paginator.HasPrev }}
+        <a class="paginator-button" href="{{ $paginator.Prev.URL }}" title="{{ i18n "pagination.prev" }}">
+            {{- partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow-left-circle") }}
         </a>
-        {{- else -}}
-        </button>
+        {{- else }}
+        <span class="paginator-button hidden">
+            {{- partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow-left-circle") }}
+        </span>
         {{- end }}
 
-        <button class="paginator-number-button" title="{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}" type="button">
+        <span class="paginator-number-button" title="{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}">
             <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
-        </button>
-        
-        {{ if $paginator.HasNext -}}
-        <a href="{{ $paginator.Next.URL }}" title="{{ i18n "pagination.next" }}">
-            <button class="paginator-button" type="button">
-        {{- else -}}
-        <button class="paginator-button hidden" type="button">
-        {{- end -}}
-        {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow-right-circle") }}
-        {{- if $paginator.HasNext -}}
-            </button>
+        </span>
+
+        {{- if $paginator.HasNext }}
+        <a class="paginator-button" href="{{ $paginator.Next.URL }}" title="{{ i18n "pagination.next" }}">
+            {{- partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow-right-circle") }}
         </a>
-        {{- else -}}
-        </button>
+        {{- else }}
+        <span class="paginator-button hidden" aria-hidden="true">
+            {{- partial "component/svg-sprite.html" (dict "mode" "inline" "name" "arrow-right-circle") }}
+        </span>
         {{- end }}
     </div>
 </div>

@@ -3,6 +3,7 @@
 {{- $icon:= .icon | default false -}}
 
 {{- $name := i18n (printf "menu.%s" ($menu.Identifier | default $menu.Name)) -}}
+{{- if not $name -}}{{- $name = $menu.Name -}}{{- end -}}
 
 {{- if eq $menu.Params.type "search" -}}
     {{ partial "header/search.html" $menu }}

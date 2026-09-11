@@ -32,11 +32,20 @@
 .paginator-button,
 .paginator-number-button {
     height: $paginator-height;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: $paginator-height;
     overflow: clip;
     font-weight: 600;
     font-size: 1rem;
+    color: $theme-color;
     background-color: var(--bg);
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    @include transition("background-color, transform", 0.6s, ease);
 
     &:hover {
         background-color: var(--bg);

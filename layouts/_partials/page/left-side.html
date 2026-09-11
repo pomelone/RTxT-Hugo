@@ -1,7 +1,9 @@
 {{- $current := . -}}
 
 {{- $enableTerm := true -}}
-{{- if and (isset site.Params "features") (isset site.Params.features "enable_term") -}}
+{{- if isset .Params "enable_term" -}}
+    {{- $enableTerm = .Params.enable_term -}}
+{{- else if and (isset site.Params "features") (isset site.Params.features "enable_term") -}}
     {{- $enableTerm = site.Params.features.enable_term -}}
 {{- end -}}
 
@@ -15,9 +17,10 @@
 {{- if and (eq .Kind "term") $enableTerm -}}
 {{- $type := .Type -}}
 {{- $term := .Data.Term -}}
+{{- $sectionTitle := i18n (printf "section.%s" $type) | default $type -}}
 <div class="left-side visible">
     <div class="term">
-        <div class="title">{{ i18n (printf "section.%s" $type) }}</div>
+        <div class="title">{{ $sectionTitle }}</div>
         <ul>
             {{- range (index site.Taxonomies $type).Alphabetical }}
             <li{{ if eq .Page.Data.Term $term }} class="activated"{{ end }}>

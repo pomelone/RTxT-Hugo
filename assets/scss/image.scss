@@ -7,9 +7,17 @@ svg {
     margin: 0;
     padding: 0;
     max-width: 100%;
+    vertical-align: middle;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+svg {
     width: auto;
     height: 1.2em;
-    vertical-align: middle;
 }
 
 .icon {
