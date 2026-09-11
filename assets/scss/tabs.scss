@@ -41,7 +41,6 @@
 .tabs-nav-scroll {
     display: flex;
     flex: 1;
-    gap: 0.2rem;
     align-items: stretch;
     overflow: auto clip;
     padding-bottom: 1px;
@@ -51,9 +50,9 @@
 
 .tabs-button {
     margin: 0 0.2rem -1px;
-    padding: 0.4rem 0.6rem;
+    padding: 0.4rem 0.8rem;
     gap: 0.2rem;
-    @include border(transparent, 0.5rem 0.5rem 0 0);
+    @include border(transparent, 1rem);
     font-size: 0.9rem;
     color: var(--text-meta-color);
     background-color: transparent;
@@ -70,7 +69,6 @@
             color: $theme-color;
             background-color: var(--bg);
             border-color: $theme-color;
-            border-bottom-color: transparent;
         }
     }
 
