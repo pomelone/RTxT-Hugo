@@ -12,7 +12,7 @@
 
 <div class="callout-block callout-{{ $type }}">
     <div class="collapse-summary">
-        <span class="callout-title" title="{{ title $title }}">
+        <span class="callout-title"{{ with $title }} title="{{ title . }}"{{ end }}>
             {{ if $emoji -}}
                 <span>{{ $emoji | emojify }}</span>
             {{- else if $icon -}}
@@ -20,7 +20,7 @@
             {{- else -}}
                 {{ partial "component/svg-sprite.html" (dict "name" $type "class" "icon" "asset" "ui/static-ui.svg") }}
             {{- end }}
-            <span>{{ title $title  }}</span>
+            {{- with $title }}<span>{{ title . }}</span>{{- end }}
         </span>
         {{ partial "component/collapse.html" }}
     </div>

@@ -38,11 +38,12 @@
     {{- with $res -}}
         {{- if or (eq $mode "sprite") (eq $mode "inline-sprite") -}}
             {{- $spriteContent = .Content -}}
+        {{- else if eq $mode "external" -}}
+            {{- $spriteURL = (. | minify | fingerprint).RelPermalink -}}
         {{- end -}}
     {{- else -}}
         {{- errorf "svg-sprite partial: sprite not found at 'assets/%s'" $asset -}}
     {{- end -}}
-    {{- $spriteURL = ($res | minify | fingerprint).RelPermalink -}}
 {{- else -}}
     {{- errorf "svg-sprite partial: 'path' or 'asset' is required" -}}
 {{- end -}}

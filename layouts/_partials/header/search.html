@@ -1,3 +1,5 @@
+{{- $searchName := i18n "menu.search" | default "Search" -}}
+
 {{- $baseUrl := .Params.baseUrl | default "/" -}}
 {{- $bundlePath := .Params.bundlePath | default "/search/" -}}
 
@@ -8,7 +10,7 @@
     excerpt-length="30" 
     highlight-param="highlight"></pagefind-config>
 
-<button class="search-trigger" type="button" title="{{ i18n "menu.search" }}">
+<button class="search-trigger" type="button" title="{{ $searchName }}">
     {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "mood-look" "title" (i18n "menu.search")) }}
 </button>
 

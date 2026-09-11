@@ -13,7 +13,8 @@
     {{- range .Ancestors.Reverse }}
         {{ if not .IsHome -}}
             {{- if eq $firstSection.RelPermalink .RelPermalink -}}
-            <li><a href="{{ .RelPermalink }}" title="{{ i18n (printf "section.%s" .Section) }}"><span>{{ i18n (printf "section.%s" .Section) }}</span></a></li>
+            {{- $sectionName := i18n (printf "section.%s" .Section) | default .LinkTitle -}}
+            <li><a href="{{ .RelPermalink }}" title="{{ $sectionName }}"><span>{{ $sectionName }}</span></a></li>
             {{- else -}}
             <li><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}"><span>{{ .LinkTitle }}</span></a></li>
             {{- end -}}

@@ -2,8 +2,10 @@
 {{- $alt := .alt -}}
 {{- $title := .title -}}
 
+{{- $src := $dest -}}
+
 <figure>
-    <img src="{{ $dest | safeURL }}"{{ with $alt }} alt="{{ $alt }}"{{ end }}{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async" crossorigin="anonymous">
+    <img src="{{ $src | safeURL }}"{{ with $alt }} alt="{{ . }}"{{ end }}{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async" crossorigin="anonymous">
     {{- with $title -}}
     <figcaption>{{ . }}</figcaption>
     {{- end -}}

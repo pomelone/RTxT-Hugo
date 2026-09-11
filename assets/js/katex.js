@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el) {
         renderMathInElement(el, {
             output: "html",
-            strict: true,
+            strict: "warn",
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "\\[", right: "\\]", display: true },

@@ -1,9 +1,11 @@
-{{- $type := lower (.AlertType | default "tip") -}}
-{{- if ne .Type "alert" -}} 
-    {{- $type = "note" -}}
-{{- end -}}
+{{- $isAlert := eq .Type "alert" -}}
 
-{{- $title := .AlertTitle | default (i18n (printf "callout.%s" $type)) | default $type -}}
+{{- $type := "note" -}}
+{{- $title := "" -}}
+{{- if $isAlert -}}
+    {{- $type = lower (.AlertType | default "note") -}}
+    {{- $title = .AlertTitle | default (i18n (printf "callout.%s" $type)) | default $type -}}
+{{- end -}}
 
 {{- $args := (dict
     "type" $type

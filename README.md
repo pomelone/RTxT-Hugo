@@ -148,11 +148,14 @@ npx pagefind --site public --output-subdir search
 
 ### Feature Toggles per Page
 
-The same toggles can be set per page in front matter (the page value wins):
+The toggles below can be set per page in front matter (the page value wins):
 
 ```yaml
+enable_breadcrumb = true
 enable_toc = true
 enable_tags = false
+enable_series = true
+enable_term = true
 ```
 
 ### Pinning and Status

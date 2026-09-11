@@ -1,7 +1,5 @@
 {{- $currentPage := . -}}
 {{- range site.Menus.main -}}
-    {{- $name := i18n (printf "menu.%s" (.Identifier | default .Name)) -}}
-
     {{- $active := false -}}
     {{- if .Page -}}
         {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
