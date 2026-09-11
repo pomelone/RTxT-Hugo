@@ -1,6 +1,16 @@
 @use "themes" as *;
 @use "media" as *;
 @use "size" as *;
+@use "colors" as *;
+
+:focus-visible {
+    outline: 2px solid $theme-color;
+    outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
 
 :root[data-theme="light"] {
     @include light-theme;

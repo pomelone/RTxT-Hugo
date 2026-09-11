@@ -17,6 +17,8 @@
     --table-even: #{light.$table-even};
     --button-border: #{light.$button-border};
     --button-bg: #{light.$button-bg};
+    --shadow-sm: #{light.$shadow-sm};
+    --shadow-md: #{light.$shadow-md};
     --pf-r-text-secondary: #{light.$pf-text-secondary};
     --pf-r-text-muted: #{light.$pf-text-muted};
     --pf-r-border: #{light.$pf-border};
@@ -51,6 +53,8 @@
     --table-even: #{dark.$table-even};
     --button-border: #{dark.$button-border};
     --button-bg: #{dark.$button-bg};
+    --shadow-sm: #{dark.$shadow-sm};
+    --shadow-md: #{dark.$shadow-md};
     --pf-r-text-secondary: #{dark.$pf-text-secondary};
     --pf-r-text-muted: #{dark.$pf-text-muted};
     --pf-r-border: #{dark.$pf-border};

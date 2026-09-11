@@ -28,13 +28,15 @@
     color: var(--text-color);
     @include border($block-border, $block-border-radius);
     overflow: clip;
-    @include transition("transform, border-color", 0.3s, ease);
+    box-shadow: var(--shadow-sm);
+    @include transition("transform, border-color, box-shadow", 0.3s, ease);
 
     &:hover {
         color: var(--text-color);
         border-color: $theme-color;
         text-decoration: none;
         transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
     }
 
     &:active {

@@ -18,7 +18,8 @@
     @include border($block-border, $block-border-radius);
     overflow: clip;
     color: var(--text-color);
-    @include transition("color, border-color, transform", 0.3s, ease);
+    box-shadow: var(--shadow-sm);
+    @include transition("color, border-color, transform, box-shadow", 0.3s, ease);
 
     .card-tag {
         position: absolute;
@@ -29,7 +30,7 @@
         @include ellipsis(30%);
         font-size: 0.8rem;
         color: $theme-color;
-        background-color: color-mix(in srgb, currentColor 30%, white);
+        background-color: color-mix(in srgb, currentColor 30%, #fff);
     }
 
     @each $name, $color in $callout-colors {
@@ -74,7 +75,8 @@ a.card {
         text-decoration: none;
         color: var(--text-meta-hover-color);
         border-color: $theme-color;
-        transform: translateY(-2px);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
     }
 
     &:active {
