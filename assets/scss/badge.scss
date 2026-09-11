@@ -12,7 +12,7 @@
     overflow: clip;
     font-size: 0.8rem;
     color: $theme-color;
-    background-color: color-mix(in srgb, currentColor 30%, white);
+    background-color: color-mix(in srgb, currentColor 30%, #fff);
     text-decoration: none;
     user-select: none;
     @include transition(transform, 0.3s, ease);

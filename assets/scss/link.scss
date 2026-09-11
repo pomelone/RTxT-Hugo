@@ -4,6 +4,7 @@
 a {
     color: $link-color;
     text-decoration: none;
+    text-underline-offset: 0.2em;
     @include transition(color, 0.3s, ease);
 
     &:hover {

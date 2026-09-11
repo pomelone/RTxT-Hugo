@@ -19,6 +19,10 @@ $table-even: #3c3c3c;
 $button-border: 1px solid color-mix(in srgb, #fff 10%, transparent);
 $button-bg: color-mix(in srgb, #fff 10%, transparent);
 
+// Shadows
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+$shadow-md: 0 6px 16px rgba(0, 0, 0, 0.5);
+
 // Pagefind colors
 $pf-text-secondary: #a0a0a0;
 $pf-text-muted: #949494;
