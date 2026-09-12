@@ -1,0 +1,42 @@
+{{- $currentPage := . -}}
+{{- range site.Menus.main -}}
+    {{- $active := false -}}
+    {{- if .Page -}}
+        {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
+            {{- $active = true -}}
+        {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
+            {{- $active = true -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{ if .HasChildren -}}
+        {{- range .Children -}}
+            {{- if and (not $active) .Page -}}
+                {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
+                    {{- $active = true -}}
+                {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
+                    {{- $active = true -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+
+        <div class="menu-group">
+            {{ partial "header/menu-detail.html" (dict "menu" . "active" $active "more" true) }}
+            <div class="submenu">
+
+                {{- range .Children -}}
+                    {{- $activeChild := false -}}
+                    {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
+                        {{- $activeChild = true -}}
+                    {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
+                        {{- $activeChild = true -}}
+                    {{- end -}}
+
+                    {{ partial "header/menu-detail.html" (dict "menu" . "active" $activeChild) }}
+                {{- end }}
+            </div>
+        </div>
+    {{- else -}}
+        {{ partial "header/menu-detail.html" (dict "menu" . "active" $active) }}
+    {{- end -}}
+{{- end -}}

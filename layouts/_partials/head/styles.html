@@ -8,16 +8,16 @@
     {{- $styles = $styles | append (. | toCSS $options) -}}
 {{- end -}}
 
-{{- $searchAdded := false -}}
-{{- range site.Menus.main -}}
-    {{- if and (eq .Params.type "search") (not $searchAdded) -}}
-        {{- with resources.Get "pagefind/pagefind-component-ui.css" -}}
-            {{- $styles = $styles | append .  -}}
-        {{- end -}}
-        {{- with resources.Get "pagefind/search-modal.css" -}}
-            {{- $styles = $styles | append .  -}}
-        {{- end -}}
-        {{- $searchAdded = true -}}
+{{- $searchEnable := false -}}
+{{- if and (isset site.Params "search") (isset site.Params.search "enable") -}}
+    {{- $searchEnable = site.Params.search.enable -}}
+{{- end -}}
+{{- if $searchEnable -}}
+    {{- with resources.Get "pagefind/pagefind-component-ui.css" -}}
+        {{- $styles = $styles | append .  -}}
+    {{- end -}}
+    {{- with resources.Get "pagefind/search-modal.css" -}}
+        {{- $styles = $styles | append .  -}}
     {{- end -}}
 {{- end -}}
 

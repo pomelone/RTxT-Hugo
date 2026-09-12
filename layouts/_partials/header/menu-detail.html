@@ -1,34 +1,28 @@
 {{- $menu := .menu -}}
 {{- $active := .active | default false -}}
-{{- $icon:= .icon | default false -}}
+{{- $more := .more | default false -}}
 
 {{- $name := i18n (printf "menu.%s" ($menu.Identifier | default $menu.Name)) -}}
 {{- if not $name -}}{{- $name = $menu.Name -}}{{- end -}}
 
-{{- if eq $menu.Params.type "search" -}}
-    {{ partial "header/search.html" $menu }}
+{{ if $menu.Page -}}
+    <a class="menu{{ if $active }} activated{{ end }}" href="{{ $menu.Page.RelPermalink }}" title="{{ $name }}">
+{{- else if $menu.URL -}}
+    <a class="menu" href="{{ $menu.URL }}" target="_blank" rel="noopener noreferrer" title="{{ $name }}">
 {{- else -}}
-    {{ if $menu.Page -}}
-        <a class="menu{{ if $active }} activated{{ end }}" href="{{ $menu.Page.RelPermalink }}" title="{{ $name }}">
-    {{- else if $menu.URL -}}
-        <a class="menu" href="{{ $menu.URL }}" target="_blank" rel="noopener noreferrer" title="{{ $name }}">
-    {{- else -}}
-        <span class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
+    <span class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
+{{- end }}
+
+    {{ with $menu.Params.icon -}}
+        {{ partial "common/icon.html" (dict "name" .) }}
     {{- end }}
-
-        {{ with $menu.Params.icon -}}
-            {{ partial "common/icon.html" (dict "name" .) }}
-        {{- else -}}
-            <span>{{ $name }}</span>
-        {{- end -}}
-
-        {{- if $icon -}}
-            {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
-        {{- end -}}
-
-    {{- if or $menu.Page $menu.URL }}
-        </a>
-    {{- else -}}
-        </span>
+    <span>{{ $name }}</span>
+    {{ if $more -}}
+        {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
     {{- end -}}
+
+{{- if or $menu.Page $menu.URL }}
+    </a>
+{{- else -}}
+    </span>
 {{- end -}}

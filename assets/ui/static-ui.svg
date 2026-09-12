@@ -23,4 +23,6 @@
 <symbol id="external-link" viewBox="0 0 24 24"><path fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6m-7 1l9-9m-5 0h5v5"/></symbol>
 <symbol id="external-link-off" viewBox="0 0 24 24"><path fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1m-7-3l2-2m2.007-2.007l6-6M15 4h5v5M3 3l18 18"/></symbol>
 <symbol id="details-marker" viewBox="0 0 24 24"><path fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m7 7l5 5l-5 5m6-10l5 5l-5 5"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="x-close" viewBox="0 0 24 24"><path fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"/></symbol>
 </svg>

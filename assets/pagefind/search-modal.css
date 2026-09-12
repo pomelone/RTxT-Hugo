@@ -1,4 +1,5 @@
 pagefind-modal {
+    --pf-r-theme-color: #008000;
     --pf-text: var(--text-color);
     --pf-text-secondary: var(--pf-r-text-secondary);
     --pf-text-muted: var(--pf-r-text-muted);
@@ -8,9 +9,9 @@ pagefind-modal {
     --pf-skeleton: var(--pf-r-skeleton);
     --pf-skeleton-shine: var(--pf-r-skeleton-shine);
     --pf-hover: var(--pf-r-hover);
-    --pf-mark: #008000;
+    --pf-mark: var(--pf-r-theme-color);
     --pf-scroll-shadow: var(--pf-r-scroll-shadow);
-    --pf-outline-focus: #008000;
+    --pf-outline-focus: var(--pf-r-theme-color);
 
     --pf-shadow-sm: var(--pf-r-shadow-sm);
     --pf-shadow-md: var(--pf-r-shadow-md);
@@ -21,7 +22,7 @@ pagefind-modal {
     --pf-error-text: var(--pf-r-error-text);
     --pf-error-text-secondary: var(--pf-r-error-text-secondary);
 
-    --pf-modal-backdrop: var(--pf-r-modal-backdrop);
+    --pf-modal-backdrop: var(--modal-bg);
 
     --pf-font:
         -apple-system, BlinkMacSystemFont,
@@ -69,10 +70,16 @@ pagefind-modal {
 .search-trigger {
     position: relative;
     padding: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     gap: 0.2rem;
-    color: var(--text-bar-color);
     font-weight: 500;
     font-size: 0.9rem;
+    white-space: nowrap;
+    text-decoration: none;
+    user-select: none;
+    color: var(--text-bar-color);
     transition-property: color, opacity, transform;
     transition-duration: 0.3s;
     transition-timing-function: ease;
@@ -105,7 +112,7 @@ pagefind-modal {
 
 @media (max-width: 640px) {
     :is(*,#\#):is(*,#\#):is(*,#\#) dialog.pf-modal[open] {
-        top: 4rem !important;
+        top: 10dvh !important;
         justify-self: center !important;
         width: 90dvw !important;
         height: 80dvh !important;
@@ -114,7 +121,7 @@ pagefind-modal {
 
 :is(*,#\#):is(*,#\#):is(*,#\#) pagefind-modal-header .pf-input-wrapper::before,
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-modal-header .pf-input-wrapper::before {
-    background-color: #008000 !important;
+    background-color: var(--pf-r-theme-color) !important;
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) pagefind-modal-header .pf-input,
@@ -127,14 +134,24 @@ pagefind-modal {
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-input-clear:hover {
-    color: #008000 !important;
+    color: var(--pf-r-theme-color) !important;
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) pagefind-modal-body,
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-modal-body {
     scrollbar-width: thin !important;
-    scrollbar-color: #008000 transparent !important;
+    scrollbar-color: var(--pf-r-theme-color) transparent !important;
     scrollbar-gutter: stable !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-modal-close {
+    color: var(--pf-r-theme-color) !important;
+}
+
+:is(*,#\#):is(*,#\#):is(*,#\#) .pf-modal-close svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    flex-shrink: 0 !important;
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-result-card {
@@ -143,7 +160,7 @@ pagefind-modal {
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-result-card:hover {
-    border-color: #008000 !important;
+    border-color: var(--pf-r-theme-color) !important;
     transform: scale(1.05, 1.1) !important;
 }
 
@@ -163,7 +180,7 @@ pagefind-modal {
 }
 
 :is(*,#\#):is(*,#\#):is(*,#\#) .pf-heading-chip:hover {
-    border-color: #008000 !important;
+    border-color: var(--pf-r-theme-color) !important;
     transform: scale(1.05, 1.1) !important;
 }
 
