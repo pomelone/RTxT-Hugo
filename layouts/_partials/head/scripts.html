@@ -5,6 +5,7 @@
     "js/theme-switch.js"
     "js/scroll.js"
     "js/tabs.js"
+    "js/nav-menu.js"
 -}}
 
 {{- $scripts := slice -}}
@@ -32,16 +33,16 @@
     {{- end -}}
 {{- end -}}
 
-{{- $searchAdded := false -}}
-{{- range site.Menus.main -}}
-    {{- if and (eq .Params.type "search") (not $searchAdded) -}}
-        {{- with resources.Get "pagefind/pagefind-component-ui.js" -}}
-            {{- $scripts = $scripts | append .  -}}
-        {{- end -}}
-        {{- with resources.Get "pagefind/search-modal.js" -}}
-            {{- $scripts = $scripts | append .  -}}
-        {{- end -}}
-        {{- $searchAdded = true -}}
+{{- $searchEnable := false -}}
+{{- if and (isset site.Params "search") (isset site.Params.search "enable") -}}
+    {{- $searchEnable = site.Params.search.enable -}}
+{{- end -}}
+{{- if $searchEnable -}}
+    {{- with resources.Get "pagefind/pagefind-component-ui.js" -}}
+        {{- $scripts = $scripts | append .  -}}
+    {{- end -}}
+    {{- with resources.Get "pagefind/search-modal.js" -}}
+        {{- $scripts = $scripts | append .  -}}
     {{- end -}}
 {{- end -}}
 

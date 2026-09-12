@@ -11,7 +11,7 @@
     - Built on the **Hugo 0.146+** template system
     - Post list sorting by `weight` > `lastmod` > `title`
 - Configuration
-    - hover dropdown [menus](#menu-and-submenus) (optional icons)
+    - Responsive [menus](#menu-and-submenus): hover dropdowns on desktop, modal menu on small screens (optional icons)
     - Regular configuration: [Table of Contents](#table-of-contents), [Default Pagination Size](#default-pagination-size)
     - [Feature toggles](#feature-toggles): theme switch, breadcrumb, toc, tags, series, term list
     - [Search](#search): Pagefind modal search
@@ -86,8 +86,8 @@ Configure menus in **hugo.toml**. Use `parent` to attach an item to another item
 
 - Menu labels prefer the `menu.<identifier>` translation from the i18n files.
 - `params.icon` sets an icon name from `data/icons.toml`.
-- Items with children render as hover dropdowns.
-- An item with `params.type = 'search'` renders a search trigger that opens the [Search](#search) modal.
+- Items with children render as hover dropdowns on desktop.
+- On small screens the menu collapses into a menu button.
 
 ### Table of Contents
 
@@ -123,17 +123,13 @@ enable_term = true           # term list in the left sidebar (term pages)
 
 ### Search
 
-Add a menu item with `params.type = 'search'` to show a search trigger in the navbar. Clicking it opens a modal search UI powered by [Pagefind](https://pagefind.app/):
+Enable Pagefind modal search under `[params.search]`. When enabled, a search trigger appears in the navbar powered by [Pagefind](https://pagefind.app/):
 
 ```toml
-[menu]
-    [[menu.main]]
-        identifier = 'search'
-        name = 'Search'
-        weight = 5
-        params.type = 'search'
-        params.baseUrl = '/blog/'      # default '/'
-        params.bundlePath = '/search/' # default '/search/'
+[params.search]
+    enable = true
+    baseUrl = '/blog/'      # site base URL served to Pagefind, default '/'
+    bundlePath = '/search/' # where the pagefind index is served, default '/search/'
 ```
 
 Build the search index after `hugo`:

@@ -7,6 +7,7 @@
     --side-bg: #{light.$side-bg};
     --nav-bg: #{light.$nav-bg};
     --nav-shadow: #{light.$nav-shadow};
+    --modal-bg: #{light.$modal-bg};
     --text-color: #{light.$text-color};
     --text-meta-color: #{light.$text-meta-color};
     --text-meta-hover-color: #{light.$text-meta-hover-color};
@@ -34,7 +35,6 @@
     --pf-r-error-border: #{light.$pf-error-border};
     --pf-r-error-text: #{light.$pf-error-text};
     --pf-r-error-text-secondary: #{light.$pf-error-text-secondary};
-    --pf-r-modal-backdrop: #{light.$pf-modal-backdrop};
 }
 
 @mixin dark-theme {
@@ -43,6 +43,7 @@
     --side-bg: #{dark.$side-bg};
     --nav-bg: #{dark.$nav-bg};
     --nav-shadow: #{dark.$nav-shadow};
+    --modal-bg: #{dark.$modal-bg};
     --text-color: #{dark.$text-color};
     --text-meta-color: #{dark.$text-meta-color};
     --text-meta-hover-color: #{dark.$text-meta-hover-color};
@@ -70,5 +71,4 @@
     --pf-r-error-border: #{dark.$pf-error-border};
     --pf-r-error-text: #{dark.$pf-error-text};
     --pf-r-error-text-secondary: #{dark.$pf-error-text-secondary};
-    --pf-r-modal-backdrop: #{dark.$pf-modal-backdrop};
 }

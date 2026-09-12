@@ -1,42 +1,14 @@
-{{- $currentPage := . -}}
-{{- range site.Menus.main -}}
-    {{- $active := false -}}
-    {{- if .Page -}}
-        {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
-            {{- $active = true -}}
-        {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
-            {{- $active = true -}}
-        {{- end -}}
-    {{- end -}}
-
-    {{ if .HasChildren -}}
-        {{- range .Children -}}
-            {{- if and (not $active) .Page -}}
-                {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
-                    {{- $active = true -}}
-                {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
-                    {{- $active = true -}}
-                {{- end -}}
-            {{- end -}}
-        {{- end -}}
-
-        <div class="menu-group">
-            {{ partial "header/menu-detail.html" (dict "menu" . "active" $active "icon" true) }}
-            <div class="submenu">
-
-                {{- range .Children -}}
-                    {{- $activeChild := false -}}
-                    {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
-                        {{- $activeChild = true -}}
-                    {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
-                        {{- $activeChild = true -}}
-                    {{- end -}}
-
-                    {{ partial "header/menu-detail.html" (dict "menu" . "active" $activeChild) }}
-                {{- end }}
-            </div>
-        </div>
-    {{- else -}}
-        {{ partial "header/menu-detail.html" (dict "menu" . "active" $active) }}
-    {{- end -}}
-{{- end -}}
+<button class="menu-toggle" type="button" title="{{ i18n "menu.toggle" | default "Menu" }}">
+    {{ partial "component/svg-sprite.html" (dict "mode" "external" "name" "menu" "asset" "ui/static-ui.svg") }}
+</button>
+<dialog id="menu-modal" class="menu-modal">
+    <div class="menu-header">
+        <span class="menu-title">{{ i18n "menu.toggle" | default "Menu" }}</span>
+        <button class="menu-modal-close" type="button" title="{{ i18n "menu.close" | default "Close" }}">
+            {{ partial "component/svg-sprite.html" (dict "mode" "external" "name" "x-close" "asset" "ui/static-ui.svg") }}
+        </button>
+    </div>
+    <div class="menu-body">
+        {{ partial "header/menu-body.html" . }}
+    </div>
+</dialog>

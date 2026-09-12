@@ -1,0 +1,42 @@
+@use "mixins" as *;
+
+.theme-switch {
+    position: relative;
+    padding: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    text-decoration: none;
+    user-select: none;
+    color: var(--text-bar-color);
+    @include transition("color, opacity, transform", 0.3s, ease);
+
+    &:hover {
+        color: var(--text-bar-hover-color);
+        background-color: transparent;
+        text-decoration: none;
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    img,
+    svg {
+        width: 2em;
+        height: 2em;
+    }
+
+    .theme-dark,
+    &[data-theme="dark"] .theme-light {
+        display: none;
+    }
+
+    &[data-theme="dark"] .theme-dark {
+        display: inline-flex;
+    }
+}

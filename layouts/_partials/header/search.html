@@ -1,8 +1,13 @@
-{{- $searchName := i18n "menu.search" | default "Search" -}}
+{{- $enable := false -}}
+{{- if and (isset site.Params "search") (isset site.Params.search "enable") -}}
+    {{- $enable = site.Params.search.enable -}}
+{{- end -}}
 
-{{- $baseUrl := .Params.baseUrl | default "/" -}}
-{{- $bundlePath := .Params.bundlePath | default "/search/" -}}
+{{- $name := i18n "menu.search" | default "Search" -}}
+{{- $baseUrl := site.Params.search.baseUrl | default "/" -}}
+{{- $bundlePath := site.Params.search.bundlePath | default "/search/" -}}
 
+{{- if $enable -}}
 <pagefind-config 
     base-url="{{ $baseUrl }}"
     bundle-path="{{ $bundlePath }}"
@@ -10,8 +15,8 @@
     excerpt-length="30" 
     highlight-param="highlight"></pagefind-config>
 
-<button class="search-trigger" type="button" title="{{ $searchName }}">
-    {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "mood-look" "title" (i18n "menu.search")) }}
+<button class="search-trigger" type="button" title="{{ $name }}">
+    {{ partial "component/svg-sprite.html" (dict "mode" "inline" "name" "mood-look") }}
 </button>
 
 <pagefind-modal reset-on-close="true">
@@ -27,3 +32,4 @@
         </pagefind-results>
     </pagefind-modal-body>
 </pagefind-modal>
+{{- end -}}
