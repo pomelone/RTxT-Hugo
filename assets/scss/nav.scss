@@ -323,6 +323,11 @@
                 @include transition(transform, 0.3s, ease);
             }
 
+            &:hover:not(.opened) > .menu svg,
+            &:focus-within:not(.opened) > .menu svg {
+                transform: none;
+            }
+
             .menu-modal[open] &.opened > .menu svg {
                 @include svg-rotate(-180deg);
             }
