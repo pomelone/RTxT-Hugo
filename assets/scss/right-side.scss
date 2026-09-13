@@ -76,8 +76,9 @@
     display: contents;
 
     .toc-title {
-        @include side-title;
         padding: 1rem 0 0.5rem 1rem;
+        @include side-title;
+        color: var(--text-color);
     }
 
     .toc-modal-close {

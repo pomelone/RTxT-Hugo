@@ -89,7 +89,7 @@
     flex-direction: column;
     background-color: var(--side-bg);
     font-size: 0.9rem;
-    line-height: 1.5rem;
+    line-height: 1.5;
     overflow-wrap: break-word;
     overflow: clip auto;
     @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
