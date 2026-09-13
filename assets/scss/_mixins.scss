@@ -121,3 +121,12 @@
     font-size: 1rem;
     text-align: left;
 }
+
+@mixin backdrop {
+    position: fixed;
+    inset: 0;
+    overflow: clip;
+    overscroll-behavior: contain;
+    user-select: text;
+    background-color: var(--modal-bg);
+}
