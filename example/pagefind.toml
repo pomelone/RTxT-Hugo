@@ -1,0 +1,24 @@
+site = "public"
+output_subdir = "search"
+# output_path = "public/search"
+
+root_selector = "body"
+
+exclude_selectors = [
+    "style",
+    "script",
+    "footer",
+    ".nav-container",
+    ".left-side",
+    ".right-side",
+]
+
+serve = false
+verbose = true
+
+[languages]
+    [languages.zh]
+        name = "中文"
+        force_language = "zh"
+    [languages.en]
+        name = "English"
