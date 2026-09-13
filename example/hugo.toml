@@ -1,0 +1,158 @@
+baseURL = 'https://example.org/'
+title = 'RTxT'
+theme = ['RTxT-Hugo']
+
+locale = 'zh-CN'
+defaultContentLanguage = 'zh-cn'
+enableRobotsTXT = true
+enableInlineShortcodes = true
+enableEmoji = true
+# enableGitInfo = true
+hasCJKLanguage = true
+summaryLength = 30
+
+[params]
+    description = 'Rich Text Theme for Hugo'
+    dateFormat = '2006-01-02 15:04'
+
+    [params.footer]
+        enable = true
+        copyright = '© 2026 RTxT. All rights reserved.'
+        poweredBy = '<a href="/">PowerBy RTxT</a>'
+
+    [params.archives]
+        sections = ['blog']
+    
+    [params.taxonomy]
+        pagerSize = 50
+
+    [params.features]
+        enable_theme_switch = true
+        enable_breadcrumb = true
+        enable_toc = true
+        enable_tags = true
+        enable_series = true
+        enable_term = true
+    
+    [params.search]
+        enable = true
+        baseUrl = '/blog/'
+        bundlePath = '/search/'
+
+    [params.math]
+        enable = true
+        engine = 'mathjax'
+        cdn = 'https://cdn.jsdelivr.net/npm'
+        version = '4.1.3'
+
+[menu]
+    [[menu.main]]
+        identifier = 'blog'
+        name = 'Blog'
+        pageRef = '/blog'
+        weight = 1
+
+    [[menu.main]]
+        identifier = 'documentation'
+        name = 'Documentation'
+        pageRef = '/docs'
+        weight = 2
+
+    [[menu.main]]
+        identifier = 'series'
+        name = 'Series'
+        pageRef = '/series'
+        params.icon = '#series-filled'
+        weight = 3
+
+    [[menu.main]]
+        identifier = 'code'
+        name = 'Code'
+        url = 'https://example.org'
+        params.icon = '#code-block-filled'
+        weight = 8
+    
+    [[menu.main]]
+    identifier = 'more'
+    name = 'More'
+    weight = 9
+
+    [[menu.main]]
+        identifier = 'categories'
+        name = 'Categories'
+        pageRef = '/categories'
+        params.icon = '#category-filled'
+        parent = 'more'
+        weight = 90
+    
+    [[menu.main]]
+        identifier = 'tags'
+        name = 'Tags'
+        pageRef = '/tags'
+        params.icon = '#tags'
+        parent = 'more'
+        weight = 91
+
+    [[menu.main]]
+        identifier = 'archives'
+        name = 'Archives'
+        pageRef = '/archives'
+        params.icon = '#archive-filled'
+        parent = 'more'
+        weight = 92
+
+[pagination]
+    pagerSize = 10
+
+[taxonomies]
+    tag = 'tags'
+    category = 'categories'
+    series = 'series'
+
+[outputs]
+    home = ['html']
+    page = ['html']
+    section = ['html']
+    taxonomy = ['html']
+    term = ['html']
+
+#[languages]
+#    [languages.zh-cn]
+#        disabled = false
+#        locale = 'zh-CN'
+#        label = '简体中文'
+#        weight = 1
+#    [languages.en]
+#        disabled = true
+#        locale = 'en'
+#        label = 'English'
+#        weight = 2
+
+[markup]
+    [markup.tableOfContents]
+        startLevel = 1
+        endLevel = 3
+
+    [markup.highlight]
+        style = 'base16-snazzy'
+        lineNos = true
+        anchorLineNos = true
+        tabWidth = 4
+
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            hardWraps = true
+            unsafe = true
+            xhtml = false
+
+        [markup.goldmark.extensions.cjk]
+            enable = true
+            escapedSpace = true
+            eastAsianLineBreaks = true
+            eastAsianLineBreaksStyle = 'simple'
+
+        [markup.goldmark.extensions.passthrough]
+            enable = true
+            [markup.goldmark.extensions.passthrough.delimiters]
+                block = [['\[', '\]'], ['$$', '$$']]
+                inline = [['\(', '\)'], ['$', '$']]
