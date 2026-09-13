@@ -17,10 +17,20 @@
 {{- if $enable -}}
 <div class="right-side visible">
     {{- if $enableToc }}
-    <div class="toc">
-        <div class="title">{{ i18n "toc.title" }}</div>
-        {{ .TableOfContents }}
-    </div>
+    <button class="toc-toggle" type="button" title="{{ i18n "toc.title" }}">
+        {{ partial "component/svg-sprite.html" (dict "mode" "external" "name" "menu-deep" "asset" "ui/static-ui.svg") }}
+    </button>
+    <dialog id="toc-modal" class="toc-modal">
+        <div class="toc-header">
+            <span class="toc-title">{{ i18n "toc.title" }}</span>
+            <button class="toc-modal-close" type="button" title="{{ i18n "menu.close" | default "Close" }}">
+                {{ partial "component/svg-sprite.html" (dict "mode" "external" "name" "x-close" "asset" "ui/static-ui.svg") }}
+            </button>
+        </div>
+        <div class="toc-body">
+            {{ .TableOfContents }}
+        </div>
+    </dialog>
     {{- end -}}
 
     {{- if $enableTag -}}

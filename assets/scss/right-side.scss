@@ -1,10 +1,167 @@
 @use "mixins" as *;
 @use "layers" as *;
+@use "colors" as *;
+@use "size" as *;
+
+.toc-toggle {
+    padding: 0.2rem;
+    display: none;
+    opacity: 0.8;
+    color: var(--text-bar-color);
+    background: var(--button-bg);
+    @include border(var(--button-border), 0.5rem);
+    cursor: pointer;
+    @include transition("color, opacity, transform", 0.3s, ease);
+
+    &[hidden] {
+        display: none;
+    }
+
+    &:hover {
+        opacity: 1;
+        color: var(--text-bar-hover-color);
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    @media (max-width: $breakpoint-side) {
+        position: fixed;
+        z-index: z-index(side);
+        top: 30dvh;
+        right: 1rem;
+        display: inline-flex;
+    }
+}
+
+.toc-modal {
+    display: contents;
+
+    @media (max-width: $breakpoint-side) {
+        display: none;
+
+        &::backdrop {
+            @include backdrop;
+        }
+
+        &[open] {
+            position: fixed;
+            top: 10dvh;
+            bottom: auto;
+            inset-inline: 0;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 90dvw;
+            height: 80dvh;
+            @include border($block-border, $block-border-radius);
+            background-color: var(--bg);
+            color: inherit;
+            overflow: clip;
+            overscroll-behavior: contain;            
+        }
+    }
+}
+
+.toc-header {
+    display: contents;
+
+    .toc-title {
+        @include side-title;
+        padding: 1rem 0 0.5rem 1rem;
+    }
+
+    .toc-modal-close {
+        display: none;
+        @include compact-button;
+        @include button-scale;
+
+        &:hover {
+            color: var(--text-bar-hover-color);
+        }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    @media (max-width: $breakpoint-side) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid $block-border;
+
+        .toc-title {
+            position: static;
+            padding: 0;
+            width: auto;
+            background: none;
+        }
+
+        .toc-modal-close {
+            display: inline-flex;
+        }
+    }
+}
+
+.toc-body {
+    ul {
+        margin: 0;
+        padding: 0 0 0 1rem;
+        list-style: none;
+    }
+
+    li {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        color: var(--text-meta-color);
+        opacity: 0.8;
+        text-decoration: none;
+        @include transition("color, opacity, transform", 0.3s, ease);
+
+        &:hover {
+            color: var(--text-meta-hover-color);
+            opacity: 1;
+            text-decoration: none;
+            transform: translateX(0.3rem);
+        }
+    }
+
+    @media (max-width: $breakpoint-side) {
+        padding: 0.5rem 1rem 1rem;
+        flex: 1;
+        min-height: 0;
+        overflow: clip auto;
+        overscroll-behavior: contain;
+        @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
+    }
+}
 
 .right-side {
     margin-right: 2rem;
     @include side-panel;
     order: order(middle);
+
+    @media (max-width: $breakpoint-side) {
+        display: contents;
+    }
 
     a {
         display: inline-flex;
@@ -22,29 +179,6 @@
         }
     }
 
-    .toc {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        align-items: flex-start;
-
-        .title {
-            @include side-title;
-            padding: 1rem 0 0.5rem 1rem;
-        }
-
-        ul {
-            margin: 0;
-            padding: 0 0 0 1rem;
-            list-style: none;
-        }
-
-        li {
-            margin: 0;
-            padding: 0;
-        }
-    }
-
     .meta {
         position: sticky;
         z-index: z-index(side) + 1;
@@ -57,6 +191,10 @@
         hr {
             margin: 0.5rem 0;
             width: 100%;
+        }
+
+        @media (max-width: $breakpoint-side) {
+            display: none;
         }
     }
 }

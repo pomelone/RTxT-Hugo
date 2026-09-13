@@ -14,12 +14,18 @@
 {{- end }}
 
     {{ with $menu.Params.icon -}}
+        {{- if hasPrefix . "#" -}}
+        {{ partial "component/svg-sprite.html" (dict "name" (strings.TrimLeft "#" .) "asset" "ui/static-ui.svg") }}
+        {{- else -}}
         {{ partial "common/icon.html" (dict "name" .) }}
+        {{- end -}}
     {{- end }}
-    <span>{{ $name }}</span>
-    {{ if $more -}}
-        {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
-    {{- end -}}
+    <span class="menu-text">
+        <span>{{ $name }}</span>
+        {{ if $more -}}
+            {{ partial "component/svg-sprite.html" (dict "name" "chevron-down" "class" "icon" "asset" "ui/static-ui.svg") }}
+        {{- end -}}
+    </span>
 
 {{- if or $menu.Page $menu.URL }}
     </a>

@@ -85,7 +85,7 @@ Configure menus in **hugo.toml**. Use `parent` to attach an item to another item
 ```
 
 - Menu labels prefer the `menu.<identifier>` translation from the i18n files.
-- `params.icon` sets an icon name from `data/icons.toml`.
+- `params.icon` sets an icon name from `data/icons.toml`, or `#name` for a symbol in `assets/ui/static-ui.svg`.
 - Items with children render as hover dropdowns on desktop.
 - On small screens the menu collapses into a menu button.
 
@@ -98,6 +98,8 @@ Configure the table of contents depth in **hugo.toml**:
     startLevel = 1
     endLevel = 3
 ```
+
+Whenever the side panels are hidden, the toc moves into a modal dialog: a semi-transparent floating button at the top-right, and pages without headings hide the button.
 
 ### Default Pagination Size
 
