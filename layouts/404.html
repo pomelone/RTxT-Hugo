@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404</title>
-    {{ partial "head/csp-hash.html" (dict "script" (slice "errors/errors.js") "style" (slice "errors/errors.css")) }}
+    {{ partial "head/embedded-head.html" (dict "script" (slice "errors/errors.js") "style" (slice "errors/errors.css")) }}
 </head>
 
 <body class="nf-body">
