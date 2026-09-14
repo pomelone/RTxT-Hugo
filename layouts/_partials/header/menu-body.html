@@ -1,5 +1,5 @@
 {{- $currentPage := . -}}
-{{- range site.Menus.main -}}
+{{- range site.Menus.main }}
     {{- $active := false -}}
     {{- if .Page -}}
         {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
@@ -24,19 +24,19 @@
             {{ partial "header/menu-detail.html" (dict "menu" . "active" $active "more" true) }}
             <div class="submenu">
 
-                {{- range .Children -}}
+                {{- range .Children }}
                     {{- $activeChild := false -}}
                     {{- if or ($currentPage.IsMenuCurrent .Menu .) ($currentPage.HasMenuCurrent .Menu .) -}}
                         {{- $activeChild = true -}}
                     {{- else if and (eq .Page.Kind "taxonomy") (eq $currentPage.Kind "term") (eq $currentPage.Type .Page.Type) -}}
                         {{- $activeChild = true -}}
-                    {{- end -}}
+                    {{- end }}
 
                     {{ partial "header/menu-detail.html" (dict "menu" . "active" $activeChild) }}
-                {{- end }}
+                {{ end }}
             </div>
         </div>
     {{- else -}}
         {{ partial "header/menu-detail.html" (dict "menu" . "active" $active) }}
-    {{- end -}}
-{{- end -}}
+    {{- end }}
+{{ end -}}

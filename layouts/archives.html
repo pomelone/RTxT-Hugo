@@ -1,6 +1,9 @@
 {{- define "main" -}}
-{{- $sections := site.Params.archives.sections | default (slice "blog") -}}
-{{- $pages := where site.RegularPages "Section" "in" $sections -}}
+{{- $sections := site.Params.archives.sections | default slice -}}
+{{- $pages := site.RegularPages -}}
+{{- if $sections -}}
+{{- $pages = where $pages "Section" "in" $sections -}}
+{{- end -}}
 <div class="main-container">
     <div class="content-wrap">
         {{ partial "component/breadcrumb.html" . }}

@@ -11,10 +11,10 @@
     <a class="menu" href="{{ $menu.URL }}" target="_blank" rel="noopener noreferrer" title="{{ $name }}">
 {{- else -}}
     <span class="menu{{ if $active }} activated{{ end }}" title="{{ $name }}">
-{{- end }}
+{{- end -}}
 
-    {{ with $menu.Params.icon -}}
-        {{- if hasPrefix . "#" -}}
+    {{- with $menu.Params.icon }}
+        {{ if hasPrefix . "#" -}}
         {{ partial "component/svg-sprite.html" (dict "name" (strings.TrimLeft "#" .) "asset" "ui/static-ui.svg") }}
         {{- else -}}
         {{ partial "common/icon.html" (dict "name" .) }}
@@ -29,6 +29,6 @@
 
 {{- if or $menu.Page $menu.URL }}
     </a>
-{{- else -}}
+{{- else }}
     </span>
 {{- end -}}

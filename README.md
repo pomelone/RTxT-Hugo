@@ -43,6 +43,8 @@ Add the theme to your site:
 theme = ['RTxT-Hugo']
 ```
 
+Complete configuration examples live in the theme's `example/` directory.
+
 ## Configuration
 
 All site options live in **hugo.toml**.
@@ -394,7 +396,7 @@ layout: archives
 ---
 ```
 
-The archive page aggregates posts from the sections configured in `[params.archives]` (default `blog`), grouped by last-modified year / month in collapsible groups.
+The archive page aggregates posts from the sections configured in `[params.archives]`, grouped by last-modified year / month in collapsible groups. Without this option all regular pages are included.
 
 ```toml
 [params.archives]
