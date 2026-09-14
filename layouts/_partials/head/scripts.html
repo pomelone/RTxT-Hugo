@@ -49,5 +49,5 @@
 
 {{- if gt (len $scripts) 0 -}}
     {{- $rtxtScripts := $scripts | resources.Concat "js/rtxt-scripts.js" | minify | fingerprint -}}
-    <script defer src="{{ $rtxtScripts.RelPermalink }}" crossorigin="anonymous"></script>
+    <script defer src="{{ $rtxtScripts.RelPermalink }}" integrity="{{ $rtxtScripts.Data.Integrity }}" crossorigin="anonymous"></script>
 {{- end -}}
