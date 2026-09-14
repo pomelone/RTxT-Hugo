@@ -8,6 +8,7 @@
 <footer class="footer-container">
     <hr>
     {{ with site.Params.footer -}}
+    {{- if or .copyright .poweredBy -}}
     <div class="footer-bar">
         {{ with .copyright -}}
         <div class="footer-text">
@@ -21,6 +22,7 @@
         </div>
         {{- end }}
     </div>
+    {{- end -}}
     {{- end -}}
 
     {{- /* custom footer */ -}}

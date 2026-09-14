@@ -2,6 +2,7 @@ logo = 'Logo'
 home = 'Home'
 
 [menu]
+home = 'Home'
 blog = 'Blog'
 documentation = 'Documentation'
 series = 'Series'

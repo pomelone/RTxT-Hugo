@@ -2,6 +2,7 @@ logo = 'Logo'
 home = '首页'
 
 [menu]
+home = '首页'
 blog = '博客'
 documentation = '文档'
 series = '系列'

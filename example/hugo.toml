@@ -1,8 +1,8 @@
 baseURL = 'https://example.org/'
 title = 'RTxT'
+
 theme = ['RTxT-Hugo']
 
-locale = 'zh-CN'
 defaultContentLanguage = 'zh-cn'
 enableRobotsTXT = true
 enableInlineShortcodes = true
@@ -10,6 +10,7 @@ enableEmoji = true
 # enableGitInfo = true
 hasCJKLanguage = true
 summaryLength = 30
+disableHugoGeneratorInject = true
 
 [params]
     description = 'Rich Text Theme for Hugo'

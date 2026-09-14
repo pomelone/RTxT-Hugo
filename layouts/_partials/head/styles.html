@@ -21,6 +21,10 @@
     {{- end -}}
 {{- end -}}
 
+{{- with resources.Get "css/custom.css" -}}
+    {{- $styles = $styles | append .  -}}
+{{- end -}}
+
 {{- if gt (len $styles) 0 -}}
     {{- $rtxtStyles := $styles | resources.Concat "css/rtxt-styles.css" | minify | fingerprint -}}
     <link rel="stylesheet" type="text/css" href="{{ $rtxtStyles.RelPermalink }}" crossorigin="anonymous">

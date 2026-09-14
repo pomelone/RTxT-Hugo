@@ -20,9 +20,11 @@
     padding: 0.5rem 1rem;
     max-width: $main-max-width;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    text-align: center;
 }
 
 .footer-text {
