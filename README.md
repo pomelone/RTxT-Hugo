@@ -407,8 +407,6 @@ The archive page aggregates posts from the sections configured in `[params.archi
 
 The theme ships a standalone 404 page (no navbar or footer).
 
-- Font: place the "Facon" font files in `static/fonts/Facon/` (`Facon.woff2` / `Facon.woff` / `Facon.ttf`); the page loads them via `@font-face`.
-
 ## Customization
 
 ### Favicon and Logo
