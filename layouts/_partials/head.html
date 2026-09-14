@@ -19,7 +19,7 @@
 
     {{ with resources.Get "js/boot.js" -}}
         {{- $boot := . | minify -}}
-        <script>{{ $boot.Content | safeJS }}</script>
+        <script nonce="__CSP_NONCE__">{{ $boot.Content | safeJS }}</script>
     {{- end }}
 
     {{ partial "head/styles.html" }}
