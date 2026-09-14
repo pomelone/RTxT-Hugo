@@ -17,11 +17,7 @@
     <meta name="description" content="{{ site.Params.description }}">
     {{- end }}
 
-    {{ with resources.Get "js/boot.js" -}}
-        {{- $boot := . | minify -}}
-        <script nonce="__CSP_NONCE__">{{ $boot.Content | safeJS }}</script>
-    {{- end }}
-
+    {{ partial "head/csp-hash.html" (dict "script" (slice "js/boot.js")) }}
     {{ partial "head/styles.html" }}
     {{ partial "head/scripts.html" }}
     {{ partial "head/math.html" }}
