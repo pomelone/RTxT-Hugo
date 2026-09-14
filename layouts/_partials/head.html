@@ -17,7 +17,7 @@
     <meta name="description" content="{{ site.Params.description }}">
     {{- end }}
 
-    {{ partial "head/csp-hash.html" (dict "script" (slice "js/boot.js")) }}
+    {{ partial "head/embedded-head.html" (dict "script" (slice "js/boot.js")) }}
     {{ partial "head/styles.html" }}
     {{ partial "head/scripts.html" }}
     {{ partial "head/math.html" }}

@@ -1,0 +1,16 @@
+{{- $scriptFiles := .script | default slice -}}
+{{- $styleFiles := .style | default slice -}}
+
+{{- range $scriptFiles }}
+    {{ with resources.Get . -}}
+        {{- $script := . | minify | fingerprint -}}
+        <script>{{ $script.Content | safeJS }}</script>
+    {{- end }}
+{{- end -}}
+
+{{- range $styleFiles }}
+    {{ with resources.Get . -}}
+        {{- $style := . | minify | fingerprint -}}
+        <style>{{ $style.Content | safeCSS }}</style>
+    {{- end }}
+{{- end -}}
