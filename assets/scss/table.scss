@@ -7,7 +7,6 @@ table {
     padding: 0 0.5rem;
     max-width: 100%;
     width: 100%;
-    display: block;
     overflow: clip;
     border-spacing: 0;
     border-top: 2px solid $theme-color;
@@ -34,4 +33,23 @@ td {
 
 tbody tr:hover td {
     background-color: color-mix(in srgb, $theme-color 10%, transparent);
+}
+
+table#list {
+    color: var(--text-color);
+
+    th,
+    td {
+        white-space: nowrap;
+        overflow: clip;
+        text-overflow: ellipsis;
+    }
+
+    th a {
+        color: $theme-color;
+    }
+
+    td a {
+        color: var(--text-color);
+    }
 }
