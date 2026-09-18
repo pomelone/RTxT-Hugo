@@ -35,6 +35,7 @@
 
         .title {
             @include side-title;
+            align-self: stretch;
             padding: 1rem 1rem 0.5rem 0;
         }
 
@@ -57,7 +58,7 @@
         .series-group {
             margin: 0 0 0.5rem;
             padding: 0 1rem 0 0;
-            width: 100%;
+            align-self: stretch;
         }
 
         .series-name {
