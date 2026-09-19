@@ -1,10 +1,6 @@
 @use "mixins" as *;
 @use "size" as *;
 
-p {
-    margin: 0 0 1rem;
-}
-
 #content {
     > *:first-child {
         margin-top: 1rem;
