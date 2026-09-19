@@ -1,0 +1,12 @@
+{{- define "main" -}}
+<div class="main-container">
+    <div class="content-wrap">
+        <article class="content-container">
+            <div class="content-body">
+                {{ partial "page/content.html" . }}
+            </div>
+        </article>
+        {{ partial "component/backtop.html" }}
+    </div>
+</div>
+{{- end -}}
