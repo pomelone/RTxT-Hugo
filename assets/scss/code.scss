@@ -16,7 +16,7 @@ pre {
     padding: 0.5rem;
     background-color: transparent;
     border-radius: 0;
-    @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
+    @include thin-scrollbar($scrollbar-thumb, $scrollbar-track, auto);
     overscroll-behavior: contain auto;
     overflow: auto clip;
 
@@ -36,7 +36,7 @@ pre {
         margin: 0;
         overflow: auto clip;
         overscroll-behavior: contain auto;
-        @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
+        @include thin-scrollbar($scrollbar-thumb, $scrollbar-track, auto);
 
         table {
             margin: 0;
