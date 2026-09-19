@@ -34,15 +34,21 @@ pre {
 
     .highlight {
         margin: 0;
+        overflow: auto clip;
+        overscroll-behavior: contain auto;
+        @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
 
         table {
             margin: 0;
             padding: 0;
             width: 100%;
-            overflow: auto clip;
-            @include thin-scrollbar($scrollbar-thumb, $scrollbar-track);
+            table-layout: auto;
             border: none;
             box-shadow: none;
+        }
+
+        pre {
+            overflow: visible;
         }
     }
 
