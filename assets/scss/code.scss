@@ -8,6 +8,7 @@ code {
     border-radius: 0.4em;
     font-family: $system-mono-font;
     font-size: 0.9em;
+    color: $code-inline;
     background-color: $code-inline-bg;
 }
 
@@ -22,6 +23,7 @@ pre {
 
     code {
         padding: 0;
+        color: inherit;
         background-color: transparent;
         font-size: 1em;
     }
