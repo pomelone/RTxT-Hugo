@@ -1,8 +1,33 @@
 {{- $dest := .dest -}}
 {{- $alt := .alt -}}
 {{- $title := .title -}}
+{{- $page := .page -}}
 
 {{- $src := $dest -}}
+{{- $parsed := urls.Parse $dest -}}
+
+{{- if and (eq $parsed.Scheme "") (eq $parsed.Host "") (ne $parsed.Path "") -}}
+    {{- $path := $parsed.Path -}}
+    {{- if not (strings.HasPrefix $path "/") -}}
+        {{- $base := "" -}}
+        {{- with $page.File -}}{{- $base = .Dir -}}{{- end -}}
+        {{- $path = path.Clean (printf "/%s/%s" $base $path) -}}
+    {{- end -}}
+
+    {{- $resolved := false -}}
+    {{- with site.GetPage (path.Dir $path) -}}
+        {{- with .Resources.Get (path.Base $path) -}}
+            {{- with .RelPermalink -}}
+                {{- $src = . -}}
+                {{- $resolved = true -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- if and (not $resolved) (not (strings.HasPrefix $parsed.Path "/")) -}}
+        {{- errorf "render-image: broken internal image %q in %q" $dest $page.Path -}}
+    {{- end -}}
+{{- end -}}
 
 <figure>
     <img src="{{ $src | safeURL }}"{{ with $alt }} alt="{{ . }}"{{ end }}{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async" crossorigin="anonymous" />
