@@ -139,7 +139,7 @@ Enable Pagefind modal search under `[params.search]`. When enabled, a search tri
 Build the search index after `hugo`:
 
 ```sh
-npx pagefind --site public --output-subdir search
+pagefind --site public --output-subdir search
 ```
 
 `--output-subdir search` must match `bundlePath` (without the leading slash). With the default settings the index lives at `/search/`.

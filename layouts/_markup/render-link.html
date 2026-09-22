@@ -1,49 +1,5 @@
-{{- $href := .Destination -}}
 {{- $parsed := urls.Parse .Destination -}}
-
-{{- if and (eq $parsed.Scheme "") (eq $parsed.Host "") (ne $parsed.Path "") -}}
-    {{- $path := $parsed.Path -}}
-
-    {{- if not (strings.HasPrefix $path "/") -}}
-        {{- $base := "" -}}
-        {{- with .Page.File -}}{{- $base = .Dir -}}{{- end -}}
-        {{- $path = path.Clean (printf "/%s/%s" $base $path) -}}
-    {{- end -}}
-
-    {{- $target := site.GetPage $path -}}
-    {{- if not $target -}}
-        {{- $ext := path.Ext $path -}}
-        {{- if $ext -}}
-            {{- $target = site.GetPage (strings.TrimSuffix $path $ext) -}}
-        {{- end -}}
-    {{- end -}}
-
-    {{- $resolved := false -}}
-    {{- if $target -}}
-        {{- $href = $target.RelPermalink -}}
-        {{- $resolved = true -}}
-    {{- else -}}
-        {{- with site.GetPage (path.Dir $path) -}}
-            {{- with .Resources.Get (path.Base $path) -}}
-                {{- with .RelPermalink -}}
-                    {{- $href = . -}}
-                    {{- $resolved = true -}}
-                {{- end -}}
-            {{- end -}}
-        {{- end -}}
-    {{- end -}}
-
-    {{- if and (not $resolved) (not (strings.HasPrefix $parsed.Path "/")) -}}
-        {{- errorf "render-link: broken internal link %q in %q" .Destination .Page.Path -}}
-    {{- end -}}
-
-    {{- with $parsed.RawQuery -}}
-        {{- $href = printf "%s?%s" $href . -}}
-    {{- end -}}
-    {{- with $parsed.Fragment -}}
-        {{- $href = printf "%s#%s" $href . -}}
-    {{- end -}}
-{{- end -}}
+{{- $href := strings.TrimSpace (partial "common/resolve-ref.html" (dict "dest" .Destination "page" .Page)) -}}
 
 {{- if or (eq $parsed.Scheme "http") (eq $parsed.Scheme "https") -}}
 <a href="{{ $href | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }} target="_blank" rel="noopener noreferrer">

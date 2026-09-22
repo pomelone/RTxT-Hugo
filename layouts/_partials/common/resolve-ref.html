@@ -1,0 +1,44 @@
+{{- $dest := .dest -}}
+{{- $page := .page -}}
+{{- $parsed := urls.Parse $dest -}}
+{{- $href := $dest -}}
+
+{{- if and (eq $parsed.Scheme "") (eq $parsed.Host "") (ne $parsed.Path "") -}}
+    {{- $path := $parsed.Path -}}
+    {{- if not (strings.HasPrefix $path "/") -}}
+        {{- $base := "" -}}
+        {{- with $page.File -}}{{- $base = .Dir -}}{{- end -}}
+        {{- $path = path.Clean (printf "/%s/%s" $base $path) -}}
+    {{- end -}}
+
+    {{- $target := site.GetPage $path -}}
+    {{- if not $target -}}
+        {{- $ext := path.Ext $path -}}
+        {{- if $ext -}}
+            {{- $target = site.GetPage (strings.TrimSuffix $path $ext) -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- if $target -}}
+        {{- $href = $target.RelPermalink -}}
+    {{- else -}}
+        {{- with site.GetPage (path.Dir $path) -}}
+            {{- with .Resources.Get (path.Base $path) -}}
+                {{- with .RelPermalink -}}{{- $href = . -}}{{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- if and (eq $href $dest) (not (strings.HasPrefix $parsed.Path "/")) -}}
+        {{- errorf "resolve-ref: broken internal link %q in %q" $dest $page.Path -}}
+    {{- end -}}
+
+    {{- with $parsed.RawQuery -}}
+        {{- $href = printf "%s?%s" $href . -}}
+    {{- end -}}
+    {{- with $parsed.Fragment -}}
+        {{- $href = printf "%s#%s" $href . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $href -}}

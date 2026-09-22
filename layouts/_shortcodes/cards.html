@@ -10,14 +10,17 @@
     {{- errorf "cards shortcode: requires at least one nested card shortcode" -}}
 {{- end -}}
 
+{{- $page := .Page -}}
+
 <div class="cards" style="--cards-cols: {{ $cols }};">
     {{- range $cards }}
         {{ if .link -}}
-            {{- $parseLink := urls.Parse .link -}}
-            {{- if or (eq $parseLink.Scheme "http") (eq $parseLink.Scheme "https") -}}
-            <a class="card" href="{{ .link | safeURL }}" target="_blank" rel="noopener noreferrer">
+            {{- $href := strings.TrimSpace (partial "common/resolve-ref.html" (dict "dest" .link "page" $page)) -}}
+            {{- $parsedLink := urls.Parse .link -}}
+            {{- if or (eq $parsedLink.Scheme "http") (eq $parsedLink.Scheme "https") -}}
+            <a class="card" href="{{ $href | safeURL }}" target="_blank" rel="noopener noreferrer">
             {{- else -}}
-            <a class="card" href="{{ .link | safeURL }}">
+            <a class="card" href="{{ $href | safeURL }}">
             {{- end -}}
         {{- else -}}
         <div class="card">
@@ -27,7 +30,8 @@
             {{- end }}
 
             {{- with .image }}
-            <img class="card-image" src="{{ . | safeURL }}" loading="lazy" decoding="async" crossorigin="anonymous" />
+            {{- $src := strings.TrimSpace (partial "common/resolve-ref.html" (dict "dest" . "page" $page)) -}}
+            <img class="card-image" src="{{ $src | safeURL }}" loading="lazy" decoding="async" crossorigin="anonymous" />
             {{- end -}}
             
 

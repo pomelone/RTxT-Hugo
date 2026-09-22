@@ -18,11 +18,12 @@
 {{- end -}}
 
 {{- if $link -}}
-    {{- $parseLink := urls.Parse $link -}}
-    {{- if or (eq $parseLink.Scheme "http") (eq $parseLink.Scheme "https") -}}
-    <a class="badge-sc" href="{{ $link | safeURL }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }} target="_blank" rel="noopener noreferrer">
+    {{- $href := strings.TrimSpace (partial "common/resolve-ref.html" (dict "dest" $link "page" .Page)) -}}
+    {{- $parsedLink := urls.Parse $link -}}
+    {{- if or (eq $parsedLink.Scheme "http") (eq $parsedLink.Scheme "https") -}}
+    <a class="badge-sc" href="{{ $href | safeURL }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }} target="_blank" rel="noopener noreferrer">
     {{- else -}}
-    <a class="badge-sc" href="{{ $link | safeURL }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+    <a class="badge-sc" href="{{ $href | safeURL }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
     {{- end -}}
 {{- else -}}
     <span class="badge-sc"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>

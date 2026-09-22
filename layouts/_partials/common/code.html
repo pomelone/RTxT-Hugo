@@ -4,17 +4,23 @@
 {{- $collapse := .collapse | default true -}}
 {{- $content := .content -}}
 {{- $opts := .opts -}}
+{{- $page := .page -}}
 
 {{- $highlighted := highlight $content $lang $opts -}}
+
+{{- $href := "" -}}
+{{- $parsedLink := urls.Parse $link -}}
+{{- if $link -}}
+    {{- $href = strings.TrimSpace (partial "common/resolve-ref.html" (dict "dest" $link "page" $page)) -}}
+{{- end -}}
 
 <div class="code-block{{ if $collapse }} collapsed{{ end }}">
     <div class="collapse-summary">
         {{ if $link -}}
-            {{- $parseLink := urls.Parse $link -}}
-            {{- if or (eq $parseLink.Scheme "http") (eq $parseLink.Scheme "https") -}}
-            <a class="code-filename" href="{{ $link | safeURL }}" title="{{ $filename | default $lang }}" target="_blank" rel="noopener noreferrer">
+            {{- if or (eq $parsedLink.Scheme "http") (eq $parsedLink.Scheme "https") -}}
+            <a class="code-filename" href="{{ $href | safeURL }}" title="{{ $filename | default $lang }}" target="_blank" rel="noopener noreferrer">
             {{- else -}}
-            <a class="code-filename" href="{{ $link | safeURL }}" title="{{ $filename | default $lang }}">
+            <a class="code-filename" href="{{ $href | safeURL }}" title="{{ $filename | default $lang }}">
             {{- end -}}
         {{- else -}}
             <span class="code-filename" title="{{ $filename | default $lang }}">
